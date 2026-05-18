@@ -1,0 +1,16 @@
+{
+  "name": "roots-sales-plugin",
+  "metadata": {
+    "name": "Roots Tech Plugins",
+    "owner": {
+      "name": "Trinity Roots Co., Ltd."
+    }
+  },
+  "plugins": [
+    {
+      "name": "sales",
+      "source": ".",
+      "description": "Sales AI plugin for Roots.Tech — SE orchestration, MOM writing with meeting registry, proposal review, PM handoff, and Thai government bid support. Built on Anthropic's official sales plugin."
+    }
+  ]
+}

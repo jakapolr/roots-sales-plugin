@@ -34,7 +34,7 @@ argument-hint: "<client name, date, or type:xxx>"
 
 ## What Claude Will Do
 
-1. Read `/Sales/meeting-registry.md` from Google Drive (if connected) or ask user to paste registry
+1. Read `8. Sales and Marketing/Meetings/meeting-registry.md` from Google Drive (if connected) or ask user to paste registry
 2. Filter rows matching the query
 3. Return a table of matching meetings with clickable Drive links
 4. Offer to open any specific MOM for review

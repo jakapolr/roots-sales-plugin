@@ -94,7 +94,7 @@ Check for gaps and risks:
 ### Step 4 — Write the Handoff Package
 
 **Filename:** `Handoff_[ClientName]_[YYYY-MM-DD].md`
-**Save to:** Google Drive `/Sales/Closed Won/[ClientName]/`
+**Save to:** Google Drive `8. Sales and Marketing/Meetings/Closed Won/[ClientName]/`
 
 ```markdown
 # Project Handoff Package

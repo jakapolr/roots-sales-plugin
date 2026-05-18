@@ -1,6 +1,6 @@
 # Meeting Registry — Roots.Tech Sales
 
-> **File location:** Google Drive → `/Sales/meeting-registry.md`
+> **File location:** Google Drive → `8. Sales and Marketing/Meetings/meeting-registry.md`
 > **Maintained by:** MOM Writer agent (auto-updated after each MOM)
 > **Purpose:** Central index of all processed meetings — enables deduplication, audit, and search
 

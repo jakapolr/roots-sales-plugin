@@ -66,4 +66,4 @@ Based on CONTEXT.md ICP criteria:
 ```
 
 ## Google Drive Integration
-If ~~cloud-storage (Google Drive) is connected: save brief to `/Sales/Prospects/[CompanyName]/account-brief.md`
+If ~~cloud-storage (Google Drive) is connected: save brief to `8. Sales and Marketing/Meetings/Active Prospects/[CompanyName]/account-brief.md`

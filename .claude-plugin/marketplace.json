@@ -1,10 +1,10 @@
 {
   "name": "roots-sales-plugin",
-  "metadata": {
-    "description": "Sales AI plugins for Roots.Tech — Thai Odoo ERP implementation firm"
-  },
   "owner": {
     "name": "Trinity Roots Co., Ltd."
+  },
+  "metadata": {
+    "description": "Roots.Tech internal plugins for sales and ERP delivery teams."
   },
   "plugins": [
     {

@@ -1,7 +1,7 @@
 {
   "name": "sales",
-  "version": "1.5.0",
-  "description": "Sales productivity plugin for Roots.Tech — Odoo ERP implementation firm. Prospect, prep for calls, analyze requirements, manage pipeline, and prepare government bids. Based on Anthropic's official sales plugin, extended with Odoo-specific skills, Thai market context, and Google Workspace connectors.",
+  "version": "2.0.0",
+  "description": "Sales productivity plugin for Roots.Tech — Thai Odoo ERP implementation firm. Prospect, prep for calls, analyze requirements, manage pipeline, and prepare government bids. Based on Anthropic's official sales plugin, extended with Odoo-specific skills, Thai market context, and Google Workspace connectors.",
   "author": {
     "name": "Trinity Roots Co., Ltd.",
     "url": "https://roots.tech"

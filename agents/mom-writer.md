@@ -26,7 +26,7 @@ Invoke automatically when the user:
 
 Before doing any work, read the meeting registry:
 
-**Registry location:** Google Drive → `/Sales/meeting-registry.md`
+**Registry location:** Google Drive → `8. Sales and Marketing/Meetings/meeting-registry.md`
 - If Google Drive (~~cloud-storage) is connected: read the file directly
 - If not connected: ask the user "มี meeting-registry.md ไหมครับ? ถ้ามีช่วย paste ส่วน Registry table มาด้วย"
 
@@ -159,7 +159,7 @@ Structure:
 
 If ~~cloud-storage (Google Drive) is connected:
 
-1. Check if `/Sales/Active Prospects/[ClientName]/` exists — create if not
+1. Check if `8. Sales and Marketing/Meetings/Active Prospects/[ClientName]/` exists — create if not
 2. Save MOM as: `MOM_[ClientName]_[YYYY-MM-DD].md`
 3. Get the shareable Google Drive link for this file
 4. Save email draft as: `Email_Followup_[ClientName]_[YYYY-MM-DD].md`
@@ -172,7 +172,7 @@ If not connected: output both to conversation. Remind user to save.
 
 This step is MANDATORY. Do not skip even if Drive is not connected.
 
-**Append a new row** to `/Sales/meeting-registry.md`:
+**Append a new row** to `8. Sales and Marketing/Meetings/meeting-registry.md`:
 
 ```
 | [next-ID] | [YYYY-MM-DD] | [Client] | [meeting_type] | ทีม Roots: [names] / ลูกค้า: [names+roles] | [Drive link or "local"] | [content_hash] | mom-writer v1.0 | [optional note] |

@@ -5,9 +5,5 @@
   "author": {
     "name": "Trinity Roots Co., Ltd.",
     "url": "https://roots.tech"
-  },
-  "upstream": {
-    "source": "anthropics/knowledge-work-plugins/sales",
-    "version": "2026-01"
   }
 }

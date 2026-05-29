@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Roots Sales Plugin — User Manual v3.0</title>
+<style>
+/* ─── Variables ─── */
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --ink: #1a2340;
+  --muted: #5c6880;
+  --line: #e2e8f4;
+  --brand: #1c3f94;
+  --brand-dark: #0f2461;
+  --accent: #0e9f6e;
+  --warn: #d97706;
+  --risk: #dc2626;
+  --sidebar-w: 270px;
+  --header-h: 60px;
+}
+
+/* ─── Reset & base ─── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"Noto Sans Thai",sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:13px;
+     background:#eef2ff;padding:2px 6px;border-radius:4px;color:#2d3a8c}
+pre{background:#0d1324;color:#e8edf7;padding:16px 20px;border-radius:10px;
+    overflow-x:auto;font-size:13px;line-height:1.5;margin:12px 0}
+pre code{background:none;padding:0;color:inherit}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-0.2px}
+
+/* ─── Top bar ─── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--header-h);z-index:200;
+  background:linear-gradient(135deg,#0d1e4a,#1c3f94);
+  display:flex;align-items:center;padding:0 24px;gap:16px;
+  box-shadow:0 2px 12px rgba(0,0,0,.25)
+}
+#topbar .logo{color:#fff;font-size:18px;font-weight:800;white-space:nowrap}
+#topbar .version{background:#e9efff;color:#1c3f94;font-size:11px;font-weight:700;
+  padding:3px 8px;border-radius:999px}
+#topbar .tagline{color:#a3b8e8;font-size:13px;margin-left:4px;display:none}
+@media(min-width:700px){#topbar .tagline{display:block}}
+
+/* ─── Layout ─── */
+#layout{display:flex;padding-top:var(--header-h)}
+
+/* ─── Sidebar ─── */
+#sidebar{
+  width:var(--sidebar-w);min-width:var(--sidebar-w);position:fixed;
+  top:var(--header-h);bottom:0;left:0;overflow-y:auto;
+  background:#fff;border-right:1px solid var(--line);padding:20px 0;
+  font-size:13px
+}
+#sidebar::-webkit-scrollbar{width:5px}
+#sidebar::-webkit-scrollbar-thumb{background:#d0d8f0;border-radius:3px}
+.nav-section{padding:6px 20px 4px;font-size:11px;font-weight:800;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--muted)}
+.nav-group{margin-bottom:4px}
+.nav-group summary{
+  padding:7px 20px;cursor:pointer;color:var(--ink);font-weight:600;
+  list-style:none;display:flex;align-items:center;gap:8px;
+  border-left:3px solid transparent;transition:.15s
+}
+.nav-group summary::-webkit-details-marker{display:none}
+.nav-group[open] summary{border-left-color:var(--brand);color:var(--brand)}
+.nav-group summary:hover{background:#f0f4ff}
+.nav-group ul{padding:0;list-style:none}
+.nav-group ul li a{
+  display:block;padding:5px 20px 5px 36px;color:var(--muted);
+  border-left:3px solid transparent;transition:.12s
+}
+.nav-group ul li a:hover{background:#f5f7ff;color:var(--brand);text-decoration:none;
+  border-left-color:#c0cdee}
+.nav-divider{height:1px;background:var(--line);margin:10px 16px}
+.nav-direct a{display:block;padding:7px 20px;color:var(--ink);font-weight:600;
+  border-left:3px solid transparent}
+.nav-direct a:hover{background:#f0f4ff;border-left-color:var(--brand);
+  color:var(--brand);text-decoration:none}
+
+/* ─── Main content ─── */
+#main{
+  margin-left:var(--sidebar-w);flex:1;min-width:0;
+  padding:40px 48px 80px;max-width:960px
+}
+
+/* ─── Sections ─── */
+.section{margin-bottom:56px}
+.section-header{
+  padding:28px 32px;border-radius:16px;margin-bottom:28px;
+  background:linear-gradient(135deg,#0f2461,#1c3f94);color:#fff
+}
+.section-header h2{font-size:24px;margin-bottom:6px}
+.section-header p{color:#c0d4ff;font-size:14px}
+
+/* ─── Cards ─── */
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:0 4px 14px rgba(18,38,90,.04)}
+.card h3{font-size:16px;margin-bottom:10px;color:#0d1e4a}
+.card h4{font-size:14px;font-weight:700;color:var(--muted);margin:14px 0 6px;
+  text-transform:uppercase;letter-spacing:.5px}
+
+/* ─── Skill cards ─── */
+.skill-card{border-left:4px solid var(--brand)}
+.skill-card.agent{border-left-color:#7c3aed}
+.skill-card.factory{border-left-color:var(--accent)}
+.skill-card.upstream{border-left-color:#94a3b8}
+.skill-card.pmskill{border-left-color:var(--warn)}
+
+/* ─── Badge chips ─── */
+.badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
+  padding:3px 10px;font-size:11px;font-weight:700;margin-right:6px}
+.badge-blue{background:#dbeafe;color:#1e40af}
+.badge-purple{background:#ede9fe;color:#5b21b6}
+.badge-green{background:#d1fae5;color:#065f46}
+.badge-orange{background:#fef3c7;color:#92400e}
+.badge-gray{background:#f1f5f9;color:#475569}
+.badge-red{background:#fee2e2;color:#991b1b}
+
+/* ─── Tables ─── */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:#f0f4fa;color:#0d1e4a;font-weight:700;text-align:left;
+   padding:10px 14px;border:1px solid var(--line)}
+td{border:1px solid var(--line);padding:9px 14px;vertical-align:top}
+tr:nth-child(even) td{background:#fafbff}
+
+/* ─── Prompt boxes ─── */
+.prompt{background:#0d1324;color:#86efac;border-radius:10px;padding:14px 18px;
+  font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:13px;
+  margin:10px 0;position:relative}
+.prompt::before{content:"Prompt";position:absolute;top:-10px;left:14px;
+  font-family:system-ui;background:#1c3f94;color:#fff;font-size:10px;
+  font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px}
+.prompt-group{margin:14px 0}
+.prompt-label{font-size:12px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+
+/* ─── Callout boxes ─── */
+.callout{border-left:5px solid var(--accent);background:#ecfdf5;
+  padding:14px 18px;border-radius:10px;margin:14px 0;font-size:14px}
+.callout.warn{border-left-color:var(--warn);background:#fffbeb}
+.callout.risk{border-left-color:var(--risk);background:#fff5f5}
+.callout.info{border-left-color:var(--brand);background:#eff6ff}
+.callout strong{display:block;margin-bottom:4px}
+
+/* ─── Gate flow ─── */
+.gate-flow{display:flex;flex-direction:column;gap:0}
+.gate{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative}
+.gate::before{content:'';position:absolute;left:38px;top:44px;bottom:-4px;
+  width:3px;background:linear-gradient(#c7d5f0,#e2eaf8);z-index:0}
+.gate:last-child::before{display:none}
+.gate-badge{
+  width:78px;min-width:78px;height:40px;border-radius:10px;margin:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;z-index:1;box-shadow:0 2px 6px rgba(0,0,0,.12)
+}
+.gate-content{padding:8px 0 20px 16px}
+.gate-content h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.gate-content p{font-size:13px;color:var(--muted);margin-bottom:6px}
+.gate-content .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.gate-content .tools code{font-size:12px}
+.g0{background:#e0e7ff;color:#3730a3}
+.g1{background:#dbeafe;color:#1e3a8a}
+.g2{background:#fef3c7;color:#92400e}
+.g2-badge{background:#fef3c7;color:#92400e;border:2px solid #d97706}
+.g3{background:#d1fae5;color:#065f46}
+.g4{background:#ede9fe;color:#5b21b6}
+.g5{background:#fce7f3;color:#9d174d}
+.g6{background:#f1f5f9;color:#334155}
+
+/* ─── Register grid ─── */
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:14px;margin:14px 0}
+.reg-card{background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;border-top:4px solid var(--brand)}
+.reg-card h4{font-size:14px;font-weight:700;font-family:"SF Mono","Fira Code",monospace;
+  color:#1c3f94;margin-bottom:6px}
+.reg-card p{font-size:13px;color:var(--muted)}
+.reg-card .owner{font-size:11px;margin-top:8px;color:#64748b;font-weight:600}
+
+/* ─── Quick ref grid ─── */
+.qref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:14px}
+.qref-card{background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px}
+.qref-card h4{font-size:14px;font-weight:700;margin-bottom:10px;color:#0d1e4a}
+
+/* ─── TOC hero ─── */
+.hero{background:linear-gradient(135deg,#0d1e4a,#1c3f94);color:#fff;
+  border-radius:18px;padding:36px 40px;margin-bottom:40px}
+.hero h1{font-size:32px;margin-bottom:10px}
+.hero p{color:#c0d4ff;max-width:640px;line-height:1.7}
+.hero .meta{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+.hero .meta span{background:rgba(255,255,255,.12);padding:6px 14px;
+  border-radius:999px;font-size:13px;font-weight:600}
+
+/* ─── Responsive ─── */
+@media(max-width:900px){
+  #sidebar{display:none}
+  #main{margin-left:0;padding:24px 20px 60px}
+  .hero h1{font-size:24px}
+}
+@media(max-width:600px){
+  .reg-grid,.qref-grid{grid-template-columns:1fr}
+  th,td{font-size:13px;padding:8px 10px}
+}
+
+/* ─── Print ─── */
+@media print{
+  #topbar,#sidebar{display:none}
+  #main{margin-left:0;padding:0}
+  .section-header{background:#0d1e4a!important;-webkit-print-color-adjust:exact}
+}
+
+/* step list */
+.steps{counter-reset:step;list-style:none;padding:0}
+.steps li{counter-increment:step;padding:10px 0 10px 48px;position:relative;
+  border-left:2px solid var(--line);margin-left:20px}
+.steps li::before{content:counter(step);position:absolute;left:-18px;top:10px;
+  width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;
+  font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.steps li:last-child{border-left:2px solid transparent}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══════════════════════════════════════════════════════════ -->
+<div id="topbar">
+  <div class="logo">⚡ Roots Sales Plugin</div>
+  <span class="version">v3.0</span>
+  <span class="tagline">— Claude Code plugin for Roots.Tech sales &amp; government procurement</span>
+</div>
+
+<!-- ═══ LAYOUT ════════════════════════════════════════════════════════════ -->
+<div id="layout">
+
+<!-- ─── SIDEBAR ─────────────────────────────────────────────────────────── -->
+<nav id="sidebar">
+  <div class="nav-section">Overview</div>
+  <div class="nav-direct"><a href="#intro">Introduction</a></div>
+  <div class="nav-direct"><a href="#quickstart">Quick Start</a></div>
+  <div class="nav-direct"><a href="#components">Component Map</a></div>
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">TOR Response Factory</div>
+  <div class="nav-direct"><a href="#factory-overview">Factory Overview</a></div>
+  <div class="nav-direct"><a href="#gates">G0 – G6 Gates</a></div>
+  <div class="nav-direct"><a href="#registers">10 Registers</a></div>
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">Skills</div>
+  <details class="nav-group" open>
+    <summary>🏛️ TOR Factory (9)</summary>
+    <ul>
+      <li><a href="#sk-tor-intake">roots-tor-intake</a></li>
+      <li><a href="#sk-compliance-matrix">roots-compliance-matrix</a></li>
+      <li><a href="#sk-scoring-matrix">roots-scoring-matrix</a></li>
+      <li><a href="#sk-evidence-matcher">roots-evidence-matcher</a></li>
+      <li><a href="#sk-doc-freshness">roots-doc-freshness</a></li>
+      <li><a href="#sk-lc-check">roots-lc-check</a></li>
+      <li><a href="#sk-cv-builder">roots-cv-builder</a></li>
+      <li><a href="#sk-submission-packager">roots-submission-packager</a></li>
+      <li><a href="#sk-lessons-learned">roots-lessons-learned</a></li>
+    </ul>
+  </details>
+  <details class="nav-group">
+    <summary>🔧 Odoo Custom (5)</summary>
+    <ul>
+      <li><a href="#sk-tor-analyzer">roots-tor-analyzer</a></li>
+      <li><a href="#sk-bid-prep">roots-bid-prep</a></li>
+      <li><a href="#sk-gap-analysis">odoo-gap-analysis</a></li>
+      <li><a href="#sk-manday">roots-manday-estimator</a></li>
+      <li><a href="#sk-sales-help">sales-help</a></li>
+    </ul>
+  </details>
+  <details class="nav-group">
+    <summary>📋 PM Skills (5)</summary>
+    <ul>
+      <li><a href="#sk-prd">prd</a></li>
+      <li><a href="#sk-user-stories">user-stories</a></li>
+      <li><a href="#sk-acceptance">acceptance-criteria</a></li>
+      <li><a href="#sk-lean">lean-canvas</a></li>
+      <li><a href="#sk-synthesize">meeting-synthesize</a></li>
+    </ul>
+  </details>
+  <details class="nav-group">
+    <summary>📦 Sales Upstream (9)</summary>
+    <ul>
+      <li><a href="#sk-account">account-research</a></li>
+      <li><a href="#sk-callprep">call-prep</a></li>
+      <li><a href="#sk-callsummary">call-summary</a></li>
+      <li><a href="#sk-competitive">competitive-intelligence</a></li>
+      <li><a href="#sk-asset">create-an-asset</a></li>
+      <li><a href="#sk-daily">daily-briefing</a></li>
+      <li><a href="#sk-outreach">draft-outreach</a></li>
+      <li><a href="#sk-forecast">forecast</a></li>
+      <li><a href="#sk-pipeline">pipeline-review</a></li>
+    </ul>
+  </details>
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">Agents</div>
+  <details class="nav-group" open>
+    <summary>🤖 All Agents (6)</summary>
+    <ul>
+      <li><a href="#ag-factory">tor-factory-orchestrator</a></li>
+      <li><a href="#ag-qa">tor-qa-reviewer</a></li>
+      <li><a href="#ag-se">se-orchestrator</a></li>
+      <li><a href="#ag-reviewer">proposal-reviewer</a></li>
+      <li><a href="#ag-mom">mom-writer</a></li>
+      <li><a href="#ag-handoff">pm-handoff</a></li>
+    </ul>
+  </details>
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">Reference</div>
+  <div class="nav-direct"><a href="#commands">Slash Commands</a></div>
+  <div class="nav-direct"><a href="#connectors">MCP Connectors</a></div>
+  <div class="nav-direct"><a href="#quickref">Quick Reference</a></div>
+</nav>
+
+<!-- ─── MAIN ─────────────────────────────────────────────────────────────── -->
+<main id="main">
+
+<!-- ══════════════ HERO ══════════════════════════════════════════════════ -->
+<div class="hero" id="intro">
+  <h1>Roots Sales Plugin — User Manual</h1>
+  <p>Claude Code plugin for Roots.Tech — Thai Odoo ERP implementation firm.
+  Covers the full sales cycle from prospect research to PM handoff, with a
+  complete G0–G6 gate-enforced <strong>TOR Response Factory</strong> for
+  Thai government and corporate procurement.</p>
+  <div class="meta">
+    <span>v3.0.0</span>
+    <span>28 Skills</span>
+    <span>6 Agents</span>
+    <span>2 Commands</span>
+    <span>10 Registers</span>
+  </div>
+</div>
+
+<!-- ══════════════ QUICK START ══════════════════════════════════════════ -->
+<div class="section" id="quickstart">
+  <div class="section-header">
+    <h2>Quick Start</h2>
+    <p>The three most common entry points</p>
+  </div>
+
+  <div class="card">
+    <h3>Not sure where to start?</h3>
+    <div class="prompt">"ช่วยแนะนำหน่อย — มีงานนี้อยู่ [บอกสถานการณ์]"</div>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">
+      <code>sales-help</code> routes you to the right tool for any situation.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:4px">
+    <div class="card">
+      <h3>📋 Got a new TOR?</h3>
+      <ol class="steps">
+        <li>Register it: <code>"intake TOR [ชื่อโครงการ]"</code></li>
+        <li>Analyze: <code>"analyze this TOR [paste PDF/text]"</code></li>
+        <li>Run factory: <code>"orchestrate TOR [tor_id]"</code></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>🤝 New sales meeting?</h3>
+      <ol class="steps">
+        <li>Research: <code>"research [company name]"</code></li>
+        <li>Prep: <code>"call prep for [company] tomorrow"</code></li>
+        <li>After: paste transcript → MOM auto-created</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📄 Preparing a proposal?</h3>
+      <ol class="steps">
+        <li>Design: <code>"ช่วย SE Mode B — [client]"</code></li>
+        <li>Estimate: <code>"manday estimate [scope]"</code></li>
+        <li>Review: <code>"review this proposal"</code></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ COMPONENT MAP ════════════════════════════════════════ -->
+<div class="section" id="components">
+  <div class="section-header">
+    <h2>Component Map</h2>
+    <p>Every skill, agent, command, and register in one view</p>
+  </div>
+  <table>
+    <tr><th>Type</th><th>Count</th><th>Purpose</th></tr>
+    <tr><td><span class="badge badge-green">Skills</span></td><td>28</td>
+      <td>Fire automatically when Claude detects the right trigger phrase. No slash command needed.</td></tr>
+    <tr><td><span class="badge badge-purple">Agents</span></td><td>6</td>
+      <td>Spawn in a separate context for longer, stateful tasks (MOM writing, SE work, QA review).</td></tr>
+    <tr><td><span class="badge badge-blue">Commands</span></td><td>2</td>
+      <td>Explicit <code>/slash</code> commands for pipeline review and meeting search.</td></tr>
+    <tr><td><span class="badge badge-orange">Registers</span></td><td>10</td>
+      <td>Markdown files in Google Drive — shared state for the TOR factory.</td></tr>
+    <tr><td><span class="badge badge-gray">Connectors</span></td><td>3 active</td>
+      <td>Google Drive, Gmail, Google Calendar (via MCP).</td></tr>
+  </table>
+
+  <div class="callout info" style="margin-top:20px">
+    <strong>How skills fire</strong>
+    Claude reads your message and automatically applies the matching skill — you never need to type its name. If you're unsure which skill fits, just describe what you want. <code>sales-help</code> will route you.
+  </div>
+</div>
+
+<!-- ══════════════ TOR FACTORY OVERVIEW ═════════════════════════════════ -->
+<div class="section" id="factory-overview">
+  <div class="section-header">
+    <h2>TOR Response Factory</h2>
+    <p>A gate-enforced pipeline turning a raw TOR into a locked, submission-ready bid package</p>
+  </div>
+
+  <div class="callout risk">
+    <strong>Why this exists</strong>
+    Roots lost a bid by 0.14% — a fraction that traces to a missed scoring criterion or
+    a weak evidence link. The factory ensures every mandatory requirement is covered and
+    every scored criterion has a planned response <em>before</em> anyone writes a word of
+    the proposal.
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h3>The one rule that matters most</h3>
+    <div class="callout warn">
+      <strong>G2 Matrix Freeze — no drafting before this gate passes</strong>
+      The compliance matrix (TOR_Requirements) AND scoring matrix (Scoring_Matrix) must both
+      be complete and frozen. The <code>tor-factory-orchestrator</code> enforces this and
+      will block the draft step if G2 is not passed.
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Single-entry point</h3>
+    <p style="font-size:14px;margin-bottom:12px">For any active TOR, the orchestrator tells you exactly where you are and what to do next:</p>
+    <div class="prompt">"orchestrate TOR [tor_id]"</div>
+    <div class="prompt">"ทำ TOR ครบวงจร — [โครงการ]"</div>
+    <div class="prompt">"factory mode — TOR-2026-003"</div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Never fabricate rule</h3>
+    <p style="font-size:14px">Every TOR factory skill follows this: if a requirement is unreadable, evidence is missing,
+    or a value is unknown — the skill writes <code>Needs human review</code>. It never invents
+    requirements, guesses at evidence, or claims a capability Roots cannot prove.</p>
+  </div>
+</div>
+
+<!-- ══════════════ G0–G6 GATES ══════════════════════════════════════════ -->
+<div class="section" id="gates">
+  <div class="section-header">
+    <h2>G0 – G6 Gate Sequence</h2>
+    <p>The seven gates every government bid must pass through</p>
+  </div>
+
+  <div class="gate-flow">
+
+    <div class="gate">
+      <div class="gate-badge g0">G0</div>
+      <div class="gate-content">
+        <h4>Intake — same day TOR received</h4>
+        <p><strong>Owner:</strong> Sales Lead &nbsp;|&nbsp; <strong>Pass when:</strong> TOR registered, Drive folder created, Calendar gates set</p>
+        <div class="tools">
+          <code>roots-tor-intake</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"intake TOR [ชื่อโครงการ] — buyer [หน่วยงาน] — deadline [date]"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g1">G1</div>
+      <div class="gate-content">
+        <h4>Bid / No-Bid — T-7 to T-14 days</h4>
+        <p><strong>Owner:</strong> Executive &nbsp;|&nbsp; <strong>Pass when:</strong> GO decision, LC eligibility not 🔴, no 🔴 missing docs</p>
+        <div class="tools">
+          <code>roots-tor-analyzer</code>
+          <code>roots-lc-check</code>
+          <code>roots-doc-freshness</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"analyze this TOR [paste or upload PDF]"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g2" style="border:2px solid #d97706">G2 🔴</div>
+      <div class="gate-content">
+        <h4>Matrix Freeze — before ANY drafting</h4>
+        <p><strong>Owner:</strong> Sales Lead + Tech Lead &nbsp;|&nbsp; <strong>Pass when:</strong> all mandatory requirements have owner + evidence; all scored criteria have response angle; zero unresolved 🔴</p>
+        <div class="tools">
+          <code>roots-compliance-matrix</code>
+          <code>roots-scoring-matrix</code>
+          <code>roots-evidence-matcher</code>
+          <code>roots-cv-builder</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"ทำ compliance matrix — TOR-2026-003"</div>
+        <div class="prompt">"ทำ scoring matrix — TOR-2026-003"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g3">G3</div>
+      <div class="gate-content">
+        <h4>Draft Review — midpoint</h4>
+        <p><strong>Owner:</strong> Sales Lead + Tech Lead &nbsp;|&nbsp; <strong>Pass when:</strong> proposal covers all key criteria, technical section reviewed</p>
+        <div class="tools">
+          <code>se-orchestrator Mode E</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"ช่วย SE Mode E — technical section for [project]"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g4">G4</div>
+      <div class="gate-content">
+        <h4>QA Review — T-2 days</h4>
+        <p><strong>Owner:</strong> QA Owner &nbsp;|&nbsp; <strong>Pass when:</strong> zero 🔴 high-severity issues in Review_Log</p>
+        <div class="tools">
+          <code>tor-qa-reviewer</code>
+          <code>proposal-reviewer</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"ตรวจ compliance proposal TOR-2026-003"</div>
+        <div class="prompt">"review this proposal"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g5">G5</div>
+      <div class="gate-content">
+        <h4>Submission Lock — T-1 day</h4>
+        <p><strong>Owner:</strong> Executive &nbsp;|&nbsp; <strong>Pass when:</strong> Submission_Checklist complete, Executive approval</p>
+        <div class="tools">
+          <code>roots-submission-packager</code>
+          <code>se-orchestrator Mode F</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"pack submission TOR-2026-003"</div>
+        <div class="prompt">"ช่วย SE Mode F — deck for [project]"</div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <div class="gate-badge g6">G6</div>
+      <div class="gate-content">
+        <h4>Lessons Learned — after result</h4>
+        <p><strong>Owner:</strong> Sales Lead &nbsp;|&nbsp; <strong>Pass when:</strong> win/loss reason captured in Lessons_Learned</p>
+        <div class="tools">
+          <code>roots-lessons-learned</code>
+        </div>
+        <div class="prompt" style="margin-top:10px">"บันทึก lessons learned — TOR-2026-003 — lost by 2 points"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ REGISTERS ════════════════════════════════════════════ -->
+<div class="section" id="registers">
+  <div class="section-header">
+    <h2>The 10 Registers</h2>
+    <p>Markdown files in Google Drive — the shared memory of the TOR factory</p>
+  </div>
+
+  <div class="callout info">
+    <strong>Location in Google Drive</strong>
+    <code>8. Sales and Marketing/TOR/registers/</code><br>
+    Skills read and write these through the Google Drive MCP. If Drive is not connected, skills output the updated rows and ask you to paste them.
+  </div>
+
+  <div class="reg-grid" style="margin-top:20px">
+    <div class="reg-card">
+      <h4>TOR_Opportunities</h4>
+      <p>Master pipeline — every TOR with buyer, budget, deadline, bid decision, and current gate. The primary index all other registers link to via <code>tor_id</code>.</p>
+      <div class="owner">Owner: roots-tor-intake</div>
+    </div>
+    <div class="reg-card">
+      <h4>TOR_Requirements</h4>
+      <p>Compliance matrix — one row per requirement, classified by type (mandatory/scored/legal…), with owner, evidence link, and response status.</p>
+      <div class="owner">Owner: roots-compliance-matrix</div>
+    </div>
+    <div class="reg-card">
+      <h4>Scoring_Matrix</h4>
+      <p>Weighted scoring plan — each evaluation criterion mapped to response angle, evidence, deck slide, and strength. The proposal and deck are both generated from this register.</p>
+      <div class="owner">Owner: roots-scoring-matrix</div>
+    </div>
+    <div class="reg-card">
+      <h4>Company_Documents</h4>
+      <p>Freshness control — every company/eligibility document with issue date, expiry, and status (valid/expiring/expired/missing). Never let a หนังสือรับรองบริษัท slip past 6 months.</p>
+      <div class="owner">Owner: roots-doc-freshness</div>
+    </div>
+    <div class="reg-card">
+      <h4>CV_Master</h4>
+      <p>Staff CV register — role, certifications, relevant projects, last updated, and approval status. A CV older than 90 days is flagged as stale.</p>
+      <div class="owner">Owner: roots-cv-builder</div>
+    </div>
+    <div class="reg-card">
+      <h4>Evidence_Library</h4>
+      <p>Reusable proof library — past project references, client letters, case studies, certificates. Grows after every closed project.</p>
+      <div class="owner">Owner: roots-evidence-matcher</div>
+    </div>
+    <div class="reg-card">
+      <h4>LC_Bank_Facility</h4>
+      <p>Bank guarantee capacity — facility limit, committed amount, remaining, expiry. Green/yellow/red eligibility for each bid's required bond.</p>
+      <div class="owner">Owner: roots-lc-check</div>
+    </div>
+    <div class="reg-card">
+      <h4>Submission_Checklist</h4>
+      <p>File-level submission state — generated, signed, stamped, reviewed, uploaded, printed for every document in every folder. The G5 lock depends on this being complete.</p>
+      <div class="owner">Owner: roots-submission-packager</div>
+    </div>
+    <div class="reg-card">
+      <h4>Review_Log</h4>
+      <p>QA issues — severity (🔴🟡🟢), owner, deadline, resolved status. G4 gate blocks while any 🔴 high is unresolved. 🔴 can only be waived by Executive.</p>
+      <div class="owner">Owner: tor-qa-reviewer</div>
+    </div>
+    <div class="reg-card">
+      <h4>Lessons_Learned</h4>
+      <p>Post-bid results — score, gap, root cause, reusable improvement, owner. Closes the loop so a 0.14% loss is never silently forgotten.</p>
+      <div class="owner">Owner: roots-lessons-learned</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TOR FACTORY SKILLS ═══════════════════════════════════ -->
+<div class="section" id="sk-tor-intake">
+  <div class="section-header" style="background:linear-gradient(135deg,#064e3b,#065f46)">
+    <h2>TOR Factory Skills</h2>
+    <p>9 skills that run the G0–G6 pipeline</p>
+  </div>
+
+  <!-- roots-tor-intake -->
+  <div class="card skill-card factory">
+    <span class="badge badge-green">G0</span>
+    <span class="badge badge-gray">roots-tor-intake</span>
+    <h3 style="margin-top:10px">TOR Intake</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Register a new TOR opportunity. Creates the <code>tor_id</code>, Drive folder tree (14 subfolders), and Google Calendar deadline gates for G1–G5. Run this within 2 hours of a TOR arriving.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"เพิ่ม TOR ใหม่ — [ชื่อโครงการ] — [หน่วยงาน] — deadline [date]"</div>
+      <div class="prompt">"intake TOR — [project name]"</div>
+      <div class="prompt">"มี TOR มาใหม่ [paste basic info]"</div>
+    </div>
+    <h4>Outputs</h4>
+    <ul style="font-size:14px;padding-left:20px;color:var(--muted)">
+      <li>New row in <code>TOR_Opportunities</code> register (gate = G0)</li>
+      <li>Drive folder: <code>TOR_[Buyer]_[Project]_[YYYYMMDD]/</code> with 14 subfolders</li>
+      <li>6 Calendar events: G1 Bid/No-Bid through G5 Submission</li>
+    </ul>
+  </div>
+
+  <!-- roots-compliance-matrix -->
+  <div class="card skill-card factory" id="sk-compliance-matrix">
+    <span class="badge badge-red">G2 🔴 Critical</span>
+    <span class="badge badge-gray">roots-compliance-matrix</span>
+    <h3 style="margin-top:10px">Compliance Matrix</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Decompose the full TOR into a row-per-requirement compliance matrix. Every requirement gets a type, mandatory flag, owner, evidence pointer, and risk rating. <strong>No proposal drafting until this is complete.</strong></p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ทำ compliance matrix — TOR-2026-003"</div>
+      <div class="prompt">"แตก requirement ทั้งหมดจาก TOR นี้"</div>
+      <div class="prompt">"requirement matrix — [paste TOR text]"</div>
+    </div>
+    <h4>Requirement types classified</h4>
+    <table>
+      <tr><th>Type</th><th>What it means</th><th>Risk if missed</th></tr>
+      <tr><td><code>mandatory-passfail</code></td><td>Fails = disqualification</td><td>🔴 Bid rejected</td></tr>
+      <tr><td><code>scored</code></td><td>Worth points in evaluation</td><td>🔴/🟡 Score lost</td></tr>
+      <tr><td><code>legal</code></td><td>Eligibility / company documents</td><td>🔴 Disqualification</td></tr>
+      <tr><td><code>commercial</code></td><td>Price, bond, payment terms</td><td>🟡 Negotiation risk</td></tr>
+      <tr><td><code>delivery</code></td><td>Timeline, milestones, warranty</td><td>🟡 Contractual</td></tr>
+      <tr><td><code>presentation</code></td><td>Slides, demo, oral requirement</td><td>🟡 Score loss</td></tr>
+    </table>
+  </div>
+
+  <!-- roots-scoring-matrix -->
+  <div class="card skill-card factory" id="sk-scoring-matrix">
+    <span class="badge badge-red">G2 🔴 Critical</span>
+    <span class="badge badge-gray">roots-scoring-matrix</span>
+    <h3 style="margin-top:10px">Scoring Matrix (Criteria Optimizer)</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Turn the TOR's evaluation criteria into a weighted response plan. Each criterion gets a response angle, evidence link, owner, deck slide number, and strength rating. The proposal <em>and</em> the presentation deck are both generated from this one register — they can never diverge.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ทำ scoring matrix — TOR-2026-003"</div>
+      <div class="prompt">"วิเคราะห์เกณฑ์ให้คะแนน — [paste evaluation section]"</div>
+      <div class="prompt">"จะได้คะแนนเต็มยังไง — criteria optimizer"</div>
+    </div>
+    <h4>Strength ratings</h4>
+    <table>
+      <tr><th>Rating</th><th>Meaning</th><th>Projected capture</th></tr>
+      <tr><td>strong</td><td>Roots has proven evidence for this criterion</td><td>~90%+ of max score</td></tr>
+      <tr><td>medium</td><td>Partially covered — evidence thin or indirect</td><td>~70%</td></tr>
+      <tr><td>weak</td><td>Gap — needs new evidence or honest downgrade</td><td>~50%</td></tr>
+    </table>
+  </div>
+
+  <!-- roots-evidence-matcher -->
+  <div class="card skill-card factory" id="sk-evidence-matcher">
+    <span class="badge badge-green">G2 support</span>
+    <span class="badge badge-gray">roots-evidence-matcher</span>
+    <h3 style="margin-top:10px">Evidence Matcher</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Fills <code>Needs human review</code> gaps in the compliance and scoring matrices by searching the Evidence_Library for matching proof — by industry, Odoo module, project value, and evidence type.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"หาหลักฐาน — fill evidence gaps TOR-2026-003"</div>
+      <div class="prompt">"match evidence — REQ-004, SC-002"</div>
+    </div>
+    <div class="callout" style="margin-top:10px">
+      After running, add new closed projects to Evidence_Library quarterly so the library grows with each bid.
+    </div>
+  </div>
+
+  <!-- roots-doc-freshness -->
+  <div class="card skill-card factory" id="sk-doc-freshness">
+    <span class="badge badge-blue">G1 support</span>
+    <span class="badge badge-gray">roots-doc-freshness</span>
+    <h3 style="margin-top:10px">Document Freshness Check</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Checks every company/eligibility document in Company_Documents against the TOR deadline. Classifies as valid / expiring / expired / missing and drafts Gmail renewal reminders.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ตรวจเอกสาร — TOR-2026-003"</div>
+      <div class="prompt">"check company docs freshness"</div>
+      <div class="prompt">"เอกสารบริษัทครบและยังใช้งานได้ไหม"</div>
+    </div>
+    <h4>Freshness policy</h4>
+    <table>
+      <tr><th>Document</th><th>Review frequency</th><th>Key rule</th></tr>
+      <tr><td>หนังสือรับรองบริษัท</td><td>Monthly</td><td>Must be ≤ 6 months old <em>at submission</em></td></tr>
+      <tr><td>ภ.พ.20</td><td>Quarterly</td><td>—</td></tr>
+      <tr><td>งบการเงิน</td><td>Per bid</td><td>Auditor-certified required</td></tr>
+      <tr><td>หนังสือมอบอำนาจ</td><td>Per bid</td><td>New for each TOR</td></tr>
+      <tr><td>หนังสือรับรองผลงาน</td><td>Quarterly</td><td>Client signature needed</td></tr>
+    </table>
+  </div>
+
+  <!-- roots-lc-check -->
+  <div class="card skill-card factory" id="sk-lc-check">
+    <span class="badge badge-blue">G1</span>
+    <span class="badge badge-gray">roots-lc-check</span>
+    <h3 style="margin-top:10px">LC / Bank Guarantee Check</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Computes remaining bank guarantee / LC facility against the bid's required bond amount. Returns green / yellow / red. A 🔴 stops the bid before wasting preparation time.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ตรวจ LC — TOR-2026-003 — bond 2% of 3.5M"</div>
+      <div class="prompt">"LC เพียงพอไหม — bid bond [amount]"</div>
+      <div class="prompt">"check bid bond capacity"</div>
+    </div>
+    <h4>Eligibility logic</h4>
+    <table>
+      <tr><th>Result</th><th>Condition</th><th>Action</th></tr>
+      <tr><td>🟢 Green</td><td>Remaining ≥ required + 10% buffer, facility not expiring</td><td>Proceed</td></tr>
+      <tr><td>🟡 Yellow</td><td>Sufficient but thin margin, or facility expiring soon</td><td>Executive approval required</td></tr>
+      <tr><td>🔴 Red</td><td>Insufficient, or facility expired/expiring before submission</td><td>Stop — Director decision</td></tr>
+    </table>
+    <div class="callout warn" style="margin-top:8px">
+      <strong>Timeline note:</strong> Bank guarantee takes 3–5 business days. The skill computes the latest request date automatically.
+    </div>
+  </div>
+
+  <!-- roots-cv-builder -->
+  <div class="card skill-card factory" id="sk-cv-builder">
+    <span class="badge badge-green">G2 support</span>
+    <span class="badge badge-gray">roots-cv-builder</span>
+    <h3 style="margin-top:10px">CV Builder</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Checks CV_Master for freshness, drafts update requests for stale staff CVs, and formats role-matched tender CVs in Thai government procurement standard.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"เตรียม CV ทีม — TOR-2026-003"</div>
+      <div class="prompt">"CV สำหรับประมูล — [ชื่อโครงการ]"</div>
+      <div class="prompt">"CV builder — roles: PM, SA, Developer"</div>
+    </div>
+    <div class="callout" style="margin-top:10px">
+      A CV is stale if <code>last_updated</code> &gt; 90 days. The "ทักษะที่เกี่ยวข้อง" section is tailored to each TOR's specific requirements — generic CVs score poorly.
+    </div>
+  </div>
+
+  <!-- roots-submission-packager -->
+  <div class="card skill-card factory" id="sk-submission-packager">
+    <span class="badge badge-purple">G5</span>
+    <span class="badge badge-gray">roots-submission-packager</span>
+    <h3 style="margin-top:10px">Submission Packager</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Generates the Submission_Checklist from TOR requirements and the 14-folder structure. Tracks generated / signed / stamped / reviewed / uploaded / printed for every file. The G5 lock only passes when all required rows are reviewed and zero 🔴 issues are open.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"เตรียมซอง — TOR-2026-003"</div>
+      <div class="prompt">"pack submission folder"</div>
+      <div class="prompt">"G5 lock check — TOR-2026-003"</div>
+    </div>
+    <div class="callout warn" style="margin-top:10px">
+      <strong>Physical copies:</strong> Every photocopy needs "รับรองสำเนาถูกต้อง" + ตรายาง — tracked separately from the original.
+    </div>
+  </div>
+
+  <!-- roots-lessons-learned -->
+  <div class="card skill-card factory" id="sk-lessons-learned">
+    <span class="badge badge-gray">G6</span>
+    <span class="badge badge-gray">roots-lessons-learned</span>
+    <h3 style="margin-top:10px">Lessons Learned</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Records the bid result, score gap, root cause, and reusable improvement in Lessons_Learned. Closes the TOR loop and feeds insights forward into future bids.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"บันทึก lessons learned — TOR-2026-003 — lost — score 82.36 vs 82.50"</div>
+      <div class="prompt">"G6 — bid result — [project] — won"</div>
+      <div class="prompt">"ผลประมูลออกแล้ว — [paste result]"</div>
+    </div>
+    <div class="callout" style="margin-top:10px">
+      Even wins get a G6 entry — document what worked so it's repeated intentionally, not by accident.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ODOO CUSTOM SKILLS ═══════════════════════════════════ -->
+<div class="section" id="sk-tor-analyzer">
+  <div class="section-header" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
+    <h2>Odoo Custom Skills</h2>
+    <p>Roots-specific skills for analysis, estimation, and bid qualification</p>
+  </div>
+
+  <div class="card skill-card" id="sk-tor-analyzer">
+    <span class="badge badge-blue">G1</span>
+    <span class="badge badge-gray">roots-tor-analyzer</span>
+    <h3 style="margin-top:10px">TOR Analyzer</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Reads a TOR PDF (OCR via PDF Tools MCP for scanned documents) and extracts all structured information — basic info, technical requirements, qualification requirements, risk flags — then scores Roots fit 1–10 and returns a Go/No-Go recommendation. On GO, outputs the next factory steps.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"analyze this TOR [paste text or upload PDF]"</div>
+      <div class="prompt">"should we bid on this? [paste TOR content]"</div>
+      <div class="prompt">"วิเคราะห์ TOR นี้ [หน่วยงาน + โครงการ]"</div>
+    </div>
+    <h4>Fit scoring</h4>
+    <table>
+      <tr><th>Dimension</th><th>What it measures</th></tr>
+      <tr><td>Technical fit</td><td>Can Roots deliver the technical scope?</td></tr>
+      <tr><td>Qualification fit</td><td>Does Roots meet all mandatory qualifications?</td></tr>
+      <tr><td>Competitive position</td><td>Is this winnable?</td></tr>
+      <tr><td>Commercial fit</td><td>Is the budget viable for the scope?</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">Average ≥ 7 → GO. Below 7 → No-Go or discuss with Director.</p>
+  </div>
+
+  <div class="card skill-card" id="sk-bid-prep">
+    <span class="badge badge-blue">Post-G1</span>
+    <span class="badge badge-gray">roots-bid-prep</span>
+    <h3 style="margin-top:10px">Bid Preparation</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Coordinates the bid preparation package — reads from registers (TOR_Requirements, Company_Documents, Submission_Checklist) and delegates to specialist skills. Produces the qualification matrix, 2-ซอง document checklist, and bid timeline.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"เตรียมเอกสารประมูล — TOR-2026-003"</div>
+      <div class="prompt">"bid prep — [โครงการ]"</div>
+      <div class="prompt">"ทำเอกสารยื่นซอง — [paste TOR or tor_id]"</div>
+    </div>
+  </div>
+
+  <div class="card skill-card" id="sk-gap-analysis">
+    <span class="badge badge-blue">Solution Design</span>
+    <span class="badge badge-gray">odoo-gap-analysis</span>
+    <h3 style="margin-top:10px">Odoo GAP Analysis</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Compares Odoo 18 Enterprise vs Community (BEECY) for a specific client — module coverage, cost, Thai localization needs. Produces a structured recommendation table.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"GAP analysis for [client] — manufacturing, 80 users, budget 1.5M"</div>
+      <div class="prompt">"Enterprise vs BEECY — which should we recommend?"</div>
+    </div>
+    <h4>Edition decision logic</h4>
+    <table>
+      <tr><th>Signal</th><th>Recommendation</th></tr>
+      <tr><td>Budget &lt; THB 800K + &lt; 50 users + simple</td><td>BEECY Community</td></tr>
+      <tr><td>Budget THB 800K–2M + moderate complexity</td><td>Compare both</td></tr>
+      <tr><td>Budget &gt; THB 2M + complex + PLM</td><td>Enterprise</td></tr>
+    </table>
+  </div>
+
+  <div class="card skill-card" id="sk-manday">
+    <span class="badge badge-blue">Estimation</span>
+    <span class="badge badge-gray">roots-manday-estimator</span>
+    <h3 style="margin-top:10px">Manday Estimator</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Estimates mandays and project cost (THB) for any Odoo scope. Returns three scenarios: Conservative / Target / Stretch with cost at 40% margin. Always adds 25% buffer for government bids.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"manday estimate — Manufacturing + Inventory + Accounting — 60 users — moderate custom"</div>
+      <div class="prompt">"ประเมิน cost สำหรับ [client] — [scope]"</div>
+      <div class="prompt">"how much should we quote for [project]?"</div>
+    </div>
+    <h4>Blended rate: THB 5,000/day &nbsp;|&nbsp; Standard margin: 40%</h4>
+  </div>
+
+  <div class="card skill-card" id="sk-sales-help">
+    <span class="badge badge-gray">Navigator</span>
+    <span class="badge badge-gray">sales-help</span>
+    <h3 style="margin-top:10px">Sales Help — Navigator</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    The central router. Describe your situation and it recommends exactly which skill or agent to use, with copy-paste prompts. Responds in Thai by default.</p>
+    <h4>Triggers</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ทำยังไงดี — [สถานการณ์]"</div>
+      <div class="prompt">"ใช้อะไรดี — เริ่มจากไหน"</div>
+      <div class="prompt">"help — I need to [task]"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PM SKILLS ═════════════════════════════════════════════ -->
+<div class="section" id="sk-prd">
+  <div class="section-header" style="background:linear-gradient(135deg,#78350f,#d97706)">
+    <h2>PM Skills</h2>
+    <p>Requirements, documentation, and project planning</p>
+  </div>
+
+  <table>
+    <tr><th>Skill</th><th>What it does</th><th>Key trigger</th></tr>
+    <tr>
+      <td><span class="badge badge-orange">prd</span></td>
+      <td>Write a complete SRS / requirements document following Roots Waterfall format (Analysis → Design → Build → Test → Go-live → Support)</td>
+      <td id="sk-prd">"เขียน SRS สำหรับ [client]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-orange">user-stories</span></td>
+      <td>Break an SRS into user stories and task list</td>
+      <td id="sk-user-stories">"แตก user stories จาก SRS นี้"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-orange">acceptance-criteria</span></td>
+      <td>Create UAT test cases from requirements</td>
+      <td id="sk-acceptance">"สร้าง acceptance criteria / test cases"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-orange">lean-canvas</span></td>
+      <td>Project fit and priority scoring for a deal</td>
+      <td id="sk-lean">"lean canvas for [project]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-orange">meeting-synthesize</span></td>
+      <td>Synthesize multiple MOMs to find the real requirements</td>
+      <td id="sk-synthesize">"synthesize all meetings with [client]"</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ══════════════ UPSTREAM SKILLS ══════════════════════════════════════ -->
+<div class="section" id="sk-account">
+  <div class="section-header" style="background:linear-gradient(135deg,#374151,#4b5563)">
+    <h2>Sales Upstream Skills</h2>
+    <p>From Anthropic's official sales plugin — pre-sales, pipeline, and communication</p>
+  </div>
+
+  <table>
+    <tr><th>Skill</th><th>What it does</th><th>Key trigger</th></tr>
+    <tr>
+      <td><span class="badge badge-gray">account-research</span></td>
+      <td>Research a prospect — background, news, Roots fit score, decision makers</td>
+      <td id="sk-account">"research [company name]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">call-prep</span></td>
+      <td>Prepare for a meeting — agenda, talk tracks, discovery questions</td>
+      <td id="sk-callprep">"call prep for [company] — meeting tomorrow"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">call-summary</span></td>
+      <td>Create MOM from transcript (use via mom-writer agent for full pipeline)</td>
+      <td id="sk-callsummary">"summarize this call [paste transcript]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">competitive-intelligence</span></td>
+      <td>Analyze a competitor in the Thai ERP market</td>
+      <td id="sk-competitive">"competitive brief on [competitor]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">create-an-asset</span></td>
+      <td>Create a one-pager, battlecard, or case study</td>
+      <td id="sk-asset">"create one-pager for [product/client]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">daily-briefing</span></td>
+      <td>Morning summary — pipeline, calls today, overdue tasks</td>
+      <td id="sk-daily">"daily briefing" or "งานวันนี้"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">draft-outreach</span></td>
+      <td>Write cold outreach, follow-up, or proposal email</td>
+      <td id="sk-outreach">"draft outreach email to [contact] at [company]"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">forecast</span></td>
+      <td>Weighted pipeline forecast and quota tracking</td>
+      <td id="sk-forecast">"forecast this quarter"</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gray">pipeline-review</span></td>
+      <td>Review all deals — stage, health, risk, next actions</td>
+      <td id="sk-pipeline">"pipeline review" or <code>/roots:pipeline-review</code></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ══════════════ AGENTS ════════════════════════════════════════════════ -->
+<div class="section" id="ag-factory">
+  <div class="section-header" style="background:linear-gradient(135deg,#3b0764,#6d28d9)">
+    <h2>Agents</h2>
+    <p>Run in a separate context — longer, stateful tasks that must not flood the main conversation</p>
+  </div>
+
+  <div class="callout info">
+    <strong>Skills vs Agents</strong>
+    Skills fire inline in the conversation. Agents spawn their own context, have access to specific tools (Read / Write / etc.), and return a summary when done. Use agents when the task involves multiple documents, long reasoning, or writing to Drive files.
+  </div>
+
+  <!-- tor-factory-orchestrator -->
+  <div class="card skill-card agent" style="margin-top:20px">
+    <span class="badge badge-purple">Orchestrator</span>
+    <span class="badge badge-gray">tor-factory-orchestrator</span>
+    <h3 style="margin-top:10px">TOR Factory Orchestrator</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    The pipeline manager for the full G0–G6 cycle. Reads the registers to assess which gate the bid is actually at, verifies pass criteria are met, and tells you exactly what to do next. Enforces the G2 matrix-freeze rule — will refuse to allow drafting until G2 is passed.</p>
+    <h4>Tools: Read, Write</h4>
+    <div class="prompt-group">
+      <div class="prompt">"orchestrate TOR TOR-2026-003"</div>
+      <div class="prompt">"factory mode — where are we on [project]?"</div>
+      <div class="prompt">"ทำ TOR ครบวงจร — [โครงการ]"</div>
+    </div>
+    <h4>Hard rules it enforces</h4>
+    <ul style="font-size:14px;padding-left:20px;margin-top:8px;color:var(--muted)">
+      <li>Never allow drafting before G2 PASS</li>
+      <li>Never allow G5 lock with open 🔴 issues</li>
+      <li>LC must be checked before G1 GO</li>
+      <li>All mandatory docs must be valid before G2</li>
+      <li>G6 must happen after every bid result</li>
+    </ul>
+  </div>
+
+  <!-- tor-qa-reviewer -->
+  <div class="card skill-card agent" id="ag-qa">
+    <span class="badge badge-purple">G4 QA</span>
+    <span class="badge badge-gray">tor-qa-reviewer</span>
+    <h3 style="margin-top:10px">TOR QA Reviewer</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Compliance coverage QA agent. Reads TOR_Requirements, Scoring_Matrix, and the proposal draft. Checks 6 dimensions and returns severity-classified issues. The G4 gate blocks while any 🔴 is open.</p>
+    <h4>Tools: Read only</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ตรวจ compliance proposal TOR-2026-003 [paste/link proposal]"</div>
+      <div class="prompt">"QA proposal — TOR-2026-003"</div>
+      <div class="prompt">"coverage check — did we answer every criterion?"</div>
+    </div>
+    <h4>6 review dimensions</h4>
+    <table>
+      <tr><th>Dimension</th><th>What it checks</th><th>Miss = severity</th></tr>
+      <tr><td>Mandatory coverage</td><td>Every mandatory-passfail requirement addressed with evidence</td><td>🔴</td></tr>
+      <tr><td>Scored criterion coverage</td><td>Every scored criterion explicitly answered</td><td>🔴 / 🟡</td></tr>
+      <tr><td>Consistency</td><td>Company name, dates, prices, team names consistent</td><td>🟡</td></tr>
+      <tr><td>Attachment completeness</td><td>All referenced docs in Submission_Checklist</td><td>🔴 if TOR-required</td></tr>
+      <tr><td>Thai language quality</td><td>Formal procurement register (ภาษาราชการ)</td><td>🟡</td></tr>
+      <tr><td>Technical accuracy</td><td>No unsupported claims or unrealistic timelines</td><td>🟡 / 🔴</td></tr>
+    </table>
+  </div>
+
+  <!-- se-orchestrator -->
+  <div class="card skill-card agent" id="ag-se">
+    <span class="badge badge-purple">SE Work</span>
+    <span class="badge badge-gray">se-orchestrator</span>
+    <h3 style="margin-top:10px">AI Sales Engineer</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Full SE pre-sales support — discovery prep, solution design, demo scripts, technical proposal writing, and scoring-aligned presentation decks. 6 modes.</p>
+    <h4>Tools: Read, Write</h4>
+    <table>
+      <tr><th>Mode</th><th>Purpose</th><th>Key prompt</th></tr>
+      <tr><td>A</td><td>Pre-meeting discovery prep (questions, industry brief)</td><td>"ช่วย SE Mode A — [client] [industry]"</td></tr>
+      <tr><td>B</td><td>Post-meeting solution design (modules, edition, estimate)</td><td>"ช่วย SE Mode B — [paste MOM]"</td></tr>
+      <tr><td>C</td><td>Full SE brief (A + B combined)</td><td>"ช่วย SE Mode C — [client]"</td></tr>
+      <tr><td>D</td><td>Demo script preparation</td><td>"ช่วย SE Mode D — demo for [client]"</td></tr>
+      <tr><td>E</td><td>Technical proposal section (from compliance + scoring matrix)</td><td>"ช่วย SE Mode E — TOR-2026-003"</td></tr>
+      <tr><td>F</td><td>Scoring-aligned bid deck (from Scoring_Matrix.slide column)</td><td>"ช่วย SE Mode F — TOR-2026-003"</td></tr>
+    </table>
+    <div class="callout" style="margin-top:10px">
+      Mode E reads TOR_Requirements and Scoring_Matrix — run after G2 PASS.<br>
+      Mode F builds the deck from the same Scoring_Matrix — proposal and deck can never diverge.
+    </div>
+  </div>
+
+  <!-- proposal-reviewer -->
+  <div class="card skill-card agent" id="ag-reviewer">
+    <span class="badge badge-purple">Quality Gate</span>
+    <span class="badge badge-gray">proposal-reviewer</span>
+    <h3 style="margin-top:10px">Proposal Reviewer</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Senior partner review — 5 dimensions, severity-classified issues, go/no-go verdict. Read-only: analyzes and reports, does not modify. <strong>No proposal goes to a client without passing this.</strong></p>
+    <h4>Tools: Read only</h4>
+    <div class="prompt-group">
+      <div class="prompt">"review this proposal [paste/link]"</div>
+      <div class="prompt">"ตรวจ proposal — ส่งได้ไหม"</div>
+      <div class="prompt">"is this ready to send?"</div>
+    </div>
+    <h4>5 review dimensions</h4>
+    <table>
+      <tr><th>Dimension</th><th>What it checks</th></tr>
+      <tr><td>Commercial</td><td>Margin ≥ 35%, scope protection, payment milestones, out-of-scope stated</td></tr>
+      <tr><td>Technical</td><td>Modules match requirements, timeline realistic, UAT/training/go-live defined</td></tr>
+      <tr><td>Risk</td><td>No "unlimited" scope, penalty clauses, no force majeure, assumption list</td></tr>
+      <tr><td>Communication</td><td>Executive summary clear, ROI quantified, call to action present</td></tr>
+      <tr><td>TOR Coverage</td><td>(For TOR bids) Every mandatory requirement and scored criterion addressed</td></tr>
+    </table>
+  </div>
+
+  <!-- mom-writer -->
+  <div class="card skill-card agent" id="ag-mom">
+    <span class="badge badge-purple">MOM</span>
+    <span class="badge badge-gray">mom-writer</span>
+    <h3 style="margin-top:10px">MOM Writer</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Turns a meeting transcript into a structured MOM, deduplicates against the meeting registry, saves to Google Drive, and drafts the follow-up email. The registry is the source of truth that all other agents reference.</p>
+    <h4>Tools: Read, Write</h4>
+    <div class="prompt-group">
+      <div class="prompt">"ทำ MOM [paste transcript]"</div>
+      <div class="prompt">"สรุปการประชุม [paste notes]"</div>
+    </div>
+    <div class="callout" style="margin-top:10px">
+      Checks the meeting registry for duplicates before processing. Automatically assigns MTG-YYYY-NNN and updates the registry's statistics.
+    </div>
+  </div>
+
+  <!-- pm-handoff -->
+  <div class="card skill-card agent" id="ag-handoff">
+    <span class="badge badge-purple">Handoff</span>
+    <span class="badge badge-gray">pm-handoff</span>
+    <h3 style="margin-top:10px">PM Handoff</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">
+    Creates a structured project handoff package when a deal is won — reads all MOMs, the proposal, and any TOR, then produces a complete PM briefing covering scope, commercial terms, risks, and kickoff checklist.</p>
+    <h4>Tools: Read, Write</h4>
+    <div class="prompt-group">
+      <div class="prompt">"deal closed — ส่งต่อให้ PM — [client]"</div>
+      <div class="prompt">"project won — pm-handoff — [client name]"</div>
+      <div class="prompt">"เตรียม kickoff package — [project]"</div>
+    </div>
+    <div class="callout warn" style="margin-top:10px">
+      Run before kickoff — not after. Misalignment discovered at kickoff causes scope creep and unprofitable projects.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ COMMANDS ══════════════════════════════════════════════ -->
+<div class="section" id="commands">
+  <div class="section-header">
+    <h2>Slash Commands</h2>
+    <p>Explicit <code>/slash</code> triggers for pipeline and meeting search</p>
+  </div>
+
+  <div class="card">
+    <h3><code>/roots:pipeline-review</code></h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Full pipeline review — all deals by stage, health, risk, and recommended next actions. Equivalent to <code>pipeline-review</code> skill but always explicit.</p>
+    <div class="prompt">"/roots:pipeline-review"</div>
+  </div>
+
+  <div class="card">
+    <h3><code>/roots:meeting-search [query]</code></h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Search the meeting registry for past MOMs — by client name, date, meeting type, or attendee.</p>
+    <div class="prompt">"/roots:meeting-search Green Deli"</div>
+    <div class="prompt">"/roots:meeting-search type:government-bid"</div>
+    <div class="prompt">"/roots:meeting-search attendee:Fern 2026-03"</div>
+  </div>
+</div>
+
+<!-- ══════════════ CONNECTORS ════════════════════════════════════════════ -->
+<div class="section" id="connectors">
+  <div class="section-header">
+    <h2>MCP Connectors</h2>
+    <p>Google Workspace integration — what is connected and what each enables</p>
+  </div>
+
+  <table>
+    <tr><th>Connector</th><th>Status</th><th>Enables</th></tr>
+    <tr>
+      <td>Google Drive (<code>~~cloud-storage</code>)</td>
+      <td><span class="badge badge-green">Active</span></td>
+      <td>Read/write TOR registers, MOM files, proposals, CVs, evidence library, submission folder</td>
+    </tr>
+    <tr>
+      <td>Gmail (<code>~~email</code>)</td>
+      <td><span class="badge badge-green">Active</span></td>
+      <td>Draft outreach emails, MOM follow-ups, document renewal reminders</td>
+    </tr>
+    <tr>
+      <td>Google Calendar (<code>~~calendar</code>)</td>
+      <td><span class="badge badge-green">Active</span></td>
+      <td>Create TOR gate deadlines (G1–G5), bid submission events, bank guarantee request reminders</td>
+    </tr>
+    <tr>
+      <td>Odoo CRM (<code>~~crm</code>)</td>
+      <td><span class="badge badge-orange">Phase 2</span></td>
+      <td>Deal stage, contact history, pipeline from Odoo</td>
+    </tr>
+    <tr>
+      <td>Fireflies / Otter (<code>~~transcripts</code>)</td>
+      <td><span class="badge badge-orange">Phase 2</span></td>
+      <td>Auto call recording → mom-writer pipeline</td>
+    </tr>
+  </table>
+
+  <div class="callout" style="margin-top:16px">
+    If a connector is not active, skills fall back gracefully — outputting content to the conversation and asking you to paste/save manually.
+  </div>
+</div>
+
+<!-- ══════════════ QUICK REFERENCE ══════════════════════════════════════ -->
+<div class="section" id="quickref">
+  <div class="section-header">
+    <h2>Quick Reference</h2>
+    <p>Copy-paste prompts for the most common scenarios</p>
+  </div>
+
+  <div class="qref-grid">
+
+    <div class="qref-card">
+      <h4>📋 New TOR arrived</h4>
+      <div class="prompt">"intake TOR — [project] — [buyer] — deadline [date]"</div>
+      <div class="prompt">"orchestrate TOR [tor_id]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🔍 TOR analysis</h4>
+      <div class="prompt">"analyze this TOR [paste content]"</div>
+      <div class="prompt">"should we bid? Go/No-Go"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📊 Build matrices (G2)</h4>
+      <div class="prompt">"ทำ compliance matrix — [tor_id]"</div>
+      <div class="prompt">"ทำ scoring matrix — [tor_id]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📂 Check company docs</h4>
+      <div class="prompt">"ตรวจเอกสาร — [tor_id]"</div>
+      <div class="prompt">"document freshness check"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🏦 Check bid bond</h4>
+      <div class="prompt">"ตรวจ LC — [tor_id] — bond [%] of [budget]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>👥 Prepare team CVs</h4>
+      <div class="prompt">"เตรียม CV ทีม — [tor_id]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📝 Write proposal</h4>
+      <div class="prompt">"ช่วย SE Mode E — [tor_id]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>✅ QA before submission</h4>
+      <div class="prompt">"ตรวจ compliance proposal [tor_id]"</div>
+      <div class="prompt">"review this proposal"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📦 Pack submission</h4>
+      <div class="prompt">"เตรียมซอง — [tor_id]"</div>
+      <div class="prompt">"G5 lock check"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🎯 Create deck</h4>
+      <div class="prompt">"ช่วย SE Mode F — [tor_id]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📖 Record result (G6)</h4>
+      <div class="prompt">"G6 lessons learned — [tor_id] — [won/lost]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🤝 Sales meeting prep</h4>
+      <div class="prompt">"research [company]"</div>
+      <div class="prompt">"call prep — [company] — tomorrow"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>📄 After a meeting</h4>
+      <div class="prompt">"ทำ MOM [paste transcript]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🏗️ Solution design</h4>
+      <div class="prompt">"ช่วย SE Mode B — [paste MOM]"</div>
+      <div class="prompt">"GAP analysis Enterprise vs BEECY"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>💰 Estimate cost</h4>
+      <div class="prompt">"manday estimate — [modules] — [users] — [complexity]"</div>
+    </div>
+
+    <div class="qref-card">
+      <h4>🚀 Deal won → PM</h4>
+      <div class="prompt">"deal closed — ส่งต่อให้ PM — [client]"</div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:28px;border-left:4px solid var(--brand)">
+    <h3>KPI Targets</h3>
+    <table style="margin-top:12px">
+      <tr><th>KPI</th><th>Target</th></tr>
+      <tr><td>TOR intake to first summary</td><td>&lt; 2 hours</td></tr>
+      <tr><td>Compliance matrix before drafting</td><td>100% of TORs</td></tr>
+      <tr><td>Company documents valid at submission</td><td>95%+</td></tr>
+      <tr><td>Staff CVs updated within 90 days</td><td>90%+</td></tr>
+      <tr><td>High-severity QA issues at G5 lock</td><td>Zero</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ════════════════════════════════════════════════ -->
+<div style="color:var(--muted);font-size:12px;padding:20px 0;border-top:1px solid var(--line);margin-top:20px">
+  <strong>Roots Sales Plugin v3.0.0</strong> — © Trinity Roots Co., Ltd. &nbsp;|&nbsp;
+  Upstream sales skills: Apache 2.0 © Anthropic &nbsp;|&nbsp;
+  PM skills: Apache 2.0 © product-on-purpose &nbsp;|&nbsp;
+  Roots custom skills, agents, commands: Proprietary
+</div>
+
+</main>
+</div>
+
+<!-- ─── Sidebar accordion: open the active section on load ─── -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Highlight active nav link on scroll
+  const links = document.querySelectorAll('#sidebar a[href^="#"]')
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.style.fontWeight = '')
+        const active = document.querySelector(`#sidebar a[href="#${e.target.id}"]`)
+        if (active) active.style.fontWeight = '700'
+      }
+    })
+  }, {rootMargin: '-20% 0px -70% 0px'})
+  document.querySelectorAll('.section, .card[id], .gate[id]').forEach(el => obs.observe(el))
+})
+</script>
+</body>
+</html>

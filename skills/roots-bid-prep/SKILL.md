@@ -1,7 +1,7 @@
 ---
 name: roots-bid-prep
-description: "Prepare the document package for a Thai government procurement bid (e-GP). Trigger when the user has decided to bid on a TOR and asks to prepare bid documents, qualification matrix, or bid checklist. Phrases: 'เตรียมเอกสารประมูล', 'bid prep', 'ทำเอกสารยื่นซอง', 'เตรียมยื่นประมูล', or after roots-tor-analyzer returns a Go decision."
-version: 1.0.0
+description: "Prepare the document package for a Thai government procurement bid (e-GP). Integrates with the TOR Factory registers. Trigger when the user has decided to bid on a TOR and asks to prepare bid documents, qualification matrix, or bid checklist. Phrases: 'เตรียมเอกสารประมูล', 'bid prep', 'ทำเอกสารยื่นซอง', 'เตรียมยื่นประมูล', or after roots-tor-analyzer returns a Go decision."
+version: 1.1.0
 source: roots-custom
 phase: 2
 ---
@@ -28,6 +28,11 @@ Use when:
 ## Process
 
 ### Step 1 — Extract Bid Requirements
+
+Read from the TOR Factory registers to resolve bid requirements without re-reading the raw TOR:
+
+- **TOR_Opportunities** — resolve the `tor_id`, project name, e-GP number, submission deadline, opening date, procurement method, and budget ceiling.
+- **TOR_Requirements** — pull qualification rows where `type=legal` and `mandatory=yes` to populate the qualification fields below. These rows are already parsed and structured by roots-tor-analyzer; do not re-parse the source PDF.
 
 จาก TOR (หรือผลของ roots-tor-analyzer) ดึงข้อมูล:
 
@@ -63,23 +68,9 @@ Use when:
 
 ### Step 3 — Document Checklist
 
-แยกเป็น 2 ซอง (ตามแบบ e-bidding มาตรฐาน):
+Read the required submission items from the **Submission_Checklist** register (populated by roots-submission-packager) rather than maintaining a static list here. Cross-check each item against the **Company_Documents** register to determine freshness status — flag any document that is missing, expired, or within 30 days of expiry so the responsible owner can act before the submission deadline.
 
-**ซองที่ 1 — ข้อเสนอด้านคุณสมบัติและเทคนิค**
-- [ ] หนังสือรับรองการจดทะเบียนนิติบุคคล (ไม่เกิน 6 เดือน)
-- [ ] สำเนา ภ.พ.20
-- [ ] งบการเงินย้อนหลัง [N] ปี
-- [ ] หนังสือรับรองผลงาน + สำเนาสัญญา
-- [ ] บัญชีรายชื่อบุคลากร + วุฒิ + CV
-- [ ] หลักประกันซอง (Bid Bond)
-- [ ] หนังสือมอบอำนาจ (ถ้ามี)
-- [ ] เอกสารเทคนิค: solution architecture, implementation plan, timeline
-- [ ] บัญชีเอกสารในซอง
-
-**ซองที่ 2 — ข้อเสนอด้านราคา**
-- [ ] ใบเสนอราคา (ตามแบบ TOR)
-- [ ] รายละเอียดการคิดราคา (BOQ)
-- [ ] บัญชีเอกสารในซอง
+แยกเป็น 2 ซอง (ตามแบบ e-bidding มาตรฐาน) using the register rows, with per-item status: พร้อม / ขาด / หมดอายุ.
 
 ### Step 4 — Technical Proposal Outline
 
@@ -113,6 +104,17 @@ Technical proposal ควรมี:
 
 ⚠️ Critical path: [งานที่ใช้เวลานานสุด — มักเป็น Bid Bond]
 ```
+
+### Step 6 — Delegate to specialists
+
+roots-bid-prep coordinates the overall bid package but does not replace the specialist skills. After completing Steps 1–5, delegate the following:
+
+- **roots-doc-freshness** — verify and refresh company documents (registration certificate, financial statements, VAT certificate, etc.)
+- **roots-cv-builder** — compile and format team CVs to meet TOR personnel requirements
+- **roots-lc-check** — initiate and track the Bid Bond (letter of credit / bank guarantee) request
+- **roots-submission-packager** — assemble the final submission folder, enforce envelope structure, and update the Submission_Checklist register
+
+roots-bid-prep coordinates these specialist skills; it does not replace them.
 
 ---
 

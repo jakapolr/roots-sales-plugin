@@ -75,6 +75,30 @@ Write the technical section of a proposal.
 4. Technical assumptions
 5. Out-of-scope statement
 
+### Mode F — Scoring-Aligned Bid Deck
+Generate a Google Slides / PowerPoint presentation aligned to the TOR's Scoring_Matrix.
+The deck is derived from the same matrix as the proposal — they must never diverge.
+
+**Input needed:** tor_id, Scoring_Matrix register (or paste), approved proposal sections
+**Output package:**
+1. Slide-by-slide outline mapped to each crit_id in Scoring_Matrix (`slide` column)
+2. Recommended content per slide: headline claim, supporting evidence, visual suggestion
+3. Executive narrative: opening (buyer's problem) + closing (why Roots is lowest-risk)
+4. TOR coverage summary slide: visual showing every evaluation criterion addressed
+5. If PowerPoint MCP (mcp__PowerPoint__By_Anthropic___*) is available: create the actual .pptx file with title slides and content frames
+
+**Recommended deck structure for government bid:**
+1. Executive opening — buyer's current pain and consequence
+2. TOR requirement map — visual showing Roots covers all major criteria
+3. Proposed solution architecture
+4. Delivery methodology and governance
+5. Team and relevant experience (tie to CV_Master + Evidence_Library)
+6. Risk management and mitigation
+7. Demo scenario / use case walkthrough (if required)
+8. Support, warranty, and SLA
+9. Differentiators and scoring summary (per Scoring_Matrix)
+10. Closing — why Roots is the lowest-risk, highest-capability partner
+
 ---
 
 ## Process
@@ -84,6 +108,7 @@ Write the technical section of a proposal.
 Before starting, read from context if available:
 - CONTEXT.md (Roots rate card, ICP, team)
 - Any MOM or account brief for this client
+- If Mode F, read Scoring_Matrix register for the tor_id to determine slide structure.
 
 Ask the user for missing info:
 - Client name + industry + size?

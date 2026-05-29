@@ -251,6 +251,7 @@ tr:nth-child(even) td{background:#fafbff}
   <div class="nav-section">TOR Response Factory</div>
   <div class="nav-direct"><a href="#factory-overview">Factory Overview</a></div>
   <div class="nav-direct"><a href="#gates">G0 – G6 Gates</a></div>
+  <div class="nav-direct"><a href="#folders">Drive Folder Structure</a></div>
   <div class="nav-direct"><a href="#registers">10 Registers</a></div>
   <div class="nav-divider"></div>
 
@@ -556,6 +557,124 @@ tr:nth-child(even) td{background:#fafbff}
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ══════════════ DRIVE FOLDER STRUCTURE ═══════════════════════════════ -->
+<div class="section" id="folders">
+  <div class="section-header" style="background:linear-gradient(135deg,#0b3d2e,#0e7a52)">
+    <h2>Drive Folder Structure</h2>
+    <p>How the TOR Factory is organized in Google Drive — what goes where, and why</p>
+  </div>
+
+  <div class="callout info">
+    <strong>Root location</strong>
+    Everything lives under <code>8. Sales and Marketing/TOR Factory/</code> in Google Drive.
+    The plugin reads and writes here through the Google Drive connector.
+  </div>
+
+  <h3>The two-tier model</h3>
+  <p style="font-size:14px;color:var(--muted)">
+    The factory separates <strong>master data that lives once and is reused on every bid</strong>
+    (Tier 1) from <strong>per-bid working folders that are assembled then frozen</strong> (Tier 2).
+    This is the core idea: never rebuild a CV, a company document, or an evidence file from
+    scratch for each bid — keep one fresh master copy, and pull from it.</p>
+
+  <pre>
+TOR Factory/
+│
+├── _Masters/                  ← TIER 1 — live once, reused on every bid ("before")
+│   ├── CVs/                   ← every employee CV
+│   ├── LC_Guarantees/         ← LC / bank guarantee documents
+│   ├── Company_Documents/     ← affidavit, ภ.พ.20, financials, POA, certs
+│   └── Evidence_Library/      ← reference letters, case studies, certificates
+│
+├── registers/                 ← the 10 markdown registers (the data index)
+│
+└── Projects/                  ← TIER 2 — one workspace per TOR ("during" → "after")
+    └── _TEMPLATE/             ← 15-subfolder master template, cloned per bid
+        ├── 00_TOR_and_Addendum/        08_Financial_and_LC/
+        ├── 01_Admin_Documents/         09_Commercial_Proposal/
+        ├── 02_Company_Profile/         10_Presentation_Deck/
+        ├── 03_Technical_Proposal/      11_QA_Checklist/
+        ├── 04_Solution_Spec/           12_Final_eGP_Upload/
+        ├── 05_Project_Plan_and_Methodology/  13_Print_Pack/
+        ├── 06_Team_CV/                 99_Working/
+        └── 07_Experience_and_Evidence/</pre>
+
+  <h3>Tier 1 — <code>_Masters/</code> (the reusable library)</h3>
+  <p style="font-size:14px;color:var(--muted)">Drop your real files here once and keep them current. Each subfolder has a <code>_README</code> inside it explaining exactly what to put and how to name it. Each maps to a register that the plugin reasons over.</p>
+  <table>
+    <tr><th>Folder</th><th>What goes in it</th><th>Backing register</th></tr>
+    <tr><td><code>CVs/</code></td><td>Every employee CV that might be proposed on a bid. Naming: <code>CV_[name]_[role]_[YYYYMMDD].pdf</code></td><td>CV_Master</td></tr>
+    <tr><td><code>LC_Guarantees/</code></td><td>Bank facility letters, bid bonds, performance bonds — each instrument</td><td>LC_Bank_Facility</td></tr>
+    <tr><td><code>Company_Documents/</code></td><td>หนังสือรับรองบริษัท, ภ.พ.20, งบการเงิน, บัญชีผู้ถือหุ้น, หนังสือมอบอำนาจ, Odoo Partner cert</td><td>Company_Documents</td></tr>
+    <tr><td><code>Evidence_Library/</code></td><td>หนังสือรับรองผลงาน, case studies, screenshots, contracts, certificates</td><td>Evidence_Library</td></tr>
+  </table>
+  <div class="callout warn">
+    <strong>Keep masters fresh — this is the "before" work</strong>
+    The whole factory depends on these being current. <code>roots-doc-freshness</code> watches
+    document expiry, and <code>roots-cv-builder</code> flags CVs older than 90 days. A bid is only
+    as strong as the masters it pulls from.
+  </div>
+
+  <h3>The <code>registers/</code> folder (the index)</h3>
+  <p style="font-size:14px;color:var(--muted)">
+    Ten markdown files — one per register. <strong>Files in <code>_Masters/</code> are storage; registers are what the plugin reads to reason.</strong> A register row points to a file (e.g. <code>CV_Master</code> says "Somsak, Solution Architect, PMP, updated 2026-03-01, file → CVs/CV_Somsak…"). The plugin screens, matches, and checks against the register, not by opening every file. See the next section for all ten.</p>
+
+  <h3>Tier 2 — <code>Projects/</code> (per-bid workspaces)</h3>
+  <p style="font-size:14px;color:var(--muted)">
+    Every new TOR gets its own folder cloned from <code>_TEMPLATE/</code> (15 topic subfolders),
+    named <code>TOR_[Buyer]_[Project]_[YYYYMMDD]/</code>. <code>roots-tor-intake</code> creates it at G0.</p>
+  <table>
+    <tr><th>Subfolder</th><th>Holds</th></tr>
+    <tr><td><code>00_TOR_and_Addendum</code></td><td>Original TOR PDF + any addenda</td></tr>
+    <tr><td><code>01_Admin_Documents</code></td><td>Eligibility docs (copied from Company_Documents master)</td></tr>
+    <tr><td><code>02_Company_Profile</code></td><td>Company overview, Odoo partnership letter</td></tr>
+    <tr><td><code>03_Technical_Proposal</code></td><td>The technical proposal document</td></tr>
+    <tr><td><code>04_Solution_Spec</code></td><td>Solution architecture, module specification</td></tr>
+    <tr><td><code>05_Project_Plan_and_Methodology</code></td><td>Gantt, WBS, delivery methodology</td></tr>
+    <tr><td><code>06_Team_CV</code></td><td>CVs for the proposed team (from CVs master)</td></tr>
+    <tr><td><code>07_Experience_and_Evidence</code></td><td>Reference letters, case studies (from Evidence_Library)</td></tr>
+    <tr><td><code>08_Financial_and_LC</code></td><td>Financial statements + bid bond (from LC_Guarantees)</td></tr>
+    <tr><td><code>09_Commercial_Proposal</code></td><td>Price form, BOQ (ซองที่ 2 for e-Bidding)</td></tr>
+    <tr><td><code>10_Presentation_Deck</code></td><td>Scoring-aligned deck (se-orchestrator Mode F)</td></tr>
+    <tr><td><code>11_QA_Checklist</code></td><td>Completed QA checklist (tor-qa-reviewer)</td></tr>
+    <tr><td><code>12_Final_eGP_Upload</code></td><td>Frozen final set in e-GP format — the locked submission</td></tr>
+    <tr><td><code>13_Print_Pack</code></td><td>Hard-copy set (if required)</td></tr>
+    <tr><td><code>99_Working</code></td><td>Drafts, scratch, internal notes — not submitted</td></tr>
+  </table>
+
+  <h3>The lifecycle: before → during → after</h3>
+  <div class="gate-flow">
+    <div class="gate">
+      <div class="gate-badge g0" style="background:#dcfce7;color:#166534">BEFORE</div>
+      <div class="gate-content">
+        <h4>Keep masters fresh</h4>
+        <p>Maintain <code>_Masters/</code> continuously — current CVs, known LC capacity, valid company documents, a growing evidence library. So when a TOR lands, nothing is scrambled together at the last minute.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <div class="gate-badge g3" style="background:#dbeafe;color:#1e3a8a">DURING</div>
+      <div class="gate-content">
+        <h4>Assemble the workspace</h4>
+        <p>At intake, clone <code>_TEMPLATE/</code> into <code>Projects/</code>. While preparing, the project folder <strong>links to</strong> the live master files — so any master update is reflected automatically.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <div class="gate-badge g5" style="background:#fce7f3;color:#9d174d">AFTER</div>
+      <div class="gate-content">
+        <h4>Freeze + feed back</h4>
+        <p>At G5 lock, <code>roots-submission-packager</code> <strong>freezes copies</strong> into <code>12_Final_eGP_Upload/</code> — the exact version submitted, untouched even if a master changes later. After the result, new project references flow back into <code>Evidence_Library/</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Why link while preparing, but freeze at submission?</strong>
+    A live link means your draft always shows the latest master. But what you <em>submit</em> to
+    the committee must be a permanent, exact copy — frozen at G5 so it can never silently change.
+    This one rule resolves the "before vs after" tension for CVs, LCs, and every document.
   </div>
 </div>
 

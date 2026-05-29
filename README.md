@@ -13,7 +13,7 @@ Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowl
 
 ```bash
 # Add Roots plugin marketplace
-claude plugin marketplace add roots-tech/roots-sales-plugin
+claude plugin marketplace add jakapolr/roots-sales-plugin
 
 # Install this plugin
 claude plugin install sales@roots-sales-plugin
@@ -159,7 +159,7 @@ mv skills/my-new-skill/TEMPLATE.md skills/my-new-skill/SKILL.md
 ### When adding a new team member
 ```bash
 # Share the GitHub repo, then they run:
-claude plugin marketplace add roots-tech/roots-sales-plugin
+claude plugin marketplace add jakapolr/roots-sales-plugin
 claude plugin install sales@roots-sales-plugin
 ```
 

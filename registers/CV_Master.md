@@ -1,6 +1,6 @@
 # Register — CV_Master
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/CV_Master.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/CV_Master.md`
 > **Maintained by:** `roots-cv-builder`
 > **Purpose:** Role-based CV data for tender team scoring. Tracks each staff member's
 > latest CV, certifications, relevant projects, and approval status so team CVs are never

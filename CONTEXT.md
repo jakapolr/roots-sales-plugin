@@ -117,7 +117,7 @@ Previous projects: Odoo 14, 16, 17 — migration experience available
 
 ## TOR Response Factory
 
-**Register location (Google Drive):** `8. Sales and Marketing/TOR/registers/`
+**Register location (Google Drive):** `8. Sales and Marketing/TOR Factory/registers/`
 
 Ten registers maintain the data backbone for all government bids:
 TOR_Opportunities · TOR_Requirements · Scoring_Matrix · Company_Documents ·

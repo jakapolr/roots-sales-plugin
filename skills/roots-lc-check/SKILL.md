@@ -9,7 +9,7 @@ phase: 3
 # LC / Bank Guarantee Check
 
 > **Custom Skill** — Built by Roots.Tech
-> **Reads/updates:** LC_Bank_Facility register (Google Drive → `8. Sales and Marketing/TOR/registers/LC_Bank_Facility.md`)
+> **Reads/updates:** LC_Bank_Facility register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/LC_Bank_Facility.md`)
 > **Gate:** G1 (bid eligibility) and G2 (before committing to bid)
 > **Purpose:** Prevent the worst-case scenario: reaching the submission day and discovering
 > the bank facility is insufficient or expired to issue the bid bond.
@@ -33,10 +33,16 @@ From TOR (or user input):
 Compute: **required_amount = budget × bid_bond_pct / 100**
 
 ### Step 2 — Read LC_Bank_Facility register
-Get all facility rows. Compute actual remaining at bid submission:
+The register has two levels: **facilities** (master credit lines) and **instruments**
+(individual bid bonds / guarantees issued against a facility, each tied to a `tor_id`).
+
+Compute actual remaining at bid submission:
+- `used_amount = SUM(amount of instruments where state = active)` for that facility
 - `remaining = facility_limit − used_amount`
-  (used_amount includes all live bids already committed, not just this one)
 - Check `expiry` vs submission deadline — facility must be valid at submission time.
+- **First, reconcile stale instruments:** any instrument whose bid was lost/withdrawn, or
+  that expired unused, should be `state = released` (capacity returns). Flag any that look
+  stale so used_amount is not overstated.
 
 ### Step 3 — Apply eligibility logic
 
@@ -52,11 +58,15 @@ buffer = required_amount × 0.10  (10% safety margin)
             OR facility expired / expires before submission deadline
 ```
 
-A 🟡 or 🔴 result must be **escalated to Executive before bid continues (G1)**.
+**Mode: BLOCK.** A 🟡 or 🔴 result **blocks the bid at G1** — `tor-factory-orchestrator`
+will not advance past G1 until Executive explicitly approves (🟡) or capacity is found
+(🔴). Do not let preparation continue on a blocked bid without that approval.
 
 ### Step 4 — Update LC_Bank_Facility register
-Update `used_amount` (add this bid's required amount if proceeding) and `eligibility`.
-Write back to Drive or output for paste.
+If the bid proceeds, add an **instrument** row (`type = bid_bond`, `amount = required`,
+`tor_id`, `state = active`) and recompute the facility's `used_amount` and `remaining`.
+When the result is known, `roots-lessons-learned` (G6) releases it: lost/withdrawn →
+`state = released`; won → `state = converted` (to performance bond). Write back to Drive.
 
 ### Step 5 — Bid bond timeline reminder
 Bank guarantee typically takes **3–5 business days**. Compute:

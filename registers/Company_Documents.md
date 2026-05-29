@@ -1,6 +1,6 @@
 # Register — Company_Documents
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/Company_Documents.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/Company_Documents.md`
 > **Maintained by:** `roots-doc-freshness`
 > **Purpose:** Freshness control for all company/eligibility documents so an expired
 > document never causes disqualification. `roots-doc-freshness` classifies each as

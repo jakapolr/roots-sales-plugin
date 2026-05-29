@@ -9,7 +9,7 @@ phase: 3
 # Document Freshness Check
 
 > **Custom Skill** — Built by Roots.Tech
-> **Reads/updates:** Company_Documents register (Google Drive → `8. Sales and Marketing/TOR/registers/Company_Documents.md`)
+> **Reads/updates:** Company_Documents register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/Company_Documents.md`)
 > **Runs:** After G0 intake, before G2 matrix freeze, and on demand
 > **Purpose:** Ensure no document is expired or missing at submission — a single expired
 > document disqualifies the entire bid.

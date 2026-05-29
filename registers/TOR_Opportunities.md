@@ -1,6 +1,6 @@
 # Register — TOR_Opportunities
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/TOR_Opportunities.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/TOR_Opportunities.md`
 > **Maintained by:** `roots-tor-intake` (create), `roots-tor-analyzer` (bid/no-bid), all skills (status)
 > **Purpose:** Master pipeline of every TOR — the index every other register links to via `tor_id`.
 

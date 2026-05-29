@@ -9,7 +9,7 @@ phase: 3
 # Lessons Learned — G6 Gate
 
 > **Custom Skill** — Built by Roots.Tech
-> **Maintains:** Lessons_Learned register (Google Drive → `8. Sales and Marketing/TOR/registers/Lessons_Learned.md`)
+> **Maintains:** Lessons_Learned register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/Lessons_Learned.md`)
 > **Gate:** G6 — the final gate in the TOR factory cycle
 > **Purpose:** Capture every bid result so insights compound forward. A 0.14% loss must
 > be understood, not silently forgotten.
@@ -54,6 +54,7 @@ items, Tech Lead for technical items.
 ### Step 5 — Update registers
 - Append to Lessons_Learned register.
 - Update TOR_Opportunities: set `status = won / lost / disqualified`, `gate = G6`.
+- **Release LC capacity:** in LC_Bank_Facility, update this bid's instrument — lost/withdrawn → `state = released`, won → `state = converted` (to performance bond) — and recompute the facility's `used_amount` / `remaining`. This returns capacity for the next bid.
 - Update Scoring_Matrix rows for any `strength` reclassifications.
 - Write back to Drive or output for paste.
 

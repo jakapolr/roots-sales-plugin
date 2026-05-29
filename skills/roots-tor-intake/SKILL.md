@@ -9,7 +9,7 @@ phase: 3
 # TOR Intake — G0 Gate
 
 > **Custom Skill** — Built by Roots.Tech
-> **Maintains:** TOR_Opportunities register (Google Drive → `8. Sales and Marketing/TOR/registers/TOR_Opportunities.md`)
+> **Maintains:** TOR_Opportunities register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/TOR_Opportunities.md`)
 > **Gate:** G0 — must run before any other TOR skill
 > **Runs before:** roots-tor-analyzer
 
@@ -47,27 +47,33 @@ warn the user and confirm before creating a duplicate.
 ### Step 2 — Assign tor_id
 Increment from the last `tor_id` in the register (e.g. TOR-2026-004 → TOR-2026-005).
 
-### Step 3 — Create Drive folder tree
-If `~~cloud-storage` (Google Drive) is connected, create:
+### Step 3 — Create the project workspace folder
+The TOR Factory uses a two-tier structure. Master data lives once under
+`8. Sales and Marketing/TOR Factory/_Masters/`; each bid gets its own workspace under
+`Projects/`, cloned from the `_TEMPLATE` (which already contains the 14 subfolders).
+
+If `~~cloud-storage` (Google Drive) is connected:
+1. Copy `8. Sales and Marketing/TOR Factory/Projects/_TEMPLATE/` to a new folder named
+   `TOR_[Buyer]_[Project]_[YYYYMMDD]/` under `Projects/`.
+   (If a copy-folder operation is unavailable, recreate the 14 subfolders below inside
+   the new project folder.)
+2. The resulting workspace:
 ```text
-8. Sales and Marketing/TOR/TOR_[Buyer]_[Project]_[YYYYMMDD]/
-  00_TOR_and_Addendum/
-  01_Admin_Documents/
-  02_Company_Profile/
-  03_Technical_Proposal/
-  04_Solution_Spec/
-  05_Project_Plan_and_Methodology/
-  06_Team_CV/
-  07_Experience_and_Evidence/
-  08_Financial_and_LC/
-  09_Commercial_Proposal/
-  10_Presentation_Deck/
-  11_QA_Checklist/
-  12_Final_eGP_Upload/
-  13_Print_Pack/
-  99_Working/
+8. Sales and Marketing/TOR Factory/Projects/TOR_[Buyer]_[Project]_[YYYYMMDD]/
+  00_TOR_and_Addendum/        05_Project_Plan_and_Methodology/   10_Presentation_Deck/
+  01_Admin_Documents/         06_Team_CV/                        11_QA_Checklist/
+  02_Company_Profile/         07_Experience_and_Evidence/        12_Final_eGP_Upload/
+  03_Technical_Proposal/      08_Financial_and_LC/               13_Print_Pack/
+  04_Solution_Spec/           09_Commercial_Proposal/            99_Working/
 ```
-If not connected: output the folder list and ask user to create it manually.
+3. Record the new folder's link in the TOR_Opportunities `notes` (or a folder column).
+
+While preparing, files in the workspace should **link** to the live masters in
+`_Masters/`; at G5 lock, `roots-submission-packager` freezes copies into
+`12_Final_eGP_Upload/`.
+
+If not connected: output the folder list and ask the user to create it manually under
+`Projects/`.
 
 ### Step 4 — Create Calendar deadline gates
 If `~~calendar` (Google Calendar) is connected, create events:
@@ -96,7 +102,7 @@ Update Statistics. Write back to Drive or output for paste.
 **Owner:** [name]
 
 ### Folder created ✅
-Drive: 8. Sales and Marketing/TOR/[folder name]/
+Drive: 8. Sales and Marketing/TOR Factory/Projects/[folder name]/
 
 ### Calendar gates set ✅
 G1 Bid/No-Bid: [date]

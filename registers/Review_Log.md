@@ -1,6 +1,6 @@
 # Register — Review_Log
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/Review_Log.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/Review_Log.md`
 > **Maintained by:** `tor-qa-reviewer` (also `proposal-reviewer`)
 > **Purpose:** Track every QA issue raised on a bid — severity, owner, deadline, and
 > resolution — so the **G4 gate rule holds: no final package while a high-severity issue

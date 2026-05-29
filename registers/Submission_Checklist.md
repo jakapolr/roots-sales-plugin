@@ -1,6 +1,6 @@
 # Register — Submission_Checklist
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/Submission_Checklist.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/Submission_Checklist.md`
 > **Maintained by:** `roots-submission-packager`
 > **Purpose:** Per-bid file-level checklist tracking the physical submission state of every
 > required document — generated, signed, stamped, reviewed, uploaded, printed — so nothing

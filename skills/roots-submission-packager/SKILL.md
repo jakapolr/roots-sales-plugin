@@ -9,7 +9,7 @@ phase: 3
 # Submission Packager — G5 Gate
 
 > **Custom Skill** — Built by Roots.Tech
-> **Maintains:** Submission_Checklist register (Google Drive → `8. Sales and Marketing/TOR/registers/Submission_Checklist.md`)
+> **Maintains:** Submission_Checklist register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/Submission_Checklist.md`)
 > **Gate:** G5 Submission Lock — the bid folder cannot be locked without this checklist complete
 > **Purpose:** Convert the TOR_Requirements and document registers into a concrete,
 > file-level submission checklist so nothing is missing, unsigned, or unstamped at the deadline.

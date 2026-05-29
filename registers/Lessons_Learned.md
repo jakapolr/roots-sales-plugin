@@ -1,6 +1,6 @@
 # Register — Lessons_Learned
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/Lessons_Learned.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/Lessons_Learned.md`
 > **Maintained by:** `roots-lessons-learned`
 > **Purpose:** Capture the win/loss reason and score for every submitted bid (G6) so
 > insights feed forward into future bids. A 0.14% loss must never be repeated silently.

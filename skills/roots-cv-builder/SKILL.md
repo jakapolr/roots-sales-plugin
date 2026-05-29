@@ -9,7 +9,7 @@ phase: 3
 # CV Builder — Team Profile for Tender Submission
 
 > **Custom Skill** — Built by Roots.Tech
-> **Reads/updates:** CV_Master register (Google Drive → `8. Sales and Marketing/TOR/registers/CV_Master.md`)
+> **Reads/updates:** CV_Master register (Google Drive → `8. Sales and Marketing/TOR Factory/registers/CV_Master.md`)
 > **Purpose:** Ensure team CVs are always fresh, role-matched, and formatted to Thai
 > government/corporate tender standards — so team scoring is never weakened by a
 > stale or generic CV.

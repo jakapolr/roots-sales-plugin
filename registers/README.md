@@ -14,7 +14,7 @@ are the *memory*. Every TOR skill reads from and writes back to one or more regi
 
 | Environment | Location |
 |---|---|
-| **Production** | Google Drive → `8. Sales and Marketing/TOR/registers/` |
+| **Production** | Google Drive → `8. Sales and Marketing/TOR Factory/registers/` |
 | **Repo (this folder)** | Seed/templates — copied to Drive on first setup |
 
 The repo copy is the **template and schema reference**. The live copy in Drive is the

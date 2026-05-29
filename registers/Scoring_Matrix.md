@@ -1,6 +1,6 @@
 # Register — Scoring_Matrix
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/Scoring_Matrix.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/Scoring_Matrix.md`
 > **Maintained by:** `roots-scoring-matrix`
 > **Purpose:** Turn the TOR's **evaluation criteria** into a weighted response plan.
 > Every scored criterion gets a response angle, required evidence, owner, and the deck

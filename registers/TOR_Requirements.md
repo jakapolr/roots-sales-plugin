@@ -1,6 +1,6 @@
 # Register — TOR_Requirements (Compliance Matrix)
 
-> **Location:** Google Drive → `8. Sales and Marketing/TOR/registers/TOR_Requirements.md`
+> **Location:** Google Drive → `8. Sales and Marketing/TOR Factory/registers/TOR_Requirements.md`
 > **Maintained by:** `roots-compliance-matrix`
 > **Purpose:** The compliance matrix — every TOR requirement as a row with owner,
 > evidence, and response status. **This is the G2 control: no proposal drafting until

@@ -1,6 +1,6 @@
 ---
 name: proposal-reviewer
-description: "Automatically triggered as a quality gate before any proposal, quotation, or SRS document is sent to a client. Invoke when the user says 'review this proposal', 'is this ready to send', 'ตรวจ proposal', or when a proposal document has just been drafted. This agent runs in its own context — it reads the document, returns a structured verdict, and does NOT modify the file."
+description: "Automatically triggered as a quality gate before any proposal, quotation, or SRS document is sent to a client. Invoke when the user says 'review this proposal', 'is this ready to send', 'ตรวจ proposal', or when a proposal document has just been drafted. Also performs TOR compliance checking for government and corporate tender bids — verifying that every mandatory pass/fail requirement and every scored criterion is addressed. This agent runs in its own context — it reads the document, returns a structured verdict, and does NOT modify the file."
 tools: Read
 ---
 
@@ -24,7 +24,7 @@ Invoke when:
 
 ## Review Framework
 
-Run all four dimensions. Do not skip any.
+Run all five dimensions. Do not skip any.
 
 ---
 
@@ -109,6 +109,28 @@ Run all four dimensions. Do not skip any.
 
 ---
 
+### Dimension 5 — TOR Compliance Coverage
+
+*Applies to government and corporate tender bids submitted against a Terms of Reference (TOR).*
+
+Check whether the proposal was developed from a compliance matrix (TOR_Requirements) and scoring matrix (Scoring_Matrix). If this is a TOR bid:
+- Every mandatory pass/fail requirement must have a dedicated section in the proposal that directly addresses and confirms compliance.
+- Every scored criterion must have a named section or paragraph — the evaluator must be able to find and score each item without searching.
+- If `tor_id` is available, cross-reference the TOR_Requirements and Scoring_Matrix registers to confirm every line item is covered. Note any requirement that is missing, partial, or ambiguous.
+- If the TOR_Requirements or Scoring_Matrix are not available for what appears to be a TOR bid, flag as medium: "No compliance matrix found — cannot verify coverage."
+
+**Checklist**
+- Compliance matrix (TOR_Requirements) referenced or attached?
+- Scoring matrix (Scoring_Matrix) referenced or used to structure sections?
+- All mandatory pass/fail requirements explicitly confirmed? (missing one = automatic disqualification = 🔴)
+- All scored criteria mapped to proposal sections?
+- Section headings or paragraph labels match TOR criterion numbering where required?
+- No scored criterion left unanswered or covered only implicitly?
+
+> **Note:** For government TOR bids, Dimension 5 takes precedence — a proposal that misses a mandatory requirement is 🔴 regardless of communication quality.
+
+---
+
 ## Output Format
 
 ```
@@ -125,6 +147,7 @@ Run all four dimensions. Do not skip any.
 | Technical | /10 | ✅ / ⚠️ / 🔴 |
 | Risk | /10 | ✅ / ⚠️ / 🔴 |
 | Communication | /10 | ✅ / ⚠️ / 🔴 |
+| TOR Coverage | /10 | ✅ / ⚠️ / 🔴 / N/A |
 | **Overall** | **/10** | |
 
 ### Must Fix 🔴 (Do not send until resolved)

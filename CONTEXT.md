@@ -112,3 +112,30 @@ Previous projects: Odoo 14, 16, 17 — migration experience available
 - For government bids (e-GP): formal Thai language required, reference past government project experience
 - All proposals in THB unless client is MNC (then USD or SGD)
 - SRS format: follow Roots Waterfall template (phases: Analysis → Design → Build → Test → Go-live → Support)
+
+---
+
+## TOR Response Factory
+
+**Register location (Google Drive):** `8. Sales and Marketing/TOR Factory/registers/`
+
+Ten registers maintain the data backbone for all government bids:
+TOR_Opportunities · TOR_Requirements · Scoring_Matrix · Company_Documents ·
+CV_Master · Evidence_Library · LC_Bank_Facility · Submission_Checklist · Review_Log · Lessons_Learned
+
+**Gate sequence:** G0 Intake → G1 Bid/No-Bid → G2 Matrix Freeze → G3 Draft → G4 QA → G5 Lock → G6 Lessons
+
+**Critical rule (factory discipline):**
+Do not draft the proposal until both the compliance matrix AND scoring matrix are complete
+and frozen (G2 PASS). This is the single rule that prevents losing on a missed mandatory
+item or uncovered scoring criterion.
+
+**Never fabricate:** If a requirement is unreadable or evidence is unknown, mark it
+"Needs human review" — never guess or invent. This applies to all TOR factory skills.
+
+**KPI targets:**
+- TOR intake to first summary: < 2 hours
+- Compliance matrix before drafting: 100% of TORs
+- Company documents valid at submission: 95%+
+- Team CVs updated within 90 days: 90%+
+- High-severity QA issues before lock: zero

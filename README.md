@@ -4,6 +4,7 @@ Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation fi
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
+- **Live Odoo CE integration** (CRM pipeline sync, sales order reports via odoorpc-cli)
 - Thai market context and government procurement support
 - Google Workspace connectors (Drive, Gmail, Calendar)
 - PM skills for requirements and SRS documentation
@@ -24,7 +25,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.0.0)
+│   ├── plugin.json              # Plugin manifest (name: sales, v3.1.0)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -32,7 +33,7 @@ roots-sales-plugin/
 ├── README.md                    # This file
 ├── meeting-registry.md          # Central meeting index (template)
 │
-├── skills/                      # 19 skills
+├── skills/                      # 31 skills
 │   ├── [FROM UPSTREAM — anthropics/knowledge-work-plugins/sales]
 │   │   ├── account-research/        # Company research
 │   │   ├── call-prep/               # Meeting preparation
@@ -57,6 +58,11 @@ roots-sales-plugin/
 │   │   ├── roots-manday-estimator/  # Project cost estimation
 │   │   ├── roots-tor-analyzer/      # Government TOR PDF analysis
 │   │   └── roots-bid-prep/          # Bid qualification & documents
+│   │
+│   ├── [ODOO CRM INTEGRATION — v3.1.0]
+│   │   ├── odoorpc-cli/             # Odoo JSON-RPC CLI wrapper (upstream: biszx/odoorpc-cli)
+│   │   ├── odoo-crm-sync/           # Pull live CRM pipeline from Odoo CE (crm.lead)
+│   │   └── odoo-sales-report/       # Pull confirmed sale orders, revenue summary (sale.order)
 │   │
 │   └── [TOR RESPONSE FACTORY — Phase 3 Custom]
 │       ├── roots-tor-intake/         # Register a new TOR: Drive folder, calendar gates (G0)
@@ -120,7 +126,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Type | Count | Notes |
 |---|---|---|
-| Skills | 28 | 8 upstream + 5 pm-skills + 6 custom + 9 TOR factory |
+| Skills | 31 | 8 upstream + 5 pm-skills + 6 custom + 9 TOR factory + 3 Odoo CRM |
 | Sub-agents | 6 | se-orchestrator, mom-writer, proposal-reviewer, pm-handoff, tor-factory-orchestrator, tor-qa-reviewer |
 | Commands | 2 | /roots:pipeline-review, /roots:meeting-search |
 | MCP connectors | 3 active | Google Drive, Gmail, Calendar |
@@ -129,9 +135,10 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Phase | Status | Scope |
 |---|---|---|
-| 1 | ✅ Ready | All 19 skills, 4 agents, 2 commands, Google Workspace MCP, meeting registry |
-| 2 | 🔧 In Progress | Odoo CRM MCP, Fireflies transcript connector |
-| 3 | 🔧 In Progress — TOR Response Factory | 9 skills + 2 agents + 10 registers for government bid compliance, scoring matrix optimization, and G0–G6 gate-enforced pipeline |
+| 1 | ✅ Ready | 19 skills, 4 agents, 2 commands, Google Workspace MCP, meeting registry |
+| 2 | ✅ Ready | Odoo CE CRM integration — 3 skills (odoorpc-cli, odoo-crm-sync, odoo-sales-report) via CLI connector |
+| 3 | ✅ Ready | TOR Response Factory — 9 skills + 2 agents + 10 registers, G0–G6 gate-enforced pipeline |
+| 4 | ⏳ Planned | Odoo MCP server (HTTP), Fireflies transcript connector, e-GP monitor |
 
 ## Updating
 

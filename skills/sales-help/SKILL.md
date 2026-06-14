@@ -86,6 +86,14 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 | `forecast` | Weighted forecast + quota tracking |
 | `lean-canvas` | Project fit + priority scoring |
 
+**Odoo Live Data (v3.1 / v3.2) — ต้องมี odoorpc-cli + ใช้บน Claude Code CLI**
+| Skill | ทำอะไร |
+|---|---|
+| `odoorpc-cli` | Reference คำสั่ง `odoo` ทั้งหมด — auth, search, CRUD, call-method |
+| `odoo-crm-sync` | ดึง pipeline สดจาก Odoo (crm.lead) แยก stage/salesperson |
+| `odoo-sales-report` | ดึง sale orders + สรุป revenue ตาม period/salesperson/customer |
+| `roots-sales-dashboard` | Dashboard สด 3 mode: strategic (YTD vs target) / month (ปิดเดือน) / intelligence (next action ต่อดีล) |
+
 ### Commands (เรียกด้วย /slash)
 
 | Command | ทำอะไร |
@@ -225,7 +233,20 @@ G6 After result
 
 ต้องการ: ดูงานวันนี้
 → daily-briefing
+
+ต้องการ: ดูยอดขายจริงเทียบเป้า (ทั้งปี)
+→ roots-sales-dashboard (mode strategic) — ดึงสดจาก Odoo
+
+ต้องการ: ปิดเดือนนี้ — เหลือเท่าไหร่ ดันดีลไหน
+→ roots-sales-dashboard month
+
+ต้องการ: ดีลไหนน่าสนใจ next action คืออะไร (priority + research + activity)
+→ roots-sales-dashboard intelligence
+
+ต้องการ: ดึง pipeline หรือ revenue ดิบจาก Odoo
+→ odoo-crm-sync (pipeline) / odoo-sales-report (revenue)
 ```
+> Odoo skills ต้องมี `odoorpc-cli` ติดตั้ง + `odoo auth login` และรันบน Claude Code CLI (Cowork ยังดึงสดไม่ได้ จนกว่าจะมี Odoo MCP server)
 
 ### กลุ่ม DEAL WON
 

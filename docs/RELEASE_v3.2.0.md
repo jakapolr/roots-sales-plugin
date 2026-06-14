@@ -29,18 +29,28 @@ v3.2.0 ทำให้ plugin **เชื่อมต่อ Odoo CE ของบ
 
 ### A. Update (คนที่มี plugin อยู่แล้ว)
 
+⚠️ **ต้องทำตามลำดับนี้** — ถ้าข้ามขั้น 1 จะได้เวอร์ชันเก่าจาก cache (เป็นปัญหาที่เจอบ่อย)
+
 ```bash
-claude plugin update sales
-# หรือถ้าไม่ขึ้น ลอง:
+# 1. ดึง marketplace ล่าสุดจาก GitHub ก่อน (จำเป็น!)
 claude plugin marketplace update roots-sales-plugin
+
+# 2. อัปเดต plugin — ต้องมี @roots-sales-plugin ต่อท้าย
+claude plugin update sales@roots-sales-plugin
+
+# 3. ปิด-เปิด Claude Code ใหม่ (จำเป็น — ต้อง restart ถึงจะมีผล)
 ```
-รีสตาร์ท Claude Code แล้วเช็ค: `claude plugin list` → ต้องเห็น `sales v3.2.0`
+เช็ค: `claude plugin list` → ต้องเห็น `sales  3.2.0  enabled`
+
+> ❌ อย่ารัน `claude plugin update sales` เฉย ๆ (ไม่เจอ — ต้องมี `@roots-sales-plugin`)
+> ❌ อย่าข้ามขั้น 1 — ไม่งั้น `update`/`install` จะดึงจาก cache เก่า ได้เวอร์ชันเดิม
 
 ### B. Fresh Install (คนใหม่)
 
 ```bash
 claude plugin marketplace add jakapolr/roots-sales-plugin
 claude plugin install sales@roots-sales-plugin
+# ปิด-เปิด Claude Code ใหม่ เพื่อโหลด plugin
 ```
 
 ### C. ติดตั้ง odoorpc-cli (จำเป็นสำหรับ Odoo skills ทุกตัว)
@@ -95,16 +105,21 @@ odoo search read sale.order \
 odoo model field crm.lead
 ```
 
-### 2. ใช้ผ่าน Skills (พิมพ์ใน Claude Code ไม่ต้องจำคำสั่ง)
+### 2. ใช้ผ่าน Skills (พิมพ์ภาษาธรรมชาติ — ไม่ใช่ slash command)
 
-| อยากได้ | พิมพ์ว่า |
+> ⚠️ `roots-sales-dashboard` เป็น **skill** ไม่ใช่ command — **อย่าพิมพ์** `/sales:roots-sales-dashboard` (จะขึ้น "Unknown command")
+> พิมพ์เป็นประโยคปกติ แล้ว Claude จะ trigger skill ให้เอง
+
+| อยากได้ | พิมพ์ว่า (ตัวอย่าง) |
 |---|---|
-| Dashboard ทั้งปี | `/sales:roots-sales-dashboard` |
-| ปิดเดือนนี้ | `/sales:roots-sales-dashboard month` |
-| Next action ต่อดีล | `/sales:roots-sales-dashboard intelligence` |
+| Dashboard ทั้งปี | "ทำ sales dashboard เทียบเป้าทั้งปีให้หน่อย" |
+| ปิดเดือนนี้ | "ดู dashboard ปิดเดือนนี้ จาก Odoo" |
+| Next action ต่อดีล | "วิเคราะห์ดีลน่าสนใจ next action จาก Odoo" |
 | Pipeline สด | "ดึง pipeline จาก Odoo แยกตาม salesperson" |
 | รายงานยอดขาย | "สรุปยอดขายเดือนพฤษภาคมจาก Odoo" |
 | ไม่รู้จะใช้ตัวไหน | "ช่วยแนะนำ" → sales-help จะ route ให้ |
+
+> หมายเหตุ: `/sales:pipeline-review` และ `/sales:meeting-search` เป็น **command** (เรียกด้วย `/` ได้) — ส่วน dashboard และ Odoo skills อื่นเรียกด้วยประโยค
 
 ### 3. ตัวอย่างจริง — ปิดเดือน
 

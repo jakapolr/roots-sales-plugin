@@ -143,6 +143,21 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 ## Updating
 
+### When the team updates to a new version ⭐
+```bash
+# 1. Refresh the marketplace cache from GitHub (REQUIRED — without this you get the old cached version)
+claude plugin marketplace update roots-sales-plugin
+
+# 2. Update the plugin (must include the marketplace suffix)
+claude plugin update sales@roots-sales-plugin
+
+# 3. Restart Claude Code (required — changes apply only after restart)
+
+# Verify
+claude plugin list   # should show: sales  <new version>  enabled
+```
+> Common gotcha: running `claude plugin install` / `update` **without** step 1 reuses the stale marketplace cache and reinstalls the old version. Always `marketplace update` first.
+
 ### When Anthropic releases a new upstream version
 ```bash
 # Compare upstream skill against local copy
@@ -169,6 +184,7 @@ mv skills/my-new-skill/TEMPLATE.md skills/my-new-skill/SKILL.md
 # Share the GitHub repo, then they run:
 claude plugin marketplace add jakapolr/roots-sales-plugin
 claude plugin install sales@roots-sales-plugin
+# Restart Claude Code to load the plugin
 ```
 
 ## Attribution

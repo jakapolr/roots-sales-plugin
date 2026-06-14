@@ -11,6 +11,7 @@
 2. เปลี่ยนชื่อ `TEMPLATE.md` เป็น `SKILL.md`
 3. แก้ frontmatter — `name` ต้องตรงกับชื่อโฟลเดอร์
 4. ลบ comment block ด้านบน (บรรทัดที่ขึ้นต้นด้วย `#`) ออกเมื่อแก้เสร็จ
-5. commit + push — ทีมรัน `claude plugin update` ก็ได้ skill ใหม่
+5. bump version ใน `.claude-plugin/plugin.json` แล้ว commit + push
+6. ทีมอัปเดต: `claude plugin marketplace update roots-sales-plugin` → `claude plugin update sales@roots-sales-plugin` → restart (ดู docs/UPDATE.md)
 
 ดูตัวอย่าง skill ที่ Roots สร้างเอง: `skills/odoo-gap-analysis/`, `skills/roots-tor-analyzer/`

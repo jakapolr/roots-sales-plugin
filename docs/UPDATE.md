@@ -1,6 +1,7 @@
 # คู่มืออัปเดต Roots Sales Plugin (สำหรับทีมขาย)
 
-> **เวอร์ชันปัจจุบัน: v3.0.0** — เพิ่มระบบ TOR Response Factory
+> **เวอร์ชันปัจจุบัน: v3.2.0** — เพิ่ม Odoo CE integration + live Sales Dashboard 3 mode
+> (v3.0.0 TOR Response Factory · v3.1.0 Odoo CRM skills · v3.2.0 roots-sales-dashboard)
 > Marketplace: `roots-sales-plugin` · Plugin: `sales` · Repo: `jakapolr/roots-sales-plugin`
 
 ---
@@ -41,7 +42,7 @@ claude plugin install sales@roots-sales-plugin
 
 ```bash
 claude plugin list
-# ควรเห็น: sales  3.0.0  (enabled)
+# ควรเห็น: sales  3.2.0  (enabled)
 ```
 
 ดูรายละเอียดส่วนประกอบ (skills / agents):
@@ -60,6 +61,23 @@ claude plugin details sales
 
 ---
 
+## สิ่งที่ต้องทำเพิ่มเพื่อใช้ฟีเจอร์ Odoo (v3.1 / v3.2)
+
+skills กลุ่ม Odoo (`odoo-crm-sync`, `odoo-sales-report`, `roots-sales-dashboard`) ต้องมี `odoorpc-cli` และ **ใช้บน Claude Code CLI เท่านั้น** (Cowork ยังดึงสดไม่ได้)
+
+```bash
+# Mac
+brew tap biszx/tap https://github.com/biszx/homebrew-tap && brew install biszx/tap/odoorpc_cli
+# หรือ pip (Mac/Windows):  pip install odoorpc-cli
+
+# เชื่อมต่อ Odoo (ครั้งเดียว)
+odoo auth login --host https://<odoo-ของบริษัท> --db <database> --username <email> --password <password>
+odoo auth info   # ✅ ต้องเห็นชื่อตัวเอง
+```
+ดูคู่มือเต็ม: `docs/RELEASE_v3.2.0.md`
+
+---
+
 ## เริ่มใช้งานเร็ว
 
 | สถานการณ์ | พิมพ์ |
@@ -70,6 +88,11 @@ claude plugin details sales
 | วิเคราะห์ว่าควรประมูลไหม | `"analyze this TOR [วาง/แนบไฟล์]"` |
 | เตรียมก่อนพบลูกค้า | `"research [ชื่อบริษัท]"` |
 | ทำ MOM หลังประชุม | `"ทำ MOM [วาง transcript]"` |
+| ดู dashboard ยอดขายเทียบเป้า | `"sales dashboard เทียบเป้าทั้งปี"` |
+| ปิดเดือนนี้ ดันดีลไหน | `"dashboard ปิดเดือนนี้ จาก Odoo"` |
+| วิเคราะห์ next action ต่อดีล | `"วิเคราะห์ดีล next action จาก Odoo"` |
+
+> dashboard และ Odoo skills เรียกด้วย **ประโยคปกติ** (ไม่ใช่ `/sales:...`) — มีแค่ `/sales:pipeline-review` กับ `/sales:meeting-search` ที่เป็น slash command
 
 ---
 

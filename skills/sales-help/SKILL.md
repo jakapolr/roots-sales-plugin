@@ -58,7 +58,8 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 **Solution Design (Phase 2 Custom)**
 | Skill | ทำอะไร |
 |---|---|
-| `odoo-gap-analysis` | GAP Analysis Enterprise vs BEECY + cost comparison |
+| `odoo-editions` | อธิบายความต่าง Community / Enterprise / Odoo Online / BEECY SaaS / Community implementation (อ้าง references/odoo-editions.md) |
+| `odoo-gap-analysis` | GAP Analysis Enterprise vs BEECY SaaS vs Community implementation + cost comparison |
 | `roots-manday-estimator` | ประเมิน Manday + Project Cost (THB) 3 scenarios |
 | `roots-tor-analyzer` | อ่าน TOR ภาครัฐ — extract, risk flag, Go/No-Go |
 | `roots-bid-prep` | เตรียมเอกสารยื่นประมูล e-GP |
@@ -151,7 +152,10 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 ต้องการ: ออกแบบ solution หลัง discovery
 → se-orchestrator Mode B
 
-ต้องการ: เทียบ Enterprise vs BEECY
+ต้องการ: เข้าใจความต่าง Community/Enterprise/Online/BEECY (ลูกค้าถาม version ไหนดี)
+→ odoo-editions
+
+ต้องการ: เทียบ feature/cost + เลือก path (Enterprise vs BEECY SaaS vs Community impl)
 → odoo-gap-analysis
 
 ต้องการ: ประเมิน manday + cost

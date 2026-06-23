@@ -1,15 +1,22 @@
 ---
 name: odoo-gap-analysis
-description: "Generate a structured GAP analysis comparing Odoo 18 Enterprise vs Community (BEECY) when the user asks about which Odoo version to recommend for a client, or when preparing a proposal."
-version: 1.0.0
+description: "Generate a structured GAP analysis comparing Odoo options (Enterprise, BEECY SaaS, and Community implementation) when the user asks which Odoo path to recommend for a client, or when preparing a proposal."
+version: 1.1.0
 source: roots-custom
 phase: 2
 ---
 
-# Odoo GAP Analysis — Enterprise vs Community (BEECY)
+# Odoo GAP Analysis — Enterprise vs BEECY SaaS vs Community Implementation
 
 > **Custom Skill** — Built by Roots.Tech
 > **Purpose:** Replace manual, inconsistent GAP analysis with a structured, repeatable output
+
+> **Editions/hosting/BEECY definitions:** always follow [references/odoo-editions.md](../../references/odoo-editions.md).
+> Three distinct paths — do NOT collapse to "Enterprise vs Community":
+> - **Enterprise** — licensed, all apps, Studio/Payroll/advanced MFG, hosted options
+> - **BEECY SaaS** — Community + Thai localization, hosted by Roots, **standard (no custom modules)**, subscription
+> - **Community Implementation** — Roots custom project on Community (full customization, customer-owned)
+> Pick which paths are realistic for the client *before* building the matrix (e.g. heavy custom needs rule out BEECY SaaS).
 
 ## Trigger
 Use when:
@@ -68,18 +75,22 @@ BEECY-specific features that Enterprise does NOT include out-of-box:
 ### Scoring Decision Matrix
 
 ```
-Budget < THB 800K AND < 50 users AND manufacturing = simple
-→ Recommend Community + BEECY
+SME trading/retail/service · standard process · no custom modules · งบจำกัด
+→ BEECY SaaS (subscription, hosted by Roots)
+
+Budget < THB 800K AND < 50 users AND ต้อง custom / โรงงาน flow ไม่ซับซ้อนมาก
+→ Community Implementation (custom project on Community)
 
 Budget THB 800K–2M AND 50–150 users AND manufacturing
-→ Recommend Community + BEECY + custom modules OR Enterprise (compare TCO)
+→ Community Implementation + custom modules  OR  Enterprise (compare TCO)
 
-Budget > THB 2M OR > 150 users OR complex PLM/MES needed
-→ Recommend Enterprise
+Budget > THB 2M OR > 150 users OR Enterprise-only features (Studio, Payroll, advanced MFG/PLM)
+→ Enterprise (เลือก hosting: Online ถ้าไม่ custom / Odoo.sh / on-premise)
 
 Government project (e-GP)
-→ Recommend Enterprise (licensing documentation stronger for bid)
+→ มักเลือก Enterprise (licensing documentation ชัดเจนกว่าสำหรับยื่นประมูล)
 ```
+> ⚠️ ห้ามเสนอ BEECY SaaS ถ้าลูกค้าต้อง custom modules — เป็น standard package เลือก Community implementation แทน (ดู [references/odoo-editions.md](../../references/odoo-editions.md))
 
 ## Output Format
 

@@ -25,7 +25,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.2.0)
+│   ├── plugin.json              # Plugin manifest (name: sales, v3.3.0)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -33,7 +33,10 @@ roots-sales-plugin/
 ├── README.md                    # This file
 ├── meeting-registry.md          # Central meeting index (template)
 │
-├── skills/                      # 32 skills
+├── references/                  # Canonical knowledge (cited by skills)
+│   └── odoo-editions.md         # Community / Enterprise / Online / BEECY SaaS / Community impl
+│
+├── skills/                      # 33 skills
 │   ├── [FROM UPSTREAM — anthropics/knowledge-work-plugins/sales]
 │   │   ├── account-research/        # Company research
 │   │   ├── call-prep/               # Meeting preparation
@@ -54,7 +57,8 @@ roots-sales-plugin/
 │   │
 │   ├── [CUSTOM — Roots-specific]
 │   │   ├── sales-help/              # Navigator — routes user to right tool
-│   │   ├── odoo-gap-analysis/       # Enterprise vs Community GAP
+│   │   ├── odoo-editions/           # Editions/hosting/BEECY explainer (cites references/)
+│   │   ├── odoo-gap-analysis/       # Enterprise vs BEECY SaaS vs Community impl GAP
 │   │   ├── roots-manday-estimator/  # Project cost estimation
 │   │   ├── roots-tor-analyzer/      # Government TOR PDF analysis
 │   │   └── roots-bid-prep/          # Bid qualification & documents
@@ -127,7 +131,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Type | Count | Notes |
 |---|---|---|
-| Skills | 32 | 8 upstream + 5 pm-skills + 6 custom + 9 TOR factory + 4 Odoo CRM |
+| Skills | 33 | 8 upstream + 5 pm-skills + 7 custom + 9 TOR factory + 4 Odoo CRM |
 | Sub-agents | 6 | se-orchestrator, mom-writer, proposal-reviewer, pm-handoff, tor-factory-orchestrator, tor-qa-reviewer |
 | Commands | 2 | /roots:pipeline-review, /roots:meeting-search |
 | MCP connectors | 3 active | Google Drive, Gmail, Calendar |

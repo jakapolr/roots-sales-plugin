@@ -97,18 +97,27 @@ It provides Roots-specific context so skills produce relevant, accurate output.
 
 ---
 
-## Odoo Version
+## Odoo Editions, Hosting & BEECY (read this — common source of confusion)
 
-Current deployment: **Odoo 18** (Enterprise and Community)
-BEECY: Based on Odoo 18 Community with Thai localization modules
-Previous projects: Odoo 14, 16, 17 — migration experience available
+Three **separate axes** — never compare across them:
+- **Edition** (license): **Community** (open-source, free, subset of apps) vs **Enterprise** (paid/user/yr, all apps + Studio + Payroll + advanced MFG + support)
+- **Hosting** (where it runs): **Odoo Online** (SaaS by Odoo — *no custom modules*) · **Odoo.sh** (PaaS — custom OK) · **On-premise** (custom OK)
+- **Roots products** — TWO distinct things, do NOT merge:
+  - **BEECY SaaS** (beecy.co) = Community + Thai localization, hosted by Roots, subscription, **standard package (no custom modules)**. Includes VAT/WHT, e-Tax invoice, Thai payroll; supports Manufacturing. ~599–699 THB/user/mo.
+  - **Community Implementation** = Roots project work on Community + custom dev (customer owns it, full customization, complex/MFG OK).
+
+> "Odoo Online" is a hosting tier, NOT an edition. "BEECY" is NOT bare Community — always state whether you mean BEECY SaaS or Community implementation.
+
+**Full authoritative detail — always cite: [references/odoo-editions.md](references/odoo-editions.md)**
+
+Current expertise: **Odoo 18** (Enterprise & Community); past projects Odoo 14/16/17 — migration experience available.
 
 ---
 
 ## Notes for Skills
 
 - When estimating Manday, default to blended rate of THB 5,000/day
-- GAP Analysis should always show both Odoo Enterprise AND Community options (BEECY = Community path)
+- GAP Analysis should show the relevant options — Enterprise, BEECY SaaS, and/or Community implementation — see [references/odoo-editions.md](references/odoo-editions.md). Do not say "BEECY = Community" loosely; distinguish BEECY SaaS (standard package) from Community implementation (custom project).
 - For government bids (e-GP): formal Thai language required, reference past government project experience
 - All proposals in THB unless client is MNC (then USD or SGD)
 - SRS format: follow Roots Waterfall template (phases: Analysis → Design → Build → Test → Go-live → Support)

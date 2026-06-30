@@ -3,8 +3,13 @@
 Logo files for Roots and BEECY. Brand specs (colors, fonts, usage) live in [references/brand-ci.md](../../references/brand-ci.md).
 
 ## Status
-Binary logo files are **not yet committed** to the repo — they live in Google Drive (links below).
-They will be pulled into this folder when the `deck-builder` agent (Feature 2) needs to embed them in pptx/HTML.
+Binary logo files are **not committed** to the repo — they live in Google Drive (links below), shared
+(not public), so they need authenticated access. The `deck-builder` skill fetches the specific logo a
+deck needs **on-demand at generation time** via the Google Drive MCP (`download_file_content`) and embeds
+it (base64 data URI for HTML, temp file for pptx). This keeps git free of binaries and always uses the
+current logo. File IDs are catalogued in [references/brand-ci.md](../../references/brand-ci.md).
+
+To commit binaries anyway (offline use), drag them from the Drive folders below into `assets/brand/`.
 
 ## Roots logos
 Drive folder: https://drive.google.com/drive/folders/1RsSIgHzfDSQ5CDTycE0_IfQGc68QJ1Hl

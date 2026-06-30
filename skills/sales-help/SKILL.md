@@ -78,6 +78,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 |---|---|
 | `draft-outreach` | เขียน email — cold outreach, follow-up, proposal |
 | `create-an-asset` | สร้าง one-pager, battlecard, case study |
+| `deck-builder` | สร้าง presentation on-brand (Roots/BEECY) — โหมด Interactive HTML หรือ pptx (Google Slides) |
 | `pricing-strategy` | คิด pricing model + estimate cost |
 
 **Pipeline & Strategy**
@@ -173,6 +174,9 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 
 ต้องการ: ทำ one-pager / battlecard
 → create-an-asset
+
+ต้องการ: ทำ presentation/deck สำหรับลูกค้า (มี brand)
+→ deck-builder (ถาม Roots/BEECY + โหมด HTML/pptx — ใส่ brand ให้อัตโนมัติ)
 
 ต้องการ: คิดราคา
 → pricing-strategy + roots-manday-estimator

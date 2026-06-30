@@ -25,7 +25,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.4.0)
+│   ├── plugin.json              # Plugin manifest (name: sales, v3.5.0)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -40,7 +40,7 @@ roots-sales-plugin/
 ├── assets/
 │   └── brand/                   # Logo catalog (Roots + BEECY) — see assets/brand/README.md
 │
-├── skills/                      # 33 skills
+├── skills/                      # 34 skills
 │   ├── [FROM UPSTREAM — anthropics/knowledge-work-plugins/sales]
 │   │   ├── account-research/        # Company research
 │   │   ├── call-prep/               # Meeting preparation
@@ -61,6 +61,7 @@ roots-sales-plugin/
 │   │
 │   ├── [CUSTOM — Roots-specific]
 │   │   ├── sales-help/              # Navigator — routes user to right tool
+│   │   ├── deck-builder/            # On-brand presentations (HTML / pptx) — cites brand-ci
 │   │   ├── odoo-editions/           # Editions/hosting/BEECY explainer (cites references/)
 │   │   ├── odoo-gap-analysis/       # Enterprise vs BEECY SaaS vs Community impl GAP
 │   │   ├── roots-manday-estimator/  # Project cost estimation
@@ -135,7 +136,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Type | Count | Notes |
 |---|---|---|
-| Skills | 33 | 8 upstream + 5 pm-skills + 7 custom + 9 TOR factory + 4 Odoo CRM |
+| Skills | 34 | 8 upstream + 5 pm-skills + 8 custom + 9 TOR factory + 4 Odoo CRM |
 | Sub-agents | 6 | se-orchestrator, mom-writer, proposal-reviewer, pm-handoff, tor-factory-orchestrator, tor-qa-reviewer |
 | Commands | 2 | /roots:pipeline-review, /roots:meeting-search |
 | MCP connectors | 3 active | Google Drive, Gmail, Calendar |

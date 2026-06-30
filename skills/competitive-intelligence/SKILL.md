@@ -69,6 +69,8 @@ If I already have your seller context from a previous session, I'll confirm and 
 
 ## Output: Interactive HTML Battlecard
 
+> **Render with Claude Design + on-brand:** build the battlecard with **Claude Design** (`visualize` / show_widget) for an inline preview, then export self-contained HTML. Use Roots' own identity from **[references/brand-ci.md](../../references/brand-ci.md)** for the "us" column / accents (navy `#2B3990` + yellow `#FCC210`, Prompt font) — keep competitor colours neutral so "us" stands out.
+
 The skill generates a **self-contained HTML file** with:
 
 ### 1. Comparison Matrix (Landing View)

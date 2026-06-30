@@ -7,6 +7,11 @@ description: Generate tailored sales assets (landing pages, decks, one-pagers, w
 
 Generate custom sales assets tailored to your prospect, audience, and goals. Supports interactive landing pages, presentation decks, executive one-pagers, and workflow/architecture demos.
 
+> **Roots — render with Claude Design + on-brand:**
+> - Render visual assets with **Claude Design** (the `visualize` / show_widget tool) for an inline preview; export self-contained HTML for sharing.
+> - When the asset is in **Roots or BEECY's own name**, apply the identity from **[references/brand-ci.md](../../references/brand-ci.md)** (colours, fonts, logo) — not just the prospect's colours. One brand per asset, never mixed.
+> - For a **full presentation/deck** (esp. branded, or pptx for Google Slides), route to **[deck-builder](../deck-builder/SKILL.md)** — it handles brand + mode (Interactive HTML / pptx) end-to-end.
+
 ---
 
 ## Triggers
@@ -664,9 +669,11 @@ Or, if still unclear:
 Following all specifications above:
 1. Generate structure based on Phase 2
 2. Create content based on Phase 3
-3. Apply visual design based on Phase 4
+3. Apply visual design based on Phase 4 — render with **Claude Design** (`visualize`/show_widget). If in Roots/BEECY's name, pull exact colours/fonts/logo from [references/brand-ci.md](../../references/brand-ci.md)
 4. Ensure all interactive elements work
 5. Test responsiveness (if applicable)
+
+> For a branded deck or a pptx → Google Slides, prefer [deck-builder](../deck-builder/SKILL.md) instead of building here.
 
 ### Output Format
 

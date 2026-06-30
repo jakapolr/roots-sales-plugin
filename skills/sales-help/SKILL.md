@@ -77,9 +77,10 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 | Skill | ทำอะไร |
 |---|---|
 | `draft-outreach` | เขียน email — cold outreach, follow-up, proposal |
-| `create-an-asset` | สร้าง one-pager, battlecard, case study |
+| `create-an-asset` | สร้าง one-pager, landing page, demo (render ผ่าน Claude Design + brand-ci) |
 | `deck-builder` | สร้าง presentation on-brand (Roots/BEECY) — โหมด Interactive HTML หรือ pptx (Google Slides) |
-| `pricing-strategy` | คิด pricing model + estimate cost |
+
+> **งาน design ทุกชนิด** (deck, asset, battlecard, dashboard) ใช้ **Claude Design** (visualize) + แบรนด์จาก `references/brand-ci.md` เสมอ · deck/presentation → route ไป `deck-builder` · คิดราคา/ต้นทุน → `roots-manday-estimator`
 
 **Pipeline & Strategy**
 | Skill | ทำอะไร |
@@ -178,8 +179,8 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 ต้องการ: ทำ presentation/deck สำหรับลูกค้า (มี brand)
 → deck-builder (ถาม Roots/BEECY + โหมด HTML/pptx — ใส่ brand ให้อัตโนมัติ)
 
-ต้องการ: คิดราคา
-→ pricing-strategy + roots-manday-estimator
+ต้องการ: คิดราคา / ต้นทุน
+→ roots-manday-estimator
 
 ต้องการ: ตรวจ proposal ก่อนส่ง
 → proposal-reviewer (ต้อง pass reviewer ก่อนส่งทุกครั้ง)

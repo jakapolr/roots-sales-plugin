@@ -33,13 +33,25 @@ source: roots-custom
 - **BEECY:** primary `#FCC210`, honey/tan `#C2B59B`, ink `#414042`; web font Prompt
 - **ห้ามใช้สี/ฟอนต์ของอีกแบรนด์ปนกัน**
 
-### 4. Logo — ดึงจาก Drive ตอน generate (on-demand)
-Logo ไม่ได้เก็บใน repo (ดู [assets/brand/README.md](../../assets/brand/README.md)) — fetch ตอนใช้จริง:
-1. เลือก logo ID จาก brand-ci.md (เลือกเวอร์ชันให้ถูกพื้น: พื้นเข้ม→logo ขาว, พื้นอ่อน→logo เข้ม)
-2. ดึงด้วย Google Drive MCP `download_file_content` (exportMimeType ไม่ต้องสำหรับ PNG) → ได้ base64
-3. **HTML:** ฝังเป็น `<img src="data:image/png;base64,...">`
-4. **pptx:** เซฟ base64 เป็นไฟล์ชั่วคราว แล้ว insert ด้วย PowerPoint MCP
-5. ถ้าดึง logo ไม่ได้ (auth/permission) → ทำ deck ต่อโดยเว้นช่อง logo + แจ้ง user ให้ใส่เอง (อย่าหยุดงาน)
+### 4. Logo — กฎ contrast เข้มงวด (ห้ามให้ logo จมพื้น)
+
+> **กฎเหล็กจาก brand guideline:** logo **ขาว** บนพื้น **เข้ม** · logo **เข้ม/สี** บนพื้น **อ่อน** · **ห้าม logo กลืนพื้นหลังเด็ดขาด**
+
+**ก่อนวาง logo ทุกครั้ง — ตรวจ contrast:**
+1. ดูสีพื้นที่จะวาง → เข้มหรืออ่อน
+2. เลือก variant ให้ตรงข้าม: พื้นเข้ม (เช่น Roots navy `#2B3990`, BEECY ink `#414042`) → **logo เวอร์ชันขาว** · พื้นอ่อน/cream → **logo เวอร์ชันสี/เข้ม**
+3. ถ้า **ไม่รู้ว่าไฟล์ไหนคือเวอร์ชันขาว** หรือดึง raster ไม่ได้ → อย่าเดา ให้ใช้ทางใดทางหนึ่ง:
+   - ทำ **typographic wordmark** ในสีที่ contrast ชัด (เช่น "ROOTS" ขาวล้วนบน navy) — นับเป็น compliant
+   - หรือวาง logo บน **plate สีขาว/อ่อน** เล็ก ๆ เพื่อรับประกัน contrast
+4. ใส่ **clear space** รอบ logo (BEECY = เท่าความสูงตัว B) · ห้าม shadow/gradient/effect บน logo
+5. ห้ามใช้สีตัวอักษร low-contrast กับพื้น (เช่น ฟ้าอ่อนบน navy — จม)
+
+**การดึง raster logo (เมื่อรู้ variant):**
+- Drive MCP `download_file_content` → ได้ base64 · HTML: `<img src="data:image/png;base64,...">` · pptx: เซฟ temp แล้ว insert ด้วย PowerPoint MCP
+- Logo IDs/variants อยู่ใน [references/brand-ci.md](../../references/brand-ci.md)
+- ดึงไม่ได้ → ทำต่อด้วย wordmark/เว้นช่อง + แจ้ง user (อย่าหยุดงาน)
+
+> **Preview ใน chat (show_widget):** การ embed raster base64 inline กิน token มาก (~25K/ครั้ง) — สำหรับ preview ให้ใช้ typographic wordmark; ฝัง raster จริงเฉพาะตอน **export เป็นไฟล์** (.html/.pptx) ที่จ่าย cost ครั้งเดียว
 
 ### 5. Render ตามโหมด
 
@@ -67,6 +79,7 @@ Logo ไม่ได้เก็บใน repo (ดู [assets/brand/README.md](
 ## กฎสำคัญ
 - แบรนด์เดียวต่อ 1 deck — Roots หรือ BEECY ไม่ปน
 - สี/ฟอนต์จาก brand-ci.md เท่านั้น
+- **Logo ต้อง contrast กับพื้นเสมอ — ห้ามจมพื้น** (ดูข้อ 4) ตรวจทุกครั้งก่อนวาง
 - เลือก edition/ผลิตภัณฑ์ให้ถูกตาม [references/odoo-editions.md](../../references/odoo-editions.md) (อย่าสับ BEECY SaaS กับ Community implementation)
 - ถ้า logo ดึงไม่ได้ → ทำต่อ เว้นช่องไว้ ไม่หยุดงาน
 

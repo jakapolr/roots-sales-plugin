@@ -70,6 +70,11 @@
 ## Logo (Drive: folder `1RsSIgHzfDSQ5CDTycE0_IfQGc68QJ1Hl`)
 ใช้ได้ 4 สีเท่านั้น: **Original (สี) · White · Black · Grey**
 
+> ⚠️ **ยังไม่ได้ label ว่าไฟล์ไหน = เวอร์ชันไหน** (read_file_content อ่าน PNG เป็นภาพไม่ได้) — จนกว่าจะ confirm:
+> - พื้น**เข้ม** (navy/dark) → ต้องใช้เวอร์ชัน **White** · พื้น**อ่อน** → เวอร์ชัน **Original/สี**
+> - ถ้าไม่แน่ใจไฟล์ → ใช้ **typographic wordmark** ("ROOTS" สี contrast ชัด) แทน อย่าเดาไฟล์แล้วเสี่ยง logo จมพื้น
+> - วิธี label: download แต่ละไฟล์แล้วเปิดดู หรือให้ Roots ระบุว่าไฟล์ไหนคือ white/color/black/grey
+
 | ไฟล์ | Drive file ID |
 |---|---|
 | LOGO roots-01.png … 05.png | `1XYmzCsOLUA5shwzW-WNgiwN__9vwrJcj` (01), `12LzFeaQTrMtVi2i4NEALWKskaiPrOPH7` (02), `1nciZ5rNHMsuqPrw0RzSiZkVYS1YKgw6b` (03), `15mVULT8UkkqFSzLEwYaMzVCgpKNYOkJD` (04), `18PWr5rpRRcVqPJoH0_Tyb6bDlElq-IlZ` (05) |

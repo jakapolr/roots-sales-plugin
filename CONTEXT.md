@@ -89,6 +89,14 @@ It provides Roots-specific context so skills produce relevant, accurate output.
 
 ---
 
+## Brand / Visual Identity
+
+Roots and BEECY are **two distinct brands** — never mix their colours/fonts/logos. Pick by who you're speaking as.
+- **Roots** — corporate/B2B. Primary navy `#2B3990` + yellow `#FCC210` + teal. Fonts Prompt / Open Sans / Sarabun. Tagline "Passion to Innovates".
+- **BEECY** — friendly SME SaaS. Primary yellow `#FCC210` + honey/tan + dark grey. Web font Prompt. Tagline "stop busy start beecy". Mascot น้องน้ำผึ้ง.
+
+When generating any branded asset (deck, one-pager, HTML, pptx), use exact specs from **[references/brand-ci.md](references/brand-ci.md)** — do not guess colours or fonts.
+
 ## Communication Style
 
 **Email tone:** Professional but approachable. Thai clients expect relationship-first communication. Lead with value, not features.

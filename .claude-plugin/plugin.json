@@ -1,7 +1,7 @@
 {
   "name": "sales",
-  "version": "3.3.0",
-  "description": "Sales productivity plugin for Roots.Tech — Thai Odoo ERP implementation firm. Prospect, prep for calls, analyze requirements, manage pipeline, and prepare government bids. Based on Anthropic's official sales plugin, extended with Odoo-specific skills, Thai market context, and Google Workspace connectors. Includes TOR Response Factory (9 skills + 2 agents + 10 registers) for government bid compliance, scoring matrix optimization, and G0–G6 gate-enforced pipeline. v3.1.0 adds live Odoo CE CRM/Sales integration via odoorpc-cli; v3.2.0 adds a 3-mode live sales dashboard; v3.3.0 adds the odoo-editions knowledge reference (Community / Enterprise / Odoo Online / BEECY SaaS / Community implementation).",
+  "version": "3.4.0",
+  "description": "Sales productivity plugin for Roots.Tech — Thai Odoo ERP implementation firm. Prospect, prep for calls, analyze requirements, manage pipeline, and prepare government bids. Based on Anthropic's official sales plugin, extended with Odoo-specific skills, Thai market context, and Google Workspace connectors. Includes TOR Response Factory (9 skills + 2 agents + 10 registers) for government bid compliance, scoring matrix optimization, and G0–G6 gate-enforced pipeline. v3.1.0 adds live Odoo CE CRM/Sales integration via odoorpc-cli; v3.2.0 adds a 3-mode live sales dashboard; v3.3.0 adds the odoo-editions knowledge reference; v3.4.0 adds the Roots & BEECY brand CI reference (colors, fonts, logos) so generated assets stay on-brand.",
   "author": {
     "name": "Trinity Roots Co., Ltd.",
     "url": "https://roots.tech"

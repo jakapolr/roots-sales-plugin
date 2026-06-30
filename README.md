@@ -25,7 +25,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.3.0)
+│   ├── plugin.json              # Plugin manifest (name: sales, v3.4.0)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -34,7 +34,11 @@ roots-sales-plugin/
 ├── meeting-registry.md          # Central meeting index (template)
 │
 ├── references/                  # Canonical knowledge (cited by skills)
-│   └── odoo-editions.md         # Community / Enterprise / Online / BEECY SaaS / Community impl
+│   ├── odoo-editions.md         # Community / Enterprise / Online / BEECY SaaS / Community impl
+│   └── brand-ci.md              # Roots & BEECY brand identity (colors, fonts, logos)
+│
+├── assets/
+│   └── brand/                   # Logo catalog (Roots + BEECY) — see assets/brand/README.md
 │
 ├── skills/                      # 33 skills
 │   ├── [FROM UPSTREAM — anthropics/knowledge-work-plugins/sales]

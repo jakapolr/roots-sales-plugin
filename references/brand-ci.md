@@ -70,15 +70,15 @@
 ## Logo (Drive: folder `1RsSIgHzfDSQ5CDTycE0_IfQGc68QJ1Hl`)
 ใช้ได้ 4 สีเท่านั้น: **Original (สี) · White · Black · Grey**
 
-> ⚠️ **ยังไม่ได้ label ว่าไฟล์ไหน = เวอร์ชันไหน** (read_file_content อ่าน PNG เป็นภาพไม่ได้) — จนกว่าจะ confirm:
-> - พื้น**เข้ม** (navy/dark) → ต้องใช้เวอร์ชัน **White** · พื้น**อ่อน** → เวอร์ชัน **Original/สี**
-> - ถ้าไม่แน่ใจไฟล์ → ใช้ **typographic wordmark** ("ROOTS" สี contrast ชัด) แทน อย่าเดาไฟล์แล้วเสี่ยง logo จมพื้น
-> - วิธี label: download แต่ละไฟล์แล้วเปิดดู หรือให้ Roots ระบุว่าไฟล์ไหนคือ white/color/black/grey
+**Committed in repo (verified by眼 — Original/colour, พื้นโปร่ง):**
+| ไฟล์ใน repo | คือ | สี | วางบนพื้น |
+|---|---|---|---|
+| `assets/brand/roots/roots-01-full.png` | Full logo (icon + wordmark + tagline) | navy `#2B3990` + จุดเหลือง + tagline เทา | **อ่อน/white plate** (navy wordmark จมบนพื้นเข้ม) |
+| `assets/brand/roots/roots-05-icon.png` | Icon เดี่ยว (วง G + จุด) | navy + จุดเหลือง | **อ่อน/white plate** |
 
-| ไฟล์ | Drive file ID |
-|---|---|
-| LOGO roots-01.png … 05.png | `1XYmzCsOLUA5shwzW-WNgiwN__9vwrJcj` (01), `12LzFeaQTrMtVi2i4NEALWKskaiPrOPH7` (02), `1nciZ5rNHMsuqPrw0RzSiZkVYS1YKgw6b` (03), `15mVULT8UkkqFSzLEwYaMzVCgpKNYOkJD` (04), `18PWr5rpRRcVqPJoH0_Tyb6bDlElq-IlZ` (05) |
-| Roots LG-S-01.png / 02.png | `1GibXDAt2_CGPWvWxAjZ1gK6lrmNEGnDu` / `11YFouIi71kWNBTbo1rEIG8l5KdscxugD` |
+> กฎ: เวอร์ชัน Original (สี) ทั้งคู่ → ใช้บน **พื้นอ่อน** เสมอ (หรือบน white plate ถ้า cover เข้ม) · ถ้าต้องวางบนพื้นเข้มตรง ๆ ให้ใช้เวอร์ชัน White (ยังไม่ committed — ดู Drive)
+
+อื่น ๆ ใน Drive (ยังไม่ committed): `LOGO roots-02..04.png`, `Roots LG-S-01/02.png` (icon ดำ), เวอร์ชัน White/Black/Grey
 
 ---
 
@@ -96,11 +96,16 @@
 
 **❌ ห้าม:** logo กลืนพื้นหลัง/ภาพ · ใส่ shadow/gradient/effect · ใช้ B เป็นตัวอักษรในคำ · เปลี่ยนสีบางส่วนของ wordmark · บิด/ยืดผิดสัดส่วน
 
-Drive (folder `1DqyBwr36TlZf3EXWl2_Rdz6Yz5n2M_Yc`):
+**Committed in repo:**
+| ไฟล์ใน repo | คือ | วางบนพื้น |
+|---|---|---|
+| `assets/brand/beecy/beecy-primary.png` | Primary (B เหลือง + "BEECY" ink + tagline tan), พื้นโปร่ง | **อ่อน/cream** (wordmark ink เข้ม) |
+
+อื่น ๆ ใน Drive (folder `1DqyBwr36TlZf3EXWl2_Rdz6Yz5n2M_Yc`, ยังไม่ committed):
 | ไฟล์ | ID |
 |---|---|
-| AW_BEECY Logo_Primary.png (+ _Grey `10B167C3b0ECpJKy85mVrxQNB9iJiMU-5`, _Black `1a0TGmcG9lnBk4bc3YjoLD6_WXXfpNmTu`) | `10EYMXrQZXv5apZ3EAl6VFk3nYuPZdc43` |
-| BEECY_B Symbol.png (+ _Grey, _Black, _White) | `1Pg09L0sdwvoWP7IH_IE6wQLhFjfp40nL` |
+| AW_BEECY Logo_Primary_Grey / _Black | `10B167C3b0ECpJKy85mVrxQNB9iJiMU-5` / `1a0TGmcG9lnBk4bc3YjoLD6_WXXfpNmTu` |
+| BEECY_B Symbol.png (+ _Grey, _Black, _White สำหรับพื้นเข้ม) | `1Pg09L0sdwvoWP7IH_IE6wQLhFjfp40nL` |
 | CI Guide Book (PDF) | `1u06un0d17KwGR7jY_AKV-T3R2LNHamCX` |
 
 ## สี (hex)

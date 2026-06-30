@@ -3,13 +3,19 @@
 Logo files for Roots and BEECY. Brand specs (colors, fonts, usage) live in [references/brand-ci.md](../../references/brand-ci.md).
 
 ## Status
-Binary logo files are **not committed** to the repo — they live in Google Drive (links below), shared
-(not public), so they need authenticated access. The `deck-builder` skill fetches the specific logo a
-deck needs **on-demand at generation time** via the Google Drive MCP (`download_file_content`) and embeds
-it (base64 data URI for HTML, temp file for pptx). This keeps git free of binaries and always uses the
-current logo. File IDs are catalogued in [references/brand-ci.md](../../references/brand-ci.md).
+The primary logos are **committed in this repo** (verified visually — see paths below). `deck-builder`
+reads them directly (no Drive fetch needed). For other variants (White/Black/Grey, B symbol) not yet
+committed, fetch on-demand from Drive via the Google Drive MCP. Full catalogue + usage rules:
+[references/brand-ci.md](../../references/brand-ci.md).
 
-To commit binaries anyway (offline use), drag them from the Drive folders below into `assets/brand/`.
+### Committed
+```
+assets/brand/roots/roots-01-full.png   Roots full logo (colour) — use on light / white plate
+assets/brand/roots/roots-05-icon.png   Roots icon (colour)      — use on light / white plate
+assets/brand/beecy/beecy-primary.png   BEECY primary            — use on cream / light
+```
+All are colour/transparent → place on a light background or a white plate; never on a dark fill directly
+(navy/ink wordmarks blend). For dark backgrounds use the White variants from Drive.
 
 ## Roots logos
 Drive folder: https://drive.google.com/drive/folders/1RsSIgHzfDSQ5CDTycE0_IfQGc68QJ1Hl

@@ -46,9 +46,13 @@ source: roots-custom
 4. ใส่ **clear space** รอบ logo (BEECY = เท่าความสูงตัว B) · ห้าม shadow/gradient/effect บน logo
 5. ห้ามใช้สีตัวอักษร low-contrast กับพื้น (เช่น ฟ้าอ่อนบน navy — จม)
 
-**การดึง raster logo (เมื่อรู้ variant):**
-- Drive MCP `download_file_content` → ได้ base64 · HTML: `<img src="data:image/png;base64,...">` · pptx: เซฟ temp แล้ว insert ด้วย PowerPoint MCP
-- Logo IDs/variants อยู่ใน [references/brand-ci.md](../../references/brand-ci.md)
+**Logo ที่ committed แล้วใน repo (ใช้ก่อนเสมอ):**
+- `assets/brand/roots/roots-01-full.png` (full) · `roots-05-icon.png` (icon) · `assets/brand/beecy/beecy-primary.png`
+- ทั้งหมดเป็น **สี/พื้นโปร่ง → วางบนพื้นอ่อน หรือ white plate** (navy/ink wordmark จมบนพื้นเข้ม)
+- HTML export: อ่านไฟล์ → base64 → `<img src="data:image/png;base64,...">` (ผ่าน script เพื่อไม่ผ่าน context) · pptx: insert ไฟล์ด้วย PowerPoint MCP
+
+**variant อื่น (White/Black/Grey, B symbol) — ดึงจาก Drive เมื่อต้องการ:**
+- Drive MCP `download_file_content` → base64 · IDs อยู่ใน [references/brand-ci.md](../../references/brand-ci.md)
 - ดึงไม่ได้ → ทำต่อด้วย wordmark/เว้นช่อง + แจ้ง user (อย่าหยุดงาน)
 
 > **Preview ใน chat (show_widget):** การ embed raster base64 inline กิน token มาก (~25K/ครั้ง) — สำหรับ preview ให้ใช้ typographic wordmark; ฝัง raster จริงเฉพาะตอน **export เป็นไฟล์** (.html/.pptx) ที่จ่าย cost ครั้งเดียว

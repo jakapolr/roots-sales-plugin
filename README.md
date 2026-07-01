@@ -2,10 +2,14 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
+**Version:** `v3.5.3` · **34 skills** · **6 sub-agents** · **2 commands** · **3 MCP connectors**
+
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
-- **Live Odoo CE integration** (CRM pipeline sync, sales order reports via odoorpc-cli)
-- Thai market context and government procurement support
+- **Live Odoo CE integration** (CRM pipeline sync, sales order reports, 3-mode sales dashboard via odoorpc-cli)
+- **Knowledge references** — Odoo editions/hosting/BEECY, and Roots & BEECY brand CI (cited by skills for accuracy)
+- **On-brand asset generation** — `deck-builder` renders presentations via Claude Design (Interactive HTML / pptx) using the brand reference
+- Thai market context and government procurement support (TOR Response Factory)
 - Google Workspace connectors (Drive, Gmail, Calendar)
 - PM skills for requirements and SRS documentation
 - 6 sub-agents for SE work, MOM writing, proposal review, PM handoff, and TOR factory orchestration
@@ -25,7 +29,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.5.0)
+│   ├── plugin.json              # Plugin manifest (name: sales, v3.5.3)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -148,7 +152,22 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 | 1 | ✅ Ready | 19 skills, 4 agents, 2 commands, Google Workspace MCP, meeting registry |
 | 2 | ✅ Ready | Odoo CE CRM integration — 4 skills (odoorpc-cli, odoo-crm-sync, odoo-sales-report, roots-sales-dashboard) via CLI connector |
 | 3 | ✅ Ready | TOR Response Factory — 9 skills + 2 agents + 10 registers, G0–G6 gate-enforced pipeline |
+| — | ✅ Ready | Knowledge & brand layer — `references/odoo-editions.md`, `references/brand-ci.md`, `deck-builder` (Claude Design), on-brand asset routing |
 | 4 | ⏳ Planned | Odoo MCP server (HTTP), Fireflies transcript connector, e-GP monitor |
+
+## Version history
+
+| Version | What changed |
+|---|---|
+| `v3.5.3` | sales-help navigator: removed a phantom skill reference, added design-path routing |
+| `v3.5.2` | Routed `create-an-asset`, `se-orchestrator` (Mode F), `competitive-intelligence` to Claude Design + brand-ci |
+| `v3.5.1` | Committed verified Roots & BEECY logos (`assets/brand/`) + labelled variants |
+| `v3.5.0` | `deck-builder` skill — on-brand presentations (Interactive HTML / pptx → Google Slides) |
+| `v3.4.0` | `references/brand-ci.md` — Roots & BEECY brand identity (colours, fonts, logos) |
+| `v3.3.0` | `references/odoo-editions.md` + `odoo-editions` skill — Community / Enterprise / Online / BEECY SaaS / Community implementation |
+| `v3.2.0` | `roots-sales-dashboard` — 3-mode live dashboard (strategic / month-close / intelligence) |
+| `v3.1.0` | Live Odoo CE integration — `odoorpc-cli`, `odoo-crm-sync`, `odoo-sales-report` |
+| `v3.0.0` | TOR Response Factory — 9 skills + 2 agents + 10 registers |
 
 ## Updating
 

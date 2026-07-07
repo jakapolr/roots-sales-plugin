@@ -1,6 +1,8 @@
-# 🧭 Roadmap v4.0 — deal-strategy: the Strategy Layer
+# 🧭 Roadmap v4.0 — deal-strategy: Hunting Strategy Layer
 
-> สำหรับทีม Roots.Tech + Senior Technical — เอกสารวางแผน v4.0 ว่าจะทำอะไร ทำไม และองค์กรต้องปรับอะไรบ้าง
+> สำหรับทีม Roots.Tech + Senior Technical — เอกสารวางแผน v4.0 (**Hunting Strategy** — ล่า/ปิดดีลให้เก่ง)
+> **v4 = Hunting · v5 = Farming** (recurring → 50%, ดู [ROADMAP_v5_farmer-strategy.md](ROADMAP_v5_farmer-strategy.md))
+> Doctrine + scorecard ที่ตกผลึก: [strategy-doctrine](../references/strategy-doctrine.md) · [customer-scorecard](../references/customer-scorecard.md) · [deal-service-matrix](../references/deal-service-matrix.md)
 
 | | |
 |---|---|

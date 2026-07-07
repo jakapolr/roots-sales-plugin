@@ -8,7 +8,32 @@
 | **Scope** | `crm.lead`, `crm.lost.reason` |
 | **Edition** | Odoo CE (Community) — ทุกอย่างในนี้ทำได้บน CE |
 | **Roadmap** | [`ROADMAP_v4_deal-strategy.md`](ROADMAP_v4_deal-strategy.md) |
-| **สร้างเมื่อ** | 2026-07-01 |
+| **สร้างเมื่อ** | 2026-07-01 · as-built 2026-07-07 |
+
+---
+
+## 🟢 AS-BUILT STATUS (2026-07-07)
+
+| item | สถานะ | วิธีทำ |
+|---|---|---|
+| `x_deal_tier` (A/B/C/D) | ✅ **สร้างแล้ว** | UI (custom Selection field) |
+| Lost Reason v2 (14 เหตุ) | ✅ **สร้างแล้ว** | RPC — archive เก่า 10 + create ใหม่ 14 (id 11–24) |
+| `x_won_reason` (7 ค่า) | ⬜ **รอสร้างผ่าน UI** | ดู steps ล่าง |
+| `x_gap_status` (5 ค่า) | ⬜ **รอสร้างผ่าน UI** | interim: อนุมานจาก SO "GAP" line + chatter note |
+| hook flags (`x_needs_strategy`/`x_needs_lesson`) | ⬜ later | boolean |
+| GAP SKU + Automation Rules A/B/C | ⬜ later | — |
+
+> ⚠️ **สร้าง Selection field ต้องทำผ่าน UI ไม่ใช่ RPC** — การสร้าง field ทำให้ Odoo reload registry นานเกิน timeout ของ odoorpc client (rollback) · web UI จัดการ async ได้ · (สร้าง *records* เช่น lost.reason ผ่าน RPC ได้ปกติ)
+
+**UI steps (เหมือนตอนสร้าง `x_deal_tier`):**
+`Settings → Developer Mode → Technical → Models → crm.lead → tab Fields → Create`
+
+| field | Type | Selection options (value → label) |
+|---|---|---|
+| `x_won_reason` (Label: Won Reason) | Selection | champion→Champion-driven · compelling_event→Compelling event / deadline · localization_fit→Superior fit / Thai localization · displaced_competitor→Displaced competitor · price_tco→Best price / TCO · relationship_referral→Relationship / referral · fast_low_risk→Fast / low-risk delivery |
+| `x_gap_status` (Label: GAP Status) | Selection | none→None · quoted→GAP quoted · paid→GAP paid · waived→GAP waived (strategic) · done→GAP done |
+
+> Won ↔ Lost จับคู่แกนเดียวกัน — ดู [[won-lost-cheatsheet]]
 
 ---
 

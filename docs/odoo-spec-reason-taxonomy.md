@@ -18,10 +18,11 @@
 |---|---|---|
 | `x_deal_tier` (A/B/C/D) | ✅ **สร้างแล้ว** | UI (custom Selection field) |
 | Lost Reason v2 (14 เหตุ) | ✅ **สร้างแล้ว** | RPC — archive เก่า 10 + create ใหม่ 14 (id 11–24) |
-| `x_won_reason` (7 ค่า) | ⬜ **รอสร้างผ่าน UI** | ดู steps ล่าง |
-| `x_gap_status` (5 ค่า) | ⬜ **รอสร้างผ่าน UI** | interim: อนุมานจาก SO "GAP" line + chatter note |
-| hook flags (`x_needs_strategy`/`x_needs_lesson`) | ⬜ later | boolean |
-| GAP SKU + Automation Rules A/B/C | ⬜ later | — |
+| `x_won_reason` (7 ค่า) | ✅ **สร้างแล้ว** | UI (Selection) |
+| `x_gap_status` (5 ค่า) | ✅ **สร้างแล้ว** | UI (Selection) |
+| hook flags (`x_needs_strategy`/`x_needs_lesson`) | ✅ **สร้างแล้ว** | UI (Boolean) |
+| **Automation Rules A/B/C** | ✅ **สร้าง + ทดสอบ fire** | RPC (base.automation id 2,3,4) — ดู §6 |
+| GAP SKU + pricing tiers | ⬜ later | product |
 
 > ⚠️ **สร้าง Selection field ต้องทำผ่าน UI ไม่ใช่ RPC** — การสร้าง field ทำให้ Odoo reload registry นานเกิน timeout ของ odoorpc client (rollback) · web UI จัดการ async ได้ · (สร้าง *records* เช่น lost.reason ผ่าน RPC ได้ปกติ)
 
@@ -134,31 +135,31 @@ Tracking = True ทั้งคู่ ( debug ง่าย). Claude เป็น
 
 ---
 
-## 6) Automation Rules (no-code)
+## 6) Automation Rules — AS-BUILT ✅ (base.automation id 2/3/4)
 
-**Settings → Technical → Automation Rules** (`base_automation`) — ไม่ต้องเขียนโค้ด
+> สร้างผ่าน **RPC สำเร็จ** (ต่างจาก field ที่ RPC ติด timeout — base.automation `_inherits` server action ไม่ reload registry หนัก) · **ทดสอบ Rule A fire จริงแล้ว** (stage→Proposing → `x_needs_strategy` = True)
+> Odoo version นี้ base.automation ใช้ trigger `on_write` + `trigger_field_ids` + pre/post domain (ไม่มี on_stage_set/on_archive) · action = server action `state=code` (delegated)
 
-### Rule A — Flag for AI strategy
-```
-Model:      crm.lead
-Trigger:    On Update  →  ฟิลด์ stage_id
-Before/domain:  stage_id in [Quoting, Proposing]  AND  x_needs_strategy = false
-Action:     Update Record  →  x_needs_strategy = true
+| Rule | id | Trigger (watch) | pre-domain | post-domain | code |
+|---|---|---|---|---|---|
+| **A** strategy | 2 | on_write · `stage_id` | `[('stage_id','not in',[2,3])]` | `[('stage_id','in',[2,3]),('x_needs_strategy','=',False)]` | `records.write({'x_needs_strategy': True})` |
+| **B** lesson (Lost) | 3 | on_write · `active` | `[('active','=',True)]` | `[('active','=',False)]` | `records.write({'x_needs_lesson': True})` |
+| **C** lesson (Won) | 4 | on_write · `stage_id` | `[('stage_id.is_won','=',False)]` | `[('stage_id.is_won','=',True)]` | `records.write({'x_needs_lesson': True})` |
+
+**as-built lessons (สำคัญตอนสร้างซ้ำ):**
+- code ห้าม `record.field = x` → **STORE_ATTR forbidden** ใน safe_eval · ต้องใช้ `records.write({...})`
+- stage ids จริง: **Proposing=2 · Quoting=3** · won ใช้ `stage_id.is_won` (ครอบ 4/11/12/21/22)
+- field ids ที่ watch: **stage_id=6591 · active=6588**
+- **pre + post domain** = fire เฉพาะ *transition* (ไม่ re-fire ทุก save) · guard `x_needs_strategy=False` กันซ้ำ
+
+**สร้างซ้ำผ่าน RPC:**
+```bash
+odoo create base.automation --values '[{"name":"[AI] ...","model_id":536,"trigger":"on_write",
+  "trigger_field_ids":[[6,0,[6591]]],"filter_pre_domain":"[(...)]","filter_domain":"[(...)]",
+  "state":"code","usage":"base_automation","code":"records.write({...})","active":true}]'
 ```
 
-### Rule B — Flag for AI lesson (Lost)
-```
-Model:      crm.lead
-Trigger:    On Update  →  active เปลี่ยนเป็น false   (ดีลถูก mark lost)
-Action:     Update Record  →  x_needs_lesson = true
-```
-
-### Rule C — Flag for AI lesson (Won)
-```
-Model:      crm.lead
-Trigger:    On Update  →  stage_id = Won (is_won = true)
-Action:     Update Record  →  x_needs_lesson = true
-```
+> ปิด loop ด้วย [[strategy-orchestrator]] (poll flag → deal-strategy/deal-lessons → write-back → clear)
 
 ---
 

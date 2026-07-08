@@ -96,6 +96,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 | `odoo-crm-sync` | ดึง pipeline สดจาก Odoo (crm.lead) แยก stage/salesperson |
 | `odoo-sales-report` | ดึง sale orders + สรุป revenue ตาม period/salesperson/customer |
 | `roots-sales-dashboard` | Dashboard สด 3 mode: strategic (YTD vs target) / month (ปิดเดือน) / intelligence (next action ต่อดีล) |
+| `deal-strategy` **(v4)** | วินิจฉัยดีล*ตัวเดียว* — score tier (scorecard v2) + MEDDICC + killing-zone gate → เขียน scoring + Next Best Action (CTA) ลง chatter (อ้าง references/deal-service-matrix, customer-scorecard, strategy-doctrine) |
 
 ### Commands (เรียกด้วย /slash)
 
@@ -251,6 +252,9 @@ G6 After result
 
 ต้องการ: ดีลไหนน่าสนใจ next action คืออะไร (priority + research + activity)
 → roots-sales-dashboard intelligence
+
+ต้องการ: วิเคราะห์ดีล*ตัวเดียว* ลึก — tier, MEDDICC health, ควรทำอะไรต่อ ("ดีลนี้ทำอะไรต่อ", "score ดีล [name]")
+→ deal-strategy (v4) — score scorecard v2 + MEDDICC + CTA เขียนลง chatter
 
 ต้องการ: ดึง pipeline หรือ revenue ดิบจาก Odoo
 → odoo-crm-sync (pipeline) / odoo-sales-report (revenue)

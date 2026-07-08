@@ -121,7 +121,75 @@ OUTPUT
 
 ---
 
-## 8) Roadmap note
+## 8) Context assembly + CTA loop (methodology)
+
+deal-strategy ไม่ใช่ score ครั้งเดียวจบ — เป็น **loop** ที่ AI เข้าใจ lead ต่อเนื่อง แล้ว *สั่งให้ทำ* (ไม่ใช่แค่ให้ข้อมูล)
+
+### 8.1 Full context = 4 ชั้น (assemble ก่อน diagnose ทุกครั้ง)
+
+| ชั้น | ดึงจาก Odoo | ให้อะไร |
+|---|---|---|
+| **Static** | crm.lead fields + partner (industry, มหาชน?, DBD) | tier, size, sector, decision structure |
+| **History** ⭐ | **chatter (message_ids)** + activities + stage log | สิ่งที่เคยคุย + AI เคยแนะนำ + AE ตอบอะไร |
+| **Related** | sale.order (quote/GAP line) + ดีลอื่นของ partner เดียวกัน | GAP status, ประวัติซื้อ, expansion |
+| **Derived** | คำนวณ days-in-stage · MEDDICC health · tempo | สัญญาณ graveyard/stale |
+
+### 8.2 chatter = shared memory (หัวใจของความต่อเนื่อง)
+
+- AI เขียน note (score/CTA) ลง chatter → **ไม่หาย**
+- รอบถัดไป AI อ่าน **note เก่าของตัวเอง + คำตอบ AE + activity ใหม่** → เข้าใจว่าดีลเปลี่ยนไปยังไง
+- ไม่ต้องมี state DB ซับซ้อน — **Odoo chatter = thread ร่วม AI↔AE** (ยิ่งเลื่อน `x_gap_status` ออก ยิ่งพึ่ง chatter เป็น memory)
+
+### 8.3 CTA — log ต้องมี 3 อย่าง (ไม่ใช่แค่ข้อมูล)
+
+1. **🎯 ONE Next Best Action** — สิ่งเดียวสำคัญสุด + owner + SLA (เลือกตาม decision priority §4: killing-zone > graveyard > MEDDICC gap > base play)
+2. **🔀 Decision fork** — ให้ AE navigate เอง: "ถ้า X → เดินหน้า · ถ้า Y → ลด tier/หยุด"
+3. **↩️ Reply path** — "ตอบใน chatter นี้ → AI re-diagnose + step ถัดไป" (ปิด loop)
+
+### 8.4 Loop
+
+```
+Assemble ctx (§8.1) → Diagnose → Log + CTA (§8.3) → AE acts (reply/activity/stage)
+        ↑─────────────────────── [event ใหม่ → orchestrator poll] ───────────────┘
+```
+orchestrator poll **เฉพาะดีลที่มี event ใหม่** (ไม่ full-sweep — ดู §9)
+
+---
+
+## 9) Token / cost policy (tier เหมือนกลยุทธ์)
+
+> **"ไม่ run token-democracy"** — เผา token ที่ดีลที่ให้ return (A) ไม่ใช่ทุกดีลเท่ากัน = หลักการเดียวกับ resource allocation
+
+### 9.1 คันโยกลดต้นทุน
+- **Event-driven ไม่ full-sweep** — diagnose เฉพาะดีลที่*เปลี่ยน* (stage/AE reply/activity) = ~10–20 ดีล/วัน ไม่ใช่ 200
+- **Tier-gate ความลึก** (ดู 9.2)
+- **Model tiering** — Haiku (ถูก) triage/routine · Opus เฉพาะ A / ตอน AE ถามเอง
+- **Prompt caching refs** — doctrine/scorecard/service-matrix static → cache → repeated cost ลด ~90%
+- **Distill ครั้งเดียว** ⭐ — research fields ยาว อ่านรอบแรกครั้งเดียว → สรุปลง chatter → รอบถัดไปอ่าน**สรุป** ไม่ใช่ raw (จุดประหยัดใหญ่สุด)
+
+### 9.2 Policy ต่อ tier
+```
+A  → deep · ทุก event · Sonnet/Opus
+B  → เบา · เฉพาะ event สำคัญ · Sonnet
+C  → template สั้น · รายสัปดาห์ · Haiku
+D  → ไม่ auto-diagnose (ข้าม)
+Full deep sweep → เดือน/ไตรมาสละครั้ง (ตอนทำ Playbook)
+```
+
+### 9.3 ประมาณการ (order of magnitude)
+- **รอบแรก** (refs + research ยาว): ~15–25K token → refs cached หลังจากนั้น
+- **รอบถัดไป** (summary + chatter ล่าสุด): ~3–6K token
+- **~300 event-diagnoses/เดือน** ส่วนใหญ่ Haiku → **~2–5M token/เดือน**
+- เทียบ full-sweep 200 ดีล/วัน × raw × Opus = **~100M+ token/เดือน (แพง 20–50×) — ห้ามทำ**
+
+### 9.4 ต้องออกแบบใน skill (กันแพง)
+- **สรุป context เก็บ** (ไม่ re-ingest raw ทุกรอบ) — chatter-as-memory ช่วยตรงนี้
+- query เฉพาะ field ที่ใช้ (ไม่ดึงทั้ง record)
+- distill research → summary note ครั้งเดียว
+
+---
+
+## 10) Roadmap note
 
 - ไฟล์นี้เตรียมแปลงเป็น skill เสริมใน plugin (v4.0 Loop 2 — `deal-strategy`)
 - ต้องมีก่อน: `x_deal_tier` + `x_gap_status` ใน Odoo (ดู [[odoo-spec-reason-taxonomy]] / Phase 0) และ scorecard v2 ([[customer-scorecard]])

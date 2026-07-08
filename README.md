@@ -2,7 +2,7 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
-**Version:** `v3.5.3` · **34 skills** · **6 sub-agents** · **2 commands** · **3 MCP connectors**
+**Version:** `v4.0.0` · **36 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
@@ -29,7 +29,7 @@ claude plugin install sales@roots-sales-plugin
 ```
 roots-sales-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json              # Plugin manifest (name: sales, v3.5.3)
+│   ├── plugin.json              # Plugin manifest (name: sales, v4.0.0)
 │   └── marketplace.json         # Marketplace registration
 ├── .mcp.json                    # Google Workspace connectors (3 active)
 ├── CONTEXT.md                   # Roots company context (auto-loaded)
@@ -159,6 +159,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Version | What changed |
 |---|---|
+| `v4.0.0` | **Hunting Strategy layer** — `deal-strategy` (scorecard v2 tier + MEDDICC + killing-zone + CTA to Odoo chatter), `deal-lessons`, `strategy-orchestrator` agent, Lost/Won reason taxonomy + Odoo automation hooks; references: `strategy-doctrine`, `customer-scorecard`, `deal-service-matrix`, `won-lost-cheatsheet` |
 | `v3.5.3` | sales-help navigator: removed a phantom skill reference, added design-path routing |
 | `v3.5.2` | Routed `create-an-asset`, `se-orchestrator` (Mode F), `competitive-intelligence` to Claude Design + brand-ci |
 | `v3.5.1` | Committed verified Roots & BEECY logos (`assets/brand/`) + labelled variants |

@@ -35,6 +35,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 | `pm-handoff` | ส่งต่อ Sales → PM หลัง deal won | "deal closed ส่งต่อให้ PM" |
 | `tor-factory-orchestrator` | TOR factory pipeline — enforces G0–G5 gate sequence | "orchestrate TOR [tor_id]" หรือ "factory mode" |
 | `tor-qa-reviewer` | TOR compliance QA — coverage + consistency + attachment | "ตรวจ compliance proposal [tor_id]" |
+| `strategy-orchestrator` **(v4)** | Batch runner ของ hook loop — poll flag (`x_needs_strategy`/`x_needs_lesson`) → deal-strategy/deal-lessons → เขียน chatter → clear (CLI/scheduled) | "run strategy orchestrator", "poll flagged deals", "รันคิว AI" |
 
 ### Skills (fire อัตโนมัติในบทสนทนาหลัก)
 
@@ -89,7 +90,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 | `forecast` | Weighted forecast + quota tracking |
 | `lean-canvas` | Project fit + priority scoring |
 
-**Odoo Live Data (v3.1 / v3.2) — ต้องมี odoorpc-cli + ใช้บน Claude Code CLI**
+**Odoo Live Data (v3.1 / v3.2 / v4) — ต้องมี odoorpc-cli + ใช้บน Claude Code CLI**
 | Skill | ทำอะไร |
 |---|---|
 | `odoorpc-cli` | Reference คำสั่ง `odoo` ทั้งหมด — auth, search, CRUD, call-method |
@@ -256,6 +257,9 @@ G6 After result
 ต้องการ: วิเคราะห์ดีล*ตัวเดียว* ลึก — tier, MEDDICC health, ควรทำอะไรต่อ ("ดีลนี้ทำอะไรต่อ", "score ดีล [name]")
 → deal-strategy (v4) — score scorecard v2 + MEDDICC + CTA เขียนลง chatter
 
+ต้องการ: รันคิว AI — process ดีลที่ Odoo ตั้ง flag ไว้ (batch/scheduled)
+→ strategy-orchestrator (v4) — poll x_needs_strategy/lesson → route → write-back → clear flag
+
 ต้องการ: ดึง pipeline หรือ revenue ดิบจาก Odoo
 → odoo-crm-sync (pipeline) / odoo-sales-report (revenue)
 ```
@@ -349,3 +353,5 @@ Mode A จะสร้างคำถาม 20-30 ข้อที่ targeted �
 - **Proposal:** ต้องผ่าน `proposal-reviewer` ก่อนส่งทุกครั้ง — ไม่มีข้อยกเว้น
 - **Deal won:** `pm-handoff` ต้องทำก่อน kickoff เสมอ — ป้องกัน scope creep
 - **Custom skills (Phase 2):** `odoo-gap-analysis`, `roots-manday-estimator`, `roots-tor-analyzer`, `roots-bid-prep`, `roots-tor-intake`, `roots-compliance-matrix`, `roots-scoring-matrix`, `roots-evidence-matcher`, `roots-doc-freshness`, `roots-lc-check`, `roots-cv-builder`, `roots-submission-packager`, `roots-lessons-learned` — ยังต้อง validate output กับ Odoo 18 docs จริงเสมอ
+- **v4 Hunting (deal strategy layer):** ทุกดีลมี `x_deal_tier` (A/B/C/D) จาก scorecard v2 → ใช้ `deal-strategy` วินิจฉัยดีลเดียว (score + MEDDICC + killing-zone + CTA เขียน chatter) · Odoo Automation Rules ตั้ง flag อัตโนมัติเมื่อ stage เข้า Quoting/Proposing หรือ Won/Lost → `strategy-orchestrator` poll+process · doctrine/scorecard/service-matrix/won-lost อยู่ใน `references/` · **CLI-only** (แตะ Odoo)
+- **"ไม่ run democracy":** จัดสรร resource + ความลึกของ diagnosis ตาม tier (A ทุ่มสุด → D ข้าม) — ดู `references/deal-service-matrix.md`

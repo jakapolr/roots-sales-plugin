@@ -18,6 +18,8 @@ phase: 2
 > - **Community Implementation** — Roots custom project on Community (full customization, customer-owned)
 > Pick which paths are realistic for the client *before* building the matrix (e.g. heavy custom needs rule out BEECY SaaS).
 
+> **Odoo 20 CE feature boundary (code-verified):** for what Community actually has vs what is Enterprise-only in v20, follow [references/odoo20-ce/](../../references/odoo20-ce/) (STUDY-PAPER §1.2 CE-vs-EE + each area §5) or the `odoo20-ce-expert` skill — do **not** guess feature parity from memory. The Enterprise-only / Thai-localization lists below are a starting point; verify against the KB for the client's target version.
+
 ## Trigger
 Use when:
 - User asks "which version should we recommend for [client]?"
@@ -71,6 +73,8 @@ BEECY-specific features that Enterprise does NOT include out-of-box:
 - Thai address format (Tambon/Amphoe/Changwat)
 - Thai bank transfer formats (KTB, SCB, Bangkok Bank)
 - Thai language UI
+
+> ⚠️ **v20 stock-CE reality check:** stock `l10n_th` in Odoo 20 CE does **not** ship e-Tax Invoice or Thai Payroll (PND1/3/53) — these are Roots/BEECY custom builds, not native CE. See [references/odoo20-ce/areas/10-localizations.md](../../references/odoo20-ce/areas/10-localizations.md) §8 for the exact native-vs-gap list, and count every non-native item as build effort in the GAP + manday estimate.
 
 ### Scoring Decision Matrix
 

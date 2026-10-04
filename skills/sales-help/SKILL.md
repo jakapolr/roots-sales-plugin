@@ -59,7 +59,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 **Solution Design (Phase 2 Custom)**
 | Skill | ทำอะไร |
 |---|---|
-| `odoo-editions` | อธิบายความต่าง Community / Enterprise / Odoo Online / BEECY SaaS / Community implementation (อ้าง references/odoo-editions.md) |
+| `odoo-editions` | อธิบายความต่าง Community / Enterprise / Odoo Online / BEECY SaaS / Community implementation + **ราคาแผน & ประเภท user (Standard / Custom / Light User)** (อ้าง references/odoo-editions.md + `references/odoo20-ce/data/pricing-th.md` `[web]`) |
 | `odoo-gap-analysis` | GAP Analysis Enterprise vs BEECY SaaS vs Community implementation + cost comparison |
 | `odoo20-ce-expert` **(v4.1)** | ตอบคำถาม Odoo 20 CE — ฟีเจอร์ใหม่, การเปลี่ยน 19→20, อะไรเป็น Enterprise-only, อัปเกรด/port, `l10n_th` (อ้าง `references/odoo20-ce/`, code-verified vs 19.0) |
 | `roots-manday-estimator` | ประเมิน Manday + Project Cost (THB) 3 scenarios |
@@ -159,6 +159,12 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 
 ต้องการ: เข้าใจความต่าง Community/Enterprise/Online/BEECY (ลูกค้าถาม version ไหนดี)
 → odoo-editions
+
+ต้องการ: ราคา Odoo / แผน Standard-Custom-Light User / "Enterprise user คืออะไร"
+→ odoo-editions (อ้าง references/odoo20-ce/data/pricing-th.md [web] — USD/user/เดือน, THB = FX toggle)
+
+ต้องการ: เทียบ CE vs EE ระดับแอป (แอปไหน Enterprise-only)
+→ odoo20-ce-expert (อ้าง references/odoo20-ce/data/editions-ce-vs-ee.md [web])
 
 ต้องการ: เทียบ feature/cost + เลือก path (Enterprise vs BEECY SaaS vs Community impl)
 → odoo-gap-analysis

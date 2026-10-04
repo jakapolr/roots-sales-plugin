@@ -1,0 +1,232 @@
+{
+  "id": "hr",
+  "title": {"en": "Human Resources, Project, Timesheets & Services", "th": "Human Resources, Project, Timesheets และ Services"},
+  "tagline": {
+    "en": "Covers employees, time off, attendance, expenses, recruitment, projects, timesheets and service billing in Odoo 20 CE, where the HR time data model was re-platformed.",
+    "th": "ครอบคลุมพนักงาน การลา การเข้างาน ค่าใช้จ่าย การสรรหา โปรเจกต์ timesheet และการเรียกเก็บเงินงานบริการใน Odoo 20 CE ซึ่งโมเดลข้อมูลเวลาของ HR ถูกออกแบบใหม่"
+  },
+  "apps": ["hr", "hr_attendance", "hr_holidays", "hr_work_entry", "hr_expense", "hr_recruitment", "hr_skills", "hr_timesheet", "project", "sale_project", "sale_timesheet", "resource", "lunch"],
+  "functional": [
+    {
+      "title": {"en": "Time Off types merged into Work Entry Types", "th": "ประเภทการลา (Time Off) ถูกรวมเข้ากับ Work Entry Types"},
+      "body": {
+        "en": "`hr.leave.type` is deleted and `hr.work.entry.type` now carries all its settings (allocation requirement, validation, unit, paid/unpaid and so on). Any customisation touching leaves needs rework.",
+        "th": "`hr.leave.type` ถูกลบ และ `hr.work.entry.type` รับการตั้งค่าทั้งหมดไปแทน (การกำหนดให้ต้องมี allocation, การอนุมัติ, หน่วย, ลาแบบได้รับค่าจ้าง/ไม่ได้รับค่าจ้าง ฯลฯ) การ customize ที่เกี่ยวกับการลาต้องปรับใหม่"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Generic Time Rules engine replaces overtime rulesets", "th": "Time Rules engine แบบทั่วไปมาแทน overtime ruleset"},
+      "body": {
+        "en": "`hr.time.rule` is a configurable engine for overtime and premium rates (conditions, tolerances, premium multiplier, country packs such as Indonesia and Saudi Arabia). Overtime can be compensated as time off via `leave_compensation_rate`; rules run in sequence order and the lower sequence wins on overlap.",
+        "th": "`hr.time.rule` เป็น engine ที่ปรับแต่งได้สำหรับการคำนวณ overtime และอัตราพิเศษ (เงื่อนไข, ค่าความคลาดเคลื่อน, ตัวคูณอัตราพิเศษ, ชุดกฎประจำประเทศ เช่น อินโดนีเซียและซาอุดีอาระเบีย) สามารถชดเชย overtime เป็นวันลาได้ผ่าน `leave_compensation_rate` กฎทำงานตามลำดับ sequence และเมื่อทับซ้อนกันกฎที่มี sequence ต่ำกว่าจะชนะ"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Attendance validation, breaks, selfie and auto check-out", "th": "การตรวจสอบการเข้างาน การพัก selfie และ auto check-out"},
+      "body": {
+        "en": "Attendance gains validation states (draft/validated/refused), break management, selfie capture at check-in, a work entry type per attendance, and auto check-out by tolerance or at a specific time. These are company-level options in `hr_attendance`.",
+        "th": "การเข้างานมีสถานะการตรวจสอบ (draft/validated/refused), การจัดการเวลาพัก, การถ่าย selfie ตอน check-in, work entry type ต่อรายการเข้างาน และ auto check-out ตามค่าความคลาดเคลื่อนหรือตามเวลาที่กำหนด ทั้งหมดเป็นตัวเลือกระดับบริษัทใน `hr_attendance`"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Employee Type, scheduled Departure and native org chart", "th": "Employee Type, Departure แบบกำหนดเวลา และ org chart ใน hr"},
+      "body": {
+        "en": "Contract Type is renamed Employee Type (`hr.employee.type`), and departures become a persistent, auditable record that can be scheduled. The org chart, weekday home-working locations and hourly cost are now part of `hr` itself.",
+        "th": "Contract Type เปลี่ยนชื่อเป็น Employee Type (`hr.employee.type`) และการลาออก (departure) เป็นระเบียนถาวรที่ตรวจสอบย้อนหลังได้และกำหนดเวลาล่วงหน้าได้ ส่วน org chart, สถานที่ทำงานรายวัน (home-working) และ hourly cost อยู่ใน `hr` โดยตรงแล้ว"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Resource calendars redesigned", "th": "ออกแบบ Resource calendar ใหม่"},
+      "body": {
+        "en": "`calendar_type` is fixed (weekly repeating), variable (date-specific with recurrence) or undefined (flexible, optional hours target). Two-week alternating calendars no longer exist as a field and must be converted to variable calendars with recurrence.",
+        "th": "`calendar_type` มี 3 แบบ คือ fixed (ซ้ำรายสัปดาห์), variable (ระบุตามวันที่พร้อมการทำซ้ำ) และ undefined (ยืดหยุ่น มีเป้าหมายชั่วโมงเป็นทางเลือก) ปฏิทินสลับ 2 สัปดาห์ไม่มีเป็นฟิลด์อีกต่อไป และต้องแปลงเป็น variable calendar ที่มี recurrence"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Project: rotting, Time-by-Stage report and collaborator access modes", "th": "Project: rotting, รายงาน Time by Stage และโหมดสิทธิ์ของ collaborator"},
+      "body": {
+        "en": "Stages get a rotting threshold so stale projects are flagged, a new Time by Stage report is limited to project managers, and collaborator sharing moves from a limited-access flag to view / edit / advanced_edit modes.",
+        "th": "Stage มีเกณฑ์ rotting เพื่อแจ้งโปรเจกต์ที่ค้างนาน มีรายงาน Time by Stage ใหม่ที่เข้าถึงได้เฉพาะ project manager และการแชร์ให้ collaborator เปลี่ยนจากแฟล็ก limited-access เป็นโหมด view / edit / advanced_edit"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Service billing refactor and new bridge modules", "th": "ปรับโครงสร้างการเรียกเก็บเงินงานบริการและโมดูล bridge ใหม่"},
+      "body": {
+        "en": "`billable_type` now lives in `sale_project` and replaces `timesheet_invoice_type`. New auto-installed bridges add projects from opportunities (`crm_sale_project`), project margin (`sale_project_margin`) and tasks from e-commerce withdrawal requests (`website_sale_project`).",
+        "th": "`billable_type` ย้ายไปอยู่ใน `sale_project` และมาแทน `timesheet_invoice_type` มีโมดูล bridge ใหม่ที่ติดตั้งอัตโนมัติ ได้แก่ การสร้างโปรเจกต์จาก opportunity (`crm_sale_project`), margin ของโปรเจกต์ (`sale_project_margin`) และ task จากคำขอถอนตัว (withdrawal) ของ e-commerce (`website_sale_project`)"
+      },
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Expense limits by job position; recruitment and time-off improvements", "th": "วงเงินค่าใช้จ่ายตามตำแหน่งงาน และการปรับปรุงการสรรหาและการลา"},
+      "body": {
+        "en": "Expenses support per-product limits by job position and linking to an existing vendor bill. Recruitment adds job tags, salary range and a single-refuse wizard, and Time Off adds a public-holiday loader by country and year plus new accrual options (Medium confidence: read at field level only).",
+        "th": "Expense รองรับวงเงินต่อสินค้าตามตำแหน่งงานและการเชื่อมกับ vendor bill ที่มีอยู่ ส่วน Recruitment เพิ่ม job tag, ช่วงเงินเดือน และ wizard ปฏิเสธผู้สมัครรายเดียว และ Time Off เพิ่มตัวโหลดวันหยุดนักขัตฤกษ์ตามประเทศและปี พร้อมตัวเลือก accrual ใหม่ (ความเชื่อมั่นระดับกลาง: ตรวจในระดับฟิลด์เท่านั้น)"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "ESG scan: only fleet CO2 data exists in CE", "th": "ผลสแกน ESG: CE มีเพียงข้อมูล CO2 ของยานพาหนะใน fleet"},
+      "body": {
+        "en": "CE has no ESG, carbon-accounting, Scope 1/2/3 or emission-factor module. The only true emissions data is the type-approval CO2 per vehicle model in `fleet` (g/km or g/mi, with standard such as WLTP, identical to v19; High confidence), while HR data (time off, attendance, skills, departures, weekday work location) can support S-type KPIs but has no ready-made ESG indicators. Anything beyond that is custom development or third-party modules.",
+        "th": "CE ไม่มีโมดูล ESG, carbon accounting, Scope 1/2/3 หรือ emission factor ข้อมูลการปล่อยก๊าซที่แท้จริงมีเพียงค่า CO2 ตามการรับรองประเภท (type-approval) ต่อรุ่นยานพาหนะใน `fleet` (g/km หรือ g/mi พร้อมมาตรฐาน เช่น WLTP เหมือน v19 ความเชื่อมั่นสูง) ส่วนข้อมูล HR (การลา การเข้างาน skills การลาออก สถานที่ทำงานรายวัน) รองรับ KPI ด้าน S ได้ แต่ไม่มีตัวชี้วัด ESG สำเร็จรูป สิ่งที่เกินกว่านี้ต้องพัฒนาเองหรือใช้โมดูลของบุคคลที่สาม"
+      },
+      "impact": "medium", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "`hr.leave.type` merged into `hr.work.entry.type`", "th": "`hr.leave.type` ถูกรวมเข้ากับ `hr.work.entry.type`"},
+      "body": {
+        "en": "All leave-type fields moved to `hr.work.entry.type`, and `holiday_status_id`, `time_off_type_id` and `leave_type` all become `work_entry_type_id`. `count_as` replaces `is_work`/`is_leave`/`is_extra_hours`, and `resource.calendar.leaves.time_type` becomes `count_as`.",
+        "th": "ฟิลด์ทั้งหมดของ leave type ย้ายไปที่ `hr.work.entry.type` และ `holiday_status_id`, `time_off_type_id`, `leave_type` เปลี่ยนเป็น `work_entry_type_id` ทั้งหมด `count_as` มาแทน `is_work`/`is_leave`/`is_extra_hours` และ `resource.calendar.leaves.time_type` เปลี่ยนเป็น `count_as`"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/hr_holidays/models/hr_work_entry_type.py", "addons/hr_holidays/models/hr_leave.py", "addons/hr_holidays/data/hr_work_entry_type_data.xml"]
+    },
+    {
+      "title": {"en": "`hr.time.rule` engine and source mixin", "th": "`hr.time.rule` engine และ source mixin"},
+      "body": {
+        "en": "`hr.time.rule` (about 900 lines) outputs a `work_entry_type_id` with `amount_rate`, filters employees with a Python `employee_domain`, and is extended in `hr_attendance` and `hr_holidays`. `hr.time.rule.source.mixin` lets `hr.attendance` and `hr.leave` be pipeline inputs and outputs, linked via `time_rule_id` and `source_*_id`.",
+        "th": "`hr.time.rule` (ประมาณ 900 บรรทัด) ให้ผลลัพธ์เป็น `work_entry_type_id` พร้อม `amount_rate` กรองพนักงานด้วย Python `employee_domain` และถูกขยายใน `hr_attendance` และ `hr_holidays` โดย `hr.time.rule.source.mixin` ทำให้ `hr.attendance` และ `hr.leave` เป็นทั้ง input และ output ของ pipeline เชื่อมกันผ่าน `time_rule_id` และ `source_*_id`"
+      },
+      "impact": "high", "kind": "new",
+      "refs": ["addons/hr_work_entry/models/hr_time_rule.py", "addons/hr_attendance/models/hr_time_rule.py", "addons/hr_holidays/models/hr_time_rule.py", "addons/hr_work_entry/data/hr_time_rule_data.xml"]
+    },
+    {
+      "title": {"en": "`hr.work.entry` and overtime ruleset models removed", "th": "ลบโมเดล `hr.work.entry` และ overtime ruleset"},
+      "body": {
+        "en": "`hr.work.entry` and `hr.work.entry.regeneration.wizard` no longer exist in CE, and `hr.attendance.overtime.ruleset/rule/line` are removed. `hr.employee` loses `work_entry_source` and `ruleset_id`, `hr.version` loses `date_generated_from/to`, and employees/versions get `attendance_based`.",
+        "th": "`hr.work.entry` และ `hr.work.entry.regeneration.wizard` ไม่มีใน CE แล้ว และ `hr.attendance.overtime.ruleset/rule/line` ถูกลบ `hr.employee` สูญเสีย `work_entry_source` และ `ruleset_id`, `hr.version` สูญเสีย `date_generated_from/to` และ employee/version มี `attendance_based` เพิ่ม"
+      },
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/hr_work_entry/models/", "addons/hr_attendance/models/hr_time_rule.py"]
+    },
+    {
+      "title": {"en": "Resource calendar `calendar_type` and attendance recurrence", "th": "`calendar_type` ของ resource calendar และ recurrence ของ attendance"},
+      "body": {
+        "en": "`calendar_type` replaces `schedule_type`, `flexible_hours`, `duration_based`, `two_weeks_calendar` and `attendance_ids_1st_week/2nd_week`. `resource.calendar.attendance` gains `date` and recurrence fields (`recurrency_type`, `interval`, `count`, `until`, `excluded_occurences`), and the calendar gains `reference_calendar_id` and `days_per_week`.",
+        "th": "`calendar_type` มาแทน `schedule_type`, `flexible_hours`, `duration_based`, `two_weeks_calendar` และ `attendance_ids_1st_week/2nd_week` `resource.calendar.attendance` เพิ่ม `date` และฟิลด์ recurrence (`recurrency_type`, `interval`, `count`, `until`, `excluded_occurences`) และ calendar เพิ่ม `reference_calendar_id` และ `days_per_week`"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/resource/models/resource_calendar.py", "addons/resource/models/resource_calendar_attendance.py"]
+    },
+    {
+      "title": {"en": "Employee Type, departure model and version wizard", "th": "Employee Type, โมเดล departure และ version wizard"},
+      "body": {
+        "en": "`hr.contract.type` is replaced by `hr.employee.type` (`contract_type_id` becomes `employee_type_id`, also on `hr.job`). `hr.departure.wizard` becomes the persistent `hr.employee.departure` (extended by `hr_holidays`, `hr_fleet`, `hr_maintenance`), and `hr.version.wizard` becomes `hr.employee.create.version.wizard`.",
+        "th": "`hr.contract.type` ถูกแทนด้วย `hr.employee.type` (`contract_type_id` เปลี่ยนเป็น `employee_type_id` รวมถึงบน `hr.job`) `hr.departure.wizard` กลายเป็นโมเดลถาวร `hr.employee.departure` (ถูกขยายโดย `hr_holidays`, `hr_fleet`, `hr_maintenance`) และ `hr.version.wizard` เปลี่ยนเป็น `hr.employee.create.version.wizard`"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/hr/models/hr_employee_type.py", "addons/hr/models/hr_employee_departure.py", "addons/hr/data/hr_employee_type_data.xml"]
+    },
+    {
+      "title": {"en": "Billing fields: `billable_type` and `reinvoice_move_id`", "th": "ฟิลด์การเรียกเก็บเงิน: `billable_type` และ `reinvoice_move_id`"},
+      "body": {
+        "en": "`timesheet_invoice_type` and `timesheet_invoice_id` are replaced by `billable_type` (computed in `sale_project`) and `reinvoice_move_id`. `sale_project` adds `real_cost`, `real_cost_ratio`, `sale_warning_text` and `sale.order.project_required`, while `sale_project/models/account_move.py` and `project_update.py` are removed.",
+        "th": "`timesheet_invoice_type` และ `timesheet_invoice_id` ถูกแทนด้วย `billable_type` (คำนวณใน `sale_project`) และ `reinvoice_move_id` `sale_project` เพิ่ม `real_cost`, `real_cost_ratio`, `sale_warning_text` และ `sale.order.project_required` ส่วน `sale_project/models/account_move.py` และ `project_update.py` ถูกลบ"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/sale_project/models/account_analytic_line.py", "addons/sale_timesheet/models/account_move_send.py"]
+    },
+    {
+      "title": {"en": "Project model changes: `access_mode`, rotting, stage report", "th": "การเปลี่ยนแปลงโมเดล project: `access_mode`, rotting, stage report"},
+      "body": {
+        "en": "`project.collaborator.limited_access` becomes `access_mode` (view/edit/advanced_edit). Rotting uses `mail.tracking.duration.mixin` with `rotting_threshold_days`, `is_rotting` and `rotting_days`, the SQL view `project.task.stage.report` is new, and burndown flags change from `is_closed` to `is_open`/`is_done`/`is_canceled`. `project` now depends on `portal_rating`.",
+        "th": "`project.collaborator.limited_access` เปลี่ยนเป็น `access_mode` (view/edit/advanced_edit) Rotting ใช้ `mail.tracking.duration.mixin` พร้อม `rotting_threshold_days`, `is_rotting` และ `rotting_days` มี SQL view `project.task.stage.report` ใหม่ และแฟล็กของ burndown เปลี่ยนจาก `is_closed` เป็น `is_open`/`is_done`/`is_canceled` โดย `project` ขึ้นกับ `portal_rating` แล้ว"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/project/models/project_collaborator.py", "addons/project/models/project_project_stage.py", "addons/project/report/project_time_by_stage_report.py"]
+    },
+    {
+      "title": {"en": "Recruitment, expense and attendance field changes", "th": "การเปลี่ยนแปลงฟิลด์ใน recruitment, expense และ attendance"},
+      "body": {
+        "en": "Recruitment renames `user_id` to `recruiter_id`, removes `legend_*` and `applicant.send.mail`, and adds `hr.job.tag` and `applicant.refuse.single`. `hr.expense.post.wizard` is removed in favour of `hr.expense.product.job.position.limit` and `existing_bill_id`, and `hr.attendance` gains `state`, `work_entry_type_id`, `break_duration` and `in_image`.",
+        "th": "Recruitment เปลี่ยนชื่อ `user_id` เป็น `recruiter_id` ลบ `legend_*` และ `applicant.send.mail` และเพิ่ม `hr.job.tag` และ `applicant.refuse.single` ลบ `hr.expense.post.wizard` และมี `hr.expense.product.job.position.limit` และ `existing_bill_id` แทน ส่วน `hr.attendance` เพิ่ม `state`, `work_entry_type_id`, `break_duration` และ `in_image`"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/hr_recruitment/models/hr_job_tag.py", "addons/hr_expense/models/hr_expense_product_job_position_limit.py", "addons/hr_attendance/models/res_company.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {
+        "en": "Custom code, reports, server actions and security domains using `hr.leave.type`, `holiday_status_id`, `time_type` or `is_leave`/`is_work`/`is_extra_hours` will break and must move to `hr.work.entry.type` and `count_as`. Migration needs table moves and renames, and no Odoo migration scripts were found in the tree to confirm the official plan.",
+        "th": "โค้ด custom, รายงาน, server action และ security domain ที่ใช้ `hr.leave.type`, `holiday_status_id`, `time_type` หรือ `is_leave`/`is_work`/`is_extra_hours` จะใช้งานไม่ได้ และต้องย้ายไปใช้ `hr.work.entry.type` และ `count_as` การ migrate ต้องย้ายและเปลี่ยนชื่อตาราง และไม่พบ migration script ของ Odoo ใน tree เพื่อยืนยันแผนอย่างเป็นทางการ"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "The `hr.attendance.overtime.*` tables are dropped, and the overtime balances (`overtime_hours`, `validated_overtime_hours`, `linked_overtime_ids`) are not present in 20. Plan data conversion and recomputation, and test time-rule sequences carefully because the lower sequence wins.",
+        "th": "ตาราง `hr.attendance.overtime.*` ถูกลบ และยอด overtime (`overtime_hours`, `validated_overtime_hours`, `linked_overtime_ids`) ไม่มีใน v20 ต้องวางแผนการแปลงข้อมูลและคำนวณใหม่ และทดสอบลำดับ sequence ของ time rule อย่างรอบคอบ เพราะ sequence ที่ต่ำกว่าจะชนะ"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "`hr.work.entry` no longer exists in CE, so any CE-based payroll connector that read work entries needs redesign. Use the new export wizard or read attendance and leave directly.",
+        "th": "`hr.work.entry` ไม่มีใน CE แล้ว ตัวเชื่อม payroll บน CE ที่เคยอ่าน work entry ต้องออกแบบใหม่ ให้ใช้ export wizard ใหม่หรืออ่าน attendance และ leave โดยตรง"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Contract Type is now Employee Type (`contract_type_id` becomes `employee_type_id`), so imports and API integrations break. Any custom inheritance of `hr.departure.wizard` must move to `hr.employee.departure`.",
+        "th": "Contract Type เปลี่ยนเป็น Employee Type (`contract_type_id` เป็น `employee_type_id`) ทำให้การ import และการเชื่อมต่อ API ใช้ไม่ได้ และการ inherit `hr.departure.wizard` แบบ custom ต้องย้ายไปที่ `hr.employee.departure`"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Two-week calendars, `flexible_hours`, `duration_based` and `schedule_type` are replaced by `calendar_type`. Verify flexible-hours employees (`is_flexible` is removed) and part-time templates after migration.",
+        "th": "ปฏิทิน 2 สัปดาห์, `flexible_hours`, `duration_based` และ `schedule_type` ถูกแทนด้วย `calendar_type` ให้ตรวจสอบพนักงานที่ทำงานแบบชั่วโมงยืดหยุ่น (`is_flexible` ถูกลบ) และ template แบบ part-time หลังการ migrate"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Timesheet invoicing: `timesheet_invoice_type`/`timesheet_invoice_id` are removed, so update reports, BI and filters to `billable_type` and `reinvoice_move_id` and retest the invoice-on-timesheet flow.",
+        "th": "การออกใบแจ้งหนี้จาก timesheet: `timesheet_invoice_type`/`timesheet_invoice_id` ถูกลบ ให้ปรับรายงาน BI และตัวกรองไปใช้ `billable_type` และ `reinvoice_move_id` และทดสอบขั้นตอน invoice-on-timesheet ใหม่"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Project sharing: the `limited_access` flag becomes `access_mode`, so collaborators must be re-mapped (limited = view, full = edit, presumably; verify). The exact meaning of `advanced_edit` was only partly read.",
+        "th": "การแชร์โปรเจกต์: แฟล็ก `limited_access` เปลี่ยนเป็น `access_mode` ต้อง map collaborator ใหม่ (limited = view, full = edit น่าจะเป็นเช่นนั้น ควรตรวจสอบ) ความหมายที่แน่ชัดของ `advanced_edit` ตรวจอ่านได้เพียงบางส่วน"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Do not rely on removed module names in `depends` of custom addons (`hr_org_chart`, `hr_hourly_cost`, `hr_homeworking*`, `hr_work_entry_holidays`); use `hr`, `hr_calendar` or `hr_holidays`. `hr_attendance` and `hr_holidays` now require `hr_work_entry`, and auto-installed bridges (`crm_sale_project`, `sale_project_margin`, `website_sale_project`, `hr_calendar_google`, `fleet_maintenance`) add new menus and fields after upgrade.",
+        "th": "อย่าอ้างชื่อโมดูลที่ถูกลบใน `depends` ของ addon custom (`hr_org_chart`, `hr_hourly_cost`, `hr_homeworking*`, `hr_work_entry_holidays`) ให้ใช้ `hr`, `hr_calendar` หรือ `hr_holidays` แทน `hr_attendance` และ `hr_holidays` ต้องใช้ `hr_work_entry` และโมดูล bridge ที่ติดตั้งอัตโนมัติ (`crm_sale_project`, `sale_project_margin`, `website_sale_project`, `hr_calendar_google`, `fleet_maintenance`) จะเพิ่มเมนูและฟิลด์ใหม่หลังอัปเกรด"
+      },
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Payroll (`hr_payroll*`) is not in CE; work-entry generation and payslip integration stay in Enterprise.", "th": "Payroll (`hr_payroll*`) ไม่มีใน CE การสร้าง work entry และการเชื่อมกับ payslip อยู่ใน Enterprise"},
+    {"en": "Appraisal, Planning and contract management are Enterprise-only (confirmed absent from `addons/`).", "th": "Appraisal, Planning และ contract management มีเฉพาะ Enterprise (ยืนยันว่าไม่มีใน `addons/`)"},
+    {"en": "Helpdesk and Field Service (`industry_fsm`) are Enterprise-only.", "th": "Helpdesk และ Field Service (`industry_fsm`) มีเฉพาะ Enterprise"},
+    {"en": "Documents, Sign and Approvals are Enterprise-only.", "th": "Documents, Sign และ Approvals มีเฉพาะ Enterprise"},
+    {"en": "Timesheet Grid / `project_enterprise` is not in CE.", "th": "Timesheet Grid / `project_enterprise` ไม่มีใน CE"},
+    {"en": "No ESG, carbon accounting, emission-factor library, carbon-credit ledger or ESG reporting exists in CE; Enterprise ESG features cannot be assessed from CE code.", "th": "CE ไม่มี ESG, carbon accounting, คลัง emission factor, บัญชี carbon credit หรือรายงาน ESG ส่วนฟีเจอร์ ESG ใน Enterprise (ถ้ามี) ไม่สามารถประเมินจากโค้ด CE ได้"}
+  ],
+  "removed": [
+    {"module": "hr_org_chart", "successor": "hr", "note": {"en": "Org chart (`subordinate_ids`, `child_all_count`, widget and controller) merged into `hr`, which now depends on `web_hierarchy`.", "th": "Org chart (`subordinate_ids`, `child_all_count`, widget และ controller) ถูกรวมเข้า `hr` ซึ่งตอนนี้ขึ้นกับ `web_hierarchy`"}},
+    {"module": "hr_homeworking", "successor": "hr", "note": {"en": "Weekday work locations, `exceptional_location_id`, `hr.employee.location` and `presence_home` merged into `hr`.", "th": "สถานที่ทำงานรายวัน, `exceptional_location_id`, `hr.employee.location` และ `presence_home` ถูกรวมเข้า `hr`"}},
+    {"module": "hr_homeworking_calendar", "successor": "hr_calendar", "note": {"en": "Calendar view and wizard for locations merged into `hr_calendar` (`homework.location.wizard`).", "th": "มุมมองปฏิทินและ wizard สำหรับสถานที่ทำงานถูกรวมเข้า `hr_calendar` (`homework.location.wizard`)"}},
+    {"module": "hr_holidays_homeworking", "successor": "hr_holidays", "note": {"en": "Folded into `hr_holidays`/`hr` (Medium confidence, not traced file by file).", "th": "ถูกรวมเข้า `hr_holidays`/`hr` (ความเชื่อมั่นระดับกลาง ไม่ได้ไล่ตรวจทีละไฟล์)"}},
+    {"module": "hr_hourly_cost", "successor": "hr", "note": {"en": "`hourly_cost` is now a standard field of `hr.employee`.", "th": "`hourly_cost` เป็นฟิลด์มาตรฐานของ `hr.employee` แล้ว"}},
+    {"module": "hr_work_entry_holidays", "successor": null, "note": {"en": "Obsolete: the leave type is now the work entry type and `hr.work.entry` is gone.", "th": "ไม่จำเป็นอีกต่อไป: ประเภทการลาเป็น work entry type แล้ว และ `hr.work.entry` ถูกลบ"}},
+    {"module": "l10n_fr_hr_work_entry_holidays", "successor": null, "note": {"en": "Removed with no direct successor; `l10n_fr_hr_holidays` is retained, gains an `hr.version` extension and is now auto_install.", "th": "ถูกลบโดยไม่มีตัวทดแทนโดยตรง `l10n_fr_hr_holidays` ยังคงอยู่ เพิ่มส่วนขยาย `hr.version` และเป็น auto_install แล้ว"}}
+  ]
+}

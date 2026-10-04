@@ -1,0 +1,143 @@
+{
+  "id": "webui",
+  "title": {"en": "Web Client, UI, Productivity & Technical Addons", "th": "Web Client, UI, Productivity และ Technical Addons"},
+  "tagline": {"en": "Covers the Odoo 20 CE web client, UI framework, reporting engines, IoT/printing, spreadsheet, calendar sync and auth/technical addons.", "th": "ครอบคลุม web client, UI framework, report engine, IoT/การพิมพ์, spreadsheet, calendar sync และ auth/technical addons ของ Odoo 20 CE"},
+  "apps": ["web", "web_tour", "html_editor", "html_builder", "bus", "digest", "base_report_wkhtmltox", "base_report_paper_muncher", "printer", "iot_webserial", "spreadsheet", "spreadsheet_dashboard", "barcodes", "api_doc", "rpc", "calendar", "google_calendar", "microsoft_calendar", "auth_totp", "base_address_extended"],
+  "functional": [
+    {
+      "title": {"en": "Offline mode and PWA share target in CE", "th": "Offline mode และ PWA share target ใน CE"},
+      "body": {"en": "The web client detects connection loss, disables buttons not marked available offline, and lets users keep working on visited actions, views, records and searches. Offline creates, edits, deletes and archives are queued and replayed on reconnect. Files shared from a phone can be routed to registered share-target items.", "th": "web client ตรวจจับการขาดการเชื่อมต่อ ปิดปุ่มที่ไม่ได้ระบุว่าใช้งานแบบออฟไลน์ได้ และให้ผู้ใช้ทำงานต่อบน action, view, record และการค้นหาที่เคยเปิดไว้ การสร้าง แก้ไข ลบ และ archive ที่ทำขณะออฟไลน์จะถูกเข้าคิวและส่งซ้ำเมื่อกลับมาออนไลน์ ไฟล์ที่แชร์จากโทรศัพท์สามารถส่งไปยัง share-target item ที่ลงทะเบียนไว้ได้"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Offline scope is limited to what was visited", "th": "ขอบเขตของ Offline จำกัดเฉพาะสิ่งที่เคยเปิด"},
+      "body": {"en": "Only previously visited items are available offline, and offline search runs only on cached many2x/search data, not the whole database. Whether it is limited to certain apps or models cannot be determined from CE.", "th": "ใช้งานออฟไลน์ได้เฉพาะรายการที่เคยเปิดมาก่อน และการค้นหาแบบออฟไลน์ทำงานกับข้อมูล many2x/search ที่แคชไว้เท่านั้น ไม่ใช่ทั้งฐานข้อมูล ไม่สามารถระบุจาก CE ได้ว่าจำกัดเฉพาะบางแอปหรือโมเดลหรือไม่"},
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "PDF report engine split: wkhtmltopdf and Paper Muncher", "th": "แยก PDF report engine: wkhtmltopdf และ Paper Muncher"},
+      "body": {"en": "wkhtmltopdf is not replaced; it remains the default but now lives in the auto_install module base_report_wkhtmltox. The new base_report_paper_muncher module adds a selectable \"PDF (Paper Muncher)\" engine per report, with no sign of it becoming the default.", "th": "wkhtmltopdf ไม่ได้ถูกแทนที่ ยังเป็นค่าเริ่มต้นแต่ย้ายไปอยู่ในโมดูล auto_install ชื่อ base_report_wkhtmltox โมดูลใหม่ base_report_paper_muncher เพิ่ม engine \"PDF (Paper Muncher)\" ที่เลือกได้ราย report โดยไม่มีสัญญาณว่าจะกลายเป็นค่าเริ่มต้น"},
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "New printer module for ZPL and ePOS printers", "th": "โมดูล printer ใหม่สำหรับเครื่องพิมพ์ ZPL และ ePOS"},
+      "body": {"en": "Reports can be linked to external printers (ZPL or ePOS) and printed directly from the browser to the printer. It includes a printer selection wizard and is used by point_of_sale and stock_delivery.", "th": "สามารถผูก report กับเครื่องพิมพ์ภายนอก (ZPL หรือ ePOS) และพิมพ์จากเบราว์เซอร์ไปยังเครื่องพิมพ์โดยตรง มี wizard เลือกเครื่องพิมพ์ และถูกใช้โดย point_of_sale และ stock_delivery"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Web Serial devices without an IoT box", "th": "อุปกรณ์ Web Serial โดยไม่ต้องใช้ IoT box"},
+      "body": {"en": "The new iot_webserial module lets the browser talk to serial devices such as scales through the Web Serial API, with no IoT box. It is used by point_of_sale and stock_delivery.", "th": "โมดูลใหม่ iot_webserial ให้เบราว์เซอร์สื่อสารกับอุปกรณ์ serial เช่น เครื่องชั่งผ่าน Web Serial API โดยไม่ต้องมี IoT box และถูกใช้โดย point_of_sale และ stock_delivery"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Multiple and shared calendars with per-calendar sync", "th": "หลายปฏิทินและปฏิทินที่แชร์ พร้อม sync รายปฏิทิน"},
+      "body": {"en": "Core calendar gets a \"User Calendar\" model with default privacy, shared users and a primary calendar. Google and Microsoft sync now work per calendar, so users can have several and shared calendars. Medium-High confidence on the intent.", "th": "calendar หลักมีโมเดล \"User Calendar\" พร้อมความเป็นส่วนตัวเริ่มต้น ผู้ใช้ที่แชร์ และปฏิทินหลัก การ sync กับ Google และ Microsoft ทำงานรายปฏิทิน ผู้ใช้จึงมีได้หลายปฏิทินและปฏิทินที่แชร์ ความเชื่อมั่นเรื่องเจตนาอยู่ระดับ Medium-High"},
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Spreadsheet dashboards: saved favorite filters and new charts", "th": "Spreadsheet dashboard: บันทึก filter โปรดและชาร์ตใหม่"},
+      "body": {"en": "spreadsheet_dashboard gains saved dashboard filters (spreadsheet.dashboard.favorite.filters), a search bar menu and a global-filter widget. o_spreadsheet is upgraded to 20.0.1. Editing spreadsheets (documents/spreadsheet app) is Enterprise.", "th": "spreadsheet_dashboard มีการบันทึก filter ของ dashboard (spreadsheet.dashboard.favorite.filters) เมนูใน search bar และ widget global-filter และอัปเกรด o_spreadsheet เป็น 20.0.1 การแก้ไข spreadsheet (แอป documents/spreadsheet) เป็น Enterprise"},
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "New card layout in kanban and renamed widgets", "th": "การ์ดแบบใหม่ใน kanban และการเปลี่ยนชื่อ widget"},
+      "body": {"en": "A reusable card arch can be embedded in kanban and is already used in maintenance, mrp, project and stock picking batch views. Widgets were renamed, for example badges_selection replaces badge_selection and relative_date replaces remaining_days.", "th": "สามารถฝัง card arch ที่นำกลับมาใช้ซ้ำใน kanban ได้ และถูกใช้แล้วใน view ของ maintenance, mrp, project และ stock picking batch มีการเปลี่ยนชื่อ widget เช่น badges_selection แทน badge_selection และ relative_date แทน remaining_days"},
+      "impact": "medium", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "Owl 3.0.0-alpha.49 with compatibility layer; services become plugins", "th": "Owl 3.0.0-alpha.49 พร้อม compatibility layer; service เปลี่ยนเป็น plugin"},
+      "body": {"en": "Owl moves from 2.8.4 to 3.0.0-alpha.49, bridged by owl3_compatibility_layer.js (t-portal to t-custom-portal, t-model to t-custom-model, useEffect to useLayoutEffect). Dialog, notification, orm, action, hotkey, barcode and many others changed from *_service.js to *_plugin.js; useService still works for legacy services. This is the biggest custom-JS breakage risk.", "th": "Owl เปลี่ยนจาก 2.8.4 เป็น 3.0.0-alpha.49 โดยมี owl3_compatibility_layer.js เป็นตัวเชื่อม (t-portal เป็น t-custom-portal, t-model เป็น t-custom-model, useEffect เป็น useLayoutEffect) dialog, notification, orm, action, hotkey, barcode และอื่น ๆ เปลี่ยนจาก *_service.js เป็น *_plugin.js โดย useService ยังใช้ได้กับ legacy service นี่คือความเสี่ยงที่ custom JS จะพังมากที่สุด"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/web/static/lib/owl/owl.js", "addons/web/static/src/owl2/owl3_compatibility_layer.js", "odoo/upgrade_code/owl3-migration.py"]
+    },
+    {
+      "title": {"en": "ir.access replaces ir.model.access.csv and security rules", "th": "ir.access มาแทน ir.model.access.csv และ security rule"},
+      "body": {"en": "Every module now uses ir.access.csv with columns id,name,model_id,group_id/id,operation,domain, where operations like cru or crud and the domain column merge record rules into access lines. The web_security.xml rules are gone.", "th": "ทุกโมดูลใช้ ir.access.csv ที่มีคอลัมน์ id,name,model_id,group_id/id,operation,domain โดย operation เช่น cru หรือ crud และคอลัมน์ domain รวม record rule เข้ากับบรรทัด access กฎใน web_security.xml ถูกลบออก"},
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/models/ir_access.py", "addons/web/security/ir.access.csv"]
+    },
+    {
+      "title": {"en": "jQuery, legacy public widgets, QUnit and FontAwesome removed from web", "th": "ลบ jQuery, legacy public widget, QUnit และ FontAwesome ออกจาก web"},
+      "body": {"en": "web/static/lib/jquery, web/static/src/legacy/** (public_widget, class.js), web._assets_jquery and the qunit lib are gone; Hoot is the only test runner. FontAwesome is replaced by the web.icons_fonts bundle (Material Symbols plus an icons_mappings shim for old fa-* classes). Custom code using publicWidget, $ or QUnit in a web bundle will break.", "th": "web/static/lib/jquery, web/static/src/legacy/** (public_widget, class.js), web._assets_jquery และ qunit lib ถูกลบ Hoot เป็น test runner เดียว FontAwesome ถูกแทนด้วย bundle web.icons_fonts (Material Symbols พร้อม shim icons_mappings สำหรับ class fa-* เดิม) โค้ดที่ใช้ publicWidget, $ หรือ QUnit ใน web bundle จะพัง"},
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/web/static/lib/jquery", "addons/web/static/src/legacy", "addons/web/static/src/public/", "addons/web/icons.py"]
+    },
+    {
+      "title": {"en": "Engine-agnostic report API in core ir.actions.report", "th": "API report แบบไม่ผูกกับ engine ใน ir.actions.report หลัก"},
+      "body": {"en": "Core now exposes get_pdf_engine_state(engine_name) (replacing get_wkhtmltopdf_state), _get_pdf_engine(), _run_pdf_engine(), _run_pdf_engine_without_processing() and _run_image_engine(). base_report_wkhtmltox adds report_type qweb-pdf-wkhtmltopdf with _run_wkhtmltopdf; plain qweb-pdf resolves to ir.config_parameter report.pdf_engine_default. The route /report/get_pdf_engine_state replaces the wkhtmltopdf-specific check.", "th": "core มี get_pdf_engine_state(engine_name) (แทน get_wkhtmltopdf_state), _get_pdf_engine(), _run_pdf_engine(), _run_pdf_engine_without_processing() และ _run_image_engine() base_report_wkhtmltox เพิ่ม report_type qweb-pdf-wkhtmltopdf พร้อม _run_wkhtmltopdf ส่วน qweb-pdf ธรรมดาจะอ้างอิง ir.config_parameter report.pdf_engine_default route /report/get_pdf_engine_state มาแทนการตรวจสอบเฉพาะ wkhtmltopdf"},
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/models/ir_actions_report.py", "addons/base_report_wkhtmltox/models/ir_actions_report.py", "addons/base_report_wkhtmltox/__init__.py", "addons/web/controllers/report.py"]
+    },
+    {
+      "title": {"en": "New card view type embedded in kanban", "th": "view type card ใหม่ที่ฝังใน kanban"},
+      "body": {"en": "ir.ui.view.type gains 'card'; a <card> arch is embedded in kanban through the card_id attribute. It is a reusable card inside kanban, not a stand-alone view_mode (none was found).", "th": "ir.ui.view.type มีค่า 'card' เพิ่ม และ arch <card> ถูกฝังใน kanban ผ่าน attribute card_id เป็นการ์ดที่ใช้ซ้ำภายใน kanban ไม่ใช่ view_mode แบบอิสระ (ไม่พบ view_mode ดังกล่าว)"},
+      "impact": "high", "kind": "new",
+      "refs": ["odoo/addons/base/models/ir_ui_view.py", "addons/web/static/src/views/card/"]
+    },
+    {
+      "title": {"en": "Field widget additions, renames and removals", "th": "การเพิ่ม เปลี่ยนชื่อ และลบ field widget"},
+      "body": {"en": "New or renamed: badges_selection and badges_many2one (replace badge_selection, badge_selection_with_filter), relative_date (replaces remaining_days), boolean_checkbox, many2one_binary, many2x_binary, float_time_tz, many2many_tags_color_dot. Removed: kanban_progress_bar_field and list_boolean_toggle_field. Check widget= attributes in custom XML.", "th": "ใหม่หรือเปลี่ยนชื่อ: badges_selection และ badges_many2one (แทน badge_selection, badge_selection_with_filter), relative_date (แทน remaining_days), boolean_checkbox, many2one_binary, many2x_binary, float_time_tz, many2many_tags_color_dot ที่ถูกลบ: kanban_progress_bar_field และ list_boolean_toggle_field ควรตรวจ attribute widget= ใน XML ที่เขียนเอง"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/web/static/src/views/fields/"]
+    },
+    {
+      "title": {"en": "JSON-2 rpc bearer scope and relocated dispatch APIs", "th": "bearer scope ของ JSON-2 rpc และ API dispatch ที่ย้ายที่"},
+      "body": {"en": "The rpc module uses bearer_scope='rpc' with auth='bearer' routes and odoo.http.router.dispatch_rpc; odoo.models.get_public_method replaces odoo.service.model. api_doc adds a JSON2 bearer route /doc-bearer/index.json.", "th": "โมดูล rpc ใช้ bearer_scope='rpc' กับ route แบบ auth='bearer' และ odoo.http.router.dispatch_rpc; odoo.models.get_public_method มาแทน odoo.service.model api_doc เพิ่ม route bearer JSON2 ที่ /doc-bearer/index.json"},
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/http/routing_map.py", "addons/rpc/", "addons/api_doc/"]
+    },
+    {
+      "title": {"en": "printer, iot_webserial, calendar.calendar and html_builder/html_editor changes", "th": "การเปลี่ยนแปลงของ printer, iot_webserial, calendar.calendar และ html_builder/html_editor"},
+      "body": {"en": "printer.printer (type zpl|epos) adds printer_ids and get_print_jobs() on ir.actions.report, and printing is posted browser-side. calendar.calendar and calendar.user are new, with a post_init_hook initialize_primary_calendars. html_builder now depends only on html_editor, and the color picker moved from web/core to html_editor.", "th": "printer.printer (type zpl|epos) เพิ่ม printer_ids และ get_print_jobs() บน ir.actions.report และการพิมพ์ถูกส่งจากฝั่งเบราว์เซอร์ calendar.calendar และ calendar.user เป็นโมเดลใหม่ พร้อม post_init_hook initialize_primary_calendars html_builder ขึ้นอยู่กับ html_editor เท่านั้น และ color picker ย้ายจาก web/core ไปที่ html_editor"},
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/calendar/models/calendar_calendar.py", "addons/google_calendar/__manifest__.py", "addons/printer/", "addons/iot_webserial/"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {"en": "Custom JS must be migrated to Owl 3: run odoo/upgrade_code/owl3-migration.py and expect changes in useEffect semantics, t-model, t-portal and services-vs-plugins.", "th": "custom JS ต้องย้ายไป Owl 3: ให้รัน odoo/upgrade_code/owl3-migration.py และคาดว่าจะมีการเปลี่ยนแปลงเรื่อง semantics ของ useEffect, t-model, t-portal และ service เทียบกับ plugin"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Replace publicWidget and jQuery with Interactions or vanilla DOM, and move QUnit tests to Hoot.", "th": "ให้แทน publicWidget และ jQuery ด้วย Interactions หรือ vanilla DOM และย้ายเทสต์ QUnit ไปเป็น Hoot"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Convert custom ir.model.access.csv and ir.rule security to ir.access.csv; the 20.0 script 20.0-00-search-date-filters.py is only about search date filters, and odoo/upgrade_code/19.4-00-ir-access.py is the earlier hint.", "th": "ให้แปลง ir.model.access.csv และ ir.rule ที่เขียนเองเป็น ir.access.csv สคริปต์ 20.0-00-search-date-filters.py ของ 20.0 เกี่ยวกับ search date filter เท่านั้น และ odoo/upgrade_code/19.4-00-ir-access.py เป็นแนวทางก่อนหน้า"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "After upgrade verify report.pdf_engine_default and that base_report_wkhtmltox is installed (auto_install). Modules calling get_wkhtmltopdf_state or _run_wkhtmltopdf on core must switch to the engine API; custom qweb-pdf report types keep working.", "th": "หลังอัปเกรดให้ตรวจ report.pdf_engine_default และตรวจว่า base_report_wkhtmltox ถูกติดตั้ง (auto_install) โมดูลที่เรียก get_wkhtmltopdf_state หรือ _run_wkhtmltopdf บน core ต้องเปลี่ยนไปใช้ engine API ส่วน report type qweb-pdf ที่เขียนเองยังใช้ได้"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Widget names changed (badge_selection, remaining_days, list_boolean_toggle_field), and report layout asset files were renamed (layout_assets/layout_*.scss becomes report_layouts.scss); review custom views and layouts.", "th": "ชื่อ widget เปลี่ยน (badge_selection, remaining_days, list_boolean_toggle_field) และไฟล์ asset ของ report layout ถูกเปลี่ยนชื่อ (layout_assets/layout_*.scss เป็น report_layouts.scss) ควรตรวจ view และ layout ที่เขียนเอง"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Existing Google/Microsoft calendar sync tokens must be re-checked after the calendar.calendar migration, because the primary-calendar hooks run at install/upgrade and are not guaranteed for existing databases.", "th": "ต้องตรวจ token การ sync ปฏิทิน Google/Microsoft ที่มีอยู่อีกครั้งหลังย้ายไป calendar.calendar เพราะ hook ของปฏิทินหลักทำงานตอนติดตั้ง/อัปเกรดและไม่รับประกันสำหรับฐานข้อมูลที่มีอยู่แล้ว"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Third-party modules depending on base_address_extended implicitly lose the contacts dependency (it now depends only on web); add it explicitly.", "th": "โมดูลภายนอกที่พึ่งพา base_address_extended จะสูญเสีย dependency ของ contacts โดยปริยาย (ตอนนี้ขึ้นอยู่กับ web เท่านั้น) ให้เพิ่มเองอย่างชัดเจน"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Offline mode stores encrypted data in browser IndexedDB (key is session.browser_cache_secret); plan a security review. Custom templates using fa fa-* rely on the icons_mappings shim, and SCSS using FontAwesome variables needs checking.", "th": "Offline mode เก็บข้อมูลที่เข้ารหัสใน IndexedDB ของเบราว์เซอร์ (คีย์คือ session.browser_cache_secret) ควรวางแผนตรวจสอบด้านความปลอดภัย template ที่ใช้ fa fa-* พึ่ง shim icons_mappings และ SCSS ที่ใช้ตัวแปร FontAwesome ต้องตรวจสอบ"},
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "AI agents, MCP and agent triggering from automated actions: no ai module exists in CE addons; these are Enterprise or IAP/SaaS and cannot be verified here.", "th": "AI agent, MCP และการเรียก agent จาก automated action: ไม่มีโมดูล ai ใน addons ของ CE สิ่งเหล่านี้เป็น Enterprise หรือบริการ IAP/SaaS และไม่สามารถตรวจสอบได้จากที่นี่"},
+    {"en": "IAP credit consumption: CE's iap module only provides the credit client.", "th": "การใช้เครดิต IAP: โมดูล iap ใน CE มีเพียง credit client"},
+    {"en": "Editing spreadsheets (documents/spreadsheet app) is Enterprise.", "th": "การแก้ไข spreadsheet (แอป documents/spreadsheet) เป็น Enterprise"},
+    {"en": "html_field_history: no module with that name in 19 or 20 CE; assumed Enterprise.", "th": "html_field_history: ไม่มีโมดูลชื่อนี้ใน CE ทั้ง 19 และ 20 สันนิษฐานว่าเป็น Enterprise"}
+  ],
+  "removed": [
+    {"module": "iot_base", "successor": null, "note": {"en": "Removed; it only provided network_utils/device_controller.js for web and point_of_sale 20 no longer depends on it. No successor found (iot_drivers is installable: False; iot_webserial has a different scope).", "th": "ถูกลบ; เดิมมีเพียง network_utils/device_controller.js สำหรับ web และ point_of_sale 20 ไม่ได้ขึ้นอยู่กับมันแล้ว ไม่พบตัวทดแทน (iot_drivers เป็น installable: False; iot_webserial มีขอบเขตต่างกัน)"}},
+    {"module": "iot_box_image", "successor": null, "note": {"en": "Was already installable: False in 19 and is absent in 20; no successor in the repo. Deployments building boxes from it may need Odoo's separate IoT image repo (unverified).", "th": "เป็น installable: False อยู่แล้วใน 19 และไม่มีใน 20 ไม่มีตัวทดแทนใน repo การติดตั้งที่สร้าง box จากโมดูลนี้อาจต้องใช้ repo IoT image แยกของ Odoo (ยังไม่ยืนยัน)"}},
+    {"module": "transifex", "successor": null, "note": {"en": "Removed; grep of 20 finds no module providing it and no successor was found.", "th": "ถูกลบ; การ grep ใน 20 ไม่พบโมดูลที่ให้ฟังก์ชันนี้ และไม่พบตัวทดแทน"}}
+  ]
+}

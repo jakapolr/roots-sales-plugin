@@ -1,0 +1,257 @@
+{
+  "id": "framework",
+  "title": {"en": "Framework & Platform Core", "th": "Framework และ Platform Core"},
+  "tagline": {
+    "en": "The Odoo 20 CE core: unified ir.access security, Python 3.12+, rewritten ORM/SQL APIs, HTTP package, CLI, populate tooling and web offline mode.",
+    "th": "แกนหลักของ Odoo 20 CE: ระบบความปลอดภัยแบบรวม ir.access, Python 3.12+, ORM/SQL API ที่เขียนใหม่, แพ็กเกจ HTTP, CLI, เครื่องมือ populate และโหมดออฟไลน์บนเว็บ"
+  },
+  "apps": ["base", "populate", "test_base", "test_web", "test_http", "test_translation_mode", "test_utm"],
+  "functional": [
+    {
+      "title": {"en": "Access rights and record rules unified into ir.access", "th": "สิทธิ์การเข้าถึงและ record rules ถูกรวมเป็น ir.access"},
+      "body": {
+        "en": "Access rights (ir.model.access) and record rules (ir.rule) are replaced by a single ir.access model. Rows with a group grant permissions (OR-ed across the user's groups); rows without a group are restrictions applied to everyone (AND-ed). With no permission at all, access is denied by default.",
+        "th": "สิทธิ์การเข้าถึง (ir.model.access) และ record rules (ir.rule) ถูกแทนที่ด้วยโมเดลเดียวคือ ir.access แถวที่มีกลุ่มคือการให้สิทธิ์ (permissions) ซึ่งรวมแบบ OR ข้ามทุกกลุ่มของผู้ใช้ ส่วนแถวที่ไม่มีกลุ่มคือข้อจำกัด (restrictions) ที่ใช้กับทุกคนแบบ AND หากไม่มีสิทธิ์ใดเลยจะถูกปฏิเสธโดยค่าเริ่มต้น"
+      },
+      "impact": "high",
+      "kind": "changed"
+    },
+    {
+      "title": {"en": "Clearer access error messages and a Customize button", "th": "ข้อความ access error ชัดเจนขึ้นและมีปุ่ม Customize"},
+      "body": {
+        "en": "Model-level access errors now list the groups that would grant the operation, and debug users see which accesses blocked them. For module-defined accesses, a customize action deactivates the standard row and returns an editable copy.",
+        "th": "ข้อความ access error ระดับโมเดลจะแสดงรายชื่อกลุ่มที่จะอนุญาตการดำเนินการนั้น และผู้ใช้โหมด debug จะเห็นว่า access ใดที่บล็อกอยู่ สำหรับ access ที่กำหนดโดยโมดูล การ customize จะปิดการใช้งานแถวมาตรฐานและคืนสำเนาที่แก้ไขได้"
+      },
+      "impact": "medium",
+      "kind": "new"
+    },
+    {
+      "title": {"en": "Offline mode in the web client (CE)", "th": "โหมดออฟไลน์ใน web client (CE)"},
+      "body": {
+        "en": "Create, edit and delete are queued when the connection is lost and synced once back online; only previously visited list, kanban and form views and many2x searches are available offline. It requires a secure context (HTTPS); archive is Medium confidence, and conflict resolution was not tested.",
+        "th": "การสร้าง แก้ไข และลบ จะถูกเข้าคิวเมื่อการเชื่อมต่อขาดและซิงก์เมื่อกลับมาออนไลน์ โดยใช้ได้เฉพาะมุมมอง list, kanban, form และการค้นหา many2x ที่เคยเปิดดูแล้วเท่านั้น ต้องใช้ secure context (HTTPS) ส่วน archive มีความมั่นใจระดับ Medium และยังไม่ได้ทดสอบการแก้ไข conflict"
+      },
+      "impact": "high",
+      "kind": "new"
+    },
+    {
+      "title": {"en": "res.bank removed; bank details stored on the partner bank account", "th": "ลบ res.bank แล้ว รายละเอียดธนาคารเก็บในบัญชีธนาคารของพาร์ทเนอร์"},
+      "body": {
+        "en": "The res.bank model and its data are removed; res.partner.bank now stores bank name, address, BIC and the new clearing number/label directly. No successor model for banks was found in CE (Medium confidence), so existing bank data needs migration.",
+        "th": "โมเดล res.bank และข้อมูลของมันถูกลบ โดย res.partner.bank เก็บชื่อธนาคาร ที่อยู่ BIC และ clearing number/label ใหม่โดยตรง ไม่พบโมเดลธนาคารที่มาแทนใน CE (ความมั่นใจระดับ Medium) จึงต้องย้ายข้อมูลธนาคารเดิม"
+      },
+      "impact": "high",
+      "kind": "removed"
+    },
+    {
+      "title": {"en": "Additional partner identifiers and VAT validation", "th": "รหัสประจำตัวเพิ่มเติมของพาร์ทเนอร์และการตรวจสอบ VAT"},
+      "body": {
+        "en": "res.partner gains has_vat and additional_identifiers (Json) driven by stdnum-based validation. The company_registry computed fields and partner_latitude/longitude were removed from base (the latter Medium confidence), so modules that need them must add them back.",
+        "th": "res.partner มี has_vat และ additional_identifiers (Json) ที่ทำงานด้วยการตรวจสอบแบบ stdnum ส่วนฟิลด์ company_registry ที่คำนวณและ partner_latitude/longitude ถูกลบออกจาก base (อย่างหลังมีความมั่นใจระดับ Medium) โมดูลที่ต้องใช้จึงต้องเพิ่มกลับเอง"
+      },
+      "impact": "medium",
+      "kind": "changed"
+    },
+    {
+      "title": {"en": "Safer default: HTTP binds to 127.0.0.1", "th": "ค่าเริ่มต้นที่ปลอดภัยขึ้น: HTTP ผูกกับ 127.0.0.1"},
+      "body": {
+        "en": "The default HTTP bind changes from 0.0.0.0 to 127.0.0.1. Deployments that listen on all interfaces without a reverse proxy must set http_interface explicitly.",
+        "th": "ค่าเริ่มต้นของ HTTP bind เปลี่ยนจาก 0.0.0.0 เป็น 127.0.0.1 การติดตั้งที่ฟังทุก interface โดยไม่มี reverse proxy ต้องกำหนด http_interface อย่างชัดเจน"
+      },
+      "impact": "medium",
+      "kind": "changed"
+    },
+    {
+      "title": {"en": "Synthetic data generation with the populate addon", "th": "สร้างข้อมูลสังเคราะห์ด้วยโมดูล populate"},
+      "body": {
+        "en": "The new populate addon generates demo/test data from XML/JSON Blueprints, and a new duplicate command populates a database by duplicating existing data. Useful for load testing and demos.",
+        "th": "โมดูล populate ใหม่สร้างข้อมูลเดโม/ทดสอบจาก Blueprints แบบ XML/JSON และคำสั่ง duplicate ใหม่เพิ่มข้อมูลในฐานข้อมูลด้วยการทำซ้ำข้อมูลที่มีอยู่ มีประโยชน์สำหรับการทดสอบโหลดและเดโม"
+      },
+      "impact": "low",
+      "kind": "new"
+    },
+    {
+      "title": {"en": "Interactive in-context translation mode (dev only)", "th": "โหมดแปลแบบโต้ตอบในบริบท (สำหรับ dev เท่านั้น)"},
+      "body": {
+        "en": "The test_translation_mode addon tags translated strings and redirects to Weblate (the official Odoo project by default, configurable in settings). It carries an explicit warning not to use it on production.",
+        "th": "โมดูล test_translation_mode ติดแท็กสตริงที่แปลและส่งต่อไปยัง Weblate (โปรเจกต์ทางการของ Odoo เป็นค่าเริ่มต้น และตั้งค่าได้ในการตั้งค่า) มีคำเตือนชัดเจนว่าห้ามใช้บน production"
+      },
+      "impact": "low",
+      "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "ir.access replaces ir.model.access and ir.rule", "th": "ir.access แทนที่ ir.model.access และ ir.rule"},
+      "body": {
+        "en": "ir.access has fields name, active, model_id, group_id, domain, note and an operation string of crud letters instead of four perm_* booleans; the file format is ir.access.csv with header id,name,model_id,group_id/id,operation,domain. The resulting domain is OR(permissions) & AND(restrictions), and the new 'access' domain operator chains permissions across models.",
+        "th": "ir.access มีฟิลด์ name, active, model_id, group_id, domain, note และสตริง operation ที่เป็นตัวอักษร crud แทน boolean perm_* สี่ตัว รูปแบบไฟล์คือ ir.access.csv ที่มีหัวคอลัมน์ id,name,model_id,group_id/id,operation,domain โดเมนผลลัพธ์คือ OR(permissions) & AND(restrictions) และตัวดำเนินการโดเมนใหม่ 'access' เชื่อมสิทธิ์ข้ามโมเดล"
+      },
+      "impact": "high",
+      "kind": "changed",
+      "refs": ["odoo/addons/base/models/ir_access.py", "odoo/addons/base/security/ir.access.csv", "odoo/orm/models.py", "odoo/orm/domains.py"]
+    },
+    {
+      "title": {"en": "SQL-building API rewritten around TableSQL/FieldSQL", "th": "SQL-building API เขียนใหม่โดยใช้ TableSQL/FieldSQL"},
+      "body": {
+        "en": "Query moved from odoo.tools.query to odoo/orm/query.py, and signatures such as Field.to_sql(table), condition_to_sql, Domain._to_sql(table) and _order_to_sql(table, ...) replace the old (model, alias, query) form. Any override of these, or of the _read_group_* hooks, breaks and needs manual porting.",
+        "th": "Query ย้ายจาก odoo.tools.query ไปที่ odoo/orm/query.py และ signature เช่น Field.to_sql(table), condition_to_sql, Domain._to_sql(table) และ _order_to_sql(table, ...) มาแทนรูปแบบเดิม (model, alias, query) การ override ส่วนเหล่านี้หรือ hook _read_group_* จะใช้งานไม่ได้และต้องปรับเอง"
+      },
+      "impact": "high",
+      "kind": "changed",
+      "refs": ["odoo/orm/query.py", "odoo/orm/fields.py", "odoo/orm/domains.py"]
+    },
+    {
+      "title": {"en": "read_group dict API removed; new tuple-based read_group", "th": "ลบ read_group แบบ dict; read_group ใหม่ให้ผลเป็น tuple"},
+      "body": {
+        "en": "The old read_group and its fill/format helpers are deleted. The new Model.read_group(domain, groupby, aggregates, ...) returns tuples with ids; _read_group stays the overridable method, and formatted_read_group, formatted_read_grouping_sets and web_read_group remain in the web addon.",
+        "th": "read_group เดิมและตัวช่วย fill/format ถูกลบ Model.read_group(domain, groupby, aggregates, ...) ใหม่คืนค่าเป็น tuple ที่เป็น id โดย _read_group ยังคงเป็นเมธอดที่ใช้ override ส่วน formatted_read_group, formatted_read_grouping_sets และ web_read_group ยังอยู่ในโมดูล web"
+      },
+      "impact": "high",
+      "kind": "removed",
+      "refs": ["odoo/orm/models.py", "addons/web/models/models.py"]
+    },
+    {
+      "title": {"en": "Python 3.12-3.14 required, dependency cleanup", "th": "ต้องใช้ Python 3.12-3.14 และล้างรายการ dependency"},
+      "body": {
+        "en": "MIN_PY_VERSION is (3,12) and MAX_PY_VERSION is (3,14), and the code uses PEP 695 syntax. setup.py requires pypdf; xlrd, xlwt, pytz, asn1crypto and chardet were removed from requirements.txt, and h11 and tzdata (win32) were added.",
+        "th": "MIN_PY_VERSION คือ (3,12) และ MAX_PY_VERSION คือ (3,14) และโค้ดใช้ไวยากรณ์ PEP 695 setup.py ต้องใช้ pypdf; xlrd, xlwt, pytz, asn1crypto และ chardet ถูกลบออกจาก requirements.txt และเพิ่ม h11 กับ tzdata (เฉพาะ win32)"
+      },
+      "impact": "high",
+      "kind": "changed",
+      "refs": ["odoo/release.py", "requirements.txt", "setup.py", "odoo/_monkeypatches/zoneinfo.py"]
+    },
+    {
+      "title": {"en": "Deprecated 18/19 APIs removed", "th": "ลบ API ที่ถูก deprecate ใน 18/19"},
+      "body": {
+        "en": "Removed: check_access_rights, check_access_rule, _filter_access_rules, toggle_active, _check_recursion, @api.deprecated, registry.clear_cache, config.rcfile, config.load, osv.expression, and the '<>'/'==' domain operators. Use check_access, has_access, _filtered_access, _has_cycle, odoo.tools.func.deprecated, transaction.invalidate_ormcache and odoo.fields.Domain instead.",
+        "th": "ที่ถูกลบ: check_access_rights, check_access_rule, _filter_access_rules, toggle_active, _check_recursion, @api.deprecated, registry.clear_cache, config.rcfile, config.load, osv.expression และตัวดำเนินการโดเมน '<>'/'==' ให้ใช้ check_access, has_access, _filtered_access, _has_cycle, odoo.tools.func.deprecated, transaction.invalidate_ormcache และ odoo.fields.Domain แทน"
+      },
+      "impact": "high",
+      "kind": "removed",
+      "refs": ["odoo/orm/models.py", "odoo/orm/cache.py", "odoo/orm/domains.py", "odoo/tools/func.py"]
+    },
+    {
+      "title": {"en": "New field and model APIs: compute_sql, CachedModel, typed config params", "th": "API ใหม่ของฟิลด์และโมเดล: compute_sql, CachedModel, config param แบบ typed"},
+      "body": {
+        "en": "compute_sql makes a non-stored computed field searchable/sortable/groupable in SQL (requires explicit compute_sudo); copy may be a callable; models.CachedModel caches small tables. ir.config_parameter now uses get_bool/get_int/get_float/get_str and set_* instead of get_param/set_param, and res.users fields use user_writeable=True instead of SELF_WRITEABLE_FIELDS (Medium).",
+        "th": "compute_sql ทำให้ฟิลด์ที่คำนวณและไม่ได้จัดเก็บค้นหา/เรียง/จัดกลุ่มได้ใน SQL (ต้องระบุ compute_sudo ชัดเจน) copy เป็น callable ได้ และ models.CachedModel แคชตารางขนาดเล็ก ir.config_parameter ใช้ get_bool/get_int/get_float/get_str และ set_* แทน get_param/set_param และฟิลด์ของ res.users ใช้ user_writeable=True แทน SELF_WRITEABLE_FIELDS (ระดับ Medium)"
+      },
+      "impact": "medium",
+      "kind": "new",
+      "refs": ["odoo/orm/fields.py", "odoo/orm/models_cached.py", "odoo/addons/base/models/res_users.py"]
+    },
+    {
+      "title": {"en": "http.py becomes the odoo/http/ package; bearer scope mandatory", "th": "http.py กลายเป็นแพ็กเกจ odoo/http/ และ bearer scope เป็นข้อบังคับ"},
+      "body": {
+        "en": "The public API (http.route, request, Controller, Response, Stream) is re-exported, but internal import paths changed. Route type is only 'jsonrpc' or 'http', and auth='bearer' requires bearer_scope. JSON-2 (/json/2/<model>/<method>) lives in addons/rpc and now uses get_public_method.",
+        "th": "API สาธารณะ (http.route, request, Controller, Response, Stream) ยังถูก re-export แต่ path การ import ภายในเปลี่ยนไป route type มีเพียง 'jsonrpc' หรือ 'http' และ auth='bearer' ต้องมี bearer_scope JSON-2 (/json/2/<model>/<method>) อยู่ใน addons/rpc และใช้ get_public_method"
+      },
+      "impact": "high",
+      "kind": "changed",
+      "refs": ["odoo/http/__init__.py", "odoo/http/router.py", "addons/rpc/controllers/json2.py", "addons/web/controllers/json.py"]
+    },
+    {
+      "title": {"en": "Binary fields return lazy BinaryValue objects", "th": "ฟิลด์ Binary คืนออบเจ็กต์ BinaryValue แบบ lazy"},
+      "body": {
+        "en": "Binary values are BinaryValue/BinaryBytes objects loaded lazily, ir.attachment._file_read() returns BinaryValue, the bin_size context dependency was removed, and Binary fields are not sortable or groupable. Code touching attachment.datas, _file_read(fname, size) or _get_path must be reviewed (Medium confidence).",
+        "th": "ค่า Binary เป็นออบเจ็กต์ BinaryValue/BinaryBytes ที่โหลดแบบ lazy, ir.attachment._file_read() คืน BinaryValue, ลบ dependency ของ context bin_size และฟิลด์ Binary เรียงหรือจัดกลุ่มไม่ได้ โค้ดที่เกี่ยวกับ attachment.datas, _file_read(fname, size) หรือ _get_path ต้องตรวจสอบ (ความมั่นใจระดับ Medium)"
+      },
+      "impact": "medium",
+      "kind": "changed",
+      "refs": ["odoo/tools/binary.py", "odoo/addons/base/models/ir_attachment.py"]
+    },
+    {
+      "title": {"en": "CLI and tooling changes: duplicate, populate addon, module list, db helpers", "th": "การเปลี่ยนแปลง CLI และเครื่องมือ: duplicate, โมดูล populate, module list, db helpers"},
+      "body": {
+        "en": "New duplicate command; populate now ships as the populate addon (odoo-bin populate -d DB -b BLUEPRINT); module gains list and --dry-run. db functions moved to odoo.modules.db, -s no longer means --save, and tools.safe_eval is a package with --unsafe-policy.",
+        "th": "คำสั่ง duplicate ใหม่ และ populate กลายเป็นโมดูล populate (odoo-bin populate -d DB -b BLUEPRINT) ส่วน module มี list และ --dry-run ฟังก์ชัน db ย้ายไป odoo.modules.db, -s ไม่ใช่ตัวย่อของ --save อีกต่อไป และ tools.safe_eval เป็นแพ็กเกจที่มี --unsafe-policy"
+      },
+      "impact": "medium",
+      "kind": "changed",
+      "refs": ["odoo/cli/duplicate.py", "odoo/tools/duplicate.py", "addons/populate/cli/populate.py", "odoo/modules/db.py", "odoo/tools/config.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {
+        "en": "Run odoo-bin upgrade_code on every custom addon first and commit the result. The scripts cover ir.access, ormcache, t-call, base64 to bytes, _rec_names_search, date filters and Owl 3; the rest needs manual fixes.",
+        "th": "ให้รัน odoo-bin upgrade_code กับทุก custom addon ก่อนและ commit ผลลัพธ์ สคริปต์ครอบคลุม ir.access, ormcache, t-call, base64 เป็น bytes, _rec_names_search, date filters และ Owl 3 ส่วนที่เหลือต้องแก้ด้วยมือ"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Review every warning from the 19.4-00-ir-access.py migration and test with real users per group. Rule semantics changed (global rule becomes restriction, group rules become per-group permission domains), and a restriction that does not cover all operations leaves the other operations permitted.",
+        "th": "ตรวจสอบทุก warning จากการ migrate ด้วย 19.4-00-ir-access.py และทดสอบกับผู้ใช้จริงในแต่ละกลุ่ม ความหมายของ rule เปลี่ยนไป (global rule กลายเป็น restriction, group rules กลายเป็น permission domain รายกลุ่ม) และ restriction ที่ไม่ครอบคลุมทุก operation จะทำให้ operation อื่นยังถูกอนุญาต"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Custom code that references ir.model.access, ir.rule, res.groups.model_access, rule_groups or ir.model.rule_ids, and data XML using their XML ids, will break and must be rewritten for ir.access.",
+        "th": "โค้ดที่อ้างถึง ir.model.access, ir.rule, res.groups.model_access, rule_groups หรือ ir.model.rule_ids รวมถึง data XML ที่ใช้ XML id ของสิ่งเหล่านี้ จะใช้งานไม่ได้และต้องเขียนใหม่ให้ใช้ ir.access"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Runtime must be Python 3.12 or newer: update Docker images and OS packages (Ubuntu 22.04/Jammy and Debian Bullseye are no longer supported targets) and move from PyPDF2 to pypdf.",
+        "th": "Runtime ต้องเป็น Python 3.12 ขึ้นไป: ให้อัปเดต Docker image และแพ็กเกจ OS (Ubuntu 22.04/Jammy และ Debian Bullseye ไม่ใช่เป้าหมายที่รองรับอีกต่อไป) และย้ายจาก PyPDF2 ไปใช้ pypdf"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "The default bind is now 127.0.0.1: deployments without a reverse proxy that listen on all interfaces must set http_interface explicitly. Also, -s is no longer a short option for --save.",
+        "th": "ค่า bind เริ่มต้นเป็น 127.0.0.1 แล้ว: การติดตั้งที่ไม่มี reverse proxy และฟังทุก interface ต้องกำหนด http_interface อย่างชัดเจน นอกจากนี้ -s ไม่ใช่ตัวย่อของ --save อีกต่อไป"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Data in res.bank, res.partner.bank.bank_id, partner company_registry and partner_latitude/longitude needs pre/post migration scripts; modules that still need these fields add them back, so verify per module.",
+        "th": "ข้อมูลใน res.bank, res.partner.bank.bank_id, company_registry ของพาร์ทเนอร์ และ partner_latitude/longitude ต้องใช้สคริปต์ migrate ก่อน/หลัง โมดูลที่ยังต้องใช้ฟิลด์เหล่านี้จะเพิ่มกลับเอง จึงต้องตรวจสอบเป็นรายโมดูล"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Offline mode needs a secure context, so reverse proxies must serve HTTPS for the feature to work; only previously visited views are available offline.",
+        "th": "โหมดออฟไลน์ต้องใช้ secure context ดังนั้น reverse proxy ต้องให้บริการผ่าน HTTPS จึงจะใช้ฟีเจอร์นี้ได้ และมีเฉพาะมุมมองที่เคยเปิดดูแล้วที่ใช้ออฟไลน์ได้"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "CI scripts that run -i test_orm must use test_base instead (13 test modules were merged into test_base, test_web, test_tests, test_translation and test_http), and the default test tag is now post_install. Never install test_translation_mode on production.",
+        "th": "สคริปต์ CI ที่รัน -i test_orm ต้องเปลี่ยนไปใช้ test_base (โมดูลทดสอบ 13 ตัวถูกรวมเข้า test_base, test_web, test_tests, test_translation และ test_http) และ test tag เริ่มต้นเป็น post_install ห้ามติดตั้ง test_translation_mode บน production"
+      },
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {
+      "en": "MCP / AI-agent connectivity: no MCP code or ai* addon was found in CE. Only the JSON-2 external API with bearer API keys exists, which an MCP server could wrap; any such feature would be Enterprise or external (not verifiable from CE).",
+      "th": "การเชื่อมต่อ MCP / AI agent: ไม่พบโค้ด MCP หรือโมดูล ai* ใน CE มีเพียง JSON-2 external API พร้อม bearer API key ซึ่ง MCP server สามารถนำไปห่อได้ ฟีเจอร์ลักษณะนี้จะเป็นของ Enterprise หรือภายนอก (ตรวจสอบจาก CE ไม่ได้)"
+    },
+    {
+      "en": "A successor model for banks (res.bank): none was found in CE, and only a migration script still references it.",
+      "th": "โมเดลที่มาแทน res.bank: ไม่พบใน CE และมีเพียงสคริปต์ migrate เท่านั้นที่ยังอ้างถึง"
+    },
+    {
+      "en": "Offline conflict resolution rules and per-view offline-capability defaults are not verified from CE code and need a runtime test.",
+      "th": "กฎการแก้ไข conflict ของโหมดออฟไลน์และค่าเริ่มต้นว่ามุมมองใดใช้ออฟไลน์ได้ ยังไม่ได้ตรวจสอบจากโค้ด CE และต้องทดสอบตอนรันจริง"
+    }
+  ],
+  "removed": [
+    {"module": "ir.model.access / ir.rule", "successor": "ir.access", "note": {"en": "Models, models/ir_rule.py and security/base_security.xml are removed; use ir.access and upgrade_code/19.4-00-ir-access.py.", "th": "โมเดล, models/ir_rule.py และ security/base_security.xml ถูกลบ ให้ใช้ ir.access และ upgrade_code/19.4-00-ir-access.py"}},
+    {"module": "res.bank", "successor": null, "note": {"en": "No successor model found; fields were folded into res.partner.bank.", "th": "ไม่พบโมเดลที่มาแทน ฟิลด์ถูกรวมเข้าไปใน res.partner.bank"}},
+    {"module": "odoo/osv", "successor": "odoo.fields.Domain", "note": {"en": "odoo.osv.expression is removed; use odoo.fields.Domain (orm/domains.py).", "th": "ลบ odoo.osv.expression แล้ว ให้ใช้ odoo.fields.Domain (orm/domains.py)"}},
+    {"module": "odoo/http.py", "successor": "odoo/http/", "note": {"en": "Replaced by the odoo/http package; public API re-exported, internal paths changed.", "th": "ถูกแทนที่ด้วยแพ็กเกจ odoo/http โดย API สาธารณะยังถูก re-export แต่ path ภายในเปลี่ยน"}},
+    {"module": "odoo/service/db.py", "successor": "odoo/modules/db.py", "note": {"en": "DB functions moved to odoo.modules.db; service/security.py also removed (http/session.py for security parts, Medium confidence).", "th": "ฟังก์ชัน DB ย้ายไป odoo.modules.db และ service/security.py ถูกลบด้วย (ส่วนความปลอดภัยอยู่ใน http/session.py ความมั่นใจระดับ Medium)"}},
+    {"module": "odoo/tools/query.py", "successor": "odoo/orm/query.py", "note": {"en": "Also removed from tools: cache.py, populate.py, pycompat.py, test_reports.py and _vendor/sessions.py (successors orm/cache.py, addons/populate, tools/duplicate.py, tests/reports.py).", "th": "ใน tools ยังลบ cache.py, populate.py, pycompat.py, test_reports.py และ _vendor/sessions.py (ตัวแทนคือ orm/cache.py, addons/populate, tools/duplicate.py, tests/reports.py)"}},
+    {"module": "cli/populate.py", "successor": "populate", "note": {"en": "Now provided by addons/populate/cli/populate.py; cli/duplicate.py takes over duplication-based population.", "th": "ตอนนี้มาจาก addons/populate/cli/populate.py และ cli/duplicate.py รับหน้าที่การเพิ่มข้อมูลแบบทำซ้ำ"}},
+    {"module": "test_orm (and 12 other test modules)", "successor": "test_base", "note": {"en": "13 test modules (test_orm, test_access_rights, test_read_group, test_search_panel, test_rpc, ...) merged into test_base, test_web, test_tests, test_translation and test_http; Medium confidence on test_converter/test_rpc.", "th": "โมดูลทดสอบ 13 ตัว (test_orm, test_access_rights, test_read_group, test_search_panel, test_rpc ฯลฯ) ถูกรวมเข้า test_base, test_web, test_tests, test_translation และ test_http ความมั่นใจระดับ Medium สำหรับ test_converter/test_rpc"}}
+  ]
+}

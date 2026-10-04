@@ -2,7 +2,7 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
-**Version:** `v4.0.0` · **36 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
+**Version:** `v4.0.0` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
@@ -39,7 +39,8 @@ roots-sales-plugin/
 │
 ├── references/                  # Canonical knowledge (cited by skills)
 │   ├── odoo-editions.md         # Community / Enterprise / Online / BEECY SaaS / Community impl
-│   └── brand-ci.md              # Roots & BEECY brand identity (colors, fonts, logos)
+│   ├── brand-ci.md              # Roots & BEECY brand identity (colors, fonts, logos)
+│   └── odoo20-ce/               # Odoo 20 CE knowledge base: study paper, module catalogue, 10 area reports (code-verified vs 19.0)
 │
 ├── assets/
 │   └── brand/                   # Logo catalog (Roots + BEECY) — see assets/brand/README.md
@@ -68,6 +69,7 @@ roots-sales-plugin/
 │   │   ├── deck-builder/            # On-brand presentations (HTML / pptx) — cites brand-ci
 │   │   ├── odoo-editions/           # Editions/hosting/BEECY explainer (cites references/)
 │   │   ├── odoo-gap-analysis/       # Enterprise vs BEECY SaaS vs Community impl GAP
+│   │   ├── odoo20-ce-expert/        # Odoo 20 CE features, 19→20 changes, upgrade/porting, l10n_th (cites references/odoo20-ce)
 │   │   ├── roots-manday-estimator/  # Project cost estimation
 │   │   ├── roots-tor-analyzer/      # Government TOR PDF analysis
 │   │   └── roots-bid-prep/          # Bid qualification & documents
@@ -114,6 +116,7 @@ roots-sales-plugin/
 │   └── meeting-search.md            # /roots:meeting-search
 │
 └── docs/
+    ├── odoo20-site/             # Source of the internal EN/TH Odoo 20 Field Guide site (claude.ai artifact)
     └── skill-template/          # Template for creating new custom skills
         ├── TEMPLATE.md              # Copy to skills/ and rename to SKILL.md
         └── README.md                # How to use the template

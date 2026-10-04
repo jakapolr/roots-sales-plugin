@@ -1,0 +1,239 @@
+{
+  "id": "pos",
+  "title": {"en": "Point of Sale, Restaurant & Self-Order", "th": "Point of Sale, ร้านอาหาร และ Self-Order"},
+  "tagline": {
+    "en": "Shop and restaurant checkout, kiosk/mobile self-ordering, payment terminals and offline-capable POS in Odoo 20 CE, now decoupled from Inventory.",
+    "th": "ระบบแคชเชียร์สำหรับร้านค้าและร้านอาหาร การสั่งอาหารเองผ่านคีออสก์/มือถือ เครื่องรับชำระเงิน และ POS ที่ทำงานออฟไลน์ได้ใน Odoo 20 CE ซึ่งแยกออกจาก Inventory แล้ว"
+  },
+  "apps": ["point_of_sale", "pos_stock", "pos_restaurant", "pos_self_order", "pos_loyalty", "pos_hr", "pos_sale", "pos_online_payment", "pos_adyen", "pos_stripe", "pos_viva_com", "pos_bancontact_pay"],
+  "functional": [
+    {
+      "title": {"en": "POS no longer requires Inventory", "th": "POS ไม่จำเป็นต้องใช้ Inventory อีกต่อไป"},
+      "body": {
+        "en": "point_of_sale no longer depends on stock; the new pos_stock module (auto_install) adds pickings, lots/serials, warehouse per config, ship later and COGS. Pure-POS databases can run without Inventory, but storable/valuation settings and ship later are then unavailable.",
+        "th": "point_of_sale ไม่ขึ้นกับ stock อีกต่อไป โมดูลใหม่ pos_stock (auto_install) เพิ่มใบส่งสินค้า ล็อต/ซีเรียล คลังสินค้าต่อ config ship later และ COGS ฐานข้อมูลที่ใช้ POS อย่างเดียวจึงรันได้โดยไม่มี Inventory แต่จะไม่มีการตั้งค่า storable/valuation และ ship later"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "IoT Box removed; Epson ePoS network printing only", "th": "ยกเลิก IoT Box เหลือเฉพาะการพิมพ์ผ่านเครือข่าย Epson ePoS"},
+      "body": {
+        "en": "In CE the only printer type is epson_epos, and IoT Box proxy settings are gone. Customers on IoT Box printers, scales or terminals must move to Epson ePoS network printers (HTTPS and Local Network Access needed) or Enterprise IoT; scales use Web Serial.",
+        "th": "ใน CE ประเภทเครื่องพิมพ์เหลือเพียง epson_epos และการตั้งค่า proxy ของ IoT Box ถูกนำออก ลูกค้าที่ใช้เครื่องพิมพ์ เครื่องชั่ง หรือเครื่องรับชำระผ่าน IoT Box ต้องย้ายไปใช้เครื่องพิมพ์ Epson ePoS ผ่านเครือข่าย (ต้องใช้ HTTPS และ Local Network Access) หรือ IoT ของ Enterprise ส่วนเครื่องชั่งใช้ Web Serial"
+      },
+      "impact": "high", "kind": "removed"
+    },
+    {
+      "title": {"en": "Rebuilt offline mode", "th": "ปรับสถาปัตยกรรมโหมดออฟไลน์ใหม่"},
+      "body": {
+        "en": "POS caches data in the browser (IndexedDB), boots from cache when offline and replays queued writes on reconnect; the latest commit also requests persistent storage to resist browser eviction. Clearing browser data loses unsynced orders, and the browser may deny persistence.",
+        "th": "POS แคชข้อมูลไว้ในเบราว์เซอร์ (IndexedDB) เปิดจากแคชเมื่อออฟไลน์ และส่งคิวข้อมูลซ้ำเมื่อกลับมาออนไลน์ คอมมิตล่าสุดยังขอ persistent storage เพื่อป้องกันเบราว์เซอร์ลบข้อมูล การล้างข้อมูลเบราว์เซอร์จะทำให้ออเดอร์ที่ยังไม่ซิงค์หายไป และเบราว์เซอร์อาจปฏิเสธการขอ persistence"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Session closing and invoicing redesign", "th": "ออกแบบการปิดเซสชันและการออกใบแจ้งหนี้ใหม่"},
+      "body": {
+        "en": "Each session now has an account.bank.statement and separate sale, refund and correction entries; the close-session wizard is gone. A daily closing mode with an auto-invoicing cron is available, and orders are either singly or globally invoiced.",
+        "th": "แต่ละเซสชันมี account.bank.statement และรายการบัญชีแยกสำหรับการขาย การคืนสินค้า และการแก้ไข วิซาร์ดปิดเซสชันถูกนำออก มีโหมดปิดรายวันพร้อม cron ออกใบแจ้งหนี้อัตโนมัติ และออเดอร์ถูกแยกเป็นออกใบแจ้งหนี้รายใบหรือรวม"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "New payment method types and Bancontact Pay", "th": "ประเภทวิธีชำระเงินใหม่และ Bancontact Pay"},
+      "body": {
+        "en": "Payment methods now have a type (terminal, external QR \"Quick Pay\", cash machine, bank QR) with a single provider and provider cards in the backend. pos_bancontact_pay (Bancontact Pay and Wero) is new, and the bank QR type generates an offline default QR.",
+        "th": "วิธีชำระเงินมีประเภท (terminal, external QR \"Quick Pay\", cash machine, bank QR) พร้อม provider เดียว และมีการ์ดผู้ให้บริการในหลังบ้าน โมดูล pos_bancontact_pay (Bancontact Pay และ Wero) เป็นของใหม่ และประเภท bank QR สร้าง QR เริ่มต้นแบบออฟไลน์ได้"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Restaurant: new floor plan editor and courses", "th": "ร้านอาหาร: ตัวแก้ไขผังร้านใหม่และคอร์ส"},
+      "body": {
+        "en": "Floor plans are stored as JSON and edited with a new editor that supports decor items. New pos.course with course allocation is added, and tipping and bill printing moved into core POS.",
+        "th": "ผังร้านถูกเก็บเป็น JSON และแก้ไขด้วยตัวแก้ไขใหม่ที่รองรับรายการตกแต่ง เพิ่ม pos.course พร้อมการจัดสรรคอร์ส และการทิปกับการพิมพ์บิลย้ายไปอยู่ใน POS หลัก"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Self-order: delivery, optional products, SMS and events", "th": "Self-order: จัดส่ง สินค้าเสริม SMS และอีเวนต์"},
+      "body": {
+        "en": "Presets gain a delivery type with origin address, max distance and delivery product. The app adds an optional products page, product snoozing, SMS receipts (pos_self_order_sms) and event tickets (pos_self_order_event).",
+        "th": "Preset มีประเภทการจัดส่ง พร้อมที่อยู่ต้นทาง ระยะทางสูงสุด และสินค้าค่าจัดส่ง แอปเพิ่มหน้าสินค้าเสริม การซ่อนสินค้าชั่วคราว (snooze) ใบเสร็จทาง SMS (pos_self_order_sms) และตั๋วอีเวนต์ (pos_self_order_event)"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "pos_hr four-level role matrix", "th": "pos_hr: ระดับสิทธิ์พนักงานสี่ระดับ"},
+      "body": {
+        "en": "The minimal/basic/advanced lists are replaced by four mutually exclusive roles: supervised, restrictive, cashier and manager. Managers are forced into the manager role, and an employee-level sales report is added.",
+        "th": "รายการ minimal/basic/advanced ถูกแทนที่ด้วยสี่บทบาทที่เลือกได้เพียงอย่างเดียว ได้แก่ supervised, restrictive, cashier และ manager ผู้จัดการถูกกำหนดเป็นบทบาท manager โดยอัตโนมัติ และมีรายงานยอดขายรายพนักงานเพิ่มเข้ามา"
+      },
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Presets with service fee, combo upsell, price-inclusion wizard", "th": "Preset พร้อมค่าบริการ คอมโบ upsell และวิซาร์ดราคารวมภาษี"},
+      "body": {
+        "en": "Presets can add a service fee (fixed or percent), combos support upsell, and a wizard explains tax-included versus excluded display. Custom receipt info (logo, phone, email, website, address) can be set per config.",
+        "th": "Preset เพิ่มค่าบริการได้ (คงที่หรือเปอร์เซ็นต์) คอมโบรองรับ upsell และมีวิซาร์ดอธิบายการแสดงราคารวมภาษีกับไม่รวมภาษี ตั้งค่าข้อมูลใบเสร็จแบบกำหนดเอง (โลโก้ โทรศัพท์ อีเมล เว็บไซต์ ที่อยู่) ได้ต่อ config"
+      },
+      "impact": "low", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "stock logic carved out into pos_stock", "th": "แยกลอจิกสต็อกออกเป็น pos_stock"},
+      "body": {
+        "en": "pos.pack.operation.lot, pos.config picking_type_id/warehouse_id/route_id/ship_later, pos.session and pos.order picking fields, res.company.point_of_sale_update_stock_quantities and COGS handling now live in pos_stock. pos_sale_stock was split from pos_sale, and pos_mrp and pos_repair now depend on pos_stock.",
+        "th": "pos.pack.operation.lot, ฟิลด์ picking_type_id/warehouse_id/route_id/ship_later ของ pos.config, ฟิลด์ picking ของ pos.session และ pos.order, res.company.point_of_sale_update_stock_quantities และการจัดการ COGS ย้ายไปอยู่ใน pos_stock แล้ว pos_sale_stock ถูกแยกจาก pos_sale และ pos_mrp กับ pos_repair ขึ้นกับ pos_stock"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/__manifest__.py", "addons/pos_stock/__manifest__.py", "addons/pos_stock/models/", "addons/pos_stock/security/pos_stock_security.xml"]
+    },
+    {
+      "title": {"en": "Mass field renames on pos.config", "th": "เปลี่ยนชื่อฟิลด์ของ pos.config จำนวนมาก"},
+      "body": {
+        "en": "iface_cashdrawer -> use_cashdrawer, is_kiosk_mode -> use_kiosk_mode, is_header_or_footer -> use_header_or_footer, is_closing_entry_by_product -> use_closing_entry_by_product, use_payment_terminal -> payment_provider, auto_validate_terminal_payment -> auto_validate_electronic_payment. IoT proxy fields (iface_print_via_proxy, proxy_ip, is_posbox, iface_scan_via_proxy, iface_electronic_scale), invoice_journal_id and order_edit_tracking are removed (Medium confidence on exact semantic equivalence).",
+        "th": "iface_cashdrawer -> use_cashdrawer, is_kiosk_mode -> use_kiosk_mode, is_header_or_footer -> use_header_or_footer, is_closing_entry_by_product -> use_closing_entry_by_product, use_payment_terminal -> payment_provider, auto_validate_terminal_payment -> auto_validate_electronic_payment ฟิลด์ proxy ของ IoT (iface_print_via_proxy, proxy_ip, is_posbox, iface_scan_via_proxy, iface_electronic_scale), invoice_journal_id และ order_edit_tracking ถูกนำออก (ความเชื่อมั่นระดับ Medium ว่าความหมายเทียบเท่ากันทุกประการ)"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/models/pos_config.py"]
+    },
+    {
+      "title": {"en": "Session accounting model rewritten", "th": "เขียนโมเดลบัญชีของเซสชันใหม่"},
+      "body": {
+        "en": "cash_journal_id, cash_register_balance_*, bank_payment_ids and move_id are replaced by bank_statement_id, opening/closing balance and sale_move_ids/refund_move_ids/correction_move_ids; closing is close_session_from_ui and pos.close.session.wizard is removed. Orders gain is_singly_invoiced/is_globally_invoiced and defer_invoice_pdf, with new crons for auto invoicing (every 10 min) and order tasks (every 5 min).",
+        "th": "cash_journal_id, cash_register_balance_*, bank_payment_ids และ move_id ถูกแทนที่ด้วย bank_statement_id, ยอดเปิด/ปิด และ sale_move_ids/refund_move_ids/correction_move_ids การปิดเซสชันใช้ close_session_from_ui และ pos.close.session.wizard ถูกนำออก ออเดอร์มี is_singly_invoiced/is_globally_invoiced และ defer_invoice_pdf พร้อม cron ใหม่สำหรับออกใบแจ้งหนี้อัตโนมัติ (ทุก 10 นาที) และประมวลผลงานออเดอร์ (ทุก 5 นาที)"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/models/pos_session.py", "addons/point_of_sale/models/pos_order.py", "addons/point_of_sale/data/ir_cron_data.xml"]
+    },
+    {
+      "title": {"en": "POS frontend moved to plugins with OWL3 compat layer", "th": "ฟรอนต์เอนด์ POS ย้ายไปใช้ plugin พร้อมเลเยอร์ OWL3"},
+      "body": {
+        "en": "OWL services are replaced by app/plugins/* (pos_data_plugin, pos_router_plugin, pos_ticket_printer_plugin, offline_plugin and others); the store stays in pos_store.js. Modules patching PosStore, DataService, printer_service, pos_router_service or receipt_screen need rework.",
+        "th": "OWL services ถูกแทนที่ด้วย app/plugins/* (pos_data_plugin, pos_router_plugin, pos_ticket_printer_plugin, offline_plugin และอื่นๆ) ส่วน store ยังอยู่ใน pos_store.js โมดูลที่ patch PosStore, DataService, printer_service, pos_router_service หรือ receipt_screen ต้องแก้ไขใหม่"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/static/src/app/plugins/pos_data_plugin.js", "addons/point_of_sale/static/src/app/services/pos_store.js", "addons/point_of_sale/__manifest__.py"]
+    },
+    {
+      "title": {"en": "Offline stack: service worker, IndexedDB, write queue", "th": "ชุดออฟไลน์: service worker, IndexedDB, คิวเขียนข้อมูล"},
+      "body": {
+        "en": "service_worker.js caches same-origin GETs; indexed_db.js keeps one store per model in a DB named point-of-sale-<config_id>-<db> with schema reconciliation. Connectivity is checked via /pos/ping, queued calls replay FIFO, and requestPersistentStorage() is called at initIndexedDB.",
+        "th": "service_worker.js แคชคำขอ GET ในโดเมนเดียวกัน indexed_db.js เก็บหนึ่ง store ต่อโมเดลในฐานข้อมูลชื่อ point-of-sale-<config_id>-<db> พร้อมการปรับ schema ให้ตรงกัน ตรวจการเชื่อมต่อผ่าน /pos/ping เล่นคิวคำสั่งซ้ำแบบ FIFO และเรียก requestPersistentStorage() ตอน initIndexedDB"
+      },
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/point_of_sale/static/src/app/service_worker.js", "addons/point_of_sale/static/src/app/models/utils/indexed_db.js", "addons/point_of_sale/static/src/app/plugins/pos_data_plugin.js", "addons/point_of_sale/static/src/app/plugins/offline_plugin.js"]
+    },
+    {
+      "title": {"en": "Server-side receipts via pos.order.receipt", "th": "ใบเสร็จฝั่งเซิร์ฟเวอร์ผ่าน pos.order.receipt"},
+      "body": {
+        "en": "Receipts are rendered from QWeb templates in receipt/*.xml (including ZPL labels) as HTML, image or ePoS raster, adding the dependency base_report_wkhtmltox. v19 OWL/XML receipt inheritances such as order_receipt.xml must be rewritten.",
+        "th": "ใบเสร็จถูกเรนเดอร์จากเทมเพลต QWeb ใน receipt/*.xml (รวมถึงป้าย ZPL) เป็น HTML, รูปภาพ หรือ ePoS raster และเพิ่ม dependency base_report_wkhtmltox การสืบทอดใบเสร็จแบบ OWL/XML ของ v19 เช่น order_receipt.xml ต้องเขียนใหม่"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/receipt/pos_order_receipt.py", "addons/point_of_sale/models/ir_ui_view.py"]
+    },
+    {
+      "title": {"en": "Payment method type/provider architecture", "th": "สถาปัตยกรรม payment_method_type/provider ของวิธีชำระเงิน"},
+      "body": {
+        "en": "pos.payment.method has payment_method_type plus one payment_provider, extended through _get_terminal_provider_selection, _get_external_qr_provider_selection and _get_cash_machine_selection. Kiosk calls go through /kiosk/payment_method_action/<action> and are allowed only if listed in _allowed_actions_in_self_order, otherwise 403.",
+        "th": "pos.payment.method มี payment_method_type และ payment_provider หนึ่งค่า ขยายผ่าน _get_terminal_provider_selection, _get_external_qr_provider_selection และ _get_cash_machine_selection การเรียกจากคีออสก์ผ่าน /kiosk/payment_method_action/<action> และอนุญาตเฉพาะ action ที่อยู่ใน _allowed_actions_in_self_order มิฉะนั้นได้ 403"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/point_of_sale/models/pos_payment_method.py", "addons/pos_self_order/controllers/orders.py", "addons/pos_adyen/models/pos_payment_method.py"]
+    },
+    {
+      "title": {"en": "Printer model and restaurant floor plan data changes", "th": "การเปลี่ยนแปลงโมเดลเครื่องพิมพ์และข้อมูลผังร้านอาหาร"},
+      "body": {
+        "en": "pos.printer printer_type is only epson_epos, with new use_type, use_cashdrawer, use_lna and split preparation/receipt printers on the config. Restaurant geometry columns (position_h/v, width, height, shape, color, floor background_*) are replaced by floor_plan_layout JSON, so layout data must be converted; the migration script is not visible in this clone.",
+        "th": "pos.printer มี printer_type เป็น epson_epos เท่านั้น พร้อม use_type, use_cashdrawer, use_lna ใหม่ และ config แยกเครื่องพิมพ์ preparation/receipt คอลัมน์เรขาคณิตของร้านอาหาร (position_h/v, width, height, shape, color, floor background_*) ถูกแทนที่ด้วย floor_plan_layout แบบ JSON จึงต้องแปลงข้อมูลผัง สคริปต์ migration ไม่ปรากฏใน clone นี้"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/point_of_sale/models/pos_printer.py", "addons/pos_restaurant/models/pos_config.py"]
+    },
+    {
+      "title": {"en": "New models and dependency changes", "th": "โมเดลใหม่และการเปลี่ยน dependency"},
+      "body": {
+        "en": "New pos.prep.order/pos.prep.line, pos.snooze and pos.course; pos_loyalty drops coupon_id and reward_identifier_code on POS lines in favour of card_id logic (Medium confidence on data migration). point_of_sale now depends on barcodes_gs1_nomenclature, iot_webserial and google_address_autocomplete; pos_partner_autocomplete is split out.",
+        "th": "มีโมเดลใหม่ pos.prep.order/pos.prep.line, pos.snooze และ pos.course; pos_loyalty ตัด coupon_id และ reward_identifier_code บนบรรทัด POS และใช้ลอจิกแบบ card_id แทน (ความเชื่อมั่นระดับ Medium เรื่องการย้ายข้อมูล) point_of_sale ขึ้นกับ barcodes_gs1_nomenclature, iot_webserial และ google_address_autocomplete และแยก pos_partner_autocomplete ออกมา"
+      },
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/point_of_sale/__manifest__.py", "addons/pos_loyalty/models/pos_order.py", "addons/pos_restaurant/models/pos_course.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {
+        "en": "Verify pos_stock auto-installs on upgraded databases with Inventory, and that ir.model.data and columns of moved models (pos.pack.operation.lot, product.removal, stock.picking.type POS fields) are carried over; migration scripts are not visible in the clone.",
+        "th": "ตรวจสอบว่า pos_stock ติดตั้งอัตโนมัติบนฐานข้อมูลที่อัปเกรดและมี Inventory และว่า ir.model.data กับคอลัมน์ของโมเดลที่ย้าย (pos.pack.operation.lot, product.removal, ฟิลด์ POS ของ stock.picking.type) ถูกนำข้ามมา สคริปต์ migration ไม่ปรากฏใน clone"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Custom modules that inherit pos.config and use picking_type_id, warehouse_id etc., or use stock models, must now depend on pos_stock; modules relying on iot_base JS or IoT assets will break.",
+        "th": "โมดูลกำหนดเองที่สืบทอด pos.config และใช้ picking_type_id, warehouse_id ฯลฯ หรือใช้โมเดล stock ต้องเพิ่ม dependency pos_stock โมดูลที่พึ่ง JS ของ iot_base หรือ asset ของ IoT จะใช้งานไม่ได้"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Update server actions, reports, automated actions, export templates and SQL/BI views for renamed or removed fields (pos_session.cash_register_*, pos_config.iface_*, is_kiosk_mode, use_payment_terminal, printer_ids, pos_hr basic/advanced lists, restaurant.table geometry).",
+        "th": "อัปเดต server action, รายงาน, automated action, เทมเพลตการส่งออก และ SQL/BI view สำหรับฟิลด์ที่เปลี่ยนชื่อหรือถูกนำออก (pos_session.cash_register_*, pos_config.iface_*, is_kiosk_mode, use_payment_terminal, printer_ids, รายการ basic/advanced ของ pos_hr, เรขาคณิตของ restaurant.table)"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Re-test session closing, partial refunds after closing, global versus single invoicing and reports. In daily closing mode the closing hour is compared with UTC now in _cron_generate_invoice_period with no timezone conversion seen (Medium confidence), so check it fits each shop.",
+        "th": "ทดสอบซ้ำการปิดเซสชัน การคืนสินค้าบางส่วนหลังปิด การออกใบแจ้งหนี้แบบรวมกับรายใบ และรายงาน ในโหมดปิดรายวัน ชั่วโมงปิดถูกเทียบกับเวลา UTC ปัจจุบันใน _cron_generate_invoice_period โดยไม่พบการแปลงเขตเวลา (ความเชื่อมั่นระดับ Medium) จึงควรตรวจว่าเหมาะกับแต่ละร้าน"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Restaurant floor plans need conversion to the JSON layout; test the new editor with large floors.",
+        "th": "ผังร้านอาหารต้องแปลงเป็น JSON layout และควรทดสอบตัวแก้ไขใหม่กับผังขนาดใหญ่"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Custom receipt and kitchen ticket templates must be rewritten for receipt/*.xml, and any module patching PosStore, DataService, printer_service, pos_router_service or receipt_screen needs rework for the plugin architecture.",
+        "th": "เทมเพลตใบเสร็จและตั๋วครัวที่กำหนดเองต้องเขียนใหม่สำหรับ receipt/*.xml และโมดูลที่ patch PosStore, DataService, printer_service, pos_router_service หรือ receipt_screen ต้องแก้ไขให้เข้ากับสถาปัตยกรรม plugin"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Map v19 minimal/basic/advanced employee lists to supervised/restrictive/cashier/manager deliberately; the roles are mutually exclusive. Custom terminal modules must override _allowed_actions_in_self_order or kiosk calls return 403.",
+        "th": "แมปรายการพนักงาน minimal/basic/advanced ของ v19 ไปเป็น supervised/restrictive/cashier/manager อย่างรอบคอบ เพราะบทบาทเลือกได้อย่างเดียว โมดูลเครื่องรับชำระเงินที่กำหนดเองต้อง override _allowed_actions_in_self_order มิฉะนั้นการเรียกจากคีออสก์จะได้ 403"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Browser storage is per config and DB: clearing browser data loses unsynced orders, so staff should re-sync and stay online before closing the session. Delivery presets in self-order need Google address autocomplete and geolocalize API keys verified.",
+        "th": "ที่เก็บข้อมูลในเบราว์เซอร์แยกตาม config และฐานข้อมูล การล้างข้อมูลเบราว์เซอร์ทำให้ออเดอร์ที่ยังไม่ซิงค์หาย พนักงานจึงควรซิงค์และออนไลน์ก่อนปิดเซสชัน Preset จัดส่งของ self-order ต้องตรวจสอบ API key ของ Google address autocomplete และ geolocalize"
+      },
+      "audience": "functional"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "IoT Box printing and IoT-box payment terminals (pos_iot_worldline, pos_iot_six) are not in CE; they are only referenced as install cards.", "th": "การพิมพ์ผ่าน IoT Box และเครื่องรับชำระเงินผ่าน IoT Box (pos_iot_worldline, pos_iot_six) ไม่มีใน CE มีเพียงการ์ดสำหรับติดตั้งที่อ้างถึง"},
+    {"en": "pos_tyro is referenced by the provider cards but is not in CE.", "th": "pos_tyro ถูกอ้างถึงในการ์ดผู้ให้บริการแต่ไม่มีใน CE"},
+    {"en": "A preparation display that consumes pos.prep.order is not visible in CE; it likely lives in Enterprise (Medium confidence).", "th": "ไม่พบหน้าจอ preparation display ที่ใช้ pos.prep.order ใน CE น่าจะอยู่ใน Enterprise (ความเชื่อมั่นระดับ Medium)"},
+    {"en": "pos_epson_printer and pos_iot are in neither v19 CE nor v20 CE; they appear to be Enterprise-only (inferred, Low confidence, not verifiable here).", "th": "pos_epson_printer และ pos_iot ไม่มีทั้งใน CE v19 และ v20 ดูเหมือนเป็นของ Enterprise เท่านั้น (อนุมาน ความเชื่อมั่นระดับ Low ตรวจสอบจากที่นี่ไม่ได้)"}
+  ],
+  "removed": [
+    {"module": "pos_restaurant_adyen", "successor": "pos_adyen", "note": {"en": "American-style tipping merged into pos_adyen plus core tipping (High confidence).", "th": "การทิปแบบอเมริกันรวมเข้ากับ pos_adyen และระบบทิปใน core (ความเชื่อมั่นระดับ High)"}},
+    {"module": "pos_restaurant_stripe", "successor": "pos_stripe", "note": {"en": "Merged into pos_stripe plus core tip screen (High on destination, Medium on behaviour parity).", "th": "รวมเข้ากับ pos_stripe และหน้าจอทิปใน core (High เรื่องปลายทาง, Medium เรื่องพฤติกรรมเทียบเท่า)"}},
+    {"module": "pos_self_order_adyen", "successor": "pos_adyen", "note": {"en": "Kiosk actions now allowed via _allowed_actions_in_self_order in pos_adyen (High confidence).", "th": "action ของคีออสก์อนุญาตผ่าน _allowed_actions_in_self_order ใน pos_adyen (ความเชื่อมั่นระดับ High)"}},
+    {"module": "pos_self_order_stripe", "successor": "pos_stripe", "note": {"en": "Merged into pos_stripe, which allows the stripe kiosk actions (High confidence).", "th": "รวมเข้ากับ pos_stripe ซึ่งอนุญาต action ของ stripe บนคีออสก์ (ความเชื่อมั่นระดับ High)"}},
+    {"module": "pos_self_order_viva_com", "successor": "pos_viva_com", "note": {"en": "Merged into pos_viva_com, which ships the payment_terminals bundle (High confidence).", "th": "รวมเข้ากับ pos_viva_com ซึ่งมี bundle payment_terminals (ความเชื่อมั่นระดับ High)"}},
+    {"module": "iot_base", "successor": "iot_webserial", "note": {"en": "Removed along with iot_box_image; no CE successor besides iot_webserial, and iot_drivers still ships (Medium confidence).", "th": "ถูกนำออกพร้อม iot_box_image ไม่มีตัวทดแทนใน CE นอกจาก iot_webserial และ iot_drivers ยังคงมีอยู่ (ความเชื่อมั่นระดับ Medium)"}},
+    {"module": "iot_box_image", "successor": null, "note": {"en": "Removed; IoT Box is no longer part of CE POS.", "th": "ถูกนำออก IoT Box ไม่เป็นส่วนหนึ่งของ POS ใน CE อีกต่อไป"}}
+  ]
+}

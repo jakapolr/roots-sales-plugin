@@ -32,7 +32,7 @@ It was built by reading the Odoo source code directly. Snapshot taken **2026-10-
 
 ## Raw data (`data/`)
 
-- `module_catalog_19_vs_20.csv`: machine-readable catalogue (module, status, files changed, category, app flag, summary, depends).
+- `module_catalog_19_vs_20.csv`: machine-readable catalogue. Columns: `module, status, files_changed, group, category, application, auto_install, summary, name, depends`.
 - `new_in_20.txt`, `removed_in_20.txt`: addon directory diffs.
 - `agent-brief.md`: the exact method and instructions given to the study agents, for reproducibility.
 

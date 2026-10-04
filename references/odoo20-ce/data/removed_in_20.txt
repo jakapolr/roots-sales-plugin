@@ -32,6 +32,7 @@ l10n_tr_nilvera_edispatch
 l10n_tr_nilvera_einvoice
 l10n_tr_nilvera_einvoice_extended
 l10n_uy_pos
+mrp_subcontracting_repair
 pos_restaurant_adyen
 pos_restaurant_stripe
 pos_self_order_adyen

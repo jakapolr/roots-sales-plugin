@@ -122,7 +122,7 @@ ir_attachment_public_rule,read public attachments,ir.attachment,base.group_user,
 | `odoo/http.py` became the package `odoo/http/`; **default `http_interface` = 127.0.0.1**; bearer scope mandatory on the JSON-2 API (`/json/2`, module `rpc`) | Deployments without a reverse proxy that relied on 0.0.0.0 will become unreachable. Set the interface explicitly. |
 | `res.bank` removed; `res.partner.bank` denormalised (`account_number`, `holder_name`); IBAN and VAT checks moved into `odoo/tools` and `base` | Bank data, imports and integrations must be remapped. |
 | CLI: new `populate` addon (data "blueprints") and a `duplicate` command; `module list`, `--dry-run`, `--db-system`, `--gevent-workers` | Better tooling for test databases and staging copies. |
-| Core test modules consolidated (24→15: `test_base`, `test_web`, `test_tests`…) | CI scripts referencing `test_orm` etc. must change. |
+| Core test modules consolidated (23→15: `test_base`, `test_web`, `test_tests`…) | CI scripts referencing `test_orm` etc. must change. |
 
 **Automated rewriters (`odoo-bin upgrade_code`).** Scripts in `odoo/upgrade_code/` cover:
 - ir.access

@@ -10,7 +10,7 @@ def load(root):
         out[d] = m
     return out
 for v in ('19','20'):
-    m = load(fSRC+'/odoo{v}/addons')
-    m.update({f'odoo/addons/{k}':x for k,x in load(fSRC+'/odoo{v}/odoo/addons').items()})
-    json.dump(m, open(fSRC+'/data/manifests_{v}.json','w'), indent=1, default=str)
+    m = load(f'{SRC}/odoo{v}/addons')
+    m.update({f'odoo/addons/{k}':x for k,x in load(f'{SRC}/odoo{v}/odoo/addons').items()})
+    json.dump(m, open(f'{SRC}/data/manifests_{v}.json','w'), indent=1, default=str)
     print(v, len(m))

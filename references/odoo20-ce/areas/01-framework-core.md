@@ -4,7 +4,7 @@ Evidence convention: [code] = verified by reading/diffing /home/user/odoo-src/od
 
 ## 1. Scope
 - `odoo/` Python package: `orm/`, `models/`, `fields/`, `api/`, `http/` (now a package), `tools/`, `cli/`, `service/`, `modules/`, `upgrade_code/`, `release.py`, `_monkeypatches/`, `tests/`.
-- Core addons in `odoo/addons/`: `base` plus 15 test modules (down from 24 in 19, see 2.2).
+- Core addons in `odoo/addons/`: `base` plus 15 test modules (down from 23 in 19, see 2.2).
 - New top-level `skills/` directory (AI coding-agent skills).
 - `requirements.txt`, `setup.py`.
 - New addons: `populate`, `test_populate`, `test_translation_mode`, `test_utm` (all in `addons/`).
@@ -32,7 +32,7 @@ Evidence convention: [code] = verified by reading/diffing /home/user/odoo-src/od
 | `test_web` | New | Search-panel, `web_read_group`, `formatted_read_group`, grouping sets, `web_save`, `web_read`, properties/onchange tests (replaces `test_read_group`, `test_search_panel`) |
 | `test_l10n` | New | `install_all_l10n.py`, `test_country.py` |
 | `test_http`, `test_inherit`, `test_lint`, `test_main_flows`, `test_uninstall`, `test_assetsbundle`, `test_data_module(_install)`, `test_inherit(s)_depends` | Changed | Switch to `ir.access.csv`; `test_http` gains `test_bearer_scope`, `test_auth_custom` (absorbs 19's `test_auth_custom`), `test_rpc_path`, `test_error_http/rpc` |
-| Removed test modules (14) | Removed → test_base / test_web / test_tests / test_translation / test_http | `test_access_rights, test_action_bindings, test_auth_custom, test_convert, test_converter, test_inherits, test_mimetypes, test_orm, test_read_group, test_rpc, test_search_panel, test_testing_utilities, test_translation_import` (13 + `test_inherits`). Successor mapping is by file names (e.g. `test_base/tests/test_orm/test_action_bindings.py`, `test_inherits.py`, `test_tools/test_mimetypes.py`, `test_tools/test_convert.py`); Medium confidence on `test_converter`/`test_rpc`. |
+| Removed test modules (13) | Removed → test_base / test_web / test_tests / test_translation / test_http | `test_access_rights, test_action_bindings, test_auth_custom, test_convert, test_converter, test_inherits, test_mimetypes, test_orm, test_read_group, test_rpc, test_search_panel, test_testing_utilities, test_translation_import` (13 modules). Successor mapping is by file names (e.g. `test_base/tests/test_orm/test_action_bindings.py`, `test_inherits.py`, `test_tools/test_mimetypes.py`, `test_tools/test_convert.py`); Medium confidence on `test_converter`/`test_rpc`. |
 
 ### 2.3 New addons
 | Module | App? | Summary |
@@ -168,7 +168,7 @@ Run via `odoo-bin upgrade_code`. Scripts new in 20 vs 19 (version number = "saas
 4. `read_group` dict API removed (new tuple `read_group`, keep `_read_group`/`formatted_read_group`) — High.
 5. Deprecated-in-18/19 APIs removed: `check_access_rights/rule`, `_filter_access_rules`, `toggle_active`, `_check_recursion`, `api.deprecated`, `registry.clear_cache`, `config.rcfile`, `config.load`, `get_param/set_param`, `<>`/`==`/uppercase domain operators — High.
 6. `http.py` -> `odoo/http/` package; default bind `127.0.0.1`; bearer scope mandatory — High.
-7. Test-module consolidation (24 -> 15 test addons in core) — High.
+7. Test-module consolidation (23 -> 15 test addons in core) — High.
 8. `populate` addon with blueprints; `duplicate` CLI replaces old populate; `module list/--dry-run`; db helpers moved to `odoo.modules.db` — High.
 9. Typed `ir.config_parameter` accessors; `CachedModel`; `user_writeable` field param; `BinaryValue` binary fields; `StoredTranslations` — High/Medium.
 10. `res.bank` removed; `res.partner.bank` denormalised with `clearing.label`; additional partner identifiers (`partner_identifiers.py`) — High (removal) / Medium (successor).

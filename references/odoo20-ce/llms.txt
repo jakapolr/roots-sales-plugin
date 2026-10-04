@@ -4,8 +4,7 @@
 
 ## Core
 - [Study paper](STUDY-PAPER.md): executive summary, platform, apps, Thailand/ASEAN/HK, CE vs EE, 19→20 upgrade playbook, risks
-- [Combined file](odoo20-ce-knowledge-combined.md): paper + all area reports in one file
-- [Module catalogue](01-module-catalog.md) and [CSV](module_catalog_19_vs_20.csv): every module, NEW/REMOVED/CHANGED
+- [Module catalogue](01-module-catalog.md) and [CSV](data/module_catalog_19_vs_20.csv): every module, NEW/REMOVED/CHANGED
 
 ## Area reports
 - [01 Framework & core](areas/01-framework-core.md): ir.access, ORM/SQL API, Python 3.12, HTTP, CLI

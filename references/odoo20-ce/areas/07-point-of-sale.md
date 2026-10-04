@@ -4,7 +4,7 @@ Evidence base: Odoo 20.0 CE (HEAD b100a87, "[FIX] point_of_sale: protect offline
 
 ## 1. Scope
 
-Directory `addons/` modules matching `point_of_sale` and `pos_*`: **44 modules in v20** (1 core + 43 `pos_*`), versus 42 in v19.
+Directory `addons/` modules matching `point_of_sale` and `pos_*`: **46 modules in v20** (1 core + 45 `pos_*`), versus 43 in v19.
 - New in 20: `pos_stock`, `pos_sale_stock`, `pos_sale_delivery`, `pos_partner_autocomplete`, `pos_bancontact_pay`, `pos_self_order_bancontact_pay`, `pos_self_order_event`, `pos_self_order_sms` (8).
 - Removed in 20: `pos_restaurant_adyen`, `pos_restaurant_stripe`, `pos_self_order_adyen`, `pos_self_order_stripe`, `pos_self_order_viva_com` (5).
 - Related and out of this file's depth: `iot_webserial` (new), `iot_base` and `iot_box_image` (removed; `iot_drivers` stays); the 20+ `l10n_*_pos*` modules (see 2.5, covered by another agent).

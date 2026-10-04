@@ -2,7 +2,7 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
-**Version:** `v4.0.0` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
+**Version:** `v4.1.0` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
@@ -12,7 +12,7 @@ Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowl
 - Thai market context and government procurement support (TOR Response Factory)
 - Google Workspace connectors (Drive, Gmail, Calendar)
 - PM skills for requirements and SRS documentation
-- 6 sub-agents for SE work, MOM writing, proposal review, PM handoff, and TOR factory orchestration
+- 7 sub-agents for SE work, MOM writing, proposal review, PM handoff, TOR factory orchestration, and deal-strategy orchestration
 
 ## Install
 
@@ -45,7 +45,7 @@ roots-sales-plugin/
 ├── assets/
 │   └── brand/                   # Logo catalog (Roots + BEECY) — see assets/brand/README.md
 │
-├── skills/                      # 34 skills
+├── skills/                      # 37 skills
 │   ├── [FROM UPSTREAM — anthropics/knowledge-work-plugins/sales]
 │   │   ├── account-research/        # Company research
 │   │   ├── call-prep/               # Meeting preparation
@@ -91,7 +91,7 @@ roots-sales-plugin/
 │       ├── roots-submission-packager/ # Assemble and lock the final submission package (G5)
 │       └── roots-lessons-learned/    # Record win/loss result and lessons in register (G6)
 │
-├── agents/                      # 6 sub-agents
+├── agents/                      # 7 sub-agents
 │   ├── se-orchestrator.md           # AI Sales Engineer (5 modes)
 │   ├── mom-writer.md                # MOM + registry + follow-up email
 │   ├── proposal-reviewer.md         # Quality gate before sending (read-only)
@@ -143,8 +143,8 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Type | Count | Notes |
 |---|---|---|
-| Skills | 34 | 8 upstream + 5 pm-skills + 8 custom + 9 TOR factory + 4 Odoo CRM |
-| Sub-agents | 6 | se-orchestrator, mom-writer, proposal-reviewer, pm-handoff, tor-factory-orchestrator, tor-qa-reviewer |
+| Skills | 37 | 8 upstream + 5 pm-skills + 8 custom + 9 TOR factory + 6 Odoo CRM/strategy + 1 Odoo 20 KB |
+| Sub-agents | 7 | se-orchestrator, mom-writer, proposal-reviewer, pm-handoff, tor-factory-orchestrator, tor-qa-reviewer, strategy-orchestrator |
 | Commands | 2 | /roots:pipeline-review, /roots:meeting-search |
 | MCP connectors | 3 active | Google Drive, Gmail, Calendar |
 
@@ -162,6 +162,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Version | What changed |
 |---|---|
+| `v4.1.0` | **Odoo 20 CE knowledge base** — code-verified study of Odoo 20.0 Community Edition vs 19.0 (`references/odoo20-ce/`: study paper, 720-module catalogue, 10 area reports, `l10n_th` deep-dive), the `odoo20-ce-expert` skill, and an internal EN/TH Odoo 20 Field Guide site source (`docs/odoo20-site/`). CE scope only — EE noted as "absent from CE". |
 | `v4.0.0` | **Hunting Strategy layer** — `deal-strategy` (scorecard v2 tier + MEDDICC + killing-zone + CTA to Odoo chatter), `deal-lessons`, `strategy-orchestrator` agent, Lost/Won reason taxonomy + Odoo automation hooks; references: `strategy-doctrine`, `customer-scorecard`, `deal-service-matrix`, `won-lost-cheatsheet` |
 | `v3.5.3` | sales-help navigator: removed a phantom skill reference, added design-path routing |
 | `v3.5.2` | Routed `create-an-asset`, `se-orchestrator` (Mode F), `competitive-intelligence` to Claude Design + brand-ci |

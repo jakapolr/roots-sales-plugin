@@ -31,7 +31,9 @@ phase: 4
 odoo search read crm.lead --domain '[["id","=",<ID>]]' \
   --fields "name,partner_id,stage_id,expected_revenue,probability,priority,\
 date_deadline,activity_state,date_last_stage_update,x_deal_tier,\
-business_research,financial_research,analysis_description,research_status,user_id" 2>/dev/null
+business_research,financial_research,analysis_description,research_status,user_id,\
+description,email_from,phone,source_id" 2>/dev/null
+# ↑ `description` สำคัญ — ลีดหลายตัวเก็บเนื้อหาหลัก (ความต้องการ/คู่แข่ง/งบ) ไว้ในฟิลด์นี้ ไม่ใช่ research_* · อ่านทุกครั้ง
 
 # ชั้น Static — partner (industry, มหาชน?, DBD)
 odoo search read res.partner --domain '[["id","=",<PID>]]' --fields "name,industry_id,is_company,comment" 2>/dev/null

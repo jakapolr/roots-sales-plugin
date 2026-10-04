@@ -104,9 +104,12 @@ Government project (e-GP)
 **Industry:** | **Size:** | **Modules:** | **Budget:**
 
 ### Recommendation
-**Recommended:** Odoo [18 Enterprise / 18 Community + BEECY]
+**Recommended:** [Odoo Enterprise (Standard / Custom) / Community Implementation / BEECY SaaS] · **version:** 20 (default)
 **Confidence:** High / Medium / Low
 **Rationale:** [2-3 sentences]
+
+> **Two axes — don't collapse them:** *Edition* = Community vs Enterprise (feature boundary — see `references/odoo20-ce/`). *Path* = EE licence / BEECY SaaS / Community Implementation (how Roots delivers). A client can want EE-level features but take the **Community Implementation** path via OCA/custom.
+> **Edition-neutral needs:** requirements with no native module in *either* edition (e.g. weighbridge/scale integration, farmer/plot database, electricity-sales billing) are **build effort regardless of edition** — do not slot them as an edition decision.
 
 ### Feature Coverage
 

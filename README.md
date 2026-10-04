@@ -2,7 +2,7 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
-**Version:** `v4.1.3` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
+**Version:** `v4.1.4` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
@@ -162,6 +162,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Version | What changed |
 |---|---|
+| `v4.1.4` | **Polish / fast-follow** (from 2-round QA) — refreshed `odoo-gap-analysis` to Odoo 20 (edition-vs-path axes + edition-neutral custom-needs note), `deal-strategy` Step-0 now reads `description`/`email_from`/`phone`/`source_id`, `se-orchestrator` Thai-localization reframed as CE-20-native vs custom/BEECY, `sales-help` `[code]`/`[web]` discipline note. All non-blocking quality fixes. |
 | `v4.1.3` | **sales-help routing** — route Odoo pricing / plan / user-type questions to `odoo-editions` (`pricing-th.md`) and CE-vs-EE app questions to `odoo20-ce-expert` (`editions-ce-vs-ee.md`), both `[web]`. |
 | `v4.1.2` | **Odoo pricing & user types (th_TH)** — added `references/odoo20-ce/data/pricing-th.md` (`[web]`, as-of 2026-10): Standard / Custom plans + the new **Light User** ($5.90/user/mo), USD list price (THB via currency toggle). Wired into `odoo-editions` + `odoo20-ce-expert`. |
 | `v4.1.1` | **CE-vs-EE edition matrix** — wired the official app-level Enterprise-vs-Community matrix (`references/odoo20-ce/data/editions-ce-vs-ee.md`, from odoo.com/page/editions, tagged `[web]`) into `odoo20-ce-expert` + `odoo-gap-analysis`, and added it to the Field Guide CE-vs-EE page. Kept separate from the `[code]`-verified CE facts. |

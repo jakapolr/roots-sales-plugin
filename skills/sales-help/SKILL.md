@@ -166,6 +166,8 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 ต้องการ: เทียบ CE vs EE ระดับแอป (แอปไหน Enterprise-only)
 → odoo20-ce-expert (อ้าง references/odoo20-ce/data/editions-ce-vs-ee.md [web])
 
+หมายเหตุวินัยข้อมูล: edition matrix + ราคา = `[web]` (vendor, เช็ก version/ราคาก่อนเสนอลูกค้า) · ข้อเท็จจริง CE = `[code]` (จากโค้ด v20) — ห้ามปนกัน
+
 ต้องการ: เทียบ feature/cost + เลือก path (Enterprise vs BEECY SaaS vs Community impl)
 → odoo-gap-analysis
 

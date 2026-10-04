@@ -287,14 +287,12 @@ Flag to human SE or Director when:
 - Multi-company with complex intercompany transactions → complex to implement
 - Very large data volumes (>1M transactions/month) → performance planning needed
 
-**BEECY advantages over standard Community:**
-- Thai VAT/WHT forms (ภ.พ.30, ภ.ง.ด.1, ภ.ง.ด.3, ภ.ง.ด.53)
-- e-Tax Invoice (Revenue Department format)
-- Thai payroll (SSO, PND)
-- Thai bank transfer files
-- These are NOT available in standard Community — always mention this
+**Thai localization — native in CE 20 vs custom/BEECY build** (see `references/odoo20-ce/areas/10-localizations.md` §8):
+- Stock `l10n_th` 20 **has** `[code]`: VAT (incl. 7% on-payment), WHT at payment + 50 ทวิ, tax-invoice register (gapless), ภ.พ.30 report, PromptPay QR
+- **NOT in stock CE 20 → custom / BEECY build**: e-Tax Invoice (RD format), PND 1/3/53 reports (regressed vs 19), Thai payroll (SSO/PND1 — Payroll is Enterprise), Thai bank transfer files
+- Always flag which items are native vs build effort — do not sell "BEECY advantage" generically
 
 **Always validate:**
-- Odoo 18 version and edition to be used
+- Odoo version and edition to be used (default: 20 — consult `references/odoo20-ce/`)
 - Whether BEECY modules are needed (Thai localization)
 - Whether client needs Odoo Discuss (they often don't realize they need it for internal comms)

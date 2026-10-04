@@ -1,0 +1,721 @@
+module,status,files_changed,group,category,application,auto_install,summary,name,depends
+account,CHANGED-MAJOR,431/550,Accounting,Accounting/Accounting,True,False,Invoices & Payments,Invoicing,"base_setup,onboarding,product,analytic,portal,digest"
+account_add_gln,REMOVED,,Accounting,Accounting/Accounting,False,True,"This module adds the Global Location Number to the partner. Used on delivery addresses, it is used to identify stock locations and is mandatory on the UBL/CII eInvoices (but not only). The module is intended be merged with account, later on, in master",Add Partner GLN,account
+account_check_printing,CHANGED-MAJOR,79/88,Accounting,Accounting/Accounting,False,False,Check printing basic features,Check Printing Base,account
+account_debit_note,CHANGED-MAJOR,59/64,Accounting,Accounting/Accounting,False,False,Debit Notes,Debit Notes,account
+account_edi,CHANGED-MAJOR,58/70,Accounting,Accounting/Accounting,False,False,Import/Export Invoices From XML/PDF,Import/Export Invoices From XML/PDF,account
+account_edi_proxy_client,CHANGED-MAJOR,60/61,Accounting,Accounting/Accounting,False,False,Proxy features for account_edi,Proxy features for account_edi,"account,certificate"
+account_edi_ubl_cii,CHANGED-MAJOR,153/312,Accounting,Accounting/Accounting,False,True,Import/Export electronic invoices with UBL/CII,Import/Export electronic invoices with UBL/CII,account
+account_fleet,CHANGED-MAJOR,65/69,Accounting,Accounting/Accounting,False,True,Manage accounting with fleets,Accounting/Fleet bridge,"fleet,account"
+account_payment,CHANGED-MAJOR,91/96,Accounting,Accounting/Accounting,False,True,Enable customers to pay invoices on the portal and post payments when transactions are processed.,Payment - Account,"account,payment"
+account_payment_custom,NEW,,Accounting,Accounting/Payment Custom,False,True,Bridge between payment_custom and account_payment.,Payment Custom / Account Payment,"account_payment,payment_custom"
+account_payment_interco,CHANGED-MAJOR,52/58,Accounting,Accounting/Accounting,False,False,Enable Intercompany payments to reconcile with their invoices on post.,Intercompany Payment - Account,account_payment
+account_peppol,CHANGED-MAJOR,97/121,Accounting,Accounting/Accounting,False,True,This module is used to send/receive documents with Peppol,Peppol,"account_edi_proxy_client,account_edi_ubl_cii"
+account_peppol_advanced_fields,REMOVED,,Accounting,Accounting/Accounting,False,False,"Merged prematurly, not working correctly. Please don't use. Better solution coming soon.",[DEPRECATED] Account Peppol Advanced Fields,"account,account_edi_ubl_cii"
+account_peppol_response,REMOVED,,Accounting,Accounting/Accounting,False,True,This module is used to send/receive responses to documents received/sent with PEPPOL,Peppol Business Response,account_peppol
+account_qr_code_emv,CHANGED-MAJOR,54/55,Accounting,Accounting/Payment,False,False,account_qr_code_emv,account_qr_code_emv,account
+account_qr_code_sepa,CHANGED-MAJOR,53/55,Accounting,Accounting/Payment,False,True,Account SEPA QR Code,Account SEPA QR Code,account
+account_tax_python,CHANGED-MAJOR,71/64,Accounting,Accounting/Accounting,False,False,Use python code to define taxes,Define Taxes as Python Code,account
+account_test,CHANGED-MAJOR,66/72,Test,Accounting/Accounting,False,False,Accounting Consistency Tests,Accounting Consistency Tests,account
+account_update_tax_tags,CHANGED-MAJOR,56/58,Accounting,Accounting/Accounting,False,False,Allow updating tax grids on existing entries,Account - Allow updating tax grids,account
+analytic,CHANGED-MAJOR,96/112,Accounting,Accounting/Accounting,False,False,Analytic Accounting,Analytic Accounting,"base,mail,uom"
+api_doc,CHANGED-MAJOR,33/88,Hidden,Hidden,False,True,API Documentation,API Documentation,web
+attachment_indexation,CHANGED-MAJOR,54/56,Hidden,Hidden/Tools,False,False,Attachments List and Document Indexation,Attachments List and Document Indexation,web
+auth_ldap,CHANGED-MAJOR,75/78,Hidden,Hidden/Tools,False,False,Authentication via LDAP,Authentication via LDAP,"base,base_setup"
+auth_oauth,CHANGED-MAJOR,78/80,Hidden,Hidden/Tools,False,False,OAuth2 Authentication,OAuth2 Authentication,"base,web,base_setup,auth_signup"
+auth_passkey,CHANGED-MAJOR,65/129,Hidden,Hidden/Tools,False,True,Log in with a Passkey,Passkeys,"base_setup,web"
+auth_passkey_portal,CHANGED-MAJOR,56/58,Hidden,Hidden/Tools,False,True,Passkeys for portal users,Passkeys Portal,"auth_passkey,portal"
+auth_password_policy,CHANGED-MAJOR,59/64,Hidden,Hidden/Tools,False,False,Implement basic password policy configuration & check,Password Policy,"base_setup,web"
+auth_password_policy_portal,CHANGED-MAJOR,51/55,Tools,Tools,False,True,Password Policy support for Signup,Password Policy support for Signup,"auth_password_policy,portal"
+auth_password_policy_signup,CHANGED-MAJOR,53/57,Hidden,Hidden/Tools,False,True,Password Policy support for Signup,Password Policy support for Signup,"auth_password_policy,auth_signup"
+auth_signup,CHANGED-MAJOR,78/86,Hidden,Hidden/Tools,False,True,Signup,Signup,"base_setup,mail,web"
+auth_timeout,CHANGED-MAJOR,64/62,Hidden,Hidden/Tools,False,False,Ask for authentication after user inactivity,Auth Timeout,"auth_totp,auth_totp_mail,auth_passkey,bus"
+auth_totp,CHANGED-MAJOR,68/74,Extra Tools,Extra Tools,False,True,Two-Factor Authentication (TOTP),Two-Factor Authentication (TOTP),web
+auth_totp_mail,CHANGED-MAJOR,63/73,Extra Tools,Extra Tools,False,True,2FA Invite mail,2FA Invite mail,"auth_totp,mail"
+auth_totp_portal,CHANGED-MAJOR,58/64,Hidden,Hidden,False,True,TOTPortal,TOTPortal,"portal,auth_totp"
+barcodes,CHANGED-MAJOR,93/98,Supply Chain,Supply Chain/Inventory,False,False,Scan and Parse Barcodes,Barcode,web
+barcodes_gs1_nomenclature,CHANGED-MAJOR,58/65,Supply Chain,Supply Chain/Inventory,False,False,Parse barcodes according to the GS1-128 specifications,Barcode - GS1 Nomenclature,"barcodes,uom"
+base_address_extended,CHANGED-MAJOR,76/65,Sales,Sales/Sales,False,False,Add extra fields on addresses,Extended Addresses,web
+base_automation,CHANGED-MAJOR,84/92,Sales,Sales/Sales,False,False,Automation Rules,Automation Rules,"base,digest,resource,mail,sms"
+base_geolocalize,CHANGED-MAJOR,74/68,Sales,Sales/Sales,False,False,Partners Geolocation,Partners Geolocation,base_setup
+base_iban,REMOVED,,Accounting,Accounting/Accounting,False,False,IBAN Bank Accounts,IBAN Bank Accounts,"account,web"
+base_import,CHANGED-MAJOR,92/103,Hidden,Hidden/Tools,False,True,Base import,Base import,web
+base_import_module,CHANGED-MAJOR,82/85,Hidden,Hidden/Tools,False,True,Base import module,Base import module,web
+base_install_request,CHANGED-MAJOR,60/60,Hidden,Hidden,False,True,Base - Module Install Request,Base - Module Install Request,mail
+base_report_paper_muncher,NEW,,Hidden,Hidden/Tools,False,False,Paper Muncher Engine,Report Engine: Paper Muncher,base_setup
+base_report_wkhtmltox,NEW,,Hidden,Hidden/Tools,False,True,wkhtmltopdf rendering engine,Report Engine: wkhtmltopdf/wkhtmltoimage,
+base_setup,CHANGED-MAJOR,77/85,Hidden,Hidden,False,True,Initial Setup Tools,Initial Setup Tools,"base,web"
+base_sparse_field,CHANGED-MAJOR,70/71,Hidden,Hidden,False,False,Implementation of sparse fields.,Sparse Fields,base
+base_vat,REMOVED,,Accounting,Accounting/Accounting,False,False,VAT Number Validation,VAT Number Validation,account
+board,CHANGED-MAJOR,78/92,Productivity,Productivity,False,False,Build your own dashboards,Dashboards,spreadsheet_dashboard
+bus,CHANGED-MAJOR,155/141,Hidden,Hidden,False,True,IM Bus,IM Bus,"base,web"
+calendar,CHANGED-MAJOR,207/230,Productivity,Productivity/Calendar,True,False,Schedule employees' meetings,Calendar,"base,mail"
+calendar_sms,CHANGED-MAJOR,69/64,Productivity,Productivity/Calendar,False,True,Send text messages as event reminders,Calendar - SMS,"calendar,sms"
+certificate,CHANGED-MAJOR,61/66,Hidden,Hidden/Tools,False,False,Manage certificate,Certificate,base_setup
+cloud_storage,CHANGED-MAJOR,68/70,Technical Settings,Technical Settings,False,False,Store chatter attachments in the cloud,Cloud Storage,"base_setup,mail"
+cloud_storage_azure,CHANGED-MAJOR,56/62,Technical Settings,Technical Settings,False,False,Store chatter attachments in the Azure cloud,Cloud Storage Azure,cloud_storage
+cloud_storage_google,CHANGED-MAJOR,58/64,Technical Settings,Technical Settings,False,False,Store chatter attachments in the Google cloud,Cloud Storage Google,cloud_storage
+cloud_storage_migration,CHANGED-MAJOR,57/62,Technical Settings,Technical Settings,False,False,Migrate local attachments to cloud storage,Cloud Storage Migration,cloud_storage
+contacts,CHANGED-MAJOR,69/68,Sales,Sales/CRM,True,False,Centralize your address book,Contacts,"base_address_extended,mail,web_hierarchy"
+crm,CHANGED-MAJOR,179/237,Sales,Sales/CRM,True,False,Track leads and close opportunities,CRM,"base_setup,base_install_request,sales_team,mail,calendar,resource,utm,web_tour,contacts,digest,phone_validation"
+crm_iap_enrich,CHANGED-MAJOR,57/62,Sales,Sales/CRM,False,True,Enrich Leads/Opportunities using email address domain,Lead Enrichment,"iap_crm,iap_mail"
+crm_iap_mine,CHANGED-MAJOR,69/77,Sales,Sales/CRM,False,True,"Generate Leads/Opportunities based on country, industries, size, etc.",Lead Generation,"iap_crm,iap_mail"
+crm_livechat,CHANGED-MAJOR,91/85,Sales,Sales/CRM,False,True,Create lead from livechat conversation,CRM Livechat,"crm,im_livechat"
+crm_mail_plugin,CHANGED-MAJOR,61/57,Sales,Sales/CRM,False,True,Turn emails received in your mailbox into leads and log their content as internal notes.,CRM Mail Plugin,"crm,mail_plugin"
+crm_sale_project,NEW,,Sales,Sales/CRM,False,True,Project Generation from Opportunities,CRM - Project,"sale_project,crm"
+crm_sms,CHANGED-MAJOR,57/55,Sales,Sales/CRM,False,True,Add SMS capabilities to CRM,SMS in CRM,"crm,sms"
+data_recycle,CHANGED-MAJOR,63/69,Productivity,Productivity/Data Cleaning,True,False,Find old records and archive/delete them,Data Recycle,mail
+delivery,CHANGED-MAJOR,120/120,Sales,Sales/Delivery,False,False,Delivery Costs,Delivery Costs,"sale,payment_custom"
+delivery_mondialrelay,REMOVED,,Shipping Connectors,Shipping Connectors,False,False,Let's choose a Point Relais® as shipping address,delivery_mondialrelay,stock_delivery
+delivery_stock_picking_batch,REMOVED,,Supply Chain,Supply Chain/Inventory,False,True,"Batch Transfer, Carrier",Delivery Stock Picking Batch,"stock_delivery,stock_picking_batch"
+digest,CHANGED-MAJOR,67/83,Marketing,Marketing,False,False,KPI Digests,KPI Digests,"mail,portal,resource"
+event,CHANGED-MAJOR,124/178,Marketing,Marketing/Events,False,False,"Trainings, Conferences, Meetings, Exhibitions, Registrations",Events Organization,"barcodes,base_setup,digest,mail,phone_validation,portal,utm"
+event_booth,CHANGED-MAJOR,56/76,Marketing,Marketing/Events,False,False,Manage event booths,Events Booths,event
+event_booth_sale,CHANGED-MAJOR,64/78,Marketing,Marketing/Events,False,True,Manage event booths sale,Events Booths Sales,"event_booth,event_sale"
+event_crm,CHANGED-MAJOR,64/74,Marketing,Marketing/Events,False,True,Event CRM,Event CRM,"event,crm"
+event_crm_sale,CHANGED-MAJOR,51/56,Marketing,Marketing/Events,False,True,Event CRM Sale,Event CRM Sale,"event_crm,event_sale"
+event_product,CHANGED-MAJOR,55/66,Marketing,Marketing/Events,False,True,Events Product,Events Product,"event,product,account"
+event_sale,CHANGED-MAJOR,88/104,Marketing,Marketing/Events,False,True,Events Sales,Events Sales,"event_product,sale_management"
+event_sms,CHANGED-MAJOR,58/62,Marketing,Marketing/Events,False,True,SMS on Events,SMS on Events,"event,sms"
+fleet,CHANGED-MAJOR,98/178,Human Resources,Human Resources/Fleet,True,False,Manage your fleet and track car costs,Fleet,"base,mail"
+fleet_maintenance,NEW,,Human Resources,Human Resources,False,True,Integrates Fleet and Maintenance,Maintenance - Fleet,"fleet,maintenance"
+gamification,CHANGED-MAJOR,89/123,Human Resources,Human Resources,False,False,Gamification,Gamification,mail
+gamification_sale_crm,CHANGED-MAJOR,66/62,Sales,Sales/CRM,False,True,CRM Gamification,CRM Gamification,"gamification,sale_crm"
+google_account,CHANGED-MAJOR,71/55,Hidden,Hidden/Tools,False,False,Google Users,Google Users,base_setup
+google_address_autocomplete,CHANGED-MAJOR,57/72,Hidden,Hidden/Tools,False,False,Assist with automatic completion & suggestions when filling address,Google Address Autocomplete,web
+google_calendar,CHANGED-MAJOR,114/125,Productivity,Productivity,False,False,Google Calendar,Google Calendar,"google_account,calendar"
+google_gmail,CHANGED-MAJOR,55/69,Hidden,Hidden,False,True,Google Gmail,Google Gmail,mail
+google_recaptcha,CHANGED-MAJOR,54/60,Hidden,Hidden,False,False,Google reCAPTCHA integration,Google reCAPTCHA integration,base_setup
+hr,CHANGED-MAJOR,299/312,Human Resources,Human Resources/Employees,True,False,Centralize employee information,Employees,"auth_signup,base_setup,digest,phone_validation,resource_mail,web_hierarchy"
+hr_address_extended,NEW,,Human Resources,Human Resources/Employees,False,False,Centralize employee information,HR Address Extended,"hr,base_address_extended"
+hr_attendance,CHANGED-MAJOR,156/166,Human Resources,Human Resources/Attendances,True,False,Track employee attendance,Attendances,"hr,hr_work_entry,barcodes,base_geolocalize"
+hr_calendar,CHANGED-MAJOR,76/77,Human Resources,Human Resources/Employees,False,True,Display Working Hours in Calendar,Display Working Hours in Calendar,"hr,calendar"
+hr_calendar_google,NEW,,Human Resources,Human Resources/Remote Work,False,True,HR Calendar with Google Calendar,HR Calendar with Google Calendar,"hr_calendar,google_calendar"
+hr_expense,CHANGED-MAJOR,143/161,Human Resources,Human Resources/Expenses,True,False,"Submit, validate and reinvoice employee expenses",Expenses,"account,web_tour,hr"
+hr_fleet,CHANGED-MAJOR,75/70,Human Resources,Human Resources,False,True,Get history of driven cars by employees,Fleet History,"hr,fleet"
+hr_gamification,CHANGED-MAJOR,76/85,Human Resources,Human Resources,False,True,HR Gamification,HR Gamification,"gamification,hr"
+hr_holidays,CHANGED-MAJOR,303/319,Human Resources,Human Resources/Time Off,True,False,Allocate time off and follow leave requests,Time Off,"hr_work_entry,hr_calendar,resource"
+hr_holidays_attendance,CHANGED-MAJOR,90/83,Human Resources,Human Resources,False,True,Attendance Holidays,HR Attendance Holidays,"hr_attendance,hr_holidays"
+hr_holidays_homeworking,REMOVED,,Human Resources,Human Resources,False,True,Manage holidays with remote work,Holidays with Remote Work,"hr_holidays,hr_homeworking"
+hr_homeworking,REMOVED,,Human Resources,Human Resources/Remote Work,False,True,Remote Work,Remote Work,hr
+hr_homeworking_calendar,REMOVED,,Human Resources,Human Resources/Remote Work,False,True,Remote Work with calendar,Remote Work with calendar,"hr_homeworking,calendar"
+hr_hourly_cost,REMOVED,,Services,Services/Employee Hourly Cost,False,False,Employee Hourly Wage,Employee Hourly Wage,hr
+hr_livechat,CHANGED-MAJOR,52/54,Human Resources,Human Resources,False,True,HR - Livechat,HR - Livechat,"hr,im_livechat"
+hr_maintenance,CHANGED-MAJOR,73/65,Human Resources,Human Resources,False,True,"Equipment, Assets, Internal Hardware, Allocation Tracking",Maintenance - HR,"hr,maintenance"
+hr_org_chart,REMOVED,,Human Resources,Human Resources,False,True,HR Org Chart,HR Org Chart,"hr,web_hierarchy"
+hr_presence,CHANGED-MAJOR,65/68,Human Resources,Human Resources,False,False,Employee Presence Control,Employee Presence Control,"hr,hr_holidays,sms"
+hr_recruitment,CHANGED-MAJOR,133/187,Human Resources,Human Resources/Recruitment,True,False,Track your recruitment pipeline,Recruitment,"hr,calendar,utm,attachment_indexation,web_tour,digest"
+hr_recruitment_skills,CHANGED-MAJOR,66/68,Human Resources,Human Resources/Recruitment,False,True,Manage skills of your employees,Recruitment - Skills Management,"hr_skills,hr_recruitment"
+hr_recruitment_sms,CHANGED-MAJOR,51/54,Human Resources,Human Resources/Recruitment,False,True,Mass mailing sms to job applicants,Recruitment - SMS,"hr_recruitment,sms"
+hr_recruitment_survey,CHANGED-MAJOR,85/80,Human Resources,Human Resources,False,False,Surveys,Hr Recruitment Interview Forms,"survey,hr_recruitment"
+hr_skills,CHANGED-MAJOR,102/139,Human Resources,Human Resources/Employees,True,True,"Manage skills, knowledge and resume of your employees",Skills Management,hr
+hr_skills_event,CHANGED-MAJOR,54/60,Hidden,Hidden,False,True,Link training events to resume of your employees,Skills Events,"hr_skills,event"
+hr_skills_slides,CHANGED-MAJOR,57/66,Human Resources,Human Resources/Employees,False,True,Add completed courses to resume of your employees,Skills e-learning,"hr_skills,website_slides"
+hr_skills_survey,CHANGED-MAJOR,55/61,Human Resources,Human Resources/Employees,False,True,Add certification to resume of your employees,Skills Certification,"hr_skills,survey"
+hr_timesheet,CHANGED-MAJOR,128/163,Services,Services/Timesheets,False,False,Track employee time on tasks,Task Logs,"hr,analytic,project,uom"
+hr_timesheet_attendance,CHANGED-MAJOR,71/72,Human Resources,Human Resources/Attendances,False,True,Timesheets/attendances reporting,Timesheets/attendances reporting,"hr_timesheet,hr_attendance"
+hr_work_entry,CHANGED-MAJOR,110/97,Human Resources,Human Resources/Employees,False,False,Manage work entries,Work Entries,hr
+hr_work_entry_holidays,REMOVED,,Human Resources,Human Resources/Payroll,False,True,Manage Time Off in Payslips,Time Off in Payslips,"hr_holidays,hr_work_entry"
+html_builder,CHANGED-MAJOR,411/866,,,False,False,Generic html builder,HTML Builder,html_editor
+html_editor,CHANGED-MAJOR,510/636,Hidden,Hidden,False,True,A Html Editor component and plugin system.,HTML Editor,"base,bus,web"
+http_routing,CHANGED-MAJOR,58/63,Hidden,Hidden,False,False,Web Routing,Web Routing,web
+iap,CHANGED-MAJOR,82/85,Hidden,Hidden/Tools,False,True,Basic models and helpers to support In-App Purchase.,In-App Purchase,"web,base_setup"
+iap_crm,CHANGED-MAJOR,51/53,Hidden,Hidden/Tools,False,True,Bridge between IAP and CRM,IAP / CRM,"crm,iap_mail"
+iap_mail,CHANGED-MAJOR,53/58,Hidden,Hidden/Tools,False,True,Bridge between IAP and mail,IAP / Mail,"iap,mail"
+im_livechat,CHANGED-MAJOR,404/421,Website,Website/Live Chat,True,False,Chat with your website visitors,Live Chat,"mail,digest,utm,phone_validation"
+iot_base,REMOVED,,Hidden,Hidden,False,False,IoT Base,IoT Base,web
+iot_box_image,REMOVED,,Hidden,Hidden/Tools,False,False,Build tools for the IoT Box image,IoT Box Image Build Tools,
+iot_drivers,CHANGED-MAJOR,93/79,Hidden,Hidden,False,False,Connect the Web Client to Hardware Peripherals,Hardware Proxy,
+iot_webserial,NEW,,Administration,Administration/IoT,False,False,Interface with serial devices directly via the browser using Web Serial.,Web Serial IoT devices,web
+l10n_account_edi_ubl_cii_tests,CHANGED-MAJOR,16/53,Localization,Accounting/Accounting,False,False,Testing the Import/Export invoices with UBL/CII,Testing the Import/Export invoices with UBL/CII,"account_edi_ubl_cii,l10n_fr_account,l10n_be,l10n_de,l10n_nl,l10n_au"
+l10n_account_withholding_tax,CHANGED-MAJOR,30/35,Localization,Accounting/Localizations,False,False,Withholding Tax,Withholding Tax,account
+l10n_account_withholding_tax_pos,CHANGED,2/4,Localization,Accounting/Localizations,False,True,Withholding Tax on Payment - PoS,Withholding Tax on Payment - PoS,"l10n_account_withholding_tax,point_of_sale"
+l10n_ae,CHANGED-MAJOR,11/17,Localization,Accounting/Localizations/Account Charts,False,True,United Arab Emirates - Accounting,United Arab Emirates - Accounting,"account,l10n_gcc_invoice"
+l10n_ae_pos,CHANGED,6/9,Localization,Accounting/Localizations/Point of Sale,False,True,United Arab Emirates - Point of Sale,United Arab Emirates - Point of Sale,"l10n_gcc_pos,l10n_ae"
+l10n_anz_ubl_pint,CHANGED,3/9,Localization,Accounting/Localizations/EDI,False,False,Australia & New Zealand - UBL PINT,Australia & New Zealand - UBL PINT,account_edi_ubl_cii
+l10n_ar,CHANGED-MAJOR,59/90,Localization,Accounting/Localizations/Account Charts,False,True,Argentina - Accounting,Argentina - Accounting,"l10n_latam_invoice_document,account"
+l10n_ar_pos,CHANGED-MAJOR,13/20,Localization,Accounting/Localizations/Point of Sale,False,True,Argentinean - Point of Sale with AR Doc,Argentinean - Point of Sale with AR Doc,"l10n_ar,point_of_sale"
+l10n_ar_stock,CHANGED-MAJOR,15/19,Localization,Accounting/Localizations,False,True,Argentinean - Stock,Argentinean - Stock,"l10n_ar,stock_account"
+l10n_ar_website_sale,CHANGED-MAJOR,10/13,Localization,Accounting/Localizations/Website,False,True,Argentinean eCommerce,Argentinean eCommerce,"website_sale,l10n_ar"
+l10n_ar_withholding,CHANGED-MAJOR,40/33,Localization,Accounting/Localizations,False,False,Argentina - Payment Withholdings,Argentina - Payment Withholdings,"l10n_ar,l10n_latam_check,l10n_account_withholding_tax"
+l10n_at,CHANGED,7/16,Localization,Accounting/Localizations/Account Charts,False,True,Austrian Standardized Charts & Tax,Austria - Accounting,"account,account_edi_ubl_cii,l10n_din5008"
+l10n_au,CHANGED-MAJOR,27/29,Localization,Accounting/Localizations/Account Charts,False,True,Australia - Accounting,Australia - Accounting,account
+l10n_bd,CHANGED-MAJOR,15/15,Localization,Accounting/Localizations/Account Charts,False,True,Bangladesh - Accounting,Bangladesh - Accounting,"account,l10n_account_withholding_tax"
+l10n_be,CHANGED-MAJOR,25/27,Localization,Accounting/Localizations/Account Charts,False,True,Belgium - Accounting,Belgium - Accounting,"account,account_edi_ubl_cii"
+l10n_be_pos,NEW,,Localization,Sales/Point of Sale,False,True,Link module between point_of_sale and l10n_be,BE POS Localization,"point_of_sale,l10n_be,account"
+l10n_be_pos_restaurant,CHANGED,7/10,Localization,Sales/Point of Sale,False,True,Belgian POS Restaurant Localization,Belgian POS Restaurant Localization,"pos_restaurant,l10n_be"
+l10n_be_pos_sale,CHANGED,7/12,Localization,Sales/Point of Sale,False,True,Link module between pos_sale and l10n_be,l10n_be_pos_sale,"pos_sale,l10n_be"
+l10n_bf,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Burkina Faso - Accounting,Burkina Faso - Accounting,"l10n_syscohada,account"
+l10n_bg,CHANGED,7/12,Localization,Accounting/Localizations/Account Charts,False,True,Bulgaria - Accounting,Bulgaria - Accounting,account
+l10n_bg_ledger,CHANGED,3/9,Localization,Accounting/Localizations/Account Charts,False,True,Bulgaria - Report ledger,Bulgaria - Report ledger,l10n_bg
+l10n_bh,CHANGED-MAJOR,10/13,Localization,Accounting/Localizations/Account Charts,False,True,Bahrain - Accounting,Bahrain - Accounting,"account,l10n_gcc_invoice"
+l10n_bj,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Benin - Accounting,Benin - Accounting,"l10n_syscohada,account"
+l10n_bo,CHANGED,7/12,Localization,Accounting/Localizations/Account Charts,False,True,Bolivia - Accounting,Bolivia - Accounting,account
+l10n_br,CHANGED-MAJOR,33/50,Localization,Accounting/Localizations/Account Charts,False,True,Brazilian - Accounting,Brazilian - Accounting,"account,account_qr_code_emv,l10n_latam_invoice_document"
+l10n_br_sales,CHANGED,5/9,Localization,Sales/Sales,False,True,Brazil - Sale,Brazil - Sale,"l10n_br,sale"
+l10n_br_website_sale,CHANGED,6/5,Localization,Sales/Sales,False,True,Brazil - Website Sale,Brazil - Website Sale,"l10n_br,website_sale"
+l10n_ca,CHANGED-MAJOR,19/24,Localization,Accounting/Localizations/Account Charts,False,True,Canada - Accounting,Canada - Accounting,account
+l10n_cd,CHANGED,6/15,Localization,Accounting/Localizations/Account Charts,False,True,Democratic Republic of the Congo - Accounting,Democratic Republic of the Congo - Accounting,"l10n_syscohada,account"
+l10n_cf,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Central African Republic - Accounting,Central African Republic - Accounting,"l10n_syscohada,account"
+l10n_cg,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Congo - Accounting,Congo - Accounting,"l10n_syscohada,account"
+l10n_ch,CHANGED-MAJOR,27/57,Localization,Accounting/Localizations/Account Charts,False,True,Switzerland - Accounting,Switzerland - Accounting,"account,account_edi_ubl_cii,l10n_din5008"
+l10n_ch_pos,CHANGED,7/11,Localization,Accounting/Localizations/Point of Sale,False,True,Swiss - Point of Sale,Swiss - Point of Sale,"l10n_ch,point_of_sale"
+l10n_ci,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Ivory Coast - Accounting,Ivory Coast - Accounting,"l10n_syscohada,account"
+l10n_cl,CHANGED-MAJOR,28/51,Localization,Accounting/Localizations/Account Charts,False,True,Chile - Accounting,Chile - Accounting,"contacts,l10n_latam_invoice_document,uom,account"
+l10n_cm,CHANGED,6/15,Localization,Accounting/Localizations/Account Charts,False,True,Cameroon - Accounting,Cameroon - Accounting,"l10n_syscohada,account"
+l10n_cn,CHANGED-MAJOR,36/36,Localization,Accounting/Localizations/Account Charts,False,True,China - Accounting,China - Accounting,"base,account"
+l10n_cn_city,REMOVED,,Localization,Accounting/Localizations,False,False,China - City Data,China - City Data,"l10n_cn,base_address_extended"
+l10n_co,CHANGED-MAJOR,16/16,Localization,Accounting/Localizations/Account Charts,False,True,Colombia - Accounting,Colombia - Accounting,"account_debit_note,account"
+l10n_co_pos,CHANGED,8/14,Localization,Accounting/Localizations/Point of Sale,False,True,Colombian - Point of Sale,Colombian - Point of Sale,"l10n_co,point_of_sale"
+l10n_cr,CHANGED,4/10,Localization,Accounting/Localizations/Account Charts,False,True,Costa Rica - Accounting,Costa Rica - Accounting,account
+l10n_cy,CHANGED,8/14,Localization,Accounting/Localizations/Account Charts,False,True,Cyprus - Accounting,Cyprus - Accounting,"account,account_edi_ubl_cii"
+l10n_cz,CHANGED-MAJOR,24/29,Localization,Accounting/Localizations/Account Charts,False,True,Czech - Accounting,Czech - Accounting,"account,account_edi_ubl_cii"
+l10n_de,CHANGED-MAJOR,18/35,Localization,Accounting/Localizations/Account Charts,False,True,Germany - Accounting,Germany - Accounting,"l10n_din5008,account,account_edi_ubl_cii"
+l10n_din5008,CHANGED,7/17,Localization,Accounting/Localizations,False,True,DIN 5008,DIN 5008,account
+l10n_din5008_expense,CHANGED,5/7,Localization,Accounting/Localizations,False,True,DIN 5008 - Expenses,DIN 5008 - Expenses,"l10n_din5008,hr_expense"
+l10n_din5008_purchase,CHANGED,6/7,Localization,Accounting/Localizations,False,True,DIN 5008 - Purchase,DIN 5008 - Purchase,"l10n_din5008,purchase"
+l10n_din5008_repair,CHANGED,6/10,Localization,Accounting/Localizations,False,True,DIN 5008 - Repair,DIN 5008 - Repair,"l10n_din5008,repair"
+l10n_din5008_sale,CHANGED,6/8,Localization,Accounting/Localizations,False,True,DIN 5008 - Sale,DIN 5008 - Sale,"l10n_din5008,sale"
+l10n_din5008_stock,CHANGED,6/8,Localization,Accounting/Localizations,False,True,DIN 5008 - Stock,DIN 5008 - Stock,"l10n_din5008,stock"
+l10n_dk,CHANGED-MAJOR,36/66,Localization,Accounting/Localizations/Account Charts,False,True,Denmark - Accounting,Denmark - Accounting,"account,account_edi_proxy_client,account_edi_ubl_cii"
+l10n_dk_fik,CHANGED,4/8,Localization,Accounting/Localizations,False,True,Use FIK Number as Payment reference,Denmark - FIK Number,l10n_dk
+l10n_dk_nemhandel,REMOVED,,Localization,Accounting/Localizations/EDI,False,True,This module is used to send/receive documents with Nemhandel,Denmark EDI - Nemhandel,"account_edi_proxy_client,account_edi_ubl_cii,l10n_dk"
+l10n_dk_nemhandel_response,REMOVED,,Localization,Accounting/Localizations/EDI,False,True,This module is used to send/receive responses to documents received/sent with Nemhandel,Nemhandel Business Response,l10n_dk_nemhandel
+l10n_dk_oioubl,REMOVED,,Localization,Accounting/Localizations/EDI,False,True,"E-Invoicing, Offentlig Information Online Universal Business Language",Denmark - E-invoicing,"account_edi_ubl_cii,l10n_dk"
+l10n_do,CHANGED-MAJOR,21/23,Localization,Accounting/Localizations/Account Charts,False,True,Dominican Republic - Accounting,Dominican Republic - Accounting,"account,l10n_latam_invoice_document"
+l10n_dz,CHANGED,7/13,Localization,Accounting/Localizations/Account Charts,False,True,Algeria - Accounting,Algeria - Accounting,account
+l10n_ec,CHANGED-MAJOR,21/39,Localization,Accounting/Localizations/Account Charts,False,True,Ecuadorian Accounting,Ecuadorian Accounting,"base,account_debit_note,l10n_latam_invoice_document,account"
+l10n_ec_sale,CHANGED,8/13,Localization,Accounting/Localizations/Sale,False,True,Ecuador - Sale,Ecuador - Sale,"l10n_ec,sale"
+l10n_ec_stock,REMOVED,,Localization,Accounting/Localizations,False,True,Ecuador - Stock,Ecuador - Stock,"l10n_ec,stock"
+l10n_ee,CHANGED,9/18,Localization,Accounting/Localizations/Account Charts,False,True,Estonia - Accounting,Estonia - Accounting,"account,account_edi_ubl_cii"
+l10n_eg,CHANGED-MAJOR,13/17,Localization,Accounting/Localizations/Account Charts,False,True,Egypt - Accounting,Egypt - Accounting,"account,l10n_account_withholding_tax"
+l10n_eg_edi_eta,CHANGED-MAJOR,42/43,Localization,account,False,False,Egypt Tax Authority Invoice Integration,Egypt E-Invoicing,l10n_eg
+l10n_eg_edi_pos,NEW,,Localization,Accounting/Localizations/EDI,False,True,Submit POS receipts to the Egyptian Tax Authority,Egypt E-Receipts (POS),"point_of_sale,l10n_eg_edi_eta"
+l10n_es,CHANGED-MAJOR,62/52,Localization,Accounting/Localizations/Account Charts,False,True,Spain - Accounting (PGCE 2008),Spain - Accounting (PGCE 2008),"account,account_edi_ubl_cii"
+l10n_es_edi_facturae,CHANGED-MAJOR,34/49,Localization,Accounting/Localizations/EDI,False,False,Spain - Facturae EDI,Spain - Facturae EDI,"certificate,l10n_es"
+l10n_es_edi_sii,CHANGED-MAJOR,21/25,Localization,Accounting/Localizations/EDI,False,False,Spain - SII EDI Suministro de Libros,Spain - SII EDI Suministro de Libros,"certificate,l10n_es"
+l10n_es_edi_tbai,CHANGED-MAJOR,31/60,Localization,Accounting/Localizations/EDI,False,False,Spain - TicketBAI,Spain - TicketBAI,"l10n_es,certificate"
+l10n_es_edi_tbai_pos,CHANGED-MAJOR,18/23,Localization,Accounting/Localizations/Point of Sale,False,True,Spain - Point of Sale + TicketBAI,Spain - Point of Sale + TicketBAI,"l10n_es_edi_tbai,point_of_sale"
+l10n_es_edi_verifactu,CHANGED-MAJOR,38/57,Localization,Accounting/Localizations/EDI,False,False,Module for sending Spanish Veri*Factu XML to the AEAT,Spain - Veri*Factu,"l10n_es,certificate"
+l10n_es_edi_verifactu_pos,CHANGED-MAJOR,18/26,Localization,Accounting/Localizations/Point of Sale,False,True,Add Veri*Factu support to Point of Sale,Spain - Veri*Factu for Point of Sale,"l10n_es_edi_verifactu,point_of_sale"
+l10n_es_pos,CHANGED-MAJOR,15/25,Localization,Accounting/Localizations/Point of Sale,False,False,Spanish localization for Point of Sale,[Deprecated] Spain - Point of Sale,"point_of_sale,l10n_es"
+l10n_es_website_sale,NEW,,Localization,Accounting/Localizations/Website,False,False,Spain - ECommerce,Spain - ECommerce,"l10n_es,website_sale"
+l10n_et,CHANGED,4/11,Localization,Accounting/Localizations/Account Charts,False,True,Ethiopia - Accounting,Ethiopia - Accounting,account
+l10n_eu_account_vies,NEW,,Localization,Accounting/Accounting,False,False,VAT VIES Validation,VAT VIES Validation,account
+l10n_eu_oss,CHANGED-MAJOR,26/34,Localization,Accounting/Localizations,False,False,EU One Stop Shop (OSS),EU One Stop Shop (OSS),account
+l10n_fi,CHANGED-MAJOR,12/19,Localization,Accounting/Localizations/Account Charts,False,True,Finland - Accounting,Finland - Accounting,"account,account_edi_ubl_cii"
+l10n_fi_sale,CHANGED,3/6,Localization,Sales/Sales,False,True,Finland - Sale,Finland - Sale,"l10n_fi,sale"
+l10n_fr,CHANGED,7/10,Localization,Accounting/Localizations/Account Charts,False,False,France - Localizations,France - Localizations,base
+l10n_fr_account,CHANGED-MAJOR,36/39,Localization,Accounting/Localizations/Account Charts,False,True,France - Accounting,France - Accounting,"account,account_edi_ubl_cii,l10n_fr"
+l10n_fr_facturx_chorus_pro,CHANGED,8/16,Localization,Accounting/Localizations/EDI,False,False,France - BIS3 integration for Chorus Pro,France - BIS3 integration for Chorus Pro,"account,account_edi_ubl_cii,l10n_fr_account"
+l10n_fr_hr_holidays,CHANGED-MAJOR,13/14,Localization,Human Resources/Time Off,False,True,Management of leaves for part-time workers in France,France - Time Off,hr_holidays
+l10n_fr_hr_work_entry_holidays,REMOVED,,Localization,,False,True,Management of leaves for part-time workers in France,France - Work Entries Time Off,"l10n_fr_hr_holidays,hr_work_entry_holidays"
+l10n_fr_payment,NEW,,Localization,,False,True,Applies CAWL/Worldline branding rules for French companies.,France - Worldline Payment Branding,"l10n_fr,payment"
+l10n_fr_pdp,CHANGED-MAJOR,58/77,Localization,Accounting/Localizations/EDI,False,True,France - E-Invoicing (Approved Platform),France - E-Invoicing (Approved Platform),"l10n_fr_account,account_peppol,iap"
+l10n_fr_pdp_pos,CHANGED,6/9,Localization,Accounting/Localizations/Reporting,False,True,PDP Flux 10 e-reporting for POS,France - E-reporting for POS,"l10n_fr_pdp,point_of_sale"
+l10n_fr_pos_cert,CHANGED-MAJOR,26/39,Localization,Accounting/Localizations/Point of Sale,False,True,France - VAT Anti-Fraud Certification for Point of Sale (CGI 286 I-3 bis),France - VAT Anti-Fraud Certification for Point of Sale (CGI 286 I-3 bis),"l10n_fr_account,point_of_sale"
+l10n_ga,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Gabon - Accounting,Gabon - Accounting,"l10n_syscohada,account"
+l10n_gcc_invoice,CHANGED,4/14,Localization,Accounting/Localizations,False,False,Gulf Cooperation Council - Invoice,Gulf Cooperation Council - Invoice,account
+l10n_gcc_invoice_stock_account,CHANGED,1/3,Localization,Accounting/Localizations,False,True,Gulf Cooperation Council WMS Accounting,Gulf Cooperation Council WMS Accounting,"l10n_gcc_invoice,stock_account"
+l10n_gcc_pos,CHANGED-MAJOR,11/15,Localization,Accounting/Localizations/Point of Sale,False,True,Gulf Cooperation Council - Point of Sale,Gulf Cooperation Council - Point of Sale,"point_of_sale,l10n_gcc_invoice"
+l10n_ge,CHANGED-MAJOR,11/13,Localization,Accounting/Localizations/Account Charts,False,False,Georgian accounting localization package,Georgia - Accounting,account
+l10n_gf,CHANGED,1/3,Localization,Accounting/Localizations/Account Charts,False,True,Guyana - Accounting,Guyana - Accounting,"l10n_fr_account,account"
+l10n_gn,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Guinea - Accounting,Guinea - Accounting,"l10n_syscohada,account"
+l10n_gp,CHANGED,1/4,Localization,Accounting/Localizations/Account Charts,False,True,Guadeloupe - Accounting,Guadeloupe - Accounting,"l10n_fr_account,account"
+l10n_gq,CHANGED,7/17,Localization,Accounting/Localizations/Account Charts,False,True,Guinea Equatorial - Accounting,Guinea Equatorial - Accounting,"l10n_syscohada,account"
+l10n_gr,CHANGED-MAJOR,10/12,Localization,Accounting/Localizations/Account Charts,False,True,Greece - Accounting,Greece - Accounting,"account,account_edi_ubl_cii"
+l10n_gr_edi,CHANGED-MAJOR,26/40,Localization,Accounting/Localizations,False,True,Connect to myDATA API implementation for Greece,Greece - myDATA,"account_edi_ubl_cii,l10n_gr"
+l10n_gr_edi_delivery_note,NEW,,Localization,Accounting/Localizations,False,True,Transmit Greece myDATA EDI for Delivery Notes,Greece - myDATA Delivery Note,"l10n_gr_edi,stock,sale,sale_stock"
+l10n_gr_edi_e_invoo,CHANGED,6/15,Localization,Accounting/Localizations/EDI,False,True,Greece - myDATA E-invoicing through e-invoo,Greece - myDATA E-invoicing through e-invoo,"account_edi_proxy_client,l10n_gr_edi"
+l10n_gt,CHANGED-MAJOR,13/15,Localization,Accounting/Localizations/Account Charts,False,True,Guatemala - Accounting,Guatemala - Accounting,account
+l10n_gw,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Guinea-Bissau - Accounting,Guinea-Bissau - Accounting,"l10n_syscohada,account"
+l10n_hk,CHANGED-MAJOR,11/16,Localization,Accounting/Localizations/Account Charts,False,True,Hong Kong - Accounting,Hong Kong - Accounting,"account_qr_code_emv,account"
+l10n_hn,CHANGED,4/10,Localization,Accounting/Localizations/Account Charts,False,True,Honduras - Accounting,Honduras - Accounting,"base,account"
+l10n_hr,CHANGED,7/13,Localization,Accounting/Localizations/Account Charts,False,True,Croatia - Accounting (Euro),Croatia - Accounting (Euro),account
+l10n_hr_edi,CHANGED-MAJOR,24/51,Localization,Accounting/Localizations/Reporting,False,False,Croatia - e-invoicing,Croatia - e-invoicing,"l10n_hr,account_edi_ubl_cii"
+l10n_hr_kuna,CHANGED,4/12,Localization,Accounting/Localizations/Account Charts,False,False,Croatia - Accounting (Kuna),Croatia - Accounting (Kuna),account
+l10n_hu,CHANGED-MAJOR,12/15,Localization,Accounting/Localizations/Account Charts,False,True,Hungary - Accounting,Hungary - Accounting,account
+l10n_hu_edi,CHANGED-MAJOR,50/96,Localization,Accounting/Localizations/EDI,False,True,Hungary - E-invoicing,Hungary - E-invoicing,"account_debit_note,l10n_hu"
+l10n_hu_edi_receive,REMOVED,,Localization,Accounting/Localizations,False,False,Hungary - E-invoicing Receive Vendor Bills,Hungary - E-invoicing Receive Vendor Bills,l10n_hu_edi
+l10n_id,CHANGED-MAJOR,20/28,Localization,Accounting/Localizations/Account Charts,False,True,Indonesian - Accounting,Indonesian - Accounting,account
+l10n_id_efaktur_coretax,CHANGED-MAJOR,21/33,Localization,Accounting/Localizations/EDI,False,True,Indonesia E-faktur (Coretax),Indonesia E-faktur (Coretax),l10n_id
+l10n_id_pos,CHANGED,8/14,Localization,Accounting/Localizations/Point of Sale,False,True,Indonesia - Point of Sale,Indonesia - Point of Sale,"l10n_id,point_of_sale"
+l10n_id_pos_self_order_qris,NEW,,Localization,Sales/Point of Sale,False,True,Accept QRIS QR code payments in a kiosk.,Indonesia - POS Self Order QRIS,"pos_self_order,l10n_id_pos"
+l10n_ie,CHANGED,6/14,Localization,Accounting/Localizations/Account Charts,False,True,Ireland - Accounting,Ireland - Accounting,"account,account_edi_ubl_cii"
+l10n_il,CHANGED,6/14,Localization,Accounting/Localizations/Account Charts,False,True,Israel - Accounting,Israel - Accounting,account
+l10n_in,CHANGED-MAJOR,69/87,Localization,Accounting/Localizations/Account Charts,False,True,Indian - Accounting,Indian - Accounting,"account_tax_python,account_debit_note,account,l10n_account_withholding_tax,iap"
+l10n_in_boe,NEW,,Localization,Accounting/Localizations,False,False,Indian - Bill Of Entry,Indian - Bill Of Entry,"l10n_in,stock_landed_costs"
+l10n_in_edi,CHANGED-MAJOR,14/25,Localization,Accounting/Localizations/EDI,False,False,Indian - E-invoicing,Indian - E-invoicing,l10n_in
+l10n_in_ewaybill,CHANGED-MAJOR,18/30,Localization,Accounting/Localizations,False,False,Indian - E-waybill,Indian - E-waybill,l10n_in
+l10n_in_ewaybill_irn,CHANGED,4/10,Localization,Accounting/Localizations,False,True,Indian - E-waybill thru IRN,Indian - E-waybill thru IRN,"l10n_in_ewaybill,l10n_in_edi"
+l10n_in_ewaybill_stock,CHANGED,9/15,Localization,Accounting/Localizations/EDI,False,True,Indian - E-waybill Stock,Indian - E-waybill Stock,"l10n_in_stock,l10n_in_ewaybill"
+l10n_in_hr_holidays,CHANGED-MAJOR,17/18,Localization,Human Resources/Time Off,False,True,Leave Management of Indian Localization,India - Time Off,hr_holidays
+l10n_in_pos,CHANGED-MAJOR,44/56,Localization,Accounting/Localizations/Point of Sale,False,True,Indian - Point of Sale,Indian - Point of Sale,"l10n_in,point_of_sale"
+l10n_in_purchase_stock,CHANGED,4/8,Localization,Accounting/Localizations/Purchase,False,True,Get warehouse address if the bill is created from Purchase Order,India Purchase and Warehouse Management,"l10n_in_stock,purchase_stock"
+l10n_in_sale,CHANGED,9/14,Localization,Accounting/Localizations/Sale,False,True,Indian - Sale Report(GST),Indian - Sale Report(GST),"l10n_in,sale"
+l10n_in_sale_stock,CHANGED,4/8,Localization,Accounting/Localizations/Sale,False,True,Get warehouse address if the invoice is created from Sale Order,India Sales and Warehouse Management,"l10n_in_sale,l10n_in_stock,sale_stock"
+l10n_in_stock,CHANGED,4/10,Localization,Accounting/Localizations,False,True,Indian - Stock Report(GST),Indian - Stock Report(GST),"l10n_in,stock,stock_account"
+l10n_iq,CHANGED,8/10,Localization,Accounting/Localizations/Account Charts,False,True,Iraq - Accounting,Iraq - Accounting,account
+l10n_it,CHANGED-MAJOR,15/34,Localization,Accounting/Localizations/Account Charts,False,True,Italy - Accounting,Italy - Accounting,"account,account_edi_ubl_cii"
+l10n_it_edi,CHANGED-MAJOR,68/118,Localization,Accounting/Localizations/EDI,False,True,Italy - E-invoicing,Italy - E-invoicing,"l10n_it,account_edi_proxy_client,account_debit_note"
+l10n_it_edi_doi,CHANGED-MAJOR,13/26,Localization,Accounting/Localizations,False,False,Italy - Declaration of Intent,Italy - Declaration of Intent,"l10n_it_edi,sale"
+l10n_it_edi_sale,CHANGED,4/9,Localization,Accounting/Localizations/EDI,False,True,Italy - Sale E-invoicing,Italy - Sale E-invoicing,"l10n_it_edi,sale"
+l10n_it_stock_ddt,CHANGED-MAJOR,12/15,Localization,Accounting/Localizations/EDI,False,True,Italy - Stock DDT,Italy - Stock DDT,"l10n_it_edi,stock_delivery,stock_account"
+l10n_jo,CHANGED-MAJOR,10/13,Localization,Accounting/Localizations/Account Charts,False,True,Jordan - Accounting,Jordan - Accounting,account
+l10n_jo_edi,CHANGED-MAJOR,15/33,Localization,Accounting/Localizations/EDI,False,True,Electronic Invoicing for Jordan UBL 2.1,Jordan E-Invoicing,"account_edi_ubl_cii,l10n_jo"
+l10n_jo_edi_pos,CHANGED-MAJOR,18/30,Localization,Accounting/Localizations/EDI,False,True,Jordan Accounting EDI for POS,Jordan Accounting EDI for POS,"l10n_jo_edi,pos_edi_ubl"
+l10n_jp,CHANGED-MAJOR,23/25,Localization,Accounting/Localizations/Account Charts,False,True,Japan - Accounting,Japan - Accounting,account
+l10n_jp_ubl_pint,CHANGED,4/11,Localization,Accounting/Localizations/EDI,False,False,Japan - UBL PINT,Japan - UBL PINT,account_edi_ubl_cii
+l10n_ke,CHANGED-MAJOR,10/22,Localization,Accounting/Localizations/Account Charts,False,True,Kenya - Accounting,Kenya - Accounting,account
+l10n_ke_edi_tremol,CHANGED-MAJOR,10/24,Localization,Accounting/Localizations/EDI,False,False,Kenya Tremol Device EDI Integration,Kenya Tremol Device EDI Integration,l10n_ke
+l10n_kh,CHANGED-MAJOR,12/16,Localization,Accounting/Localizations/Account Charts,False,False,Cambodia - Accounting,Cambodia - Accounting,"account_qr_code_emv,l10n_account_withholding_tax"
+l10n_km,CHANGED,6/16,Localization,Accounting/Localizations/Account Charts,False,True,Comoros - Accounting,Comoros - Accounting,"l10n_syscohada,account"
+l10n_kr,CHANGED-MAJOR,18/20,Localization,Accounting/Localizations/Account Charts,False,True,Republic of Korea - Accounting,Republic of Korea - Accounting,account
+l10n_kr_sale,NEW,,Localization,Accounting/Localizations/Sale,False,True,Republic of Korea - Sales,Republic of Korea - Sales,"sale,l10n_kr"
+l10n_kw,CHANGED,7/8,Localization,Accounting/Localizations/Account Charts,False,True,Kuwait - Accounting,Kuwait - Accounting,"account,l10n_gcc_invoice"
+l10n_kz,CHANGED,6/12,Localization,Accounting/Localizations/Account Charts,False,True,Kazakhstan - Accounting,Kazakhstan - Accounting,account
+l10n_latam_base,REMOVED,,Localization,Accounting/Localizations,False,False,LATAM Identification Types,LATAM Localization Base,"contacts,base_vat"
+l10n_latam_check,CHANGED-MAJOR,19/28,Localization,Accounting/Localizations,False,False,Checks Management,Third Party and Deferred/Electronic Checks Management,account
+l10n_latam_invoice_document,CHANGED-MAJOR,12/26,Localization,Accounting/Localizations,False,False,LATAM Document Types,LATAM Document,"account,account_debit_note"
+l10n_lb_account,CHANGED-MAJOR,10/12,Localization,Accounting/Localizations/Account Charts,False,True,Lebanon - Accounting,Lebanon - Accounting,account
+l10n_lk,CHANGED-MAJOR,16/22,Localization,Accounting/Localizations/Account Charts,False,True,Provides accounting localizations for Sri Lanka.,Sri Lanka - Accounting,"account,l10n_account_withholding_tax"
+l10n_lk_invoice,REMOVED,,Localization,Accounting/Localizations,False,True,Sri Lanka tax invoice sequence format and report layout.,Sri Lanka - Tax Invoice,l10n_lk
+l10n_lt,CHANGED,7/16,Localization,Accounting/Localizations/Account Charts,False,True,Lithuania - Accounting,Lithuania - Accounting,"account,account_edi_ubl_cii"
+l10n_lu,CHANGED,9/21,Localization,Accounting/Localizations/Account Charts,False,True,Luxembourg - Accounting,Luxembourg - Accounting,"account,account_edi_ubl_cii"
+l10n_lv,CHANGED,8/14,Localization,Accounting/Localizations/Account Charts,False,True,Latvia - Accounting,Latvia - Accounting,"account,account_edi_ubl_cii"
+l10n_ma,CHANGED-MAJOR,20/19,Localization,Accounting/Localizations/Account Charts,False,True,Morocco - Accounting,Morocco - Accounting,"base,account"
+l10n_mc,CHANGED,2/4,Localization,Accounting/Localizations/Account Charts,False,True,Monaco - Accounting,Monaco - Accounting,"l10n_fr_account,account"
+l10n_mk,NEW,,Localization,Accounting/Localizations/Account Charts,False,False,North Macedonia - Accounting,North Macedonia - Accounting,account
+l10n_ml,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Mali - Accounting,Mali - Accounting,"l10n_syscohada,account"
+l10n_mm,NEW,,Localization,Accounting/Localizations/Account Charts,False,False,Myanmar - Accounting,Myanmar - Accounting,"account_qr_code_emv,l10n_account_withholding_tax"
+l10n_mn,CHANGED,6/13,Localization,Accounting/Localizations/Account Charts,False,True,Mongolia - Accounting,Mongolia - Accounting,account
+l10n_mq,CHANGED,1/4,Localization,Accounting/Localizations/Account Charts,False,True,Martinique - Accounting,Martinique - Accounting,"l10n_fr_account,account"
+l10n_mr,CHANGED-MAJOR,10/13,Localization,Accounting/Localizations/Account Charts,False,False,Mauritania - Accounting,Mauritania - Accounting,account
+l10n_mt,CHANGED,4/12,Localization,Accounting/Localizations/Account Charts,False,True,Malta - Accounting,Malta - Accounting,"account,account_edi_ubl_cii"
+l10n_mt_pos,CHANGED,6/7,Localization,Accounting/Localizations/Point of Sale,False,True,Malta - Point of Sale,Malta - Point of Sale,point_of_sale
+l10n_mu_account,CHANGED,9/15,Localization,Accounting/Localizations/Account Charts,False,True,Mauritius - Accounting,Mauritius - Accounting,account
+l10n_mx,CHANGED-MAJOR,20/31,Localization,Accounting/Localizations/Account Charts,False,True,Mexico - Accounting,Mexico - Accounting,account
+l10n_my,CHANGED-MAJOR,14/20,Localization,Accounting/Localizations/Account Charts,False,True,Malaysia - Accounting,Malaysia - Accounting,"account,account_tax_python"
+l10n_my_edi,CHANGED-MAJOR,42/59,Localization,Accounting/Localizations/EDI,False,True,E-invoicing using MyInvois,Malaysia - E-invoicing,"l10n_my,l10n_my_ubl_pint,account_edi_proxy_client"
+l10n_my_edi_pos,CHANGED-MAJOR,21/26,Localization,Accounting/Localizations/EDI,False,True,Consolidated E-invoicing using MyInvois,Malaysia - E-invoicing (POS),"l10n_my_edi,point_of_sale"
+l10n_my_ubl_pint,CHANGED,9/16,Localization,Accounting/Localizations/EDI,False,False,Malaysia - UBL PINT,Malaysia - UBL PINT,account_edi_ubl_cii
+l10n_mz,CHANGED,8/12,Localization,Accounting/Localizations/Account Charts,False,True,Mozambique - Accounting,Mozambique - Accounting,"base,account"
+l10n_ne,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Niger - Accounting,Niger - Accounting,"l10n_syscohada,account"
+l10n_ng,CHANGED,4/10,Localization,Accounting/Localizations/Account Charts,False,True,Nigeria - Accounting,Nigeria - Accounting,account
+l10n_nl,CHANGED-MAJOR,10/24,Localization,Accounting/Localizations/Account Charts,False,True,Netherlands - Accounting,Netherlands - Accounting,"account,account_edi_ubl_cii"
+l10n_no,CHANGED-MAJOR,10/18,Localization,Accounting/Localizations/Account Charts,False,True,Norway - Accounting,Norway - Accounting,"account,account_edi_ubl_cii"
+l10n_nz,CHANGED-MAJOR,10/15,Localization,Accounting/Localizations/Account Charts,False,True,New Zealand - Accounting,New Zealand - Accounting,account
+l10n_om,CHANGED,8/12,Localization,Accounting/Localizations/Account Charts,False,True,Oman - Accounting,Oman - Accounting,"account,l10n_gcc_invoice"
+l10n_pa,CHANGED-MAJOR,26/30,Localization,Accounting/Localizations/Account Charts,False,True,Panama - Accounting,Panama - Accounting,"account,base_address_extended,contacts,l10n_latam_invoice_document"
+l10n_pe,CHANGED-MAJOR,31/39,Localization,Accounting/Localizations/Account Charts,False,True,Peru - Accounting,Peru - Accounting,"l10n_latam_invoice_document,account_debit_note,account"
+l10n_pe_pos,CHANGED-MAJOR,15/22,Localization,Accounting/Localizations/Point of Sale,False,True,Peruvian - Point of Sale with Pe Doc,Peruvian - Point of Sale with Pe Doc,"l10n_pe,point_of_sale"
+l10n_ph,CHANGED-MAJOR,37/34,Localization,Accounting/Localizations/Account Charts,False,True,This is the module to manage the accounting chart for The Philippines.,Philippines - Accounting,"account,l10n_account_withholding_tax"
+l10n_ph_invoice,NEW,,Localization,Accounting/Localizations,False,False,Apply Philippine SC/PWD discount privileges on customer invoices and credit notes.,Philippines - Discount Privileges on Invoice,l10n_ph
+l10n_ph_sale,NEW,,Localization,Accounting/Localizations,False,False,Apply Philippine SC/PWD discount privileges on quotations and sale orders.,Philippines - Discount Privileges on Sale Orders,"l10n_ph_invoice,sale"
+l10n_pk,CHANGED-MAJOR,26/23,Localization,Accounting/Localizations/Account Charts,False,True,Pakistan - Accounting,Pakistan - Accounting,"account,account_tax_python,l10n_account_withholding_tax,product"
+l10n_pk_edi,NEW,,Localization,Accounting/Localizations/EDI,False,False,Electronic Invoicing for Pakistan FBR(v1.12),Pakistan - E-invoicing,"account_debit_note,iap,l10n_pk,stock_delivery"
+l10n_pk_edi_pos,NEW,,Localization,Accounting/Localizations/Point of Sale,False,False,Pakistan - Point of Sale,Pakistan - Point of Sale,"l10n_pk,pos_discount,iap,stock_delivery"
+l10n_pl,CHANGED-MAJOR,22/38,Localization,Accounting/Localizations/Account Charts,False,True,Poland - Accounting,Poland - Accounting,"account,account_edi_ubl_cii"
+l10n_pl_bank_verification,REMOVED,,Localization,,False,True,Poland - Accounting - Bank Account Verification,Poland - Accounting - Bank Account Verification,l10n_pl
+l10n_pl_edi,CHANGED,11/40,Localization,Accounting/Localizations,False,True,Support for FA(3) electronic invoices in Poland via KSeF,Polish E-Invoicing FA(3),"l10n_pl,certificate"
+l10n_pl_edi_jst,CHANGED,2/12,Localization,Accounting/Localizations,False,True,Support for Local Government Unit (LGU) in the FA(3) format,Polish E-Invoicing FA(3) LGU support,"l10n_pl,l10n_pl_edi"
+l10n_pt,CHANGED,8/17,Localization,Accounting/Localizations/Account Charts,False,True,Portugal - Accounting,Portugal - Accounting,"base,account,account_edi_ubl_cii"
+l10n_qa,CHANGED,7/8,Localization,Accounting/Localizations/Account Charts,False,True,Qatar - Accounting,Qatar - Accounting,"account,l10n_gcc_invoice"
+l10n_re,CHANGED,1/4,Localization,Accounting/Localizations/Account Charts,False,True,Reunion - Accounting,Reunion - Accounting,"l10n_fr_account,account"
+l10n_ro,CHANGED-MAJOR,10/15,Localization,Accounting/Localizations/Account Charts,False,True,Romania - Accounting,Romania - Accounting,"account,account_edi_ubl_cii"
+l10n_ro_cpv_code,REMOVED,,Localization,Hidden,False,False,Romania - CPV Code,Romania - CPV Code,l10n_ro_edi
+l10n_ro_edi,CHANGED-MAJOR,26/43,Localization,Accounting/Localizations/EDI,False,True,E-Invoice implementation for Romania,Romania - E-invoicing,"account_edi_ubl_cii,l10n_ro"
+l10n_ro_edi_stock,CHANGED-MAJOR,14/29,Localization,Accounting/Localizations/EDI,False,False,Romania - E-Transport,Romania - E-Transport,"stock_delivery,l10n_ro_edi"
+l10n_ro_edi_stock_batch,REMOVED,,Localization,Accounting/Localizations/EDI,False,True,Romania - E-Transport Batch Pickings,Romania - E-Transport Batch Pickings,"l10n_ro_edi_stock,stock_picking_batch"
+l10n_rs,CHANGED,9/16,Localization,Accounting/Localizations/Account Charts,False,True,Serbia - Accounting,Serbia - Accounting,account
+l10n_rs_edi,CHANGED,9/21,Localization,Accounting/Localizations/EDI,False,True,E-Invoice implementation for Serbia,Serbia - eFaktura E-invoicing,"account_edi_ubl_cii,l10n_rs"
+l10n_rw,CHANGED,7/14,Localization,Accounting/Localizations/Account Charts,False,True,Rwanda - Accounting,Rwanda - Accounting,account
+l10n_sa,CHANGED-MAJOR,31/41,Localization,Accounting/Localizations/Account Charts,False,True,Saudi Arabia - Accounting,Saudi Arabia - Accounting,"l10n_gcc_invoice,account,account_debit_note,l10n_account_withholding_tax"
+l10n_sa_edi,CHANGED-MAJOR,59/63,Localization,Accounting/Localizations/EDI,False,False,"E-Invoicing, Universal Business Language",Saudi Arabia - E-invoicing,"account_edi_ubl_cii,l10n_sa,certificate"
+l10n_sa_edi_pos,CHANGED-MAJOR,23/24,Localization,Accounting/Localizations/EDI,False,False,"ZATCA E-Invoicing, support for PoS",Saudi Arabia - E-invoicing (Simplified),"l10n_sa_pos,l10n_sa_edi"
+l10n_sa_pos,CHANGED-MAJOR,16/21,Localization,Accounting/Localizations/Point of Sale,False,True,Saudi Arabia - Point of Sale,Saudi Arabia - Point of Sale,"l10n_gcc_pos,l10n_sa"
+l10n_sa_withholding_tax,REMOVED,,Localization,Accounting/Localizations/Account Charts,False,True,Saudi Arabia - Withholding Tax,Saudi Arabia - Withholding Tax,"l10n_account_withholding_tax,l10n_sa"
+l10n_se,CHANGED-MAJOR,10/27,Localization,Accounting/Localizations/Account Charts,False,True,Sweden - Accounting,Sweden - Accounting,"account,account_edi_ubl_cii"
+l10n_sg,CHANGED-MAJOR,25/33,Localization,Accounting/Localizations/Account Charts,False,True,Singapore - Accounting,Singapore - Accounting,"account_qr_code_emv,account,account_edi_ubl_cii,account_peppol"
+l10n_sg_ubl_pint,CHANGED,8/10,Localization,Accounting/Localizations/EDI,False,True,Singapore - UBL PINT,Singapore - UBL PINT,l10n_sg
+l10n_si,CHANGED-MAJOR,10/20,Localization,Accounting/Localizations/Account Charts,False,True,Slovenian - Accounting,Slovenian - Accounting,"account,account_edi_ubl_cii"
+l10n_sk,CHANGED-MAJOR,18/18,Localization,Accounting/Localizations/Account Charts,False,True,Slovak - Accounting,Slovak - Accounting,account
+l10n_sn,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Sénégal - Accounting,Sénégal - Accounting,"l10n_syscohada,account"
+l10n_syscohada,CHANGED,6/12,Localization,Accounting/Localizations/Account Charts,False,False,OHADA - Accounting,OHADA - Accounting,account
+l10n_td,CHANGED,6/16,Localization,Accounting/Localizations/Account Charts,False,True,Tchad - Accounting,Tchad - Accounting,"l10n_syscohada,account"
+l10n_test_pos_qr_payment,CHANGED,4/6,Localization,Sales/Point of Sale,False,False,POS QR Tests,POS QR Tests,"point_of_sale,account_qr_code_sepa,l10n_be,l10n_ch,l10n_hk,l10n_br"
+l10n_tg,CHANGED,5/15,Localization,Accounting/Localizations/Account Charts,False,True,Togo - Accounting,Togo - Accounting,"l10n_syscohada,account"
+l10n_th,CHANGED-MAJOR,41/46,Localization,Accounting/Localizations/Account Charts,False,True,Thailand - Accounting,Thailand - Accounting,"account_qr_code_emv,account,l10n_account_withholding_tax"
+l10n_tn,CHANGED,7/13,Localization,Accounting/Localizations/Account Charts,False,True,Tunisia - Accounting,Tunisia - Accounting,account
+l10n_tr,CHANGED-MAJOR,19/31,Localization,Accounting/Localizations/Account Charts,False,True,Türkiye - Accounting,Türkiye - Accounting,"account,contacts"
+l10n_tr_nilvera,REMOVED,,Localization,Accounting/Accounting,False,False,Türkiye - Nilvera,Türkiye - Nilvera,"l10n_tr,account_edi_ubl_cii"
+l10n_tr_nilvera_base_vat,REMOVED,,Localization,Accounting/Accounting,False,True,Türkiye - Nilvera/Base VAT,Türkiye - Nilvera/Base VAT,"l10n_tr_nilvera,base_vat"
+l10n_tr_nilvera_edispatch,REMOVED,,Localization,Accounting/Localizations,False,False,Türkiye - e-Irsaliye (e-Dispatch),Türkiye - e-Irsaliye (e-Dispatch),"l10n_tr_nilvera,stock,stock_account"
+l10n_tr_nilvera_einvoice,REMOVED,,Localization,Accounting/Accounting,False,True,Türkiye - Nilvera E-Invoice,Türkiye - Nilvera E-Invoice,"l10n_tr_nilvera,account_edi_ubl_cii"
+l10n_tr_nilvera_einvoice_extended,REMOVED,,Localization,Accounting/Accounting,False,True,Türkiye - Nilvera E-Invoice Extended,Türkiye - Nilvera E-Invoice Extended,"l10n_tr_nilvera_einvoice,contacts"
+l10n_tw,CHANGED-MAJOR,11/17,Localization,Accounting/Localizations/Account Charts,False,True,Taiwan - Accounting,Taiwan - Accounting,account
+l10n_tw_edi_ecpay,CHANGED-MAJOR,11/29,Localization,Accounting/Localizations/EDI,False,False,E-invoicing using ECpay,Taiwan - E-invoicing,l10n_tw
+l10n_tw_edi_ecpay_pos,CHANGED-MAJOR,18/31,Localization,Point of sale/Localizations/EDI,False,True,ECpay E-invoice bridge module for POS,Taiwan - E-invoicing Pos,"point_of_sale,l10n_tw_edi_ecpay"
+l10n_tw_edi_ecpay_sale,NEW,,Localization,Website Sale/Localizations/EDI,False,True,ECPay E-invoice bridge module for Sales,Taiwan - E-invoicing Sales,"sale,l10n_tw_edi_ecpay"
+l10n_tw_edi_ecpay_website_sale,CHANGED-MAJOR,18/18,Localization,Website Sale/Localizations/EDI,False,True,ECpay E-invoice bridge module for Ecommerce,Taiwan - E-invoicing Ecommerce,"website_sale,l10n_tw_edi_ecpay_sale"
+l10n_tz_account,CHANGED,6/13,Localization,Accounting/Localizations/Account Charts,False,True,Tanzania - Accounting,Tanzania - Accounting,account
+l10n_ua,CHANGED,6/11,Localization,Accounting/Localizations/Account Charts,False,True,Ukraine - Accounting,Ukraine - Accounting,account
+l10n_ug,CHANGED,6/12,Localization,Accounting/Localizations/Account Charts,False,True,Uganda - Accounting,Uganda - Accounting,account
+l10n_uk,CHANGED,8/16,Localization,Accounting/Localizations/Account Charts,False,True,United Kingdom - Accounting,United Kingdom - Accounting,account
+l10n_us,CHANGED-MAJOR,13/15,Localization,Accounting/Localizations/Account Charts,False,False,United States - Localizations,United States - Localizations,"base,base_address_extended"
+l10n_us_account,CHANGED-MAJOR,23/23,Localization,Accounting/Localizations/Account Charts,False,True,United States - Accounting,United States - Accounting,"l10n_us,account,base_address_extended"
+l10n_uy,CHANGED-MAJOR,24/33,Localization,Accounting/Localizations/Account Charts,False,True,Uruguay - Accounting,Uruguay - Accounting,"account,l10n_latam_invoice_document"
+l10n_uy_pos,REMOVED,,Localization,Accounting/Localizations/Point of Sale,False,True,Uruguayan - Point of Sale,Uruguayan - Point of Sale,"l10n_uy,point_of_sale"
+l10n_uz,CHANGED-MAJOR,14/14,Localization,Accounting/Localizations/Account Charts,False,False,Uzbekistan - Accounting,Uzbekistan - Accounting,account
+l10n_ve,CHANGED,5/10,Localization,Accounting/Localizations/Account Charts,False,True,Venezuela - Accounting,Venezuela - Accounting,account
+l10n_vn,CHANGED-MAJOR,14/21,Localization,Accounting/Localizations/Account Charts,False,True,Vietnam - Accounting,Vietnam - Accounting,"account_qr_code_emv,account"
+l10n_vn_edi_viettel,CHANGED-MAJOR,26/25,Localization,Accounting/Localizations/EDI,False,False,E-invoicing using SInvoice by Viettel,Vietnam - E-invoicing,l10n_vn
+l10n_vn_edi_viettel_pos,CHANGED-MAJOR,13/27,Localization,Accounting/Localizations/EDI,False,True,POS E-invoicing using SInvoice by Viettel,Vietnam - POS E-invoicing,"l10n_vn_edi_viettel,point_of_sale"
+l10n_vn_edi_viettel_stock,NEW,,Localization,Accounting/Localizations/EDI,False,True,Delivery E-invoicing using SInvoice by Viettel,Vietnam - Delivery E-invoicing,"l10n_vn_edi_viettel,stock"
+l10n_yt,CHANGED,1/4,Localization,Accounting/Localizations/Account Charts,False,True,Mayotte - Accounting,Mayotte - Accounting,"l10n_fr_account,account"
+l10n_za,CHANGED,4/10,Localization,Accounting/Localizations/Account Charts,False,True,South Africa - Accounting,South Africa - Accounting,account
+l10n_zm_account,CHANGED,5/12,Localization,Accounting/Localizations/Account Charts,False,True,Zambia - Accounting,Zambia - Accounting,account
+link_tracker,CHANGED-MAJOR,76/82,Marketing,Marketing,False,False,Link Tracker,Link Tracker,"utm,mail"
+loyalty,CHANGED-MAJOR,100/109,Sales,Sales,False,False,"Use discounts, gift cards, eWallets and loyalty programs in your sales channels",Coupons & Loyalty,"product,portal,account"
+lunch,CHANGED-MAJOR,103/154,Human Resources,Human Resources/Lunch,True,False,Handle lunch orders of your employees,Lunch,mail
+mail,CHANGED-MAJOR,1277/1436,Productivity,Productivity/Discuss,True,False,"Chat, mail gateway and private channels",Discuss,"base,base_setup,bus,web_tour,html_editor"
+mail_bot,CHANGED-MAJOR,58/65,Productivity,Productivity/Discuss,False,True,Add OdooBot in discussions,OdooBot,mail
+mail_bot_hr,CHANGED,2/52,Productivity,Productivity/Discuss,False,True,Bridge module between hr and mailbot.,OdooBot - HR,"mail_bot,hr"
+mail_group,CHANGED-MAJOR,66/88,,,False,False,Manage your mailing lists,Mail Group,"mail,portal"
+mail_plugin,CHANGED-MAJOR,67/65,Sales,Sales/CRM,False,True,Allows integration with mail plugins.,Mail Plugin,"digest,web,contacts"
+mail_tracking,NEW,,Productivity,Productivity/Discuss,False,False,Technical tracking of discussion and message-related data,Discuss Tracking,mail
+mail_tracking_mass_mailing,NEW,,Productivity,Productivity/Discuss,False,True,Track source of messages by mass mailing,Mass Mailing Tracking,"mail_tracking,mass_mailing"
+mail_tracking_sms,NEW,,Productivity,Productivity/Discuss,False,True,Track source of messages by sms,SMS Message Tracking,"mail_tracking,sms"
+maintenance,CHANGED-MAJOR,84/98,Supply Chain,Supply Chain/Maintenance,True,False,Track equipment and manage maintenance requests,Maintenance,mail
+marketing_card,CHANGED-MAJOR,74/100,Marketing,Marketing/Marketing Card,True,False,Generate dynamic shareable cards,Marketing Card,"link_tracker,mass_mailing,website,base_report_wkhtmltox"
+marketing_card_event,NEW,,Marketing,Marketing/Marketing Card,False,True,Generate dynamic shareable cards for entities linked to events.,Marketing Card For Events,"marketing_card,event"
+mass_mailing,CHANGED-MAJOR,364/479,Marketing,Marketing/Email Marketing,True,False,"Design, send and track emails",Email Marketing,"contacts,mail,html_builder,utm,link_tracker,social_media,web_tour,digest"
+mass_mailing_crm,CHANGED-MAJOR,59/60,Marketing,Marketing/Email Marketing,False,True,Add lead / opportunities UTM info on mass mailing,Mass mailing on lead / opportunities,"crm,mass_mailing"
+mass_mailing_crm_sms,CHANGED-MAJOR,51/53,Marketing,Marketing/Email Marketing,False,True,Add lead / opportunities info on mass mailing sms,Mass mailing sms on lead / opportunities,"mass_mailing_crm,mass_mailing_sms"
+mass_mailing_event,CHANGED-MAJOR,66/58,Marketing,Marketing/Email Marketing,False,True,Mass mailing on attendees,Mass mailing on attendees,"event,mass_mailing"
+mass_mailing_event_sms,CHANGED-MAJOR,51/55,Marketing,Marketing/Email Marketing,False,True,Event Attendees SMS Marketing,Event Attendees SMS Marketing,"event,mass_mailing,mass_mailing_event,mass_mailing_sms,sms"
+mass_mailing_event_track,CHANGED-MAJOR,66/58,Marketing,Marketing/Email Marketing,False,True,Mass mailing on track speakers,Mass mailing on track speakers,"website_event_track,mass_mailing"
+mass_mailing_event_track_sms,CHANGED-MAJOR,51/53,Marketing,Marketing/Email Marketing,False,True,Track Speakers SMS Marketing,Track Speakers SMS Marketing,"mass_mailing,mass_mailing_sms,sms,website_event_track"
+mass_mailing_sale,CHANGED-MAJOR,59/63,Marketing,Marketing/Email Marketing,False,True,Add sale order UTM info on mass mailing,Mass mailing on sale orders,"sale,mass_mailing"
+mass_mailing_sale_sms,CHANGED-MAJOR,51/53,Marketing,Marketing/Email Marketing,False,True,Add sale order info on mass mailing sms,Mass mailing sms on sale orders,"mass_mailing_sale,mass_mailing_sms"
+mass_mailing_slides,CHANGED-MAJOR,53/54,Marketing,Marketing/Email Marketing,False,True,Mass mailing on course members,Mass mailing on course members,"website_slides,mass_mailing"
+mass_mailing_sms,CHANGED-MAJOR,89/99,Marketing,Marketing/Email Marketing,True,False,"Design, send and track SMS",SMS Marketing,"portal,mass_mailing,sms"
+mass_mailing_themes,CHANGED-MAJOR,140/132,Marketing,Marketing/Email Marketing,False,True,Design gorgeous mails,Mass Mailing Themes,mass_mailing
+microsoft_account,CHANGED-MAJOR,54/57,Hidden,Hidden/Tools,False,False,Microsoft Users,Microsoft Users,base_setup
+microsoft_calendar,CHANGED-MAJOR,90/95,Productivity,Productivity,False,False,Outlook Calendar,Outlook Calendar,"microsoft_account,calendar"
+microsoft_outlook,CHANGED-MAJOR,56/68,Hidden,Hidden,False,True,Microsoft Outlook,Microsoft Outlook,mail
+mrp,CHANGED-MAJOR,235/282,Supply Chain,Supply Chain/Manufacturing,True,False,Manufacturing Orders & BOMs,Manufacturing,"product,stock,resource"
+mrp_account,CHANGED-MAJOR,102/98,Supply Chain,Supply Chain/Manufacturing,False,True,Analytic accounting in Manufacturing,Accounting - MRP,"mrp,stock_account"
+mrp_delivery,NEW,,Shipping Connectors,Shipping Connectors,False,True,Carrier with kits,Delivery and MRP Management,"mrp,stock_delivery"
+mrp_landed_costs,CHANGED-MAJOR,54/56,Supply Chain,Supply Chain/Manufacturing,False,True,Landed Costs on Manufacturing Order,Landed Costs On MO,"stock_landed_costs,mrp"
+mrp_product_expiry,CHANGED-MAJOR,53/58,Supply Chain,Supply Chain/Manufacturing,False,True,Manufacturing Expiry,Manufacturing Expiry,"mrp,product_expiry"
+mrp_repair,CHANGED-MAJOR,56/60,Supply Chain,Supply Chain/Inventory,False,True,Mrp Repairs,Mrp Repairs,"repair,mrp"
+mrp_subcontracting,CHANGED-MAJOR,89/117,Supply Chain,Supply Chain/Manufacturing,False,False,Subcontract Productions,MRP Subcontracting,mrp
+mrp_subcontracting_account,CHANGED-MAJOR,59/57,Supply Chain,Supply Chain/Manufacturing,False,True,Subcontracting Management with Stock Valuation,Subcontracting Management with Stock Valuation,"mrp_subcontracting,mrp_account"
+mrp_subcontracting_dropshipping,CHANGED-MAJOR,58/68,Supply Chain,Supply Chain/Purchase,False,True,Dropship and Subcontracting Management,Dropship and Subcontracting Management,"mrp_subcontracting,stock_dropshipping"
+mrp_subcontracting_landed_costs,CHANGED-MAJOR,52/56,Supply Chain,Supply Chain/Manufacturing,False,True,Advanced views to manage landed cost for subcontracting orders,Landed Costs With Subcontracting order,"mrp_landed_costs,mrp_subcontracting"
+mrp_subcontracting_purchase,CHANGED-MAJOR,66/69,Supply Chain,Supply Chain/Purchase,False,True,Purchase and Subcontracting Management,Purchase and Subcontracting Management,"mrp_subcontracting_account,purchase_mrp"
+mrp_subcontracting_repair,REMOVED,,Supply Chain,Supply Chain/Repair,False,True,MRP Subcontracting Repair,MRP Subcontracting Repair,"mrp_subcontracting,repair"
+mysubscription,NEW,,Sales,Sales,False,True,Backend Subscription App,My Subscription,"base,web"
+odoo/addons/base,CHANGED-MAJOR,385/660,Hidden,Hidden,False,True,Base,Base,
+odoo/addons/test_access_rights,REMOVED,,Test,Hidden/Tests,False,False,test of access rights and rules,test of access rights and rules,
+odoo/addons/test_action_bindings,REMOVED,,Test,Hidden/Tests,False,False,Test Action Bindings,Test Action Bindings,
+odoo/addons/test_assetsbundle,CHANGED,6/33,Test,Hidden/Tests,False,False,test-assetsbundle,test-assetsbundle,base
+odoo/addons/test_auth_custom,REMOVED,,Test,Hidden,False,False,Tests that custom auth works & is not impaired by CORS,Tests that custom auth works & is not impaired by CORS,
+odoo/addons/test_base,NEW,,Test,Hidden/Tests,False,False,Test ORM,Test ORM,base
+odoo/addons/test_convert,REMOVED,,Test,Hidden/Tests,False,False,test_convert,test_convert,
+odoo/addons/test_converter,REMOVED,,Test,Hidden/Tests,False,False,test-field-converter,test-field-converter,base
+odoo/addons/test_data_module,UNCHANGED,0/1,Test,Hidden/Tests,False,False,test module to test data only modules,test module to test data only modules,
+odoo/addons/test_data_module_install,CHANGED,1/4,Test,Hidden/Tests,False,False,test installation of data module,test installation of data module,test_data_module
+odoo/addons/test_http,CHANGED-MAJOR,29/34,Test,Hidden/Tests,False,False,Test HTTP,Test HTTP,"web,web_tour,mail,rpc"
+odoo/addons/test_inherit,CHANGED,9/13,Test,Hidden/Tests,False,False,test-inherit,test-inherit,"base,test_base"
+odoo/addons/test_inherit_depends,CHANGED,2/5,Test,Hidden/Tests,False,False,test-inherit-depends,test-inherit-depends,"test_inherit,test_base"
+odoo/addons/test_inherits,REMOVED,,Test,Hidden/Tests,False,False,test-inherits,test-inherits,base
+odoo/addons/test_inherits_depends,CHANGED,2/5,Test,Hidden/Tests,False,False,test-inherits-depends,test-inherits-depends,test_base
+odoo/addons/test_l10n,NEW,,Test,Hidden/Tests,False,False,Test Localization,Test Localization,base
+odoo/addons/test_lint,CHANGED-MAJOR,32/30,Test,Hidden/Tests,False,False,Test Lint,Test Lint,base
+odoo/addons/test_main_flows,CHANGED,7/9,Test,Hidden/Tests,False,False,Test Main Flow,Test Main Flow,"web_tour,crm,sale_timesheet,purchase_stock,mrp,account"
+odoo/addons/test_mimetypes,REMOVED,,Test,Hidden/Tests,False,False,test mimetypes-guessing,test mimetypes-guessing,
+odoo/addons/test_orm,REMOVED,,Test,Hidden/Tests,False,False,Test ORM,Test ORM,"base,web,web_tour"
+odoo/addons/test_read_group,REMOVED,,Test,Hidden/Tests,False,False,test of (formatted/web)_read_group,test of (formatted/web)_read_group,"base,web"
+odoo/addons/test_rpc,REMOVED,,Test,Hidden/Tests,False,False,Test RPC,Test RPC,"web,rpc"
+odoo/addons/test_search_panel,REMOVED,,Test,Hidden/Tests,False,False,test_search_panel,test_search_panel,web
+odoo/addons/test_testing_utilities,REMOVED,,Test,Hidden/Tests,False,False,Test testing utilities,Test testing utilities,"base,web"
+odoo/addons/test_tests,NEW,,Test,Hidden/Tests,False,False,Test Tests,Test Tests,"base,web"
+odoo/addons/test_translation,NEW,,Test,Hidden/Tests,False,False,Test Translation,Test Translation,"base,web_tour"
+odoo/addons/test_translation_import,REMOVED,,Test,Hidden/Tests,False,False,test-translation-import,test-translation-import,base
+odoo/addons/test_uninstall,CHANGED,3/4,Test,Hidden/Tests,False,False,test-uninstall,test-uninstall,base
+odoo/addons/test_web,NEW,,Test,Hidden/Tests,False,False,test_search_panel,test_search_panel,"web,test_base"
+onboarding,CHANGED-MAJOR,56/70,Hidden,Hidden,False,False,Onboarding Toolbox,Onboarding Toolbox,web
+partner_autocomplete,CHANGED-MAJOR,79/82,Hidden,Hidden/Tools,False,True,Auto-complete partner companies' data,Partner Autocomplete,iap_mail
+partnership,CHANGED-MAJOR,59/71,Sales,Sales/CRM,False,False,Partnership / Membership,Partnership / Membership,"crm,sale"
+payment,CHANGED-MAJOR,140/338,Hidden,Hidden,False,False,The payment engine used by payment provider modules.,Payment Engine,"onboarding,portal"
+payment_adyen,CHANGED-MAJOR,83/77,Accounting,Accounting/Payment Providers,False,False,A Dutch payment provider covering Europe and the US.,Payment Provider: Adyen,payment
+payment_aps,CHANGED-MAJOR,66/69,Accounting,Accounting/Payment Providers,False,False,An Amazon payment provider covering the MENA region.,Payment Provider: Amazon Payment Services,payment
+payment_asiapay,CHANGED-MAJOR,66/70,Accounting,Accounting/Payment Providers,False,False,An payment provider based in Hong Kong covering most Asian countries.,Payment Provider: AsiaPay,payment
+payment_authorize,CHANGED-MAJOR,84/77,Accounting,Accounting/Payment Providers,False,False,"An payment provider covering the US, Australia, and Canada.",Payment Provider: Authorize.Net,payment
+payment_buckaroo,CHANGED-MAJOR,79/70,Accounting,Accounting/Payment Providers,False,False,A Dutch payment provider covering several countries in Europe.,Payment Provider: Buckaroo,payment
+payment_custom,CHANGED-MAJOR,84/87,Accounting,Accounting/Payment Providers,False,False,A payment provider for custom flows like wire transfers.,Payment Provider: Custom Payment Modes,payment
+payment_demo,CHANGED-MAJOR,70/77,Accounting,Accounting/Accounting,False,False,A payment provider for running fake payment flows for demo purposes.,Payment Provider: Demo,payment
+payment_dpo,CHANGED-MAJOR,65/68,Accounting,Accounting/Payment Providers,False,False,A Kenyan payment provider covering several African countries.,Payment Provider: DPO,payment
+payment_ecpay,CHANGED-MAJOR,62/67,Accounting,Accounting/Payment Providers,False,False,A payment provider covering the Taiwanese market.,Payment Provider: ECPay,payment
+payment_flutterwave,CHANGED-MAJOR,67/72,Accounting,Accounting/Payment Providers,False,False,A Nigerian payment provider covering several African countries.,Payment Provider: Flutterwave,payment
+payment_iyzico,CHANGED-MAJOR,67/69,Accounting,Accounting/Payment Providers,False,False,A payment provider covering Turkey.,Payment Provider: Iyzico,payment
+payment_mercado_pago,CHANGED-MAJOR,69/75,Accounting,Accounting/Payment Providers,False,False,A payment provider covering several countries in Latin America.,Payment Provider: Mercado Pago,payment
+payment_mollie,CHANGED-MAJOR,66/69,Accounting,Accounting/Payment Providers,False,False,A Dutch payment provider covering several European countries.,Payment Provider: Mollie,payment
+payment_nuvei,CHANGED-MAJOR,66/69,Accounting,Accounting/Payment Providers,False,False,A payment provider covering Latin America.,Payment Provider: Nuvei,payment
+payment_paymob,CHANGED-MAJOR,64/69,Accounting,Accounting/Payment Providers,False,False,An Egyptian payment provider for the Middle East.,Payment Provider: Paymob,payment
+payment_paypal,CHANGED-MAJOR,87/79,Accounting,Accounting/Payment Providers,False,False,An American payment provider for online payments all over the world.,Payment Provider: Paypal,payment
+payment_payu,CHANGED-MAJOR,62/70,Accounting,Accounting/Payment Providers,False,False,A payment provider covering India.,Payment Provider: PayU,payment
+payment_razorpay,CHANGED-MAJOR,67/74,Accounting,Accounting/Payment Providers,False,False,A payment provider covering India.,Payment Provider: Razorpay,payment
+payment_redsys,CHANGED-MAJOR,66/68,Accounting,Accounting/Payment Providers,False,False,A payment provider covering the Spanish market.,Payment Provider: Redsys,payment
+payment_stripe,CHANGED-MAJOR,75/81,Accounting,Accounting/Payment Providers,False,False,An Irish-American payment provider covering the US and many others.,Payment Provider: Stripe,payment
+payment_toss_payments,CHANGED-MAJOR,61/69,Accounting,Accounting/Payment Providers,False,False,A payment provider covering the South Korea market,Payment Provider: Toss Payments,payment
+payment_worldline,CHANGED-MAJOR,65/69,Accounting,Accounting/Payment Providers,False,False,A French payment provider covering several European countries.,Payment Provider: Worldline,payment
+payment_xendit,CHANGED-MAJOR,66/72,Accounting,Accounting/Payment Providers,False,False,A payment provider for Indonesian and the Philippines.,Payment Provider: Xendit,payment
+phone_validation,CHANGED-MAJOR,73/89,Hidden,Hidden,False,True,Validate and format phone numbers,Phone Numbers Validation,"base,mail"
+point_of_sale,CHANGED-MAJOR,676/876,Sales,Sales/Point of Sale,True,False,Handle checkouts and payments for shops and restaurants.,Point of Sale,"resource,product,account,barcodes_gs1_nomenclature,html_editor,digest,phone_validation,google_address_autocomplete,base_report_wkhtmltox,iot_webserial"
+populate,NEW,,Hidden,Hidden/Tools,False,False,Generate synthetic data for an Odoo database,Populate,base
+portal,CHANGED-MAJOR,122/142,Hidden,Hidden,False,False,Customer Portal,Customer Portal,"auth_signup,base_address_extended,html_editor,http_routing,mail,web"
+portal_discuss,NEW,,Services,Services,False,True,Portal Discuss,Portal Discuss,"mail,portal"
+portal_rating,CHANGED-MAJOR,68/91,Services,Services,False,True,Portal Rating,Portal Rating,"portal,rating"
+pos_account_tax_python,CHANGED-MAJOR,53/57,Accounting,Accounting/Accounting,False,True,Allow custom taxes in POS,Allow custom taxes in POS,"account_tax_python,point_of_sale"
+pos_adyen,CHANGED-MAJOR,67/70,Sales,Sales/Point of Sale,False,False,Integrate your POS with an Adyen payment terminal,POS Adyen,"point_of_sale,payment_adyen"
+pos_bancontact_pay,NEW,,Sales,Sales/Point of Sale,False,False,Accept Bancontact Pay and Wero QR code payments in POS (Payconiq).,POS Bancontact Pay & Wero,point_of_sale
+pos_cashdro,CHANGED-MAJOR,60/62,Sales,Sales/Point of Sale,False,False,Integrate your POS with a Cashdro automatic cash payment device,POS Cashdro Cash Machines,point_of_sale
+pos_cashmatic,CHANGED-MAJOR,58/61,Sales,Sales/Point of Sale,False,False,Integrate your POS with a cash matic automatic cash payment device,POS Cashmatic Cash Machines,point_of_sale
+pos_discount,CHANGED-MAJOR,83/91,Sales,Sales/Point of Sale,False,False,Simple Discounts in the Point of Sale,Point of Sale Discounts,point_of_sale
+pos_dpopay,CHANGED-MAJOR,55/58,Sales,Sales/Point of Sale,False,False,Integrate your POS with DPO payment terminal.,PoS DPO Pay,point_of_sale
+pos_edi_ubl,CHANGED-MAJOR,52/53,Sales,Sales/Point of Sale,False,False,UBL in the Point of Sale,Point of Sale UBL,"point_of_sale,account_edi_ubl_cii"
+pos_event,CHANGED-MAJOR,96/113,Technical,Technical,False,True,Link module between Point of Sale and Event,POS - Event,"point_of_sale,event_product"
+pos_event_sale,CHANGED-MAJOR,60/61,Technical,Technical,False,True,Link module between pos_sale and pos_event,PoS - Event Sale,"pos_event,pos_sale,event_sale"
+pos_glory_cash,CHANGED-MAJOR,62/70,Sales,Sales/Point of Sale,False,False,Integrate your POS with a Glory automatic cash payment device,POS Glory Cash Machines,point_of_sale
+pos_hr,CHANGED-MAJOR,104/115,Sales,Sales/Point of Sale,False,True,Link module between Point of Sale and HR,POS - HR,"point_of_sale,hr"
+pos_hr_restaurant,CHANGED,5/54,Sales,Sales/Point of Sale,False,True,Link module between pos_hr and pos_restaurant,POS HR Restaurant,"pos_hr,pos_restaurant"
+pos_imin,CHANGED-MAJOR,61/58,Sales,Sales/Point of Sale,False,False,iMin ePOS Printers in PoS,POS iMin,point_of_sale
+pos_loyalty,CHANGED-MAJOR,138/149,Sales,Sales/Point Of Sale,False,True,"Use Coupons, Gift Cards and Loyalty programs in Point of Sale",Point of Sale - Coupons & Loyalty,"loyalty,point_of_sale"
+pos_mercado_pago,CHANGED-MAJOR,60/62,Sales,Sales/Point of Sale,False,False,Integrate your POS with the Mercado Pago Smart Point terminal,POS Mercado Pago,point_of_sale
+pos_mollie,CHANGED-MAJOR,59/64,Sales,Sales/Point of Sale,False,False,Integrate your POS with a Mollie payment terminal,POS Mollie,"point_of_sale,payment_mollie"
+pos_mrp,CHANGED-MAJOR,61/61,Sales,Sales/Point of Sale,False,True,Link module between Point of Sale and Mrp,pos_mrp,"pos_stock,mrp"
+pos_online_payment,CHANGED-MAJOR,85/84,,,False,True,Point of Sale online payment,Point of Sale online payment,"point_of_sale,account_payment"
+pos_online_payment_self_order,CHANGED-MAJOR,78/78,Sales,Sales/Point of Sale,False,True,Support online payment in self-order,POS Self-Order / Online Payment,"pos_online_payment,pos_self_order"
+pos_partner_autocomplete,NEW,,Sales,Sales/Point of Sale,False,True,Link module between Partner Autocomplete and Point of Sale,POS Partner Autocomplete,"partner_autocomplete,point_of_sale"
+pos_pine_labs,CHANGED-MAJOR,57/61,Sales,Sales/Point of Sale,False,False,Integrate your POS with Pine Labs payment terminals,POS Pine Labs,point_of_sale
+pos_qfpay,CHANGED-MAJOR,57/64,Sales,Sales/Point of Sale,False,False,Integrate your POS with the QFPay terminal in Hong Kong,POS QFPay,point_of_sale
+pos_razorpay,CHANGED-MAJOR,59/65,Sales,Sales/Point of Sale,False,False,Integrate your POS with a Razorpay payment terminal,POS Razorpay,point_of_sale
+pos_repair,CHANGED-MAJOR,54/58,Technical,Technical,False,True,Link module between Point of Sale and Repair,POS - Repair,"pos_stock,repair"
+pos_restaurant,CHANGED-MAJOR,192/293,Sales,Sales/Point of Sale,True,False,Restaurant extensions for the Point of Sale,Restaurant,point_of_sale
+pos_restaurant_adyen,REMOVED,,Point of Sale,Point of Sale,False,True,Adds American style tipping to Adyen,POS Restaurant Adyen,"pos_adyen,pos_restaurant,payment_adyen"
+pos_restaurant_loyalty,CHANGED,5/56,Sales,Sales/Point of Sale,False,True,Link module between pos_restaurant and pos_loyalty,POS - Restaurant Loyality,"pos_restaurant,pos_loyalty"
+pos_restaurant_stripe,REMOVED,,Point of Sale,Point of Sale,False,True,Adds American style tipping to Stripe,POS Restaurant Stripe,"pos_stripe,pos_restaurant,payment_stripe"
+pos_safaricom,CHANGED-MAJOR,69/73,Sales,Sales/Point of Sale,False,False,Integrate your POS with the Safaricom Payment Provider,POS Safaricom,point_of_sale
+pos_sale,CHANGED-MAJOR,104/116,Sales,Sales/Point of Sale,False,True,Link module between Point of Sale and Sales,POS - Sales,"point_of_sale,sale_management"
+pos_sale_delivery,NEW,,Hidden,Hidden,False,True,POS - Sales Delivery,POS - Sales Delivery,"pos_sale,stock_delivery"
+pos_sale_loyalty,CHANGED-MAJOR,59/61,Sales,Sales/Point of Sale,False,True,Link module between pos_sale and pos_loyalty,POS - Sales Loyality,"pos_sale,pos_loyalty"
+pos_sale_margin,CHANGED-MAJOR,53/55,Sales,Sales/Point of Sale,False,True,Link module between Point of Sale and Sales Margin,POS - Sale Margin,"pos_sale,sale_margin"
+pos_sale_stock,NEW,,Sales,Sales/Point of Sale,False,True,Link module between PoS Stock and Sales,POS - Sales Stock,"pos_stock,pos_sale"
+pos_self_order,CHANGED-MAJOR,273/332,Sales,Sales/Point Of Sale,False,True,Addon for the POS App that allows customers to view the menu on their smartphone.,POS Self Order,"pos_restaurant,http_routing,link_tracker,google_address_autocomplete,base_geolocalize"
+pos_self_order_adyen,REMOVED,,Sales,Sales/Point Of Sale,False,True,Addon for the Self Order App that allows customers to pay by Adyen.,POS Self Order Adyen,"pos_adyen,pos_self_order"
+pos_self_order_bancontact_pay,NEW,,Sales,Sales/Point of Sale,False,True,Accept Bancontact Pay and Wero QR code payments in a kiosk (Payconiq).,POS Self Order Bancontact Pay & Wero,"pos_self_order,pos_bancontact_pay"
+pos_self_order_event,NEW,,Sales,Sales/Point Of Sale,False,True,Link module between PoS Self Order and PoS Event,POS Self Order - Event,"pos_self_order,pos_event"
+pos_self_order_pine_labs,CHANGED-MAJOR,54/58,Sales,Sales/Point Of Sale,False,True,An addon for the Self Order App (KIOSK) that allows customers to pay using the Pine Labs POS Terminal.,POS Self Order Pine Labs,"pos_pine_labs,pos_self_order"
+pos_self_order_qfpay,CHANGED-MAJOR,57/58,Sales,Sales/Point Of Sale,False,True,Addon for the Self Order App that allows customers to pay by QFPay.,POS Self Order QFPay,"pos_qfpay,pos_self_order"
+pos_self_order_razorpay,CHANGED-MAJOR,54/58,Sales,Sales/Point Of Sale,False,True,Addon for the Self Order App that allows customers to pay by Razorpay POS Terminal.,POS Self Order Razorpay,"pos_razorpay,pos_self_order"
+pos_self_order_sale,CHANGED-MAJOR,52/55,Sales,Sales/Point Of Sale,False,True,POS Self Order Sale,POS Self Order Sale,"pos_sale,pos_self_order"
+pos_self_order_sms,NEW,,Sales,Sales/Point Of Sale,False,True,POS Self Order SMS,POS Self Order SMS,"pos_self_order,pos_sms"
+pos_self_order_stripe,REMOVED,,Sales,Sales/Point Of Sale,False,True,Addon for the Self Order App that allows customers to pay by Stripe.,POS Self Order Stripe,"pos_stripe,pos_self_order"
+pos_self_order_viva_com,REMOVED,,Sales,Sales/Point Of Sale,False,True,Addon for the Self Order App that allows customers to pay with Viva.com terminals.,POS Self Order Viva.com,"pos_viva_com,pos_self_order"
+pos_sms,CHANGED-MAJOR,58/63,Send sms to customer for order confirmation,Send sms to customer for order confirmation,False,False,POS - SMS,POS - SMS,"point_of_sale,sms"
+pos_stock,NEW,,Sales,Sales/Point of Sale,False,True,Stock integration for PoS,PoS - Stock,"point_of_sale,stock_account"
+pos_stripe,CHANGED-MAJOR,56/58,Sales,Sales/Point of Sale,False,False,Integrate your POS with a Stripe payment terminal,POS Stripe,"point_of_sale,payment_stripe"
+pos_viva_com,CHANGED-MAJOR,66/71,Sales,Sales/Point of Sale,False,False,Integrate your PoS with a Viva.com payment terminal,PoS Viva.com,point_of_sale
+printer,NEW,,,,False,False,"Base module to manage external printers (e.g. ePOS, ZPL)",Printer,base
+privacy_lookup,CHANGED-MAJOR,56/62,Hidden,Hidden,False,True,Privacy,Privacy,mail
+product,CHANGED-MAJOR,172/256,Sales,Sales/Sales,False,False,Products & Pricelists,Products & Pricelists,"base,mail,uom"
+product_email_template,CHANGED-MAJOR,68/68,Accounting,Accounting/Accounting,False,False,Product Email Template,Product Email Template,account
+product_expiry,CHANGED-MAJOR,85/104,Supply Chain,Supply Chain/Inventory,False,False,Products Expiration Date,Products Expiration Date,stock
+product_margin,CHANGED-MAJOR,71/75,Sales,Sales/Sales,False,False,Margins by Products,Margins by Products,account
+product_matrix,CHANGED-MAJOR,62/64,Sales,Sales/Sales,False,False,Technical module: Matrix Implementation,Product Matrix,account
+project,CHANGED-MAJOR,295/394,Services,Services/Project,True,False,Manage tasks and collaborate on projects,Project,"analytic,base_setup,mail,portal_rating,resource,web,web_tour,digest"
+project_account,CHANGED-MAJOR,55/56,Accounting,Accounting/Accounting,False,True,project profitability items computation,Project - Account,"account,project"
+project_hr_expense,CHANGED-MAJOR,57/58,Services,Services/expenses,False,True,Project expenses,Project Expenses,"project_account,hr_expense"
+project_hr_skills,CHANGED-MAJOR,53/58,Services,Services/Project,False,True,Project skills,Project - Skills,"project,hr_skills"
+project_mail_plugin,CHANGED-MAJOR,60/57,Services,Services/Project,False,True,Integrate your inbox with projects,Project Mail Plugin,"project,mail_plugin"
+project_mrp,CHANGED-MAJOR,57/60,Services,Services/Project,False,True,Monitor MRP using project,MRP Project,"mrp,project"
+project_mrp_account,CHANGED-MAJOR,62/63,Services,Services/Project,False,True,Monitor MRP account using project,MRP Account Project,"mrp_account,project_mrp,project_stock_account"
+project_mrp_sale,CHANGED,5/55,Services,Services/Project,False,True,Technical Bridge,MRP Project Sale,"project_mrp,sale_mrp,sale_project"
+project_mrp_stock_landed_costs,CHANGED-MAJOR,51/53,Supply Chain,Supply Chain/Manufacturing,False,True,Technical Bridge,Project MRP Landed Costs,"project_mrp_account,mrp_landed_costs"
+project_purchase,CHANGED-MAJOR,60/65,Services,Services/Project,False,True,Monitor purchase in project,Project Purchase,"purchase,project_account"
+project_purchase_stock,CHANGED-MAJOR,59/58,Services,Services/Project,False,True,Project - Purchase - Stock,Project - Purchase - Stock,"project_purchase,project_stock"
+project_sale_expense,CHANGED-MAJOR,60/58,Services,Services/Project,False,True,Project - Sale - Expense,Project - Sale - Expense,"sale_project,sale_expense,project_hr_expense"
+project_sms,CHANGED-MAJOR,57/64,Services,Services/Project,False,True,Send text messages when project/task stage move,Project - SMS,"project,sms"
+project_stock,CHANGED-MAJOR,51/56,Services,Services/Project,False,True,Link Stock pickings to Project,Project Stock,"stock,project"
+project_stock_account,CHANGED-MAJOR,57/59,Services,Services/Project,False,True,Handle analytics in Stock pickings with Project,Project Stock Account,"stock_account,project_stock"
+project_stock_landed_costs,CHANGED-MAJOR,51/53,Supply Chain,Supply Chain/Inventory,False,True,Technical Bridge,Project Stock Landed Costs,"project_stock_account,stock_landed_costs"
+project_timesheet_holidays,CHANGED-MAJOR,67/71,Human Resources,Human Resources,False,True,Schedule timesheet when on time off,Timesheet when on Time Off,"hr_timesheet,hr_holidays"
+project_todo,CHANGED-MAJOR,90/112,Productivity,Productivity/To-Do,True,True,Organize your work with memos and to-do lists,To-Do,project
+purchase,CHANGED-MAJOR,142/167,Supply Chain,Supply Chain/Purchase,True,False,"Purchase orders, tenders and agreements",Purchase,account
+purchase_alternative,NEW,,Supply Chain,Supply Chain/Purchase,False,False,Purchase Alternative,Purchase Alternative,purchase
+purchase_alternative_sale,NEW,,Supply Chain,Supply Chain/Purchase,False,True,Purchase Alternative Sale,Purchase Alternative Sale,"purchase_alternative,sale_purchase"
+purchase_alternative_stock,NEW,,Supply Chain,Supply Chain/Purchase,False,True,Purchase Alternative Stock,Purchase Alternative Stock,"purchase_alternative,purchase_stock"
+purchase_edi_ubl_bis3,CHANGED-MAJOR,57/61,Supply Chain,Supply Chain/Purchase,False,True,Import/Export electronic orders with UBL,Import/Export electronic orders with UBL,"purchase,account_edi_ubl_cii"
+purchase_mrp,CHANGED-MAJOR,70/72,Supply Chain,Supply Chain/Purchase,False,True,Purchase and MRP Management,Purchase and MRP Management,"mrp,purchase_stock"
+purchase_product_matrix,CHANGED-MAJOR,60/61,Supply Chain,Supply Chain/Purchase,False,False,Add variants to your purchase orders through an Order Grid Entry.,Purchase Matrix,"purchase,product_matrix"
+purchase_repair,CHANGED-MAJOR,54/58,Supply Chain,Supply Chain/Purchase,False,True,Keep track of linked purchase and repair orders,Purchase Repair,"repair,purchase_stock"
+purchase_requisition,CHANGED-MAJOR,83/80,Supply Chain,Supply Chain/Purchase,False,False,Purchase Agreements,Purchase Agreements,purchase
+purchase_requisition_sale,REMOVED,,Supply Chain,Supply Chain/Purchase,False,True,Purchase Requisition Sale,Purchase Requisition Sale,"purchase_requisition,sale_purchase"
+purchase_requisition_stock,CHANGED-MAJOR,61/60,Supply Chain,Supply Chain/Purchase,False,True,Purchase Requisition Stock,Purchase Requisition Stock,"purchase_requisition,purchase_stock"
+purchase_stock,CHANGED-MAJOR,127/140,Supply Chain,Supply Chain/Purchase,False,True,"Purchase Orders, Receipts, Vendor Bills for Stock",Purchase Stock,"stock_account,purchase"
+rating,CHANGED-MAJOR,93/108,Productivity,Productivity,False,False,Customer Rating,Customer Rating,mail
+repair,CHANGED-MAJOR,106/111,Supply Chain,Supply Chain/Inventory,True,False,Repair damaged products,Repairs,"sale_stock,sale_management"
+resource,CHANGED-MAJOR,114/130,Hidden,Hidden,False,False,Resource,Resource,"base,web"
+resource_mail,CHANGED-MAJOR,66/70,Hidden,Hidden,False,True,Resource Mail,Resource Mail,"resource,mail"
+rpc,CHANGED,5/57,Extra Tools,Extra Tools,False,True,RPC endpoints,RPC endpoints,base
+sale,CHANGED-MAJOR,256/304,Sales,Sales/Sales,False,False,Sales internal machinery,Sales,"sales_team,account_payment,utm"
+sale_crm,CHANGED-MAJOR,73/77,Sales,Sales/Sales,False,True,Opportunity to Quotation,Opportunity to Quotation,"sale,crm"
+sale_edi_ubl,CHANGED-MAJOR,59/61,Sales,Sales/Sales,False,True,Import electronic orders with UBL,Import electronic orders with UBL,"sale,account_edi_ubl_cii"
+sale_expense,CHANGED-MAJOR,71/75,Sales,Sales/Sales,False,True,"Quotation, Sales Orders, Delivery & Invoicing Control",Sales Expense,"sale_management,hr_expense"
+sale_expense_margin,CHANGED-MAJOR,52/56,Sales,Sales/Sales,False,True,Sales Expense Margin,Sales Expense Margin,"sale_expense,sale_margin"
+sale_gelato,CHANGED-MAJOR,75/82,Sales,Sales/Sales,False,False,Place orders through Gelato's print-on-demand service,Gelato,"sale,delivery"
+sale_gelato_stock,CHANGED-MAJOR,52/53,Sales,Sales/Sales,False,True,Gelato/Stock bridge,Gelato/Stock bridge,"sale_gelato,sale_stock"
+sale_loyalty,CHANGED-MAJOR,91/94,Sales,Sales/Sales,False,True,Use discounts and loyalty programs in sales orders,Sale Loyalty,"sale,loyalty"
+sale_loyalty_delivery,CHANGED-MAJOR,61/62,Sales,Sales/Sales,False,True,Adds free shipping mechanism in sales orders,Sale Loyalty - Delivery,"sale_loyalty,delivery"
+sale_management,CHANGED-MAJOR,102/125,Sales,Sales/Sales,True,False,From quotations to invoices,Sales,"sale,digest"
+sale_margin,CHANGED-MAJOR,79/78,Sales,Sales/Sales,False,True,Margins in Sales Orders,Margins in Sales Orders,sale_management
+sale_mrp,CHANGED-MAJOR,88/82,Sales,Sales/Sales,False,True,Sales and MRP Management,Sales and MRP Management,"mrp,sale_stock"
+sale_mrp_margin,CHANGED,3/53,Sales,Sales/Sales,False,False,Sale Mrp Margin,Sale Mrp Margin,"sale_mrp,sale_stock_margin"
+sale_pdf_quote_builder,CHANGED-MAJOR,82/96,Sales,Sales/Sales,False,True,Sales PDF Quotation Builder,Sales PDF Quotation Builder,sale_management
+sale_product_matrix,CHANGED-MAJOR,61/60,Sales,Sales/Sales,False,False,Add variants to Sales Order through a grid entry.,Sale Matrix,"sale,product_matrix"
+sale_project,CHANGED-MAJOR,103/107,Sales,Sales/Sales,False,True,Task Generation from Sales Orders,Sales - Project,"sale_management,sale_service,project_account"
+sale_project_margin,NEW,,Sales,Sales/Sales,False,True,Bridge module between Sales Margin and Project,Sales Margins in Projects,"sale_margin,sale_project"
+sale_project_stock,CHANGED-MAJOR,61/59,Sales,Sales,False,True,Adds a full traceability of inventory operations on the profitability report.,Sale Project - Sale Stock,"sale_project,sale_stock,project_stock_account"
+sale_project_stock_account,CHANGED-MAJOR,53/55,Hidden,Hidden,False,True,Technical Bridge,Sale Project Stock Account,"sale_project,project_stock_account"
+sale_purchase,CHANGED-MAJOR,65/66,Sales,Sales/Sales,False,True,Sale based on service outsourcing.,Sale Purchase,"sale,purchase"
+sale_purchase_project,CHANGED-MAJOR,54/56,Sales,Sales,False,True,Technical Bridge,Sale Purchase Project,"sale_purchase,project_purchase,sale_project"
+sale_purchase_stock,CHANGED-MAJOR,57/63,Sales,Sales/Sales,False,True,SO/PO relation in case of MTO,MTO Sale <-> Purchase,"sale_stock,purchase_stock,sale_purchase"
+sale_service,CHANGED-MAJOR,53/56,Sales,Sales/Sales,False,False,Interaction between Sales and services apps (project and planning),Sales - Service,sale_management
+sale_sms,CHANGED,5/52,Sales,Sales/Sales,False,True,Ease SMS integration with sales capabilities,Sale - SMS,"sale,sms"
+sale_stock,CHANGED-MAJOR,128/132,Sales,Sales/Sales,False,True,"Quotation, Sales Orders, Delivery & Invoicing Control",Sales and Warehouse Management,"sale,stock_account"
+sale_stock_margin,CHANGED-MAJOR,53/55,Sales,Sales/Sales,False,True,Sale Stock Margin,Sale Stock Margin,"sale_stock,sale_margin"
+sale_stock_product_expiry,CHANGED-MAJOR,58/60,Sales,Sales/Sales,False,True,Sale Stock Product Expiry,Sale Stock Product Expiry,"sale_stock,product_expiry"
+sale_timesheet,CHANGED-MAJOR,138/139,Sales,Sales/Sales,False,True,Sell based on timesheets,Sales Timesheet,"sale_project,hr_timesheet"
+sale_timesheet_margin,CHANGED-MAJOR,52/55,Sales,Sales/Sales,False,True,Bridge module between Sales Margin and Sales Timesheet,Service Margins in Sales Orders,"sale_margin,sale_timesheet"
+sales_team,CHANGED-MAJOR,80/91,Sales,Sales/Sales,False,False,Sales Teams,Sales Teams,"base,mail"
+sms,CHANGED-MAJOR,100/123,Sales,Sales/Sales,False,True,SMS Text Messaging,SMS gateway,"base,iap_mail,mail,phone_validation"
+sms_twilio,CHANGED-MAJOR,64/77,Hidden,Hidden/Tools,False,False,Send SMS messages using Twilio,Twilio SMS,sms
+snailmail,CHANGED-MAJOR,74/90,Hidden,Hidden/Tools,False,False,Snail Mail,Snail Mail,"iap_mail,mail"
+snailmail_account,CHANGED-MAJOR,57/66,Hidden,Hidden/Tools,False,True,Snail Mail - Account,Snail Mail - Account,"account,snailmail"
+social_media,CHANGED-MAJOR,56/58,Marketing,Marketing/Social Marketing,False,False,Social media connectors for company settings.,Social Media,base
+spreadsheet,CHANGED-MAJOR,216/257,Productivity,Productivity/Dashboard,False,False,Spreadsheet,Spreadsheet,"bus,web,portal"
+spreadsheet_account,CHANGED-MAJOR,67/78,Accounting,Accounting,False,True,Spreadsheet Accounting formulas,Spreadsheet Accounting Formulas,"spreadsheet,account"
+spreadsheet_dashboard,CHANGED-MAJOR,117/132,Productivity,Productivity/Dashboard,False,False,Spreadsheet,Spreadsheet dashboard,spreadsheet
+spreadsheet_dashboard_account,CHANGED-MAJOR,55/56,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for accounting,"spreadsheet_dashboard,spreadsheet_account"
+spreadsheet_dashboard_event_sale,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for events,"spreadsheet_dashboard,event_sale"
+spreadsheet_dashboard_hr_expense,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for expenses,"spreadsheet_dashboard,sale_expense"
+spreadsheet_dashboard_hr_timesheet,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for time sheets,"spreadsheet_dashboard,hr_timesheet"
+spreadsheet_dashboard_im_livechat,CHANGED-MAJOR,56/57,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for live chat,"spreadsheet_dashboard,im_livechat"
+spreadsheet_dashboard_pos_hr,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for point of sale,"spreadsheet_dashboard,pos_hr"
+spreadsheet_dashboard_pos_restaurant,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for restaurants,"spreadsheet_dashboard,pos_hr,pos_restaurant"
+spreadsheet_dashboard_sale,CHANGED-MAJOR,57/57,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for sales,"spreadsheet_dashboard,sale"
+spreadsheet_dashboard_sale_timesheet,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for time sheets,"spreadsheet_dashboard,sale_timesheet"
+spreadsheet_dashboard_stock_account,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for stock,"spreadsheet_dashboard,stock_account"
+spreadsheet_dashboard_website_sale,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for eCommerce,"spreadsheet_dashboard,website_sale"
+spreadsheet_dashboard_website_sale_slides,CHANGED-MAJOR,54/54,Productivity,Productivity/Dashboard,False,True,Spreadsheet,Spreadsheet dashboard for eLearning,"spreadsheet_dashboard,website_sale_slides"
+stock,CHANGED-MAJOR,303/345,Supply Chain,Supply Chain/Inventory,True,False,Manage your stock and logistics activities,Inventory,"product,barcodes_gs1_nomenclature,digest"
+stock_account,CHANGED-MAJOR,120/117,Supply Chain,Supply Chain/Inventory,False,True,"Inventory, Logistic, Valuation, Accounting",WMS Accounting,"stock,account"
+stock_delivery,CHANGED-MAJOR,95/102,Shipping Connectors,Shipping Connectors,False,True,Delivery - Stock,Delivery - Stock,"printer,sale_stock,delivery"
+stock_dropshipping,CHANGED-MAJOR,71/75,Supply Chain,Supply Chain/Inventory,False,False,Drop Shipping,Drop Shipping,sale_purchase_stock
+stock_fleet,CHANGED-MAJOR,64/68,,,False,False,Stock Transport Management,Stock Transport,"stock,fleet"
+stock_landed_costs,CHANGED-MAJOR,86/91,Supply Chain,Supply Chain/Inventory,False,False,Landed Costs,WMS Landed Costs,"stock_account,purchase_stock"
+stock_maintenance,CHANGED-MAJOR,53/56,Supply Chain,Supply Chain/Inventory,False,True,See lots used in maintenance,Stock - Maintenance,"stock,maintenance"
+stock_picking_batch,REMOVED,,Supply Chain,Supply Chain/Inventory,False,False,Warehouse Management: Batch Transfer,Warehouse Management: Batch Transfer,stock
+stock_sms,CHANGED-MAJOR,58/61,Supply Chain,Supply Chain/Inventory,False,True,Send text messages when final stock move,Stock - SMS,"stock,sms"
+survey,CHANGED-MAJOR,165/206,Marketing,Marketing/Surveys,True,False,Send your surveys or share them live.,Surveys,"auth_signup,http_routing,mail,web_tour,gamification,digest"
+survey_crm,CHANGED-MAJOR,61/67,Marketing,Marketing/Surveys,False,True,Generate leads from surveys,Survey CRM,"survey,crm"
+test_base_automation,CHANGED,7/10,Test,Hidden,False,False,Base Automation Tests: Ensure Flow Robustness,Test - Base Automation,base_automation
+test_crm_full,CHANGED,2/5,Test,Hidden/Tests,False,False,Test Full Crm Flow,Test Full Crm Flow,"crm,crm_iap_enrich,crm_iap_mine,crm_sms,event_crm,sale_crm,website_crm,website_crm_iap_reveal,website_crm_partner_assign,website_crm_livechat"
+test_discuss_full,CHANGED-MAJOR,13/15,Test,Productivity/Discuss,False,False,Test of Discuss with all possible overrides installed.,Test Discuss (full),"calendar,crm,crm_livechat,hr_attendance,hr_fleet,hr_holidays,im_livechat,mail,mail_bot,microsoft_calendar,project_todo,website_livechat,website_sale,website_slides"
+test_event_full,CHANGED-MAJOR,14/18,Test,Hidden/Tests,False,False,Test Full Event Flow,Test Full Event Flow,"event,event_booth,event_crm,event_crm_sale,event_sale,event_sms,payment_demo,website_event_booth_sale_exhibitor,website_event_exhibitor,website_event_sale,website_event_track,website_event_track_live,website_event_track_quiz"
+test_html_field_history,CHANGED,3/7,Test,Hidden,False,False,Test - html_field_history,Test - html_field_history,html_editor
+test_import_export,CHANGED-MAJOR,19/25,Test,Hidden,False,False,Base Import & Export Tests: Ensure Flow Robustness,Test - Import & Export,"web,base_import,website,test_base"
+test_mail,CHANGED-MAJOR,51/64,Test,Hidden,False,False,Mail Tests: performances and tests specific to mail,Mail Tests,"mail,test_base,phone_validation,mail_tracking"
+test_mail_full,CHANGED-MAJOR,25/36,Test,Hidden,False,False,Mail Tests: performances and tests specific to mail with all sub-modules,Mail Tests (Full),"mail,mail_bot,mail_tracking_mass_mailing,mass_mailing,mass_mailing_sms,phone_validation,portal,rating,sms,test_mail,test_mail_sms,test_mass_mailing"
+test_mail_sms,CHANGED-MAJOR,15/19,Test,Hidden,False,False,SMS Tests: performances and tests specific to SMS,SMS Tests,"mail,mail_tracking_sms,sms,sms_twilio,test_base"
+test_mass_mailing,CHANGED-MAJOR,26/27,Test,Marketing/Email Marketing,False,False,Mass Mail Tests: feature and performance tests for mass mailing,Mass Mail Tests,"mail_tracking_mass_mailing,mass_mailing,mass_mailing_sms,sms_twilio,test_mail,test_mail_sms"
+test_populate,NEW,,Test,Hidden/Tests,False,False,Test module for Odoo's Populate,Odoo Populate Tests,populate
+test_resource,CHANGED-MAJOR,14/15,Test,Hidden,False,False,Test - Resource,Test - Resource,resource
+test_sale_product_configurators,CHANGED-MAJOR,16/18,Test,Hidden,False,False,Test Suite for Sale Product Configurator,Sale Product Configurators Tests,"event_sale,sale_management,sale_product_matrix"
+test_sale_purchase_edi_ubl,CHANGED,1/4,Test,Hidden,False,False,Sale & Purchase Order EDI Tests: Ensure Flow Robustness,Test - Sale & Purchase Order EDI,"purchase_edi_ubl_bis3,sale_edi_ubl"
+test_spreadsheet,CHANGED,4/8,Test,Hidden,False,False,"Spreadsheet Test, mainly to test the mixin behavior",Spreadsheet Test,spreadsheet
+test_translation_mode,NEW,,Test,Hidden,False,False,In-context and interactive translation mode to streamline the module translation process using Weblate,Translation Mode,web
+test_utm,NEW,,Test,Hidden,False,False,UTM Tests: tests specific to the UTM module,UTM Tests,utm
+test_website,CHANGED-MAJOR,52/64,Test,Hidden,False,False,"Website Test, mainly for module install/uninstall tests",Website Test,"web_unsplash,website,theme_default"
+test_website_modules,CHANGED,6/8,Test,Hidden,False,False,Website Modules Test,Website Modules Test,"theme_default,website,website_blog,website_event_sale,website_slides,website_livechat,website_crm_iap_reveal,website_sale"
+test_website_slides_full,CHANGED,3/7,Test,Hidden/Tests,False,False,Test Full eLearning Flow,Test Full eLearning Flow,"website_sale_slides,website_slides_forum,website_slides_survey"
+theme_default,CHANGED,2/55,Theme,Theme,False,False,Default Theme,Default Theme,website
+transifex,REMOVED,,Hidden,Hidden/Tools,False,False,Add a link to edit a translation in Transifex,Transifex integration,"base,web"
+uom,CHANGED-MAJOR,68/69,Sales,Sales/Sales,False,False,Units of measure,Units of measure,base
+utm,CHANGED-MAJOR,80/98,Marketing,Marketing,False,False,UTM Trackers,UTM Trackers,"base,web"
+web,CHANGED-MAJOR,1605/2429,Hidden,Hidden,False,True,Web,Web,base
+web_hierarchy,CHANGED-MAJOR,65/72,Hidden,Hidden,False,False,Web Hierarchy,Web Hierarchy,web
+web_tour,CHANGED-MAJOR,85/96,Hidden,Hidden,False,True,Tours,Tours,web
+web_unsplash,CHANGED-MAJOR,70/82,Hidden,Hidden,False,True,Find free high-resolution images from Unsplash,Unsplash Image Library,"base_setup,html_editor"
+website,CHANGED-MAJOR,1340/1809,Website,Website/Website,True,False,Enterprise website builder,Website,"digest,web,html_editor,http_routing,portal,social_media,auth_signup,mail,google_recaptcha,utm,html_builder"
+website_address_autocomplete,NEW,,Website,Website/Website,False,True,Assist your users with automatic completion & suggestions when filling their address,Website Address Autocomplete,"website,google_address_autocomplete"
+website_blog,CHANGED-MAJOR,177/165,Website,Website/Website,False,False,"Publish blog posts, announces, news",Blog,"website_mail,website_partner,html_builder"
+website_cf_turnstile,CHANGED-MAJOR,57/64,Website,Website/Website,False,False,Cloudflare Turnstile,Cloudflare Turnstile,website
+website_crm,CHANGED-MAJOR,76/81,Website,Website/Website,False,True,Generate leads from a contact form,Contact Form,"website,crm"
+website_crm_iap_reveal,CHANGED-MAJOR,62/69,Sales,Sales/CRM,False,False,Generate Leads/Opportunities from your website's traffic,Lead Generation From Website Visits,"iap_crm,iap_mail,crm_iap_mine,website_crm"
+website_crm_livechat,CHANGED-MAJOR,54/58,Website,Website/Website,False,True,View livechat sessions for leads,Lead Livechat Sessions,"website_crm,website_livechat,crm_livechat"
+website_crm_partner_assign,CHANGED-MAJOR,97/110,Website,Website/Website,False,False,Publish your resellers/partners and forward leads to them,Resellers,"base_geolocalize,crm,account,website_partnership,website_partner,website_google_map,portal"
+website_crm_sms,CHANGED-MAJOR,51/55,Website,Website/Website,False,True,Allows to send sms to website visitor that have lead,Send SMS to Visitor with leads,"website_sms,crm"
+website_customer,CHANGED-MAJOR,77/84,Website,Website/Website,False,False,Publish your customer references,Customer References,"website_crm_partner_assign,website_partner,website_google_map"
+website_event,CHANGED-MAJOR,120/166,Marketing,Marketing/Events,True,False,"Publish events, sell tickets",Events,"event,website,website_partner,website_mail,html_builder"
+website_event_booth,CHANGED-MAJOR,62/67,Marketing,Marketing/Events,False,True,"Events, display your booths on your website",Online Event Booths,"website_event,event_booth"
+website_event_booth_exhibitor,CHANGED-MAJOR,56/67,Marketing,Marketing/Events,False,True,"Event Booths, automatically create a sponsor.",Booths/Exhibitors Bridge,"website_event_exhibitor,website_event_booth"
+website_event_booth_sale,CHANGED-MAJOR,59/66,Marketing,Marketing/Events,False,True,"Events, sell your booths online",Online Event Booth Sale,"event_booth_sale,website_event_booth,website_sale"
+website_event_booth_sale_exhibitor,CHANGED-MAJOR,51/54,Marketing,Marketing/Events,False,True,Bridge module between website_event_booth_exhibitor and website_event_booth_sale.,Booths Sale/Exhibitors Bridge,"website_event_exhibitor,website_event_booth_sale"
+website_event_crm,CHANGED-MAJOR,51/58,Website,Website/Website,False,True,Website Events CRM,Website Events CRM,"event_crm,website_event"
+website_event_exhibitor,CHANGED-MAJOR,70/84,Marketing,Marketing/Events,False,False,Event: manage sponsors and exhibitors,Event Exhibitors,website_event
+website_event_sale,CHANGED-MAJOR,88/95,Website,Website/Website,False,True,Sell event tickets online,Online Event Ticketing,"website_event,event_sale,website_sale"
+website_event_track,CHANGED-MAJOR,113/150,Marketing,Marketing,False,False,"Sponsors, Tracks, Agenda, Event News",Advanced Events,website_event
+website_event_track_live,CHANGED-MAJOR,55/65,Marketing,Marketing/Events,False,False,"Support live tracks: streaming, participation, youtube",Live Event Tracks,website_event_track
+website_event_track_live_quiz,CHANGED-MAJOR,51/58,Marketing,Marketing/Events,False,True,"Bridge module to support quiz features during ""live"" tracks.",Quiz on Live Event Tracks,"website_event_track_live,website_event_track_quiz"
+website_event_track_quiz,CHANGED-MAJOR,64/75,Marketing,Marketing/Events,False,False,Quizzes on tracks,Quizzes on Tracks,"website_profile,website_event_track"
+website_forum,CHANGED-MAJOR,136/155,Website,Website/Website,False,False,Manage a forum with FAQ and Q&A,Forum,"auth_signup,website_mail,website_profile"
+website_google_map,CHANGED,4/76,Website,Website/Website,False,False,Show your company address on Google Maps,Google Maps,"base_geolocalize,website_partner"
+website_hr_recruitment,CHANGED-MAJOR,89/115,Website,Website/Website,True,True,Manage your online hiring process,Online Jobs,"hr_recruitment,website_mail"
+website_hr_recruitment_livechat,CHANGED-MAJOR,52/52,Website,Website/Live Chat,False,False,Chatbot for the HR Recruitment,Website IM Livechat HR Recruitment,"website_hr_recruitment,im_livechat"
+website_links,CHANGED-MAJOR,71/81,Website,Website/Website,False,True,Generate trackable & short URLs,Link Tracker,"website,link_tracker"
+website_livechat,CHANGED-MAJOR,119/137,Website,Website/Live Chat,False,True,Chat with your website visitors,Website Live Chat,"website,im_livechat"
+website_mail,CHANGED-MAJOR,66/72,Website,Website/Website,False,True,Website Module for Mail,Website Mail,"website,mail"
+website_mail_group,CHANGED-MAJOR,54/65,,,False,True,Add a website snippet for the mail groups.,Website Mail Group,"mail_group,website"
+website_mass_mailing,CHANGED-MAJOR,95/105,Website,Website/Website,False,True,Attract visitors to subscribe to mailing lists,Newsletter Subscribe Button,"website,mass_mailing,google_recaptcha"
+website_mass_mailing_event,NEW,,Marketing,Marketing/Email Marketing/Website,False,True,Add pre-filled snippets in mass_mailing with an event snapshot,Mass mailing on website events,"mass_mailing,website_event"
+website_mass_mailing_sms,CHANGED-MAJOR,53/59,Website,Website/Website,False,True,Attract visitors to subscribe to mailing lists,Newsletter Subscribe SMS Template,"website_mass_mailing,mass_mailing_sms"
+website_partner,CHANGED-MAJOR,67/67,Website,Website/Website,False,False,Partner module for website,Website Partner,website
+website_partnership,NEW,,Website,Website/Website,False,False,Publish your partners on your website,Website Partnership,"partnership,website_partner"
+website_payment,CHANGED-MAJOR,92/85,Website,Website/Website,False,True,Payment integration with website,Website Payment,"website,account_payment,portal"
+website_profile,CHANGED-MAJOR,67/79,Website,Website/Website,False,False,Access the website profile of the users,Website profile,"html_editor,website_partner,gamification"
+website_project,CHANGED-MAJOR,59/65,Website,Website/Website,False,True,Add a task suggestion form to your website,Online Task Submission,"website,project"
+website_sale,CHANGED-MAJOR,573/565,Website,Website/Website,True,False,Sell your products online,eCommerce,"website,sale,website_payment,website_mail,portal_rating,digest,delivery,html_builder"
+website_sale_autocomplete,REMOVED,,Website,Website/Website,False,True,Assist your users with automatic completion & suggestions when filling their address during checkout,Google places autocompletion,"website_sale,google_address_autocomplete"
+website_sale_collect,CHANGED-MAJOR,106/110,Website,Website/Website,False,False,Click & Collect,Click & Collect,"base_geolocalize,payment_custom,website_sale_stock"
+website_sale_collect_wishlist,REMOVED,,Website,Website/Website,False,True,Bridge module between Click & Collect and Wishlist,Collect & Wishlist,"website_sale_wishlist,website_sale_collect"
+website_sale_comparison,REMOVED,,Website,Website/Website,False,True,Allow shoppers to compare products based on their attributes,Product Comparison,website_sale
+website_sale_comparison_wishlist,REMOVED,,Website,Website/Website,False,True,Bridge module for Website sale comparison and wishlist,Product Availability Notifications,"website_sale_comparison,website_sale_wishlist"
+website_sale_gelato,CHANGED-MAJOR,60/61,Website,Website/Website,False,True,eCommerce/Gelato bridge,eCommerce/Gelato bridge,"sale_gelato,website_sale"
+website_sale_loyalty,CHANGED-MAJOR,103/102,Website,Website/Website,False,True,"Use coupon, promotion, gift cards and loyalty programs in your eCommerce store","Coupons, Promotions, Gift Card and Loyalty for eCommerce","website_sale,website_links,sale_loyalty"
+website_sale_mass_mailing,CHANGED-MAJOR,53/62,Website,Website/Website,False,True,Let new customers sign up for a newsletter during checkout,Checkout Newsletter,"website_sale,website_mass_mailing,mass_mailing_sale"
+website_sale_mondialrelay,REMOVED,,Website,Website/Website,False,True,Let's choose Point Relais® on your ecommerce,eCommerce Mondialrelay Delivery,"website_sale,delivery_mondialrelay"
+website_sale_mrp,CHANGED-MAJOR,57/59,Website,Website/Website,False,True,Manage Kit product inventory & availability,Kit Availability,"website_sale_stock,sale_mrp"
+website_sale_project,NEW,,Website,Website/Website,False,True,Bridge module between website_sale and project,Website Sale - Project,"website_sale,project"
+website_sale_slides,CHANGED-MAJOR,70/88,Website,Website/eLearning,False,False,Sell your courses online,Sell Courses,"website_slides,website_sale"
+website_sale_stock,CHANGED-MAJOR,122/123,Website,Website/Website,False,True,Manage product inventory & availability,Product Availability,"website_sale,sale_stock,stock_delivery"
+website_sale_stock_wishlist,REMOVED,,Website,Website/Website,False,True,Notify the user when a product is back in stock,Product Availability Notifications,"website_sale_stock,website_sale_wishlist"
+website_sale_wishlist,REMOVED,,Website,Website/Website,False,True,Allow shoppers to enlist products,Shopper's Wishlist,website_sale
+website_slides,CHANGED-MAJOR,218/299,Website,Website/eLearning,True,False,Manage and publish an eLearning platform,eLearning,"portal_rating,website,website_mail,website_profile,digest"
+website_slides_forum,CHANGED-MAJOR,65/68,Website,Website/eLearning,False,True,Allows to link forum on a course,Forum on Courses,"website_slides,website_forum"
+website_slides_survey,CHANGED-MAJOR,76/93,Website,Website/eLearning,False,True,Add certification capabilities to your courses,Course Certifications,"website_slides,survey"
+website_sms,CHANGED-MAJOR,52/54,Website,Website/Website,False,True,Allows to send sms to website visitor,Send SMS to Visitor,"website,sms"
+website_timesheet,CHANGED-MAJOR,52/53,Website,Website/Website,False,True,Allow hiding timesheet information in the portal,Hide Portal Timesheet Information,"website,hr_timesheet"

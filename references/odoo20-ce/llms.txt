@@ -1,0 +1,19 @@
+# Odoo 20 CE Knowledge Base (Trinity Roots internal)
+
+> Code-verified study of Odoo 20.0 Community Edition vs 19.0 (odoo/odoo @ b100a87, 2026-10-03). Functional + technical. Evidence tags: [code] = verified in source with file path; [web] = unverified. Enterprise features are out of scope (only "absent from CE").
+
+## Core
+- [Study paper](STUDY-PAPER.md): executive summary, platform, apps, Thailand/ASEAN/HK, CE vs EE, 19→20 upgrade playbook, risks
+- [Module catalogue](01-module-catalog.md) and [CSV](data/module_catalog_19_vs_20.csv): every module, NEW/REMOVED/CHANGED
+
+## Area reports
+- [01 Framework & core](areas/01-framework-core.md): ir.access, ORM/SQL API, Python 3.12, HTTP, CLI
+- [02 Web client & technical](areas/02-web-ui-technical.md): Owl 3, offline mode, reports engines, spreadsheet, IoT
+- [03 Communication](areas/03-communication-collab.md): mail_tracking, Discuss, calendar, portal
+- [04 Accounting](areas/04-accounting-finance.md): parent accounts, res.bank removal, tax mode, payments, Peppol
+- [05 Sales/CRM/Product](areas/05-sales-crm-product.md): pricelists, quotation templates, UoM/packaging
+- [06 Supply chain & MRP](areas/06-supply-chain-mrp.md): batch in stock, scrap as move, uom_id rename, process manufacturing
+- [07 Point of Sale](areas/07-point-of-sale.md): pos_stock split, offline, IoT removal, session accounting
+- [08 Website & marketing](areas/08-website-ecommerce-marketing.md): website_sale consolidation, builder, SEO/llms.txt
+- [09 HR & project](areas/09-hr-project-services.md): work entry types, hr.time.rule, calendars, ESG scan
+- [10 Localizations](areas/10-localizations.md): l10n_th rebuild (tax invoice, WHT, 50 Tawi), ASEAN, HK, Thai gaps

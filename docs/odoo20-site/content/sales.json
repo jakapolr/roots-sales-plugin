@@ -1,0 +1,178 @@
+{
+  "id": "sales",
+  "title": {"en": "Sales, CRM, Product, Pricing, Loyalty & Delivery", "th": "Sales, CRM, Product, Pricing, Loyalty และ Delivery"},
+  "tagline": {"en": "Quotations, orders, pipeline, products and pricelists, loyalty programs and delivery costs in Odoo 20 CE, with a rewritten pricelist engine and reinvoicing moved into sale.", "th": "ใบเสนอราคา ใบสั่งขาย pipeline สินค้าและ pricelist โปรแกรม loyalty และค่าจัดส่งใน Odoo 20 CE โดยมีการเขียน pricelist engine ใหม่ และย้าย reinvoicing เข้ามาใน sale"},
+  "apps": ["sale", "sale_management", "sales_team", "crm", "product", "uom", "loyalty", "sale_loyalty", "delivery", "sale_stock", "sale_project", "sale_timesheet", "partnership"],
+  "functional": [
+    {
+      "title": {"en": "Pricelist rules rewritten: discount / markup / fixed", "th": "เขียนกฎ pricelist ใหม่: discount / markup / fixed"},
+      "body": {"en": "Rule computation is now discount, markup or fixed instead of percentage, formula or fixed, with margin bounds, rounding, surcharge and per-unit rules. Existing pricelists need to be mapped and checked after migration.", "th": "การคำนวณกฎเปลี่ยนเป็น discount, markup หรือ fixed แทน percentage, formula หรือ fixed พร้อมขอบเขต margin, การปัดเศษ, surcharge และกฎรายหน่วย ต้องแมปและตรวจสอบ pricelist เดิมหลังการ migrate"},
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Quotation templates: section templates and team sharing", "th": "Quotation template: section template และการแชร์ตามทีม"},
+      "body": {"en": "Templates can be a full quotation or a reusable section inserted into any quotation, and can be restricted to sales teams. Template lines now carry price, discount, taxes and attributes, and templates are no longer an opt-in group.", "th": "template เป็นได้ทั้งใบเสนอราคาเต็มหรือ section ที่นำกลับมาใช้ซ้ำและแทรกในใบเสนอราคาใดก็ได้ และจำกัดสิทธิ์ตามทีมขายได้ บรรทัดใน template มีราคา ส่วนลด ภาษี และ attribute และ template ไม่ใช่กลุ่มที่ต้องเปิดใช้งานอีกต่อไป"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Services & Materials mode, accruals and invoicing controls", "th": "โหมด Services & Materials, accrual และการควบคุมการออกใบแจ้งหนี้"},
+      "body": {"en": "A new Services & Materials setting, company-level invoicing policy, accrual accounts, over-invoicing (overages) and a manual close for invoicing are available on sales orders. Tax-included or excluded mode can now be set per document.", "th": "มีการตั้งค่า Services & Materials ใหม่ นโยบายการออกใบแจ้งหนี้ระดับบริษัท บัญชี accrual การออกใบแจ้งหนี้เกิน (overages) และการปิดการออกใบแจ้งหนี้ด้วยตนเองบนใบสั่งขาย และกำหนดโหมดราคารวมภาษีหรือไม่รวมภาษีได้ต่อเอกสาร"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "New Sales dashboard replaces sales-team revenue targets", "th": "Sales dashboard ใหม่มาแทนเป้ารายได้ของทีมขาย"},
+      "body": {"en": "A new dashboard shows To Confirm, To Deliver, To Invoice and To Upsell cards, while the sales-team invoiced target no longer exists in CE sale. Whether the dashboard fully replaces the targets was not verified in the UI (Medium confidence).", "th": "dashboard ใหม่แสดงการ์ด To Confirm, To Deliver, To Invoice และ To Upsell ขณะที่เป้ายอดออกใบแจ้งหนี้ของทีมขายไม่มีอยู่ใน CE sale อีกต่อไป ยังไม่ได้ตรวจสอบใน UI ว่า dashboard ใช้แทนเป้าหมายได้ครบหรือไม่ (ความเชื่อมั่นระดับปานกลาง)"},
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Online payment now follows prepayment", "th": "การชำระเงินออนไลน์ขึ้นกับ prepayment"},
+      "body": {"en": "The require-payment flag is gone from orders and quotation templates; payment is required when the prepayment percentage or amount is above zero. Partners must re-check online payment settings after migration.", "th": "ตัวเลือก require payment ถูกนำออกจากใบสั่งขายและ quotation template การชำระเงินจะถูกบังคับเมื่อเปอร์เซ็นต์หรือจำนวนเงิน prepayment มากกว่าศูนย์ ที่ปรึกษาต้องตรวจสอบการตั้งค่าการชำระเงินออนไลน์อีกครั้งหลัง migrate"},
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Loyalty point expiry and once-per-customer programs", "th": "การหมดอายุของคะแนน loyalty และโปรแกรมแบบครั้งเดียวต่อลูกค้า"},
+      "body": {"en": "Loyalty programs can expire points after a number of days, consumed first-in first-out, and programs can be limited to once per customer. Expiry applies to loyalty programs only, and existing history rows have no expiry.", "th": "โปรแกรม loyalty กำหนดให้คะแนนหมดอายุหลังจำนวนวันที่ระบุได้ โดยใช้คะแนนแบบเข้าก่อนออกก่อน และจำกัดโปรแกรมให้ใช้ได้ครั้งเดียวต่อลูกค้า การหมดอายุใช้กับโปรแกรม loyalty เท่านั้น และประวัติเดิมไม่มีวันหมดอายุ"},
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "Delivery: shipment note wizard, cash on delivery, portal returns", "th": "Delivery: wizard บันทึกการจัดส่ง, เก็บเงินปลายทาง และการคืนสินค้าผ่านพอร์ทัล"},
+      "body": {"en": "Shipments can be recorded from the sales order without Inventory, with a confirmation email and printed note, and carriers can allow cash on delivery. With sale_stock, customers can create returns and download a return label from the portal.", "th": "บันทึกการจัดส่งจากใบสั่งขายได้โดยไม่ต้องใช้ Inventory พร้อมอีเมลยืนยันและใบรายงานที่พิมพ์ได้ และ carrier เปิดใช้เก็บเงินปลายทางได้ เมื่อใช้ sale_stock ลูกค้าสร้างการคืนสินค้าและดาวน์โหลด return label จากพอร์ทัลได้"},
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "CRM: direct convert-to-opportunity and assignment rules", "th": "CRM: แปลงเป็น opportunity โดยตรงและกฎการมอบหมาย"},
+      "body": {"en": "Converting a single lead no longer opens a wizard, and team members get assignment rules (unlimited, limited, out of rotation). The new crm_sale_project adds a Create a Project button on leads.", "th": "การแปลง lead รายเดียวไม่เปิด wizard อีกต่อไป และสมาชิกทีมมีกฎการมอบหมาย (unlimited, limited, out of rotation) โมดูล crm_sale_project ใหม่เพิ่มปุ่ม Create a Project บน lead"},
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Product packaging, base-unit price and ZPL labels", "th": "Packaging ของสินค้า ราคาต่อหน่วยฐาน และ label แบบ ZPL"},
+      "body": {"en": "Packagings are now units of measure, a price per base unit can be shown, and product labels support ZPL printing. Sale lines are restricted to the units allowed for the product.", "th": "packaging เป็นหน่วยวัดแล้ว แสดงราคาต่อหน่วยฐานได้ และ label สินค้ารองรับการพิมพ์ ZPL บรรทัดขายถูกจำกัดให้ใช้ได้เฉพาะหน่วยที่อนุญาตของสินค้า"},
+      "impact": "low", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "Security files moved to ir.access.csv with new ir.access model", "th": "ไฟล์ security ย้ายไปเป็น ir.access.csv พร้อมโมเดล ir.access ใหม่"},
+      "body": {"en": "Every module ships security/ir.access.csv with operation and domain columns, replacing ir.model.access.csv and record rules; none in addons/*/security still use the old file. Custom ACL CSV and ir.rule XML must be converted.", "th": "ทุกโมดูลมี security/ir.access.csv ที่มีคอลัมน์ operation และ domain แทน ir.model.access.csv และ record rule และไม่มีโมดูลใดใน addons/*/security ที่ยังใช้ไฟล์เดิม ต้องแปลง ACL CSV และ ir.rule XML ของโมดูลที่พัฒนาเอง"},
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/models/ir_access.py", "addons/sale/security/ir.access.csv"]
+    },
+    {
+      "title": {"en": "product.pricelist.item compute_price and _compute_price signature", "th": "compute_price และ signature ของ _compute_price ใน product.pricelist.item"},
+      "body": {"en": "compute_price is now discount/markup/fixed; percent_price and display_applied_on are removed, and price_markup, price_min_margin and price_max_margin are added. _compute_price takes **kwargs (date, currency, depth), so v19 overrides will break.", "th": "compute_price เป็น discount/markup/fixed แล้ว percent_price และ display_applied_on ถูกลบ และเพิ่ม price_markup, price_min_margin และ price_max_margin _compute_price รับ **kwargs (date, currency, depth) ทำให้ override ของ v19 ใช้ไม่ได้"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/product/models/product_pricelist_item.py"]
+    },
+    {
+      "title": {"en": "Reinvoicing and analytics moved into sale", "th": "Reinvoicing และ analytic ย้ายเข้ามาใน sale"},
+      "body": {"en": "expense_policy is renamed reinvoice_policy, and sale.order.analytic_account_id plus account.analytic.line order_id, so_line and reinvoice_move_id now live in sale (new account_analytic_line.py replaces analytic.py). New company fields sale_invoice_policy and sale_automatic_invoice replace config params.", "th": "expense_policy เปลี่ยนชื่อเป็น reinvoice_policy และ sale.order.analytic_account_id รวมถึง account.analytic.line order_id, so_line และ reinvoice_move_id อยู่ใน sale แล้ว (account_analytic_line.py ใหม่แทน analytic.py) ฟิลด์ใหม่ของบริษัท sale_invoice_policy และ sale_automatic_invoice แทน config param"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/sale/models/account_analytic_line.py", "addons/sale/models/sale_order.py"]
+    },
+    {
+      "title": {"en": "Fields removed from sale.order and its lines", "th": "ฟิลด์ที่ถูกลบจาก sale.order และบรรทัด"},
+      "body": {"en": "require_payment, show_update_pricelist, show_update_fpos, amount_undiscounted and translated_product_name are removed, and prepayment_amount is added. Reports, QWeb and Studio views that use them must be updated.", "th": "require_payment, show_update_pricelist, show_update_fpos, amount_undiscounted และ translated_product_name ถูกลบ และเพิ่ม prepayment_amount ต้องแก้ไข report, QWeb และ view ของ Studio ที่ใช้ฟิลด์เหล่านี้"},
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/sale/models/sale_order.py", "addons/sale/models/sale_order_line.py"]
+    },
+    {
+      "title": {"en": "UoM rounding removed; packaging as uom.uom", "th": "ลบ rounding ของ UoM; packaging เป็น uom.uom"},
+      "body": {"en": "uom.uom.rounding is removed and rounding follows the Product Unit decimal precision; use round(), compare() and is_zero(). product.supplierinfo.product_uom_id is renamed uom_id, and variants gain extra_uom_ids.", "th": "uom.uom.rounding ถูกลบ และการปัดเศษใช้ decimal precision Product Unit ให้ใช้ round(), compare() และ is_zero() product.supplierinfo.product_uom_id เปลี่ยนชื่อเป็น uom_id และ variant มี extra_uom_ids เพิ่ม"},
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/uom/models/uom_uom.py", "addons/product/models/product_product.py"]
+    },
+    {
+      "title": {"en": "product.template.attribute.exclusion model deleted", "th": "ลบโมเดล product.template.attribute.exclusion"},
+      "body": {"en": "The model is replaced by the many2many excluded_value_ids on product.template.attribute.value. Stored data must be converted, and custom code on the old model fails at import.", "th": "โมเดลถูกแทนที่ด้วย many2many excluded_value_ids บน product.template.attribute.value ต้องแปลงข้อมูลที่เก็บไว้ และโค้ดที่ใช้โมเดลเดิมจะ import ไม่ผ่าน"},
+      "impact": "medium", "kind": "removed",
+      "refs": ["addons/product/models/product_template_attribute_value.py"]
+    },
+    {
+      "title": {"en": "CRM wizard and field changes", "th": "การเปลี่ยนแปลง wizard และฟิลด์ของ CRM"},
+      "body": {"en": "crm.lead2opportunity.partner is removed in favour of action_convert_to_opportunity, and assignment_optout is replaced by assignment_rules. crm.lead.commercial_partner_id, is_partner_visible and stage_id_color are removed.", "th": "crm.lead2opportunity.partner ถูกลบและใช้ action_convert_to_opportunity แทน และ assignment_optout ถูกแทนที่ด้วย assignment_rules crm.lead.commercial_partner_id, is_partner_visible และ stage_id_color ถูกลบ"},
+      "impact": "medium", "kind": "removed",
+      "refs": ["addons/crm/models/crm_lead.py"]
+    },
+    {
+      "title": {"en": "Delivery status, incoterm and inventory quantities relocated", "th": "ย้าย delivery status, incoterm และฟิลด์จำนวนสต็อก"},
+      "body": {"en": "delivery_status and incoterm now live in sale (res.partner.incoterm_id added), and qty_available, virtual_available, free_qty and is_storable are declared in product. pickup_location_data moved from sale.order to res.partner in stock_delivery.", "th": "delivery_status และ incoterm อยู่ใน sale แล้ว (เพิ่ม res.partner.incoterm_id) และ qty_available, virtual_available, free_qty และ is_storable ถูกประกาศใน product pickup_location_data ย้ายจาก sale.order ไปที่ res.partner ใน stock_delivery"},
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/sale/models/sale_order.py", "addons/product/models/product_product.py", "addons/stock_delivery/models/res_partner.py"]
+    },
+    {
+      "title": {"en": "Loyalty history and timesheet billing field renames", "th": "การเปลี่ยนชื่อฟิลด์ใน loyalty history และการ billing ของ timesheet"},
+      "body": {"en": "loyalty.history gains expiration_date and points_changed_date, and sale.order.loyalty_data is removed. timesheet_invoice_id and timesheet_invoice_type are replaced by reinvoice_move_id and billable_type.", "th": "loyalty.history มี expiration_date และ points_changed_date เพิ่ม และ sale.order.loyalty_data ถูกลบ timesheet_invoice_id และ timesheet_invoice_type ถูกแทนที่ด้วย reinvoice_move_id และ billable_type"},
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/loyalty/models/loyalty_history.py", "addons/sale_timesheet/models/account_analytic_line.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {"en": "Convert custom ir.model.access.csv and ir.rule records to ir.access.csv and test with non-admin roles; salesman access to account.account and account.analytic.account is granted from sale/security/ir.access.csv.", "th": "แปลง ir.model.access.csv และ ir.rule ที่พัฒนาเองเป็น ir.access.csv และทดสอบด้วยบทบาทที่ไม่ใช่ admin สิทธิ์ของ salesman ต่อ account.account และ account.analytic.account ได้รับจาก sale/security/ir.access.csv"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Pricelist data must be migrated: percentage becomes discount (percent_price to price_discount) and formula becomes discount or markup with price_surcharge, price_round and margins. Verify Enterprise and website_sale overrides too.", "th": "ต้อง migrate ข้อมูล pricelist: percentage เป็น discount (percent_price เป็น price_discount) และ formula เป็น discount หรือ markup พร้อม price_surcharge, price_round และ margin ตรวจสอบ override ของ Enterprise และ website_sale ด้วย"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "expense_policy is now reinvoice_policy (and the visible_* fields) on product.template; custom views, reports and domains using the old name break.", "th": "expense_policy เป็น reinvoice_policy แล้ว (รวมถึงฟิลด์ visible_*) บน product.template view, report และ domain ที่ใช้ชื่อเดิมจะใช้งานไม่ได้"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "require_payment is gone; set prepayment explicitly on orders and templates. The template group setting and company default template also disappear, so check automations that set sale_order_template_id by company.", "th": "require_payment ถูกลบ ให้ตั้งค่า prepayment อย่างชัดเจนในใบสั่งขายและ template การตั้งค่ากลุ่ม template และ template เริ่มต้นของบริษัทก็หายไปด้วย ให้ตรวจสอบ automation ที่ตั้งค่า sale_order_template_id ตามบริษัท"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Sales team targets (crm.team.invoiced_target and invoiced) are gone from sale; data and dashboards based on them are lost.", "th": "เป้าหมายของทีมขาย (crm.team.invoiced_target และ invoiced) ถูกลบจาก sale ข้อมูลและ dashboard ที่อิงฟิลด์เหล่านี้จะสูญหาย"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Custom buttons or server actions that open crm.lead2opportunity.partner must call action_convert_to_opportunity; assignment_optout is replaced by assignment_rules.", "th": "ปุ่มหรือ server action ที่เปิด crm.lead2opportunity.partner ต้องเรียก action_convert_to_opportunity และ assignment_optout ถูกแทนที่ด้วย assignment_rules"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "delivery_mondialrelay data (Point Relais carriers) has no module in 20, so clean or uninstall it before upgrade and plan an alternative. Carrier connectors are assumed Enterprise (Medium confidence), so verify licensing.", "th": "ข้อมูลของ delivery_mondialrelay (carrier Point Relais) ไม่มีโมดูลรองรับใน 20 จึงต้องล้างหรือถอนการติดตั้งก่อนอัปเกรดและวางแผนทางเลือกอื่น connector ของ carrier ถูกสันนิษฐานว่าเป็น Enterprise (ความเชื่อมั่นระดับปานกลาง) ให้ตรวจสอบสิทธิ์การใช้งาน"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Timesheet and UoM renames break BI/SQL reports and custom code: timesheet_invoice_id and timesheet_invoice_type are renamed, and uom.rounding or float_round(precision_rounding=uom.rounding) must become uom.round()/compare(). Also check the Product Unit decimal precision.", "th": "การเปลี่ยนชื่อใน timesheet และ UoM ทำให้ report BI/SQL และโค้ดที่พัฒนาเองใช้ไม่ได้: timesheet_invoice_id และ timesheet_invoice_type เปลี่ยนชื่อ และ uom.rounding หรือ float_round(precision_rounding=uom.rounding) ต้องเปลี่ยนเป็น uom.round()/compare() ตรวจสอบ decimal precision Product Unit ด้วย"},
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Subscriptions (sale_subscription), Rental (sale_renting) and Planning: not in the CE tree. The new mysubscription module only shows Enterprise subscription and IAP status and has no recurring plans or invoicing schedule.", "th": "Subscriptions (sale_subscription), Rental (sale_renting) และ Planning ไม่มีใน CE โมดูล mysubscription ใหม่แสดงเพียงสถานะ subscription ของ Enterprise และ IAP เท่านั้น ไม่มีแผน recurring หรือกำหนดการออกใบแจ้งหนี้"},
+    {"en": "Carrier connectors (DHL, FedEx, UPS, USPS, bpost, Easypost, Sendcloud, Shiprocket, Starshipit, Envia) are not in this repo; assumed Enterprise (Medium confidence), confirm per carrier.", "th": "connector ของ carrier (DHL, FedEx, UPS, USPS, bpost, Easypost, Sendcloud, Shiprocket, Starshipit, Envia) ไม่อยู่ใน repo นี้ สันนิษฐานว่าเป็น Enterprise (ความเชื่อมั่นระดับปานกลาง) ให้ยืนยันเป็นรายผู้ให้บริการ"},
+    {"en": "E-signature (sign), appointments, helpdesk, Amazon/eBay connectors and VoIP are absent from CE.", "th": "e-signature (sign), appointments, helpdesk, connector ของ Amazon/eBay และ VoIP ไม่มีใน CE"},
+    {"en": "Commissions: no commission module exists in CE.", "th": "Commissions: ไม่มีโมดูล commission ใน CE"},
+    {"en": "Recurring invoicing requires Enterprise or custom/OCA modules; do not promise subscription billing in CE.", "th": "การออกใบแจ้งหนี้แบบ recurring ต้องใช้ Enterprise หรือโมดูลที่พัฒนาเอง/OCA อย่าให้คำมั่นเรื่อง subscription billing ใน CE"},
+    {"en": "Advanced IAP lead scoring and enrichment features and the barcode lookup module (module_product_barcodelookup, Low confidence) cannot be inspected here and are treated as Enterprise/IAP.", "th": "ฟีเจอร์ IAP lead scoring และ enrichment ขั้นสูง และโมดูล barcode lookup (module_product_barcodelookup, ความเชื่อมั่นระดับต่ำ) ตรวจสอบไม่ได้ในที่นี้และถือเป็น Enterprise/IAP"}
+  ],
+  "removed": [
+    {
+      "module": "delivery_stock_picking_batch",
+      "successor": "stock_delivery",
+      "note": {"en": "Its logic (batch_group_by_carrier, batch_max_weight, _is_picking_auto_mergeable) now lives in stock_delivery; stock_picking_batch itself was merged into stock and also removed.", "th": "logic ของโมดูล (batch_group_by_carrier, batch_max_weight, _is_picking_auto_mergeable) อยู่ใน stock_delivery แล้ว และ stock_picking_batch เองก็ถูกรวมเข้า stock และถูกลบเช่นกัน"}
+    },
+    {
+      "module": "delivery_mondialrelay",
+      "successor": null,
+      "note": {"en": "Removed with no successor found (Medium confidence); generic pickup-point selection now uses website_sale_collect and pickup_location_data in stock_delivery, but the Mondial Relay widget is not replaced.", "th": "ถูกลบและไม่พบโมดูลทดแทน (ความเชื่อมั่นระดับปานกลาง) การเลือกจุดรับสินค้าทั่วไปใช้ website_sale_collect และ pickup_location_data ใน stock_delivery แต่ widget ของ Mondial Relay ไม่มีตัวแทน"}
+    },
+    {
+      "module": "purchase_requisition_sale",
+      "successor": "purchase_alternative_sale",
+      "note": {"en": "Renamed/refactored (Medium confidence); purchase_requisition_stock became purchase_alternative_stock, while purchase_requisition remains for blanket orders.", "th": "เปลี่ยนชื่อ/ปรับโครงสร้างใหม่ (ความเชื่อมั่นระดับปานกลาง) purchase_requisition_stock กลายเป็น purchase_alternative_stock ขณะที่ purchase_requisition ยังคงอยู่สำหรับ blanket order"}
+    },
+    {
+      "module": "website_sale_autocomplete",
+      "successor": "website_address_autocomplete",
+      "note": {"en": "Successor is a name match only (Low confidence); outside this area's scope.", "th": "โมดูลทดแทนอิงจากชื่อที่ตรงกันเท่านั้น (ความเชื่อมั่นระดับต่ำ) อยู่นอกขอบเขตของส่วนนี้"}
+    },
+    {
+      "module": "website_sale_wishlist",
+      "successor": null,
+      "note": {"en": "Removed with no successor found (e-commerce, outside this area's scope); website_sale_comparison is likewise removed.", "th": "ถูกลบและไม่พบโมดูลทดแทน (e-commerce อยู่นอกขอบเขตของส่วนนี้) website_sale_comparison ก็ถูกลบเช่นกัน"}
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+ "hero_title": {
+  "en": "Odoo 20 Community Edition: what changed and what it means for us",
+  "th": "Odoo 20 Community Edition: อะไรเปลี่ยนไป และมีความหมายอย่างไรกับเรา"
+ },
+ "hero_sub": {
+  "en": "Trinity Roots' internal knowledge base, built by diffing the 19.0 and 20.0 source trees (snapshot 2026-10-03).",
+  "th": "ฐานความรู้ภายในของ Trinity Roots จัดทำโดยเปรียบเทียบซอร์สโค้ดเวอร์ชัน 19.0 กับ 20.0 (ข้อมูล ณ 2026-10-03)"
+ },
+ "top10": [
+  {
+   "title": {
+    "en": "Security model rewritten: ir.access",
+    "th": "เขียนโมเดลความปลอดภัยใหม่: ir.access"
+   },
+   "body": {
+    "en": "`ir.access` replaces both access rights (`ir.model.access`) and record rules (`ir.rule`). One table holds a CRUD operation string plus an optional domain; rows tied to a group grant (OR-ed) and group-less rows restrict (AND-ed). Every module ships `security/ir.access.csv`, the largest change for porting custom modules.",
+    "th": "`ir.access` มาแทนที่ทั้ง access rights (`ir.model.access`) และ record rules (`ir.rule`) โดยตารางเดียวเก็บสตริงการดำเนินการ CRUD พร้อม domain ที่เป็นทางเลือก แถวที่ผูกกับกลุ่มจะให้สิทธิ์ (OR) ส่วนแถวที่ไม่มีกลุ่มจะจำกัดสิทธิ์ (AND) ทุกโมดูลมี `security/ir.access.csv` ซึ่งเป็นการเปลี่ยนแปลงที่ใหญ่ที่สุดสำหรับการ port โมดูลที่พัฒนาเอง"
+   },
+   "audience": "technical",
+   "area": "framework"
+  },
+  {
+   "title": {
+    "en": "Front-end moves to Owl 3",
+    "th": "Front-end ย้ายไปใช้ Owl 3"
+   },
+   "body": {
+    "en": "Owl 3 (3.0.0-alpha.49) arrives with an Owl 2 compatibility layer. jQuery, legacy public widgets, QUnit and FontAwesome are gone, and services become \"plugins\". All custom JavaScript must be reviewed.",
+    "th": "Owl 3 (3.0.0-alpha.49) มาพร้อมเลเยอร์ความเข้ากันได้กับ Owl 2 โดย jQuery, legacy public widgets, QUnit และ FontAwesome ถูกนำออก และ services กลายเป็น \"plugins\" ต้องตรวจสอบ JavaScript ที่พัฒนาเองทั้งหมด"
+   },
+   "audience": "technical",
+   "area": "webui"
+  },
+  {
+   "title": {
+    "en": "Offline mode in the web client and a rebuilt offline POS",
+    "th": "โหมดออฟไลน์ใน web client และ POS ออฟไลน์ที่สร้างใหม่"
+   },
+   "body": {
+    "en": "Visited records are cached in encrypted IndexedDB, and saves and deletes queue up and replay when the connection returns.",
+    "th": "ระเบียนที่เคยเปิดดูจะถูกแคชไว้ใน IndexedDB ที่เข้ารหัส และการบันทึกกับการลบจะเข้าคิวแล้วทำซ้ำเมื่อกลับมาเชื่อมต่อได้"
+   },
+   "audience": "both",
+   "area": "webui"
+  },
+  {
+   "title": {
+    "en": "Platform modernisation",
+    "th": "การปรับปรุงแพลตฟอร์มให้ทันสมัย"
+   },
+   "body": {
+    "en": "Python 3.12 or later is required, the SQL-generation layer is rewritten, the old dict-returning `read_group` is removed, deprecated 18/19 APIs are deleted, and the HTTP server binds to 127.0.0.1 by default (was 0.0.0.0).",
+    "th": "ต้องใช้ Python 3.12 ขึ้นไป เขียนเลเยอร์สร้าง SQL ใหม่ ลบ `read_group` แบบเดิมที่คืนค่าเป็น dict ลบ API ที่ deprecated ใน 18/19 และ HTTP server ผูกกับ 127.0.0.1 เป็นค่าเริ่มต้น (เดิมคือ 0.0.0.0)"
+   },
+   "audience": "technical",
+   "area": "framework"
+  },
+  {
+   "title": {
+    "en": "Pluggable report engine",
+    "th": "Report engine แบบเสียบเปลี่ยนได้"
+   },
+   "body": {
+    "en": "wkhtmltopdf moves out of core into `base_report_wkhtmltox` (auto-installed). The new optional engine `base_report_paper_muncher` arrives, along with a `printer` module for direct printing.",
+    "th": "wkhtmltopdf ย้ายออกจาก core ไปอยู่ใน `base_report_wkhtmltox` (ติดตั้งอัตโนมัติ) มี engine ทางเลือกใหม่ `base_report_paper_muncher` และโมดูล `printer` สำหรับพิมพ์โดยตรง"
+   },
+   "audience": "both",
+   "area": "webui"
+  },
+  {
+   "title": {
+    "en": "Accounting data model changes",
+    "th": "การเปลี่ยนแปลงโมเดลข้อมูลบัญชี"
+   },
+   "body": {
+    "en": "Account groups are replaced by parent/child accounts, `res.bank` is removed (bank accounts denormalised), there is a per-document tax mode, a refactored payment core and generalised Peppol, and stock valuation and closing moved into `account`.",
+    "th": "account groups ถูกแทนที่ด้วยบัญชีแม่/ลูก ลบ `res.bank` (denormalise บัญชีธนาคาร) มีโหมดภาษีรายเอกสาร แกนระบบการชำระเงินที่ refactor ใหม่ Peppol ที่ใช้ได้กว้างขึ้น และการตีมูลค่าสต็อกกับการปิดบัญชีย้ายเข้าไปใน `account`"
+   },
+   "audience": "both",
+   "area": "accounting"
+  },
+  {
+   "title": {
+    "en": "Supply chain simplification",
+    "th": "การทำ supply chain ให้เรียบง่ายขึ้น"
+   },
+   "body": {
+    "en": "Batch/wave transfers are merged into `stock`, scrap becomes a flagged stock move, `product_uom` is renamed `uom_id` everywhere, packagings become units of measure, and the pricelist engine is rewritten (discount/markup/fixed).",
+    "th": "batch/wave transfers รวมเข้าไปใน `stock` การทิ้งสินค้า (scrap) กลายเป็น stock move ที่มี flag เปลี่ยนชื่อ `product_uom` เป็น `uom_id` ทุกที่ packagings กลายเป็นหน่วยวัด และเขียน pricelist engine ใหม่ (discount/markup/fixed)"
+   },
+   "audience": "both",
+   "area": "supply"
+  },
+  {
+   "title": {
+    "en": "POS no longer requires Inventory",
+    "th": "POS ไม่ต้องพึ่ง Inventory อีกต่อไป"
+   },
+   "body": {
+    "en": "A new `pos_stock` module holds the stock link. The IoT Box is removed from CE, receipts are rendered on the server, and session accounting is redesigned with optional daily closing.",
+    "th": "โมดูลใหม่ `pos_stock` รับผิดชอบการเชื่อมกับสต็อก IoT Box ถูกนำออกจาก CE ใบเสร็จถูกเรนเดอร์ที่ฝั่งเซิร์ฟเวอร์ และออกแบบการบันทึกบัญชีของ session ใหม่ พร้อมการปิดรายวันแบบเลือกได้"
+   },
+   "audience": "both",
+   "area": "pos"
+  },
+  {
+   "title": {
+    "en": "HR restructured",
+    "th": "โครงสร้าง HR ใหม่"
+   },
+   "body": {
+    "en": "Time-off types are merged into work-entry types, a new `hr.time.rule` engine handles overtime, resource calendars are redesigned (fixed/variable/undefined), and org chart and home-working are folded into `hr`.",
+    "th": "ประเภทการลาถูกรวมเข้ากับ work-entry types มี engine `hr.time.rule` ใหม่สำหรับค่าล่วงเวลา ออกแบบ resource calendars ใหม่ (fixed/variable/undefined) และรวม org chart กับ home-working เข้าไปใน `hr`"
+   },
+   "audience": "both",
+   "area": "hr"
+  },
+  {
+   "title": {
+    "en": "No AI in CE",
+    "th": "ไม่มี AI ใน CE"
+   },
+   "body": {
+    "en": "AI agents, MCP connectivity, call recording and transcription are absent from the CE code (hooks exist for an Enterprise module). The repo does ship a `skills/` folder: official coding-agent guidelines for developers using Claude Code, Copilot, Codex and similar tools.",
+    "th": "AI agents, การเชื่อมต่อ MCP, การบันทึกสายและการถอดเสียงไม่มีอยู่ในโค้ด CE (มี hooks ไว้สำหรับโมดูล Enterprise) แต่ repo มีโฟลเดอร์ `skills/` ซึ่งเป็นแนวทางทางการสำหรับ coding agent ที่นักพัฒนาใช้ เช่น Claude Code, Copilot, Codex และเครื่องมือใกล้เคียง"
+   },
+   "audience": "both",
+   "area": "framework"
+  }
+ ],
+ "bottom_line": {
+  "roots": {
+   "en": "A 19 to 20 upgrade is a porting project, not a version bump, for any customer with custom modules. The four cost drivers are security files, front-end JavaScript, renamed fields/models, and changed accounting/HR data models. Odoo ships automated code rewriters (`odoo-bin upgrade_code`) that handle a meaningful share of the mechanical work.",
+   "th": "การอัปเกรดจาก 19 เป็น 20 คือโปรเจกต์ port ไม่ใช่แค่การเปลี่ยนเวอร์ชัน สำหรับลูกค้าทุกรายที่มีโมดูลที่พัฒนาเอง ตัวขับเคลื่อนต้นทุนสี่ข้อคือไฟล์ security, JavaScript ฝั่ง front-end, field/model ที่ถูกเปลี่ยนชื่อ และโมเดลข้อมูลบัญชี/HR ที่เปลี่ยนไป Odoo มีเครื่องมือเขียนโค้ดใหม่อัตโนมัติ (`odoo-bin upgrade_code`) ที่ช่วยงานเชิงกลไกได้ในสัดส่วนที่มีนัยสำคัญ"
+  },
+  "esg": {
+   "en": "CE 20 is a capable, free core for AgriTech and FoodTech customers (lots, expiry, by-products, POS, eCommerce, offline field use), but it has no ESG or carbon-accounting capability beyond a per-vehicle CO₂ figure. An Odoo-native Scope 1/2/3 module is a product opportunity for Roots.",
+   "th": "CE 20 เป็นแกนระบบที่ใช้งานได้ดีและไม่มีค่าไลเซนส์สำหรับลูกค้ากลุ่ม AgriTech และ FoodTech (lot, วันหมดอายุ, by-product, POS, eCommerce, ใช้งาน offline หน้างาน) แต่ไม่มีความสามารถด้าน ESG หรือบัญชีคาร์บอน นอกจากค่า CO₂ ต่อคันใน Fleet โมดูล Scope 1/2/3 บน Odoo จึงเป็นโอกาสทางธุรกิจสำหรับ Roots"
+  }
+ },
+ "ce_vs_ee": [
+  {
+   "need": {
+    "en": "Financial statements UI, bank reconciliation widget, follow-ups, assets, budgets",
+    "th": "UI งบการเงิน, widget กระทบยอดธนาคาร, การติดตามหนี้, สินทรัพย์, งบประมาณ"
+   },
+   "ce": {
+    "en": "Not in CE (data model only)",
+    "th": "ไม่มีใน CE (มีเฉพาะโมเดลข้อมูล)"
+   },
+   "route": {
+    "en": "Odoo EE Accounting, or OCA `account-financial-reporting` / `account-reconcile` (check 20.0 port status)",
+    "th": "Odoo EE Accounting หรือ OCA `account-financial-reporting` / `account-reconcile` (ตรวจสอบสถานะการ port เป็น 20.0)"
+   }
+  },
+  {
+   "need": {
+    "en": "Payroll (Thai SSO, PND1)",
+    "th": "Payroll (ประกันสังคมไทย, ภ.ง.ด.1)"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE (country-dependent) or local partner module",
+    "th": "EE (ขึ้นกับประเทศ) หรือโมดูลของพาร์ตเนอร์ในพื้นที่"
+   }
+  },
+  {
+   "need": {
+    "en": "Quality control, PLM, MPS, Shop Floor",
+    "th": "Quality control, PLM, MPS, Shop Floor"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE or OCA `manufacture` repo",
+    "th": "EE หรือ OCA repo `manufacture`"
+   }
+  },
+  {
+   "need": {
+    "en": "Subscriptions / recurring billing, Rental",
+    "th": "Subscriptions / การเรียกเก็บเงินต่อเนื่อง, Rental"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE or OCA `contract`",
+    "th": "EE หรือ OCA `contract`"
+   }
+  },
+  {
+   "need": {
+    "en": "Barcode app (mobile scanning UI)",
+    "th": "แอป Barcode (UI สแกนบนมือถือ)"
+   },
+   "ce": {
+    "en": "Not in CE (barcode fields and nomenclature are in CE)",
+    "th": "ไม่มีใน CE (field และ nomenclature ของบาร์โค้ดมีใน CE)"
+   },
+   "route": {
+    "en": "EE",
+    "th": "EE"
+   }
+  },
+  {
+   "need": {
+    "en": "IoT Box",
+    "th": "IoT Box"
+   },
+   "ce": {
+    "en": "Not in CE (Web Serial scales and ePoS printers only)",
+    "th": "ไม่มีใน CE (รองรับเฉพาะเครื่องชั่ง Web Serial และเครื่องพิมพ์ ePoS)"
+   },
+   "route": {
+    "en": "EE",
+    "th": "EE"
+   }
+  },
+  {
+   "need": {
+    "en": "AI agents, MCP, document AI",
+    "th": "AI agents, MCP, document AI"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE/IAP, or build on the JSON-2 API",
+    "th": "EE/IAP หรือสร้างเองบน JSON-2 API"
+   }
+  },
+  {
+   "need": {
+    "en": "Studio (no-code)",
+    "th": "Studio (no-code)"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE",
+    "th": "EE"
+   }
+  },
+  {
+   "need": {
+    "en": "ESG / carbon accounting",
+    "th": "ESG / บัญชีคาร์บอน"
+   },
+   "ce": {
+    "en": "Not in CE (only fleet CO2 g/km)",
+    "th": "ไม่มีใน CE (มีเฉพาะ CO2 g/km ของ fleet)"
+   },
+   "route": {
+    "en": "Custom or third party: a product opportunity",
+    "th": "พัฒนาเองหรือใช้ผู้ให้บริการภายนอก: เป็นโอกาสทางผลิตภัณฑ์"
+   }
+  },
+  {
+   "need": {
+    "en": "Helpdesk, Field Service, Planning, Appraisal, Documents, Sign",
+    "th": "Helpdesk, Field Service, Planning, Appraisal, Documents, Sign"
+   },
+   "ce": {
+    "en": "Not in CE",
+    "th": "ไม่มีใน CE"
+   },
+   "route": {
+    "en": "EE",
+    "th": "EE"
+   }
+  }
+ ],
+ "playbook_drivers": [
+  {
+   "driver": {
+    "en": "Security files to `ir.access.csv`; re-test per role",
+    "th": "ไฟล์ security เป็น `ir.access.csv`; ทดสอบซ้ำทีละ role"
+   },
+   "who": {
+    "en": "Dev + QA",
+    "th": "Dev + QA"
+   },
+   "effort": "Medium"
+  },
+  {
+   "driver": {
+    "en": "Custom JS (Owl 3, no jQuery/publicWidget, services to plugins, Hoot tests)",
+    "th": "JS ที่พัฒนาเอง (Owl 3, ไม่มี jQuery/publicWidget, services เป็น plugins, Hoot tests)"
+   },
+   "who": {
+    "en": "Front-end dev",
+    "th": "Front-end dev"
+   },
+   "effort": "High"
+  },
+  {
+   "driver": {
+    "en": "Field/model renames: `product_uom` to `uom_id`, `holiday_status_id` to `work_entry_type_id`, `acc_number` to `account_number`, `expense_policy` to `reinvoice_policy`, pricelist fields, `checked` to `review_state`; also affects Studio views, server actions, reports, BI SQL",
+    "th": "การเปลี่ยนชื่อ field/model: `product_uom` เป็น `uom_id`, `holiday_status_id` เป็น `work_entry_type_id`, `acc_number` เป็น `account_number`, `expense_policy` เป็น `reinvoice_policy`, field ของ pricelist, `checked` เป็น `review_state` และกระทบ view ของ Studio, server actions, รายงาน, BI SQL ด้วย"
+   },
+   "who": {
+    "en": "Dev",
+    "th": "Dev"
+   },
+   "effort": "Medium"
+  },
+  {
+   "driver": {
+    "en": "Removed models: `account.group`, `res.bank`, `stock.scrap`, `hr.leave.type`, `hr.work.entry` (CE), overtime tables, attribute exclusions, CRM conversion wizard",
+    "th": "โมเดลที่ถูกลบ: `account.group`, `res.bank`, `stock.scrap`, `hr.leave.type`, `hr.work.entry` (CE), ตารางล่วงเวลา, attribute exclusions, CRM conversion wizard"
+   },
+   "who": {
+    "en": "Functional + Dev",
+    "th": "Functional + Dev"
+   },
+   "effort": "Medium–High"
+  },
+  {
+   "driver": {
+    "en": "Removed module names in `depends` (`base_vat`, `base_iban`, `stock_picking_batch`, `website_sale_wishlist`, `hr_org_chart`, `iot_base`, ...)",
+    "th": "ชื่อโมดูลที่ถูกลบใน `depends` (`base_vat`, `base_iban`, `stock_picking_batch`, `website_sale_wishlist`, `hr_org_chart`, `iot_base` ฯลฯ)"
+   },
+   "who": {
+    "en": "Dev",
+    "th": "Dev"
+   },
+   "effort": "Low"
+  },
+  {
+   "driver": {
+    "en": "ORM internals (`read_group`, SQL API, `get_param`)",
+    "th": "ภายในของ ORM (`read_group`, SQL API, `get_param`)"
+   },
+   "who": {
+    "en": "Senior dev",
+    "th": "Senior dev"
+   },
+   "effort": "Low–High"
+  },
+  {
+   "driver": {
+    "en": "Infra: Python 3.12 image, `http_interface`, report engine module installed, HTTPS for offline/POS printers",
+    "th": "Infra: image Python 3.12, `http_interface`, ติดตั้งโมดูล report engine, HTTPS สำหรับออฟไลน์/เครื่องพิมพ์ POS"
+   },
+   "who": {
+    "en": "DevOps",
+    "th": "DevOps"
+   },
+   "effort": "Low"
+  },
+  {
+   "driver": {
+    "en": "Hardware: IoT Box customers on CE (high impact: needs EE IoT or an ePoS/Web Serial replacement)",
+    "th": "ฮาร์ดแวร์: ลูกค้า IoT Box บน CE (ผลกระทบสูง: ต้องใช้ EE IoT หรือเปลี่ยนเป็น ePoS/Web Serial)"
+   },
+   "who": {
+    "en": "Functional + customer",
+    "th": "Functional + ลูกค้า"
+   },
+   "effort": "High"
+  }
+ ],
+ "playbook_steps": [
+  {
+   "title": {
+    "en": "Inventory",
+    "th": "ตรวจนับ (Inventory)"
+   },
+   "body": {
+    "en": "List custom modules and grep for the removed or renamed items in the effort-driver list.",
+    "th": "รวบรวมรายการโมดูลที่พัฒนาเอง แล้ว grep หารายการที่ถูกลบหรือเปลี่ยนชื่อตามรายการตัวขับเคลื่อนความพยายาม"
+   }
+  },
+  {
+   "title": {
+    "en": "Automated rewrite",
+    "th": "เขียนโค้ดใหม่อัตโนมัติ"
+   },
+   "body": {
+    "en": "Run `odoo-bin upgrade_code` on a branch, then commit.",
+    "th": "รัน `odoo-bin upgrade_code` บน branch แล้ว commit"
+   }
+  },
+  {
+   "title": {
+    "en": "Manual porting",
+    "th": "Port ด้วยมือ"
+   },
+   "body": {
+    "en": "Port ORM/SQL internals first, then JS (run `owl3-migration.py` first), then reports and receipts.",
+    "th": "port ส่วนภายในของ ORM/SQL ก่อน จากนั้น JS (รัน `owl3-migration.py` ก่อน) แล้วจึงรายงานและใบเสร็จ"
+   }
+  },
+  {
+   "title": {
+    "en": "Test upgrade",
+    "th": "ทดสอบการอัปเกรด"
+   },
+   "body": {
+    "en": "Run a copy of the database through Odoo's upgrade service (or OpenUpgrade when 20.0 is supported).",
+    "th": "นำสำเนาฐานข้อมูลไปรันผ่าน upgrade service ของ Odoo (หรือ OpenUpgrade เมื่อรองรับ 20.0)"
+   }
+  },
+  {
+   "title": {
+    "en": "Functional regression",
+    "th": "Regression test เชิงฟังก์ชัน"
+   },
+   "body": {
+    "en": "Check accounting (CoA tree, taxes in included/excluded mode, payments and webhooks, Peppol), stock valuation closing, POS session close and daily mode, and HR time off, overtime and calendars.",
+    "th": "ตรวจสอบบัญชี (โครงสร้าง CoA, ภาษีแบบรวม/ไม่รวม, การชำระเงินและ webhooks, Peppol), การปิดมูลค่าสต็อก, การปิด session ของ POS และโหมดรายวัน, และการลา ค่าล่วงเวลา และปฏิทินของ HR"
+   }
+  },
+  {
+   "title": {
+    "en": "Security regression",
+    "th": "Regression test ด้านความปลอดภัย"
+   },
+   "body": {
+    "en": "Log in as each role and confirm what they can and cannot see.",
+    "th": "เข้าสู่ระบบด้วยแต่ละ role และยืนยันว่าเห็นอะไรได้และไม่ได้"
+   }
+  },
+  {
+   "title": {
+    "en": "Post-upgrade installs",
+    "th": "ติดตั้งหลังอัปเกรด"
+   },
+   "body": {
+    "en": "Install `mail_tracking` if tracking history matters and `l10n_eu_account_vies` for EU clients, and confirm `base_report_wkhtmltox` and `pos_stock` are installed.",
+    "th": "ติดตั้ง `mail_tracking` หากประวัติการติดตามสำคัญ และ `l10n_eu_account_vies` สำหรับลูกค้า EU พร้อมยืนยันว่าติดตั้ง `base_report_wkhtmltox` และ `pos_stock` แล้ว"
+   }
+  },
+  {
+   "title": {
+    "en": "Go-live hygiene",
+    "th": "ข้อควรทำก่อน go-live"
+   },
+   "body": {
+    "en": "Make sure POS devices are fully synced before the switch and browser storage persistence is granted.",
+    "th": "ตรวจให้แน่ใจว่าอุปกรณ์ POS ซิงค์ครบก่อนสลับระบบ และได้รับอนุญาต persistent browser storage แล้ว"
+   }
+  }
+ ],
+ "timing": {
+  "en": "Major versions typically stabilise over the first 3–6 months; the 20.0 branch was still landing [FIX] commits daily at the time of study and ships an alpha-tagged Owl 3. Start new implementations on 20.0 now, and schedule upgrades of complex, JavaScript-heavy 19.0 customers for Q1–Q2 2027 unless a specific v20 feature (offline field use, POS without stock, the time-rules engine) justifies earlier work. Odoo supports the last three major versions, so 17.0 customers should be planned onto 19 or 20 in 2027.",
+  "th": "เวอร์ชันหลักมักใช้เวลา 3–6 เดือนแรกในการเสถียร โดย branch 20.0 ยังมี commit [FIX] ทุกวันในช่วงที่ศึกษา และใช้ Owl 3 ที่ติดแท็ก alpha แนะนำให้เริ่มงาน implementation ใหม่บน 20.0 ได้เลย และกำหนดการอัปเกรดลูกค้า 19.0 ที่ซับซ้อนและใช้ JavaScript มากไว้ที่ไตรมาส 1–2 ปี 2027 เว้นแต่ฟีเจอร์เฉพาะของ v20 (การใช้งานภาคสนามแบบออฟไลน์, POS ที่ไม่ใช้สต็อก, time-rules engine) จะคุ้มค่าที่จะทำเร็วกว่านั้น Odoo รองรับสามเวอร์ชันหลักล่าสุด ดังนั้นลูกค้า 17.0 ควรวางแผนย้ายไป 19 หรือ 20 ในปี 2027"
+ },
+ "risks": [
+  {
+   "risk": {
+    "en": "Early-release instability (alpha Owl 3, daily fixes)",
+    "th": "ความไม่เสถียรของรุ่นแรก (Owl 3 alpha, มีการแก้ไขทุกวัน)"
+   },
+   "likelihood": {
+    "en": "High in first 3–6 months",
+    "th": "สูงในช่วง 3–6 เดือนแรก"
+   },
+   "mitigation": {
+    "en": "Pilot on non-critical customers; pin to tested commits",
+    "th": "นำร่องกับลูกค้าที่ไม่สำคัญมาก; ปักหมุดที่ commit ที่ทดสอบแล้ว"
+   }
+  },
+  {
+   "risk": {
+    "en": "Hidden data-migration gaps (models removed without public scripts)",
+    "th": "ช่องว่างในการย้ายข้อมูลที่ซ่อนอยู่ (โมเดลที่ถูกลบโดยไม่มีสคริปต์สาธารณะ)"
+   },
+   "likelihood": {
+    "en": "Medium",
+    "th": "ปานกลาง"
+   },
+   "mitigation": {
+    "en": "Always run the upgrade service on a copy; reconcile key balances (stock value, AR/AP, leave balances)",
+    "th": "รัน upgrade service บนสำเนาเสมอ; กระทบยอดยอดคงเหลือสำคัญ (มูลค่าสต็อก, AR/AP, ยอดวันลา)"
+   }
+  },
+  {
+   "risk": {
+    "en": "Security semantic drift after `ir.access` conversion",
+    "th": "ความหมายด้านสิทธิ์คลาดเคลื่อนหลังแปลงเป็น `ir.access`"
+   },
+   "likelihood": {
+    "en": "Medium",
+    "th": "ปานกลาง"
+   },
+   "mitigation": {
+    "en": "Role-by-role test matrix",
+    "th": "ตารางทดสอบทีละ role"
+   }
+  },
+  {
+   "risk": {
+    "en": "Customer expectations from marketing (AI, IoT, Shop Floor) that are EE-only",
+    "th": "ความคาดหวังของลูกค้าจากการตลาด (AI, IoT, Shop Floor) ที่มีเฉพาะใน EE"
+   },
+   "likelihood": {
+    "en": "High",
+    "th": "สูง"
+   },
+   "mitigation": {
+    "en": "Use the CE-vs-EE table in pre-sales; refresh the GAP-analysis asset",
+    "th": "ใช้ตาราง CE กับ EE ในช่วง pre-sales; ปรับปรุงเอกสาร GAP-analysis ให้เป็นปัจจุบัน"
+   }
+  },
+  {
+   "risk": {
+    "en": "Browser-storage data loss in offline POS or web",
+    "th": "ข้อมูลสูญหายจาก browser storage ใน POS หรือเว็บแบบออฟไลน์"
+   },
+   "likelihood": {
+    "en": "Low–Medium",
+    "th": "ต่ำถึงปานกลาง"
+   },
+   "mitigation": {
+    "en": "Persistent storage, staff training, sync before clearing",
+    "th": "ใช้ persistent storage, อบรมพนักงาน, ซิงค์ก่อนล้างข้อมูล"
+   }
+  },
+  {
+   "risk": {
+    "en": "CE localisation gaps (Thai e-Tax, WHT certificates, payroll)",
+    "th": "ช่องว่างด้าน localisation ของ CE (e-Tax ไทย, หนังสือรับรองหัก ณ ที่จ่าย, payroll)"
+   },
+   "likelihood": {
+    "en": "High for TH clients",
+    "th": "สูงสำหรับลูกค้าไทย"
+   },
+   "mitigation": {
+    "en": "See the localizations area; budget local modules",
+    "th": "ดูส่วน localizations; ตั้งงบสำหรับโมดูลท้องถิ่น"
+   }
+  }
+ ],
+ "roots_opportunities": [
+  {
+   "en": "New service lines CE 20 enables: offline field operations (farm, plantation and depot staff in low-connectivity areas), POS-only retail/F&B without Inventory overhead, and server-rendered receipts and labels (ZPL product labels, CMR transport docs).",
+   "th": "สายบริการใหม่ที่ CE 20 เปิดทางให้: งานภาคสนามแบบออฟไลน์ (พนักงานฟาร์ม สวน และคลังในพื้นที่สัญญาณต่ำ), POS ล้วนสำหรับค้าปลีก/F&B โดยไม่มีภาระของ Inventory, และใบเสร็จกับฉลากที่เรนเดอร์ฝั่งเซิร์ฟเวอร์ (ฉลากสินค้า ZPL, เอกสารขนส่ง CMR)"
+  },
+  {
+   "en": "Upgrade revenue: every customer with custom modules needs real porting work. Productise a fixed-scope \"19→20 readiness assessment\" (inventory, then grep, then estimate) using this KB.",
+   "th": "รายได้จากการอัปเกรด: ลูกค้าทุกรายที่มีโมดูลที่พัฒนาเองต้องมีงาน porting จริง ทำแพ็กเกจ \"19→20 readiness assessment\" ขอบเขตคงที่ (ตรวจนับ แล้ว grep แล้วประเมิน) โดยใช้ KB นี้"
+  },
+  {
+   "en": "AI-assisted delivery: install Odoo's official `skills/` in the team's coding agents and combine them with the JSON-2 API to build internal tooling. Odoo's own AI is EE/IAP, so a Trinity Roots MCP connector for CE databases is a differentiator (validate the market before building).",
+   "th": "การส่งมอบงานด้วย AI ช่วย: ติดตั้ง `skills/` ทางการของ Odoo ใน coding agent ของทีม และใช้ร่วมกับ JSON-2 API เพื่อสร้างเครื่องมือภายใน AI ของ Odoo เองอยู่ใน EE/IAP ดังนั้น MCP connector ของ Trinity Roots สำหรับฐานข้อมูล CE จึงเป็นจุดต่าง (ควรตรวจสอบตลาดก่อนสร้าง)"
+  },
+  {
+   "en": "Risk: Enterprise keeps moving the line. Account groups, Shop Floor, IoT and AI all show that value increasingly sits in EE. Keep the CE-vs-EE GAP analysis current (the existing `odoo-gap-analysis` sales skill targets Odoo 18 and should be refreshed to 20).",
+   "th": "ความเสี่ยง: Enterprise ขยับเส้นแบ่งอยู่เสมอ Account groups, Shop Floor, IoT และ AI ล้วนแสดงว่ามูลค่าย้ายไปอยู่ใน EE มากขึ้น ควรปรับปรุง GAP analysis ระหว่าง CE กับ EE ให้ทันสมัย (skill `odoo-gap-analysis` ของฝ่ายขายที่มีอยู่เจาะจง Odoo 18 และควรปรับเป็น 20)"
+  }
+ ],
+ "limitations": [
+  {
+   "en": "No commit history (shallow clone), so changes are inferred from tree differences, not commit messages.",
+   "th": "ไม่มีประวัติ commit (shallow clone) การเปลี่ยนแปลงจึงอนุมานจากความต่างของต้นไม้ไฟล์ ไม่ใช่จากข้อความ commit"
+  },
+  {
+   "en": "Official release notes and documentation on odoo.com were not reachable, so release-note claims were not cross-checked against Odoo S.A.'s own text; third-party [web] claims were tested against code.",
+   "th": "ไม่สามารถเข้าถึงหมายเหตุการออกรุ่นและเอกสารทางการบน odoo.com ได้ จึงไม่ได้ตรวจสอบข้อกล่าวอ้างกับข้อความของ Odoo S.A. โดยตรง ส่วนข้อกล่าวอ้างจากบุคคลที่สาม [web] ถูกทดสอบกับโค้ด"
+  },
+  {
+   "en": "Tested third-party claims: record rules replaced by domains on access rights, parent accounts replacing account groups, and offline record editing are confirmed; \"account codes become optional\" is not a change (`code` was already non-required in 19); depreciation models are EE-only and unverifiable; AI agents / MCP are not in CE.",
+   "th": "ข้อกล่าวอ้างของบุคคลที่สามที่ทดสอบแล้ว: record rules ถูกแทนที่ด้วย domain บน access rights, บัญชีแม่แทน account groups และการแก้ไขระเบียนแบบออฟไลน์ ยืนยันแล้ว; \"รหัสบัญชีเป็นทางเลือก\" ไม่ใช่การเปลี่ยนแปลง (`code` ไม่บังคับอยู่แล้วใน 19); depreciation models มีเฉพาะ EE จึงตรวจสอบไม่ได้; AI agents / MCP ไม่มีใน CE"
+  },
+  {
+   "en": "Data migration scripts for Odoo's upgrade service are not public, so statements that data is preserved are inferences.",
+   "th": "สคริปต์ย้ายข้อมูลของ upgrade service ของ Odoo ไม่เปิดเผยต่อสาธารณะ ดังนั้นข้อความที่ว่าข้อมูลจะถูกเก็บรักษาไว้เป็นการอนุมาน"
+  },
+  {
+   "en": "Enterprise code is out of scope; EE features can only be described as absent from CE.",
+   "th": "โค้ด Enterprise อยู่นอกขอบเขต ฟีเจอร์ EE จึงอธิบายได้เพียงว่าไม่มีอยู่ใน CE"
+  }
+ ],
+ "method": {
+  "en": "Both the 20.0 and 19.0 branches of odoo/odoo were shallow-cloned on 2026-10-03, and ten parallel study agents each diffed one functional area module by module (models, fields, views, controllers, JS, manifests), tracing removed modules to their successors with file-level evidence. The orchestrator then re-verified headline claims directly against the code.",
+  "th": "มีการ shallow clone ทั้ง branch 20.0 และ 19.0 ของ odoo/odoo เมื่อ 2026-10-03 จากนั้นใช้ study agent สิบตัวทำงานคู่ขนาน แต่ละตัว diff หนึ่งสาขางานทีละโมดูล (models, fields, views, controllers, JS, manifests) และไล่โมดูลที่ถูกลบไปยังโมดูลที่มาแทนพร้อมหลักฐานระดับไฟล์ แล้ว orchestrator ตรวจสอบข้อกล่าวอ้างหลักซ้ำกับโค้ดโดยตรง"
+ }
+}

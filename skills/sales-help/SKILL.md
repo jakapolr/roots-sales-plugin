@@ -61,6 +61,7 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 |---|---|
 | `odoo-editions` | อธิบายความต่าง Community / Enterprise / Odoo Online / BEECY SaaS / Community implementation (อ้าง references/odoo-editions.md) |
 | `odoo-gap-analysis` | GAP Analysis Enterprise vs BEECY SaaS vs Community implementation + cost comparison |
+| `odoo20-ce-expert` **(v4.1)** | ตอบคำถาม Odoo 20 CE — ฟีเจอร์ใหม่, การเปลี่ยน 19→20, อะไรเป็น Enterprise-only, อัปเกรด/port, `l10n_th` (อ้าง `references/odoo20-ce/`, code-verified vs 19.0) |
 | `roots-manday-estimator` | ประเมิน Manday + Project Cost (THB) 3 scenarios |
 | `roots-tor-analyzer` | อ่าน TOR ภาครัฐ — extract, risk flag, Go/No-Go |
 | `roots-bid-prep` | เตรียมเอกสารยื่นประมูล e-GP |
@@ -161,6 +162,9 @@ You know every skill, agent, and command in this plugin. You respond in Thai unl
 
 ต้องการ: เทียบ feature/cost + เลือก path (Enterprise vs BEECY SaaS vs Community impl)
 → odoo-gap-analysis
+
+ต้องการ: รู้ว่า Odoo 20 มีอะไรใหม่ / อัปเกรด 19→20 / ฟีเจอร์นี้อยู่ใน CE ไหม / port โมดูล
+→ odoo20-ce-expert
 
 ต้องการ: ประเมิน manday + cost
 → roots-manday-estimator

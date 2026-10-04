@@ -1,0 +1,147 @@
+{
+  "id": "website",
+  "title": {"en": "Website, eCommerce, Events, eLearning, Surveys & Marketing", "th": "Website, eCommerce, Events, eLearning, Surveys และ Marketing"},
+  "tagline": {"en": "Covers the website builder, online shop, events, courses, surveys and email/SMS marketing apps in Odoo 20 CE, where wishlist, comparison and donation are folded into website_sale.", "th": "ครอบคลุมแอป website builder, ร้านค้าออนไลน์, events, คอร์สเรียน, surveys และการตลาดผ่านอีเมล/SMS ใน Odoo 20 CE โดย wishlist, comparison และ donation ถูกรวมเข้าไว้ใน website_sale"},
+  "apps": ["website", "html_builder", "website_sale", "website_blog", "website_forum", "website_slides", "event", "website_event", "survey", "mass_mailing", "mass_mailing_sms", "marketing_card", "website_hr_recruitment"],
+  "functional": [
+    {
+      "title": {"en": "Wishlist, comparison, back-in-stock and donation now built into eCommerce", "th": "Wishlist, comparison, back-in-stock และ donation อยู่ใน eCommerce โดยตรง"},
+      "body": {"en": "Wishlist, product comparison, back-in-stock notifications, donation, withdrawal request and availability logic are now part of website_sale, so there is no separate install for each. Wishlist pages are editable through builder options.", "th": "Wishlist, การเปรียบเทียบสินค้า, การแจ้งเตือน back-in-stock, donation, withdrawal request และ logic ด้าน availability ถูกรวมเข้าใน website_sale แล้ว จึงไม่ต้องติดตั้งแยกแต่ละตัว และหน้า wishlist แก้ไขได้ผ่าน builder options"},
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "48 new website snippets and a larger image-shape library", "th": "Snippet ใหม่ 48 รายการและคลังรูปทรงภาพที่ใหญ่ขึ้น"},
+      "body": {"en": "The design library adds 48 section snippets (bento, hero, launch countdown, whatsapp, age-verification popup, projects, services and more) plus many new image shapes. The s_btn snippet was removed.", "th": "คลังดีไซน์เพิ่ม section snippet 48 รายการ (bento, hero, launch countdown, whatsapp, age-verification popup, projects, services และอื่น ๆ) พร้อมรูปทรงภาพใหม่จำนวนมาก ส่วน snippet s_btn ถูกลบออก"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "SEO and AI visibility: structured data, LLMs.txt, cookie policy page", "th": "SEO และการมองเห็นโดย AI: structured data, LLMs.txt, หน้า cookie policy"},
+      "body": {"en": "JSON-LD structured data is generated across products, blog, forum, events, courses, partners and jobs. A new LLMs.txt editor complements the robots.txt wizard, and settings gain a Cookie Policy page.", "th": "ระบบสร้าง JSON-LD structured data ให้ทั้งสินค้า, blog, forum, events, คอร์ส, partners และ jobs มีตัวแก้ไข LLMs.txt ใหม่เสริมกับ wizard ของ robots.txt และใน settings มีหน้า Cookie Policy"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "eCommerce checkout and merchandising upgrades", "th": "อัปเกรด checkout และการจัดสินค้าใน eCommerce"},
+      "body": {"en": "Adds delivery date estimates on delivery methods, automated suggested products, order rating emails, per-category sale prevention, per-pricelist tax display and a EU-style withdrawal request form. Click & Collect now stores pickup location data on the shipping partner.", "th": "เพิ่มการประมาณวันส่งมอบที่ delivery method, การแนะนำสินค้าอัตโนมัติ, อีเมลให้คะแนนคำสั่งซื้อ, การปิดการขายตามหมวดหมู่, การแสดงภาษีตาม pricelist และฟอร์ม withdrawal request แบบ EU นอกจากนี้ Click & Collect เก็บข้อมูล pickup location ไว้ที่ shipping partner"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Events: multi-entry tickets, scheduled publishing, My events portal", "th": "Events: ตั๋วเข้าได้หลายครั้ง, ตั้งเวลาเผยแพร่, พอร์ทัล My events"},
+      "body": {"en": "Tickets can allow several entries, with badge scans creating sub-registrations until the limit. Events can be published on a schedule, have a Registrations digest KPI, a /my/events portal page and per-room location display screens.", "th": "ตั๋วกำหนดจำนวนครั้งที่เข้าได้หลายครั้ง โดยการสแกน badge จะสร้าง sub-registration จนครบจำนวน Events ตั้งเวลาเผยแพร่ได้ มี digest KPI Registrations หน้าพอร์ทัล /my/events และหน้าจอแสดงสถานที่รายห้อง"},
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Email Marketing: templates, multi-filter and new builder", "th": "Email Marketing: เทมเพลต, หลายตัวกรอง และ builder ใหม่"},
+      "body": {"en": "Mailings can be saved as templates (replacing favorites) and can combine several saved filters with OR. A new mass-mailing builder and A/B version names are added, while the list merge wizard is dropped.", "th": "Mailing บันทึกเป็นเทมเพลตได้ (แทน favorites) และรวมหลาย saved filter แบบ OR ได้ มี builder ใหม่สำหรับ mass mailing และชื่อเวอร์ชัน A/B ส่วน wizard รวม list ถูกนำออก"},
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Surveys: new certificate designs, scheduled invitations, bigger leaderboard", "th": "Surveys: ดีไซน์ใบรับรองใหม่, ตั้งเวลาส่งคำเชิญ, leaderboard ใหญ่ขึ้น"},
+      "body": {"en": "Certificate templates become modern, minimal, classic-1 and classic-2 in company colour or black. Invitations can be scheduled, live-session leaderboards go up to 250 participants and digest KPIs are added.", "th": "เทมเพลตใบรับรองเปลี่ยนเป็น modern, minimal, classic-1 และ classic-2 ในสีบริษัทหรือสีดำ ส่งคำเชิญแบบตั้งเวลาได้ leaderboard ของ live session รองรับสูงสุด 250 คน และมี digest KPI เพิ่ม"},
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "New bridge modules: partnership, event cards, project tasks, address autocomplete", "th": "โมดูล bridge ใหม่: partnership, event cards, project tasks, address autocomplete"},
+      "body": {"en": "New modules are website_partnership, marketing_card_event, website_mass_mailing_event, website_sale_project and website_address_autocomplete. Marketing Card also gains LinkedIn sharing (Medium-High confidence), which needs IAP credit.", "th": "โมดูลใหม่ ได้แก่ website_partnership, marketing_card_event, website_mass_mailing_event, website_sale_project และ website_address_autocomplete นอกจากนี้ Marketing Card รองรับการแชร์ LinkedIn (ความมั่นใจ Medium-High) ซึ่งต้องใช้ IAP credit"},
+      "impact": "medium", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "Security moved to ir.access.csv / ir_access.xml", "th": "Security ย้ายไปใช้ ir.access.csv / ir_access.xml"},
+      "body": {"en": "Nearly every module replaces ir.model.access.csv and ir_rules.xml with a single security/ir.access.csv (id,name,model_id,group_id/id,operation,domain) or ir_access.xml. Rules become the domain column.", "th": "เกือบทุกโมดูลเปลี่ยนจาก ir.model.access.csv และ ir_rules.xml มาเป็นไฟล์เดียว security/ir.access.csv (id,name,model_id,group_id/id,operation,domain) หรือ ir_access.xml โดย rule กลายเป็นคอลัมน์ domain"},
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/__manifest__.py", "addons/event/security/ir.access.csv", "addons/website_sale/security/ir_access.xml"]
+    },
+    {
+      "title": {"en": "website_sale absorbs wishlist, comparison, stock notification and donation models", "th": "website_sale รวมโมเดล wishlist, comparison, stock notification และ donation"},
+      "body": {"en": "Models product.wishlist, product.stock.notification, product.attribute.category and withdrawal.request now live in website_sale, with controllers for wishlist, comparison and donation. Donation pieces moved out of website_payment.", "th": "โมเดล product.wishlist, product.stock.notification, product.attribute.category และ withdrawal.request อยู่ใน website_sale แล้ว พร้อม controller ของ wishlist, comparison และ donation ส่วน donation ย้ายออกจาก website_payment"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/website_sale/models/product_wishlist.py", "addons/website_sale/models/product_stock_notification.py", "addons/website_sale/models/withdrawal_request.py", "addons/website_sale/controllers/wishlist.py", "addons/website_sale/controllers/comparison.py", "addons/website_sale/controllers/donation.py"]
+    },
+    {
+      "title": {"en": "New website mixins: structured data, located, trackable", "th": "Mixin ใหม่ใน website: structured data, located, trackable"},
+      "body": {"en": "website.structured_data.mixin provides JSON-LD (_prepare_jsonld_vals, _render_jsonld), website.located.mixin standardizes website_url/website_absolute_url, and website.trackable.mixin replaces ad-hoc visitor link tables with visitor_*_count fields.", "th": "website.structured_data.mixin สร้าง JSON-LD (_prepare_jsonld_vals, _render_jsonld), website.located.mixin กำหนดมาตรฐาน website_url/website_absolute_url และ website.trackable.mixin มาแทนตารางเชื่อม visitor แบบเดิมด้วยฟิลด์ visitor_*_count"},
+      "impact": "high", "kind": "new",
+      "refs": ["addons/website/models/mixins.py", "addons/website_sale/models/product_template.py", "addons/website_blog/models/website_blog.py", "addons/website_event/models/event_event.py", "addons/website_hr_recruitment/models/hr_job.py"]
+    },
+    {
+      "title": {"en": "html_builder depends only on html_editor; t-snippet directives added", "th": "html_builder พึ่งพาเฉพาะ html_editor และมี directive t-snippet เพิ่ม"},
+      "body": {"en": "ir.qweb gains t-snippet / t-snippet-call with t-image-preview, t-drag-image-preview, t-forbid-sanitize and t-grid-column-span; ir.ui.view handles snippet save/rename/delete. Legacy zoomodoo, website_root.js, snippets.animation.js and xml/website*.xml were removed from frontend assets.", "th": "ir.qweb เพิ่ม t-snippet / t-snippet-call พร้อม t-image-preview, t-drag-image-preview, t-forbid-sanitize และ t-grid-column-span ส่วน ir.ui.view จัดการ save/rename/delete snippet โดย zoomodoo, website_root.js, snippets.animation.js และ xml/website*.xml เดิมถูกลบออกจาก frontend assets"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/html_builder/__manifest__.py", "addons/html_builder/models/ir_qweb.py", "addons/html_builder/models/ir_ui_view.py", "addons/website/__manifest__.py"]
+    },
+    {
+      "title": {"en": "Settings and field renames in website_sale, event, survey and mailing", "th": "เปลี่ยนชื่อ setting และฟิลด์ใน website_sale, event, survey และ mailing"},
+      "body": {"en": "prevent_zero_price_sale becomes prevent_sale (+ prevent_sale_for, prevent_sale_for_categories), contact_us_button_url becomes contact_us_link_url, address_inline becomes contact_address_inline, and mailing_filter_id becomes the many2many mailing_filter_ids. Removed fields include favorite, date_published, post_date/published_date, scale_mid_label and price_incl.", "th": "prevent_zero_price_sale เปลี่ยนเป็น prevent_sale (+ prevent_sale_for, prevent_sale_for_categories), contact_us_button_url เป็น contact_us_link_url, address_inline เป็น contact_address_inline และ mailing_filter_id เป็น many2many mailing_filter_ids ฟิลด์ที่ถูกลบ ได้แก่ favorite, date_published, post_date/published_date, scale_mid_label และ price_incl"},
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/website_sale/models/website.py", "addons/mass_mailing/models/mailing.py", "addons/event/models/event_event.py"]
+    },
+    {
+      "title": {"en": "Availability fields moved from website_sale_stock to website_sale", "th": "ฟิลด์ availability ย้ายจาก website_sale_stock ไป website_sale"},
+      "body": {"en": "allow_out_of_stock_order, available_threshold, show_availability and out_of_stock_message now live in website_sale and act on is_storable. website_sale_stock focuses on pickup (support_pickup_locations, is_pickup_required, pickup_delivery_method_id).", "th": "allow_out_of_stock_order, available_threshold, show_availability และ out_of_stock_message อยู่ใน website_sale และทำงานกับ is_storable ส่วน website_sale_stock เน้นเรื่อง pickup (support_pickup_locations, is_pickup_required, pickup_delivery_method_id)"},
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/website_sale/models/product_template.py", "addons/website_sale_stock/models/location_selector.py"]
+    },
+    {
+      "title": {"en": "Forum comments become forum.post.comment; Click & Collect data on shipping partner", "th": "ความคิดเห็นใน forum เป็น forum.post.comment; ข้อมูล Click & Collect อยู่ที่ shipping partner"},
+      "body": {"en": "forum.post.comment replaces mail.message-based comments and forum.post is a mail.thread. In website_sale_collect pickup data is stored in partner_shipping_id.pickup_location_data instead of on the order.", "th": "forum.post.comment มาแทนความคิดเห็นที่อิง mail.message และ forum.post เป็น mail.thread ส่วนใน website_sale_collect ข้อมูล pickup เก็บใน partner_shipping_id.pickup_location_data แทนที่จะเก็บที่ order"},
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/website_forum/models/forum_post_comment.py", "addons/website_sale_collect/models/sale_order.py"]
+    },
+    {
+      "title": {"en": "portal.entry data records, digest KPIs and frontend interactions", "th": "ข้อมูล portal.entry, digest KPI และ frontend interactions"},
+      "body": {"en": "Customer-portal home tiles are now portal.entry data records. event, survey and website_slides gain digest KPIs, and eLearning, blog and event front ends are migrated to Odoo interactions. Medium confidence on the front-end migration.", "th": "tile หน้าแรกของ customer portal เป็น data record ของ portal.entry แล้ว event, survey และ website_slides เพิ่ม digest KPI และ front end ของ eLearning, blog และ event ย้ายไปใช้ Odoo interactions (ความมั่นใจ Medium สำหรับการย้าย front end)"},
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/portal/models/portal_entry.py", "addons/event/models/digest.py", "addons/website_slides/static/src/interactions/"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {"en": "Custom modules depending on website_sale_wishlist, website_sale_comparison, website_sale_stock_wishlist, website_sale_collect_wishlist, website_sale_autocomplete or website_sale_mondialrelay will fail to install. Remove them from depends, repoint XML-ids (website_sale_wishlist.* to website_sale.*) and fix view inheritance.", "th": "โมดูล custom ที่ depends บน website_sale_wishlist, website_sale_comparison, website_sale_stock_wishlist, website_sale_collect_wishlist, website_sale_autocomplete หรือ website_sale_mondialrelay จะติดตั้งไม่ได้ ต้องลบออกจาก depends, ชี้ XML-id ใหม่ (website_sale_wishlist.* เป็น website_sale.*) และแก้ view inheritance"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "The DB migration must remap ir_model_data module names. product_wishlist and attribute-category rows should carry over because model names are unchanged, but verify in upgrade scripts (none are in CE source).", "th": "การ migrate DB ต้อง remap ชื่อโมดูลใน ir_model_data ข้อมูล product_wishlist และ attribute category ควรคงอยู่เพราะชื่อโมเดลไม่เปลี่ยน แต่ต้องตรวจสอบใน upgrade script (ไม่มีอยู่ใน CE source)"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Availability settings moved to website_sale: check product_template values and the stock_notification_partner_ids m2m, which maps to product_stock_notification_rel. The same table name was kept via _table so data is likely preserved (Medium confidence).", "th": "setting ด้าน availability ย้ายไป website_sale: ให้ตรวจค่าใน product_template และ m2m stock_notification_partner_ids ซึ่งแมปไปที่ product_stock_notification_rel โดยคงชื่อตารางเดิมผ่าน _table จึงน่าจะรักษาข้อมูลไว้ได้ (ความมั่นใจ Medium)"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Renamed or removed fields must be updated in reports, server actions, automations and custom views, for example prevent_zero_price_sale, contact_us_button_url, send_abandoned_cart_email, address_inline, mailing_filter_id, favorite and price_incl.", "th": "ฟิลด์ที่เปลี่ยนชื่อหรือถูกลบต้องแก้ใน report, server action, automation และ view ที่ custom เช่น prevent_zero_price_sale, contact_us_button_url, send_abandoned_cart_email, address_inline, mailing_filter_id, favorite และ price_incl"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Saved favorite mailings are not templates. Plan a data step to set is_template if users relied on favorites, and port custom mail themes/snippets from mass_mailing_*_snippets XML to the new builder (mass_mailing.assets_builder).", "th": "Mailing ที่เคยเป็น favorite ไม่ได้เป็นเทมเพลตโดยอัตโนมัติ ควรวางขั้นตอนข้อมูลเพื่อตั้ง is_template หากผู้ใช้ใช้ favorites และต้องย้าย mail theme/snippet ที่ custom จาก XML mass_mailing_*_snippets ไปยัง builder ใหม่ (mass_mailing.assets_builder)"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Custom themes and snippets using zoomodoo, snippets.animation, website_root.js, xml/website.xml or s_searchbar will break. Tours and selectors change widely (website_slides, blog, events) and the eCommerce checkout templates are split into templates/checkout/*, so re-test the checkout.", "th": "theme และ snippet ที่ custom ซึ่งใช้ zoomodoo, snippets.animation, website_root.js, xml/website.xml หรือ s_searchbar จะใช้งานไม่ได้ Tour และ selector เปลี่ยนมาก (website_slides, blog, events) และ template checkout ของ eCommerce ถูกแยกเป็น templates/checkout/* จึงควรทดสอบ checkout ซ้ำ"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Survey certificate selection values changed and old templates and background SVGs were deleted. Existing surveys using modern_purple and similar values need mapping; the default is now modern_company.", "th": "ค่า selection ของใบรับรอง survey เปลี่ยนไปและเทมเพลต/SVG พื้นหลังเดิมถูกลบ survey เดิมที่ใช้ modern_purple และค่าลักษณะเดียวกันต้องทำ mapping โดยค่า default ตอนนี้คือ modern_company"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Forum comments moved to forum.post.comment: verify migration of former mail.message comments and any reporting. Address autocomplete keys are now per website, so re-enter the Google Places API key on each website (check billing and GDPR/cookies).", "th": "ความคิดเห็นใน forum ย้ายไป forum.post.comment: ตรวจสอบการ migrate ความคิดเห็นเดิมที่เป็น mail.message และรายงานที่เกี่ยวข้อง ส่วน API key ของ address autocomplete เป็นค่าต่อ website จึงต้องกรอก Google Places API key ใหม่ในแต่ละ website (ตรวจสอบค่าใช้จ่ายและ GDPR/cookies)"},
+      "audience": "functional"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Website builder Enterprise extras such as website_generator, appointment, Studio and Odoo.sh features are not in CE.", "th": "ส่วนเสริม Enterprise ของ website builder เช่น website_generator, appointment, Studio และฟีเจอร์ Odoo.sh ไม่มีใน CE"},
+    {"en": "Subscription-related website_sale extensions are Enterprise-only.", "th": "ส่วนขยาย website_sale ที่เกี่ยวกับ subscription เป็น Enterprise เท่านั้น"},
+    {"en": "Marketing Automation and Social Marketing are not in CE.", "th": "Marketing Automation และ Social Marketing ไม่มีใน CE"},
+    {"en": "Marketing Card LinkedIn posting and SMS sending depend on IAP services and credit; the service side could not be verified from CE code.", "th": "การโพสต์ LinkedIn ของ Marketing Card และการส่ง SMS ต้องพึ่งบริการ IAP และเครดิต ซึ่งฝั่งบริการตรวจสอบจาก CE code ไม่ได้"}
+  ],
+  "removed": [
+    {"module": "website_sale_wishlist", "successor": "website_sale", "note": {"en": "Merged into website_sale (product.wishlist, wishlist controller and templates, wishlist settings on website).", "th": "รวมเข้า website_sale (product.wishlist, controller และ template ของ wishlist, setting ของ wishlist บน website)"}},
+    {"module": "website_sale_comparison", "successor": "website_sale", "note": {"en": "Merged into website_sale (comparison controller and templates, product.attribute.category).", "th": "รวมเข้า website_sale (controller และ template ของ comparison, product.attribute.category)"}},
+    {"module": "website_sale_comparison_wishlist", "successor": "website_sale", "note": {"en": "Bridge no longer needed because both features are now in website_sale.", "th": "ไม่ต้องใช้ bridge อีกต่อไปเพราะทั้งสองฟีเจอร์อยู่ใน website_sale แล้ว"}},
+    {"module": "website_sale_stock_wishlist", "successor": "website_sale", "note": {"en": "Merged; product.stock.notification now lives in website_sale.", "th": "รวมเข้าแล้ว product.stock.notification อยู่ใน website_sale"}},
+    {"module": "website_sale_collect_wishlist", "successor": "website_sale", "note": {"en": "Merged / no bridge module. Low confidence: the out-of-stock-at-pickup wishlist UX appears not preserved as a module.", "th": "รวมเข้าแล้ว/ไม่มีโมดูล bridge ความมั่นใจ Low: UX การเพิ่ม wishlist เมื่อสินค้าหมดที่จุดรับสินค้าดูเหมือนไม่ถูกคงไว้เป็นโมดูล"}},
+    {"module": "website_sale_autocomplete", "successor": "website_address_autocomplete", "note": {"en": "Replaced by website_address_autocomplete (depends on website and google_address_autocomplete). Setting renamed to module_website_address_autocomplete and the API key is per website.", "th": "ถูกแทนที่ด้วย website_address_autocomplete (depends บน website และ google_address_autocomplete) setting เปลี่ยนชื่อเป็น module_website_address_autocomplete และ API key เป็นค่าต่อ website"}},
+    {"module": "website_sale_mondialrelay", "successor": null, "note": {"en": "Removed with no successor found; delivery_mondialrelay was also removed.", "th": "ถูกลบโดยไม่พบโมดูลที่มาแทน และ delivery_mondialrelay ก็ถูกลบด้วย"}}
+  ]
+}

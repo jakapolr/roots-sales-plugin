@@ -1,0 +1,216 @@
+{
+  "id": "accounting",
+  "title": {"en": "Accounting, Invoicing, Payments & Finance", "th": "บัญชี ใบแจ้งหนี้ การชำระเงิน และการเงิน"},
+  "tagline": {
+    "en": "Odoo 20 CE Invoicing app: invoices, payments, tax engine, e-invoicing/Peppol and the payment framework, with the reconciliation widget and full financial reports still Enterprise-only.",
+    "th": "แอป Invoicing ของ Odoo 20 CE ครอบคลุมใบแจ้งหนี้ การชำระเงิน tax engine e-invoicing/Peppol และ payment framework โดย reconciliation widget และรายงานการเงินฉบับเต็มยังเป็น Enterprise เท่านั้น"
+  },
+  "apps": ["account", "analytic", "payment", "account_payment", "account_payment_custom", "payment_custom", "account_edi_ubl_cii", "account_edi_proxy_client", "account_peppol", "account_check_printing", "account_debit_note", "account_payment_interco", "account_fleet", "account_qr_code_emv", "account_qr_code_sepa", "account_tax_python", "account_update_tax_tags", "certificate", "l10n_eu_account_vies", "l10n_eu_oss", "snailmail", "snailmail_account", "iap"],
+  "functional": [
+    {
+      "title": {"en": "Chart of accounts is now a parent/child tree", "th": "ผังบัญชีเป็นโครงสร้าง parent/child"},
+      "body": {
+        "en": "Account groups are gone; accounts are organised under parent accounts (form field \"Parent Account\", placeholder \"Root account\"). Reporting that relied on groups must be rebuilt using parent accounts, which may be inactive.",
+        "th": "account groups ถูกยกเลิก โดยบัญชีถูกจัดเป็นลำดับชั้นใต้ parent account (ฟิลด์ \"Parent Account\" ในฟอร์ม placeholder \"Root account\") รายงานที่เคยอิงกับ groups ต้องสร้างใหม่โดยใช้ parent accounts ซึ่งอาจเป็น inactive ได้"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Tax-included vs tax-excluded chosen per document", "th": "เลือกราคารวมภาษี/ไม่รวมภาษีได้ที่ระดับเอกสาร"},
+      "body": {
+        "en": "Each invoice/bill now carries a document tax mode (tax excluded or tax included), defaulted from the company setting, with a selector in the UI. Partial deductibility of purchase taxes was also reworked (percentage-based).",
+        "th": "ใบแจ้งหนี้/ใบเรียกเก็บแต่ละใบมี document tax mode (ไม่รวมภาษีหรือรวมภาษี) โดยค่าเริ่มต้นมาจากการตั้งค่า company และมีตัวเลือกใน UI นอกจากนี้การหักภาษีซื้อบางส่วน (partial deductibility) ถูกปรับใหม่ให้อิงเปอร์เซ็นต์"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Payment providers: live/test and one provider per method", "th": "Payment providers: live/test และหนึ่ง provider ต่อหนึ่ง method"},
+      "body": {
+        "en": "Provider state (disabled/enabled/test) is replaced by an is_live flag plus active, and each payment method now belongs to a single provider. Every provider connector should be re-tested after upgrade.",
+        "th": "สถานะ provider (disabled/enabled/test) ถูกแทนด้วย flag is_live และ active และ payment method แต่ละตัวเป็นของ provider เดียว ควรทดสอบ connector ของทุก provider ใหม่หลังอัปเกรด"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Wire transfer auto-confirmation", "th": "การยืนยันการโอนเงินอัตโนมัติ (wire transfer)"},
+      "body": {
+        "en": "New module account_payment_custom confirms pending wire-transfer transactions when a bank statement line matches reference, partner, currency and amount. Its cron is toggled on when a wire_transfer provider exists.",
+        "th": "โมดูลใหม่ account_payment_custom ยืนยันธุรกรรมโอนเงินที่รออยู่เมื่อ bank statement line ตรงกับ reference, partner, currency และจำนวนเงิน โดย cron จะถูกเปิดเมื่อมี provider แบบ wire_transfer"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "Peppol and e-invoicing consolidated", "th": "รวม Peppol และ e-invoicing"},
+      "body": {
+        "en": "Peppol business responses are now part of account_peppol, GLN is in core account, and partner/company routing uses generic routing_scheme/routing_endpoint fields. Verify Peppol registration state after upgrade.",
+        "th": "business responses ของ Peppol อยู่ใน account_peppol แล้ว GLN อยู่ใน account หลัก และ routing ของ partner/company ใช้ฟิลด์ทั่วไป routing_scheme/routing_endpoint ควรตรวจสอบสถานะการลงทะเบียน Peppol หลังอัปเกรด"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "VAT validation split into offline and VIES", "th": "แยกการตรวจสอบ VAT เป็น offline และ VIES"},
+      "body": {
+        "en": "Offline VAT format checks now live in base; online VIES validation is the optional module l10n_eu_account_vies, enabled from Settings when vat_check_vies is ticked. Companies with no VAT can use the new vat_disabled option to hide VAT UI.",
+        "th": "การตรวจรูปแบบ VAT แบบ offline อยู่ใน base ส่วนการตรวจ VIES ออนไลน์เป็นโมดูลเสริม l10n_eu_account_vies ซึ่งเปิดจาก Settings เมื่อติ๊ก vat_check_vies บริษัทที่ไม่มี VAT ใช้ตัวเลือก vat_disabled ใหม่เพื่อซ่อน UI ของ VAT ได้"
+      },
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Review workflow, lock exceptions and audit trail", "th": "Review workflow, lock exceptions และ audit trail"},
+      "body": {
+        "en": "The move checked flag becomes a review_state (no_review, todo, reviewed, supervised, anomaly), and account.lock_exception allows time-limited exceptions to lock dates. A company option restrictive_audit_trail restricts access to logged messages of used accounts, taxes and partners.",
+        "th": "flag checked ของ move กลายเป็น review_state (no_review, todo, reviewed, supervised, anomaly) และ account.lock_exception ให้ยกเว้น lock date แบบมีกำหนดเวลา ตัวเลือก restrictive_audit_trail ระดับบริษัทจำกัดการเข้าถึงข้อความที่บันทึกของบัญชี ภาษี และ partner ที่ถูกใช้งานแล้ว"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "Multi-ledger and cash rounding rework", "th": "ปรับ multi-ledger และ cash rounding ใหม่"},
+      "body": {
+        "en": "Journal groups now use an include list and a journal belongs to one group. Cash rounding is company-aware and can be limited by currency, partner category and payment method, with company-level profit/loss accounts.",
+        "th": "journal groups ใช้รายการ include และ journal หนึ่งตัวอยู่ได้เพียงหนึ่ง group ส่วน cash rounding รองรับ company และจำกัดตามสกุลเงิน หมวดหมู่ partner และ payment method ได้ พร้อมบัญชีกำไร/ขาดทุนระดับบริษัท"
+      },
+      "impact": "medium", "kind": "changed"
+    },
+    {
+      "title": {"en": "Stock valuation configuration moves into account", "th": "การตั้งค่า stock valuation ย้ายเข้า account"},
+      "body": {
+        "en": "Stock valuation and cost-method settings, accounts and the stock valuation report now live in account. This is a cross-area change that should be coordinated with the inventory area.",
+        "th": "การตั้งค่า stock valuation และ cost method บัญชีที่เกี่ยวข้อง และรายงาน stock valuation ย้ายมาอยู่ใน account เป็นการเปลี่ยนแปลงข้ามพื้นที่ที่ควรประสานกับส่วน inventory"
+      },
+      "impact": "low", "kind": "changed"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "account.group removed; account.account is a parent-store tree", "th": "ลบ account.group; account.account เป็น parent-store tree"},
+      "body": {
+        "en": "account.account now has _parent_store, parent_id, parent_path, parent_ids, code_path and name_path, ordered by code_path, account_type, name_path. Code, SQL, reports and ir.rules using account.group, group_id or code_prefix_start break; template group rows became inactive parent accounts with a parent_id column.",
+        "th": "account.account มี _parent_store, parent_id, parent_path, parent_ids, code_path และ name_path เรียงตาม code_path, account_type, name_path โค้ด SQL รายงาน และ ir.rules ที่ใช้ account.group, group_id หรือ code_prefix_start จะพัง แถว group ใน template กลายเป็น parent account แบบ inactive พร้อมคอลัมน์ parent_id"
+      },
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/account/models/account_account.py", "addons/account/models/chart_template.py", "addons/account/views/account_account_views.xml"]
+    },
+    {
+      "title": {"en": "res.bank removed; res.partner.bank fields renamed", "th": "ลบ res.bank; เปลี่ยนชื่อฟิลด์ใน res.partner.bank"},
+      "body": {
+        "en": "acc_number becomes account_number, acc_holder_name becomes holder_name, and bank_id is gone in favour of bank_name and address fields. account.journal bank_id/bank_acc_number become bank_name/bank_account_number/bank_bic, and base_iban validation moved to odoo/tools/bank_account_number.py.",
+        "th": "acc_number เป็น account_number, acc_holder_name เป็น holder_name และ bank_id ถูกลบแทนด้วย bank_name และฟิลด์ที่อยู่ ส่วน account.journal เปลี่ยน bank_id/bank_acc_number เป็น bank_name/bank_account_number/bank_bic และการตรวจสอบ base_iban ย้ายไปที่ odoo/tools/bank_account_number.py"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/models/res_partner_bank.py", "odoo/tools/bank_account_number.py", "addons/account/models/res_partner_bank.py"]
+    },
+    {
+      "title": {"en": "Payment core refactor", "th": "Refactor แกนหลักของ payment"},
+      "body": {
+        "en": "payment.provider.state becomes is_live plus active, payment.method.provider_ids becomes a single provider_id with UNIQUE(provider_id, code), and payment.transaction inherits bus.listener.mixin. Notifications are stored in the new payment.data model and processed by a cron, so custom providers must be rewritten.",
+        "th": "payment.provider.state เป็น is_live ร่วมกับ active, payment.method.provider_ids เป็น provider_id เดียวพร้อม UNIQUE(provider_id, code) และ payment.transaction สืบทอด bus.listener.mixin การแจ้งเตือนถูกเก็บในโมเดลใหม่ payment.data และประมวลผลด้วย cron จึงต้องเขียน provider แบบกำหนดเองใหม่"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/payment/models/payment_provider.py", "addons/payment/models/payment_method.py", "addons/payment/models/payment_data.py", "addons/payment/controllers/payment_status.py"]
+    },
+    {
+      "title": {"en": "Tax engine API and document_tax_mode", "th": "API ของ tax engine และ document_tax_mode"},
+      "body": {
+        "en": "account.move and account.move.line gain a stored document_tax_mode with an SQL constraint, and compute_all and related helpers take document_tax_mode. Helpers such as _compute_subset_base_lines_total and _import_retrieve_tax_from_invoice_predictive were removed or renamed, and deductible_amount became deductible_percentage; custom tax code and account_tax_python forks are at high risk.",
+        "th": "account.move และ account.move.line มี document_tax_mode แบบ stored พร้อม SQL constraint และ compute_all กับ helper ที่เกี่ยวข้องรับพารามิเตอร์ document_tax_mode helper เช่น _compute_subset_base_lines_total และ _import_retrieve_tax_from_invoice_predictive ถูกลบหรือเปลี่ยนชื่อ และ deductible_amount กลายเป็น deductible_percentage โค้ด tax แบบกำหนดเองและ fork ของ account_tax_python มีความเสี่ยงสูง"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/account/models/account_tax.py", "addons/account/models/account_move.py", "addons/account/static/src/helpers/account_tax.js"]
+    },
+    {
+      "title": {"en": "Peppol routing fields and module merges", "th": "ฟิลด์ routing ของ Peppol และการรวมโมดูล"},
+      "body": {
+        "en": "peppol_eas/peppol_endpoint become routing_scheme/routing_endpoint/routing_identifier on partner and company; account_peppol_response merged into account_peppol and account_add_gln into account. peppol.config.wizard and the self-billing company fields were removed from account_peppol, and account.move.is_self_billing was added in account.",
+        "th": "peppol_eas/peppol_endpoint เป็น routing_scheme/routing_endpoint/routing_identifier บน partner และ company; account_peppol_response ถูกรวมเข้า account_peppol และ account_add_gln รวมเข้า account ส่วน peppol.config.wizard และฟิลด์ self-billing ของ company ถูกลบจาก account_peppol และเพิ่ม account.move.is_self_billing ใน account"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/account_edi_ubl_cii/models/res_partner.py", "addons/account_peppol/models/account_peppol_response.py", "addons/account/models/partner.py"]
+    },
+    {
+      "title": {"en": "base_vat dissolved; VIES in l10n_eu_account_vies", "th": "ยุบ base_vat; VIES อยู่ใน l10n_eu_account_vies"},
+      "body": {
+        "en": "_check_vat and check_vat_xx helpers now live in base using stdnum, while vies_valid, perform_vies_validation, the IAP calls, cron and webhook are in l10n_eu_account_vies. res.company.vat_check_vies moved to account, so modules with depends on base_vat must switch to account or base.",
+        "th": "helper _check_vat และ check_vat_xx อยู่ใน base โดยใช้ stdnum ส่วน vies_valid, perform_vies_validation, การเรียก IAP, cron และ webhook อยู่ใน l10n_eu_account_vies โดย res.company.vat_check_vies ย้ายไปที่ account โมดูลที่ depends บน base_vat ต้องเปลี่ยนไปใช้ account หรือ base"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["odoo/addons/base/models/res_partner.py", "addons/l10n_eu_account_vies/models/res_partner.py", "addons/account/models/company.py"]
+    },
+    {
+      "title": {"en": "ir.access.csv replaces ir.model.access.csv", "th": "ir.access.csv มาแทน ir.model.access.csv"},
+      "body": {
+        "en": "account, analytic and certificate use security/ir.access.csv (columns id,name,model_id,group_id/id,operation,domain with crud letters) in place of ir.model.access.csv and ir.rule XML. Group names are unchanged, and the new privilege record res_groups_privilege_accounting was added.",
+        "th": "account, analytic และ certificate ใช้ security/ir.access.csv (คอลัมน์ id,name,model_id,group_id/id,operation,domain ใช้ตัวอักษร crud) แทน ir.model.access.csv และ ir.rule XML ชื่อ groups ไม่เปลี่ยน และมี privilege record ใหม่ res_groups_privilege_accounting"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/account/security/ir.access.csv", "addons/analytic/security/ir.access.csv", "addons/certificate/security/ir.access.csv"]
+    },
+    {
+      "title": {"en": "compute_sql field attribute and report model reshaping", "th": "แอตทริบิวต์ compute_sql และการปรับโมเดลรายงาน"},
+      "body": {
+        "en": "The new compute_sql attribute (used in account, payment term and the consolidation mixin) enables SQL-computed fields in search, group and order. account.report gained groupby, snapshot and fiscal-period fields and lost prefix_groups_threshold and filter_analytic, and account.report.line foldable became foldability.",
+        "th": "แอตทริบิวต์ใหม่ compute_sql (ใช้ใน account, payment term และ consolidation mixin) ทำให้ฟิลด์ที่คำนวณด้วย SQL ใช้ใน search, group และ order ได้ account.report เพิ่มฟิลด์ groupby, snapshot และ fiscal period และลบ prefix_groups_threshold กับ filter_analytic ส่วน foldable ของ account.report.line กลายเป็น foldability"
+      },
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/account/models/account_report.py", "addons/account/models/account_account.py"]
+    },
+    {
+      "title": {"en": "Journal group, review and duplicate-detection field changes", "th": "การเปลี่ยนฟิลด์ journal group, review และการตรวจจับรายการซ้ำ"},
+      "body": {
+        "en": "account.journal.group excluded_journal_ids becomes included_journal_ids, account.move.checked becomes review_state, and is_draft_duplicated_ref_ids is replaced by has_draft_move_duplicate. Receivable/payable default accounts moved to res.company, and account.tax.group lost its payable, receivable and advance tax accounts (new location not found; Medium/Low confidence).",
+        "th": "excluded_journal_ids ของ account.journal.group เป็น included_journal_ids, account.move.checked เป็น review_state และ is_draft_duplicated_ref_ids ถูกแทนด้วย has_draft_move_duplicate บัญชี receivable/payable เริ่มต้นย้ายไปที่ res.company และ account.tax.group สูญเสียบัญชี payable, receivable และ advance tax (ไม่พบตำแหน่งใหม่ ความเชื่อมั่นระดับ Medium/Low)"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/account/models/account_move.py", "addons/account/models/company.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {"en": "Custom modules depending on base_vat, base_iban, account_add_gln, account_peppol_response or account_peppol_advanced_fields will fail to install; re-point the dependencies.", "th": "โมดูลกำหนดเองที่ depends บน base_vat, base_iban, account_add_gln, account_peppol_response หรือ account_peppol_advanced_fields จะติดตั้งไม่ได้ ต้องเปลี่ยน dependencies ใหม่"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Review all code, SQL, reports, spreadsheets and ir.rules using account.group, group_id on accounts, res.bank, acc_number, acc_holder_name, bank_acc_number, peppol_eas, peppol_endpoint, checked, deductible_amount, excluded_journal_ids, provider state, payment.method.provider_ids or ir.model.access.csv conventions.", "th": "ตรวจสอบโค้ด SQL รายงาน spreadsheets และ ir.rules ทั้งหมดที่ใช้ account.group, group_id บนบัญชี, res.bank, acc_number, acc_holder_name, bank_acc_number, peppol_eas, peppol_endpoint, checked, deductible_amount, excluded_journal_ids, provider state, payment.method.provider_ids หรือรูปแบบ ir.model.access.csv"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Data migration for provider state, res.bank and account.group could not be verified (upgrade scripts are not in the CE repo); account/migrations/1.5/pre-migrate.py only fixes code_store = 'null'. Test the upgrade on a copy.", "th": "การย้ายข้อมูลของ provider state, res.bank และ account.group ตรวจสอบไม่ได้ (upgrade scripts ไม่อยู่ใน CE repo) โดย account/migrations/1.5/pre-migrate.py แก้เพียง code_store = 'null' ควรทดสอบการอัปเกรดบนสำเนาข้อมูล"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Custom taxes (account_tax_python, forks) calling removed account.tax helpers or the old compute_all signature will break; add document_tax_mode awareness for POS, sale and purchase flows.", "th": "tax แบบกำหนดเอง (account_tax_python, fork) ที่เรียก helper ของ account.tax ที่ถูกลบหรือ signature เก่าของ compute_all จะพัง ต้องรองรับ document_tax_mode ใน flow ของ POS, sale และ purchase"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Payment providers must be re-tested one by one because webhook handling is now asynchronous via the payment.data cron; custom providers need _process_notification_data rewritten.", "th": "ต้องทดสอบ payment providers ทีละตัวใหม่ เพราะการจัดการ webhook เป็นแบบ asynchronous ผ่าน cron ของ payment.data และ provider แบบกำหนดเองต้องเขียน _process_notification_data ใหม่"},
+      "audience": "technical"
+    },
+    {
+      "text": {"en": "Groups used for reporting must be rebuilt as parent accounts (inactive allowed). Thai (l10n_th) charts have no groups so nothing converts, but customers' own groups need mapping to parents.", "th": "groups ที่ใช้ทำรายงานต้องสร้างใหม่เป็น parent accounts (เป็น inactive ได้) ผังบัญชีไทย (l10n_th) ไม่มี groups จึงไม่ต้องแปลง แต่ groups ที่ลูกค้าสร้างเองต้อง map ไปเป็น parents"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Multi-ledger: re-create journal groups so each journal belongs to a single group via journal_group_id; the semantics are now an include list instead of an exclude list.", "th": "Multi-ledger: สร้าง journal groups ใหม่ให้แต่ละ journal อยู่ในหนึ่ง group ผ่าน journal_group_id โดยความหมายเปลี่ยนเป็นรายการ include แทนรายการ exclude"},
+      "audience": "functional"
+    },
+    {
+      "text": {"en": "Peppol: verify registration state after upgrade since peppol.config.wizard was removed and the self-billing reception journal setting relocated. Data in the six peppol_*_reference fields of account_peppol_advanced_fields has no successor and is orphaned.", "th": "Peppol: ตรวจสอบสถานะการลงทะเบียนหลังอัปเกรด เพราะ peppol.config.wizard ถูกลบและการตั้งค่า self-billing reception journal ถูกย้าย ข้อมูลในฟิลด์ peppol_*_reference ทั้งหกของ account_peppol_advanced_fields ไม่มี successor และกลายเป็นข้อมูลที่ไม่มีที่ใช้"},
+      "audience": "functional"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Bank reconciliation widget (the CE code only references account_accountant.action_journal_create_wizard; reconcile models and matching are core, the UI is Enterprise).", "th": "Bank reconciliation widget (โค้ด CE อ้างถึงเพียง account_accountant.action_journal_create_wizard; reconcile models และ matching อยู่ใน core แต่ UI เป็น Enterprise)"},
+    {"en": "Full financial reports UI (P&L, balance sheet, trial balance, aged reports, general ledger): the account.report data model exists but there is no renderer, and only a Generic Tax report is seeded.", "th": "UI รายงานการเงินฉบับเต็ม (P&L, balance sheet, trial balance, aged reports, general ledger): มีโมเดลข้อมูล account.report แต่ไม่มี renderer และมีเพียงรายงาน Generic Tax ที่ถูก seed ไว้"},
+    {"en": "Assets and depreciation (no account.asset model in CE; the l10n_th account.asset-th.csv template is loaded by Enterprise account_asset).", "th": "Assets และ depreciation (CE ไม่มีโมเดล account.asset; ไฟล์ template l10n_th account.asset-th.csv ถูกโหลดโดย Enterprise account_asset)"},
+    {"en": "Budget, loans and the fiscal-period/closing UI (Settings only exposes flags such as module_account_budget; the Closing menu folder is empty in CE).", "th": "Budget, loans และ UI ของ fiscal-period/closing (Settings แสดงเพียง flag เช่น module_account_budget และโฟลเดอร์เมนู Closing ว่างเปล่าใน CE)"},
+    {"en": "Other Enterprise modules only referenced as Settings flags: account_accountant, account_intrastat, account_avatax, account_batch_payment, account_iso20022, account_sepa_direct_debit, account_bank_statement_import_qif and extract/digitization modules.", "th": "โมดูล Enterprise อื่นที่ปรากฏเพียงเป็น flag ใน Settings: account_accountant, account_intrastat, account_avatax, account_batch_payment, account_iso20022, account_sepa_direct_debit, account_bank_statement_import_qif และโมดูล extract/digitization"}
+  ],
+  "removed": [
+    {"module": "account_add_gln", "successor": "account", "note": {"en": "Merged into account; global_location_number is defined in account/models/partner.py.", "th": "รวมเข้า account โดย global_location_number ถูกกำหนดใน account/models/partner.py"}},
+    {"module": "account_peppol_response", "successor": "account_peppol", "note": {"en": "Merged into account_peppol (account.peppol.response, clarification, rejection wizard); extended by l10n_fr_pdp.", "th": "รวมเข้า account_peppol (account.peppol.response, clarification, rejection wizard) และถูกขยายโดย l10n_fr_pdp"}},
+    {"module": "account_peppol_advanced_fields", "successor": null, "note": {"en": "Was marked [DEPRECATED]; none of its six peppol_*_reference fields exist in v20, so their data is orphaned.", "th": "เคยถูกระบุว่า [DEPRECATED] ฟิลด์ peppol_*_reference ทั้งหกไม่มีใน v20 ข้อมูลในฟิลด์เหล่านั้นจึงไม่มีที่ใช้"}},
+    {"module": "base_vat", "successor": "base + l10n_eu_account_vies", "note": {"en": "Offline validation moved to base (_check_vat), online VIES to l10n_eu_account_vies, and the vat_check_vies setting to account.", "th": "การตรวจสอบแบบ offline ย้ายไป base (_check_vat), VIES ออนไลน์ไป l10n_eu_account_vies และการตั้งค่า vat_check_vies ไป account"}},
+    {"module": "base_iban", "successor": "account", "note": {"en": "Validation moved to odoo/tools/bank_account_number.py and account/models/res_partner_bank.py; the IBAN widget is replaced by account_number_widget (Medium confidence, widget mapping inferred from name).", "th": "การตรวจสอบย้ายไป odoo/tools/bank_account_number.py และ account/models/res_partner_bank.py โดย IBAN widget ถูกแทนด้วย account_number_widget (ความเชื่อมั่นระดับ Medium เพราะการจับคู่ widget อนุมานจากชื่อ)"}},
+    {"module": "account.group (model)", "successor": "account.account (parent_id)", "note": {"en": "Account groups replaced by parent accounts in the chart of accounts.", "th": "account groups ถูกแทนที่ด้วย parent accounts ในผังบัญชี"}},
+    {"module": "res.bank (model)", "successor": "res.partner.bank", "note": {"en": "Bank data is denormalised onto res.partner.bank.", "th": "ข้อมูลธนาคารถูกย้ายมาเก็บแบบ denormalised บน res.partner.bank"}}
+  ]
+}

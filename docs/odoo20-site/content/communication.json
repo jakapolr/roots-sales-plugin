@@ -1,0 +1,248 @@
+{
+  "id": "communication",
+  "title": {"en": "Communication, Collaboration & Contacts", "th": "การสื่อสาร การทำงานร่วมกัน และผู้ติดต่อ"},
+  "tagline": {
+    "en": "Discuss, chatter, email/SMS, Live Chat, Calendar, portal and contacts in Odoo 20 CE, with new multi-calendar, polls, optional field tracking and unified ir.access security.",
+    "th": "Discuss, chatter, อีเมล/SMS, Live Chat, Calendar, portal และ contacts ใน Odoo 20 CE พร้อมระบบ multi-calendar, polls, field tracking แบบเลือกติดตั้ง และความปลอดภัยแบบรวมศูนย์ ir.access"
+  },
+  "apps": ["mail", "mail_tracking", "mail_bot", "mail_group", "mail_plugin", "im_livechat", "website_livechat", "sms", "snailmail", "calendar", "google_calendar", "microsoft_calendar", "portal", "portal_discuss", "contacts", "partner_autocomplete", "phone_validation", "project_todo", "rating", "resource", "link_tracker", "utm", "mysubscription"],
+  "functional": [
+    {
+      "title": {"en": "Calendar supports multiple calendars and sharing", "th": "Calendar รองรับหลายปฏิทินและการแชร์"},
+      "body": {
+        "en": "Each user can have several calendars (calendar.calendar) with owner/writer roles, colours and a primary calendar that cannot be deleted. Calendars can be shared with colleagues, and privacy gains a new 'Shared Calendar Members Only' value.",
+        "th": "ผู้ใช้แต่ละคนมีได้หลายปฏิทิน (calendar.calendar) พร้อมบทบาท owner/writer สีประจำปฏิทิน และปฏิทินหลักที่ลบไม่ได้ สามารถแชร์ปฏิทินให้เพื่อนร่วมงานได้ และความเป็นส่วนตัวมีค่าใหม่ 'Shared Calendar Members Only'"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Discuss polls, bookmarks and read-only channels", "th": "Discuss มี polls, bookmarks และช่องอ่านอย่างเดียว"},
+      "body": {
+        "en": "Polls with multiple-choice options and end time are new. Starred messages become bookmarks, channels can be read-only (only admins post), and channels get owner/admin roles and sidebar categories.",
+        "th": "polls ที่มีตัวเลือกแบบเลือกได้หลายข้อและเวลาสิ้นสุดเป็นฟีเจอร์ใหม่ ข้อความที่ติดดาวกลายเป็น bookmarks ช่องสามารถตั้งเป็นอ่านอย่างเดียวได้ (เฉพาะ admin โพสต์ได้) และมีบทบาท owner/admin กับหมวดหมู่ใน sidebar"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Call recording UI exists but CE has no storage backend", "th": "มี UI บันทึกการโทร แต่ CE ไม่มี storage backend"},
+      "body": {
+        "en": "Meetings, recording artifacts and a call debrief widget ship in CE, but the recording upload hook raises NotFound. Do not promise recording or transcription on CE; any 'Discuss AI' is Enterprise.",
+        "th": "CE มี meetings, recording artifacts และ call debrief widget แต่ hook สำหรับอัปโหลดการบันทึกจะ raise NotFound อย่าสัญญาเรื่องการบันทึกหรือถอดเสียงบน CE และ 'Discuss AI' ใดๆ เป็นของ Enterprise"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Resource calendars redesigned (fixed / variable / undefined)", "th": "ออกแบบ resource calendars ใหม่ (fixed / variable / undefined)"},
+      "body": {
+        "en": "Working schedules now use calendar_type fixed, variable (dated, multi-week rotations) or undefined (flexible hours). Two-week calendars and flexible-hours settings are replaced, so HR, planning and work-entry setups need review.",
+        "th": "ตารางเวลาทำงานใช้ calendar_type แบบ fixed, variable (ระบุวันที่ หมุนเวียนหลายสัปดาห์) หรือ undefined (ชั่วโมงยืดหยุ่น) ปฏิทินสองสัปดาห์และการตั้งค่า flexible hours ถูกแทนที่ จึงต้องตรวจสอบการตั้งค่า HR, planning และ work entries"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Live Chat: ratings simplified, conversation tags removed", "th": "Live Chat: ปรับ ratings ให้เรียบง่ายขึ้น และลบ conversation tags"},
+      "body": {
+        "en": "Ratings are now a Happy/Neutral/Unhappy selection on the chat channel instead of rating.rating records, and conversation tags are removed with no successor found. Reports based on the old data will be empty.",
+        "th": "ratings เป็นตัวเลือก Happy/Neutral/Unhappy บน chat channel แทนระเบียน rating.rating และ conversation tags ถูกลบโดยไม่พบสิ่งทดแทน รายงานที่อิงข้อมูลเดิมจะว่างเปล่า"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Portal home cards and Discuss for portal users", "th": "การ์ดหน้าแรก portal และ Discuss สำหรับผู้ใช้ portal"},
+      "body": {
+        "en": "The /my home cards are now data records (portal.entry). The new auto-installed portal_discuss adds a Discuss card at /my/conversations, shown only if the partner belongs to a channel.",
+        "th": "การ์ดหน้าแรก /my กลายเป็นระเบียนข้อมูล (portal.entry) โมดูลใหม่ portal_discuss ที่ติดตั้งอัตโนมัติเพิ่มการ์ด Discuss ที่ /my/conversations โดยแสดงเฉพาะเมื่อพาร์ทเนอร์เป็นสมาชิกของ channel"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "CC recipients and activity roles in core mail", "th": "CC recipients และ activity roles ในระบบ mail หลัก"},
+      "body": {
+        "en": "CC is now native on messages, mails and templates, and activities can be assigned to a role (res.role). Activity types keep a single suggested next type, and activities can carry a phone number.",
+        "th": "CC เป็นฟีเจอร์พื้นฐานในข้อความ อีเมล และ templates และสามารถมอบหมาย activities ให้ role (res.role) ได้ activity types เหลือ suggested next type เพียงค่าเดียว และ activities มีเบอร์โทรได้"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "Google working locations, SMS scheduling, Snailmail webhook", "th": "Google working locations, การตั้งเวลาส่ง SMS, webhook ของ Snailmail"},
+      "body": {
+        "en": "hr_calendar_google (auto-install) imports Google working-location events into hr.work.location. SMS can be scheduled with a character counter, and snailmail now receives Pingen delivery status via webhook and is no longer auto-installed.",
+        "th": "hr_calendar_google (ติดตั้งอัตโนมัติ) นำเข้า working-location events ของ Google ไปยัง hr.work.location SMS ตั้งเวลาส่งได้และมีตัวนับตัวอักษร ส่วน snailmail รับสถานะการจัดส่งจาก Pingen ผ่าน webhook และไม่ติดตั้งอัตโนมัติอีกต่อไป"
+      },
+      "impact": "low", "kind": "new"
+    },
+    {
+      "title": {"en": "mysubscription dashboard", "th": "แดชบอร์ด mysubscription"},
+      "body": {
+        "en": "A new auto-installed 'My Subscription' client action shows plan, database and IAP credits. On a CE database without subscription parameters it shows no subscription; intent is Medium confidence.",
+        "th": "client action 'My Subscription' ใหม่ที่ติดตั้งอัตโนมัติแสดงแผน ฐานข้อมูล และเครดิต IAP บนฐานข้อมูล CE ที่ไม่มีพารามิเตอร์ subscription จะแสดงว่าไม่มี subscription (ความมั่นใจเรื่องเจตนาอยู่ระดับ Medium)"
+      },
+      "impact": "low", "kind": "new"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "ir.access replaces ir.model.access and ir.rule in module data", "th": "ir.access มาแทน ir.model.access และ ir.rule ในข้อมูลโมดูล"},
+      "body": {
+        "en": "security/ir.access.csv (columns id,name,model_id,group_id/id,operation,domain) replaces the access CSV and security XML. A row with a group is a permission and a row without a group is a restriction; mail adds stored res_access_* booleans on mail.message and mail.activity.",
+        "th": "security/ir.access.csv (คอลัมน์ id,name,model_id,group_id/id,operation,domain) มาแทน access CSV และ security XML แถวที่มี group คือ permission และแถวที่ไม่มี group คือ restriction ส่วน mail เพิ่ม boolean แบบ stored ชื่อ res_access_* บน mail.message และ mail.activity"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/addons/base/models/ir_access.py", "addons/mail/models/ir_access.py", "addons/mail/models/mail_message.py", "addons/mail/models/mail_activity.py"]
+    },
+    {
+      "title": {"en": "Field tracking storage split into optional mail_tracking", "th": "แยกที่เก็บ field tracking ไปเป็นโมดูล mail_tracking แบบเลือกติดตั้ง"},
+      "body": {
+        "en": "mail keeps change detection in the new abstract mail.track.mixin, while mail.tracking.value and tracking_value_ids move to mail_tracking (not auto-install). Bridges mail_tracking_mass_mailing and mail_tracking_sms add source_mailing_id and source_sms_template_id.",
+        "th": "mail ยังคงการตรวจจับการเปลี่ยนแปลงไว้ใน abstract mail.track.mixin ใหม่ ส่วน mail.tracking.value และ tracking_value_ids ย้ายไปที่ mail_tracking (ไม่ติดตั้งอัตโนมัติ) โมดูลเชื่อม mail_tracking_mass_mailing และ mail_tracking_sms เพิ่ม source_mailing_id และ source_sms_template_id"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/mail/models/mail_track_mixin.py", "addons/mail_tracking/", "addons/mail/models/mail_thread.py"]
+    },
+    {
+      "title": {"en": "Starred messages renamed to bookmarks", "th": "เปลี่ยนชื่อ starred messages เป็น bookmarks"},
+      "body": {
+        "en": "starred_partner_ids and starred become bookmarked_partner_ids and is_bookmarked on mail.message. Custom code, domains or SQL using starred will break.",
+        "th": "starred_partner_ids และ starred กลายเป็น bookmarked_partner_ids และ is_bookmarked บน mail.message โค้ด domain หรือ SQL ที่ใช้ starred จะเสียหาย"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/mail/models/mail_message.py"]
+    },
+    {
+      "title": {"en": "mail.thread.cc mixin removed; CC is native", "th": "ลบ mixin mail.thread.cc และใช้ CC แบบ native"},
+      "body": {
+        "en": "mail_thread_cc.py is deleted (crm, project, hr_recruitment and maintenance used it in 19). Use partner_cc_ids on mail.message, recipient_cc_ids on mail.mail and partner_cc on mail.template; gateway parsing lives in mail_thread.py.",
+        "th": "ลบ mail_thread_cc.py แล้ว (crm, project, hr_recruitment และ maintenance ใช้ใน 19) ให้ใช้ partner_cc_ids บน mail.message, recipient_cc_ids บน mail.mail และ partner_cc บน mail.template การ parse ใน gateway อยู่ใน mail_thread.py"
+      },
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/mail/models/mail_message.py", "addons/mail/models/mail_thread.py"]
+    },
+    {
+      "title": {"en": "mail_bot and post-hook signatures changed", "th": "เปลี่ยน signature ของ mail_bot และ post hook"},
+      "body": {
+        "en": "mail.bot._apply_logic now receives the saved mail.message instead of a values dict, and _message_post_after_hook(self, message) lost its msg_vals parameter. Overrides in custom modules must be updated.",
+        "th": "mail.bot._apply_logic รับ mail.message ที่บันทึกแล้วแทน dict ของค่า และ _message_post_after_hook(self, message) ไม่มีพารามิเตอร์ msg_vals อีกต่อไป ต้องแก้ไข override ในโมดูลที่พัฒนาเอง"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/mail_bot/models/mail_bot.py"]
+    },
+    {
+      "title": {"en": "Calendar models and per-calendar Google/Microsoft sync", "th": "โมเดล Calendar และการ sync Google/Microsoft ต่อปฏิทิน"},
+      "body": {
+        "en": "calendar.calendar and calendar.user are new, and events carry calendar_id. google.calendar.sync is replaced by google.sync plus google.event.sync, with per-calendar google_sync_token and google_calendar_cal_id dropped.",
+        "th": "calendar.calendar และ calendar.user เป็นโมเดลใหม่ และ events มี calendar_id google.calendar.sync ถูกแทนด้วย google.sync และ google.event.sync โดยมี google_sync_token ต่อปฏิทิน และฟิลด์ google_calendar_cal_id ถูกลบ"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/calendar/models/calendar_calendar.py", "addons/calendar/models/calendar_user.py", "addons/google_calendar/models/google_event_sync.py"]
+    },
+    {
+      "title": {"en": "resource.calendar schema rewrite", "th": "เขียน schema ของ resource.calendar ใหม่"},
+      "body": {
+        "en": "calendar_type replaces schedule_type, flexible_hours, two_weeks_calendar, duration_based and duration_days. attendance_ids_1st_week/_2nd_week and week_type are removed; attendances gain date and recurrence fields. Data migration is outside this repo.",
+        "th": "calendar_type มาแทน schedule_type, flexible_hours, two_weeks_calendar, duration_based และ duration_days ลบ attendance_ids_1st_week/_2nd_week และ week_type ออก โดย attendances มีฟิลด์ date และ recurrence เพิ่ม การย้ายข้อมูลอยู่นอก repo นี้"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/resource/models/resource_calendar.py"]
+    },
+    {
+      "title": {"en": "Livechat rating, dependencies and removed fields", "th": "rating, dependencies และฟิลด์ที่ถูกลบของ Livechat"},
+      "body": {
+        "en": "im_livechat no longer depends on rating; discuss.channel.livechat_rating is a 1/3/5 selection and rating_rating.py is deleted. conversation_tag_ids, livechat_operator_id and is_forward_operator are removed (operator replacement is Medium confidence).",
+        "th": "im_livechat ไม่พึ่งพา rating อีกต่อไป discuss.channel.livechat_rating เป็น selection 1/3/5 และลบ rating_rating.py ฟิลด์ conversation_tag_ids, livechat_operator_id และ is_forward_operator ถูกลบ (สิ่งทดแทน operator อยู่ระดับ Medium confidence)"
+      },
+      "impact": "medium", "kind": "removed",
+      "refs": ["addons/im_livechat/models/discuss_channel.py"]
+    },
+    {
+      "title": {"en": "Portal chatter rebuilt and portal.entry introduced", "th": "สร้าง portal chatter ใหม่ และเพิ่ม portal.entry"},
+      "body": {
+        "en": "portal_chatter.js, portal_chatter_service.js and controllers/portal_thread.py are removed; the mail chatter code is reused. Home cards are portal.entry records extended via _filter_visible_portal_cards.",
+        "th": "ลบ portal_chatter.js, portal_chatter_service.js และ controllers/portal_thread.py แล้วใช้โค้ด chatter ของ mail แทน การ์ดหน้าแรกเป็นระเบียน portal.entry ที่ขยายผ่าน _filter_visible_portal_cards"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/portal/models/portal_entry.py", "addons/portal/controllers/portal_thread.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {
+        "en": "Install mail_tracking on upgraded databases if you need structured tracking history or message origin; v19 databases already have the mail_tracking_value table. Custom modules using mail.tracking.value or tracking_value_ids must add mail_tracking to depends. Nothing besides test modules depends on it, so verify on a clean database.",
+        "th": "ให้ติดตั้ง mail_tracking บนฐานข้อมูลที่อัปเกรดหากต้องการประวัติ tracking แบบโครงสร้างหรือที่มาของข้อความ เพราะฐานข้อมูล v19 มีตาราง mail_tracking_value อยู่แล้ว โมดูลที่เขียนเองและใช้ mail.tracking.value หรือ tracking_value_ids ต้องเพิ่ม mail_tracking ใน depends ไม่มีโมดูลอื่นนอกจากโมดูลทดสอบที่พึ่งพามัน จึงควรตรวจสอบบนฐานข้อมูลใหม่"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Any custom module shipping ir.model.access.csv or ir.rule XML must be ported to ir.access.",
+        "th": "โมดูลที่เขียนเองที่มี ir.model.access.csv หรือ ir.rule XML ต้องย้ายไปใช้ ir.access"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Livechat: back up rating.rating rows and conversation tags before upgrade, since reports based on them will be empty. Validate the Happy/Neutral/Unhappy mapping.",
+        "th": "Livechat: สำรองข้อมูลแถว rating.rating และ conversation tags ก่อนอัปเกรด เพราะรายงานที่อิงข้อมูลเหล่านี้จะว่างเปล่า และตรวจสอบการแมป Happy/Neutral/Unhappy"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Calendar: each user should get a primary calendar (migration script not verified). Re-authorise or re-test Google sync, and check privacy defaults, which are now calendar-level, before adding shared members.",
+        "th": "Calendar: ผู้ใช้แต่ละคนควรมีปฏิทินหลัก (ยังไม่ได้ตรวจสอบ migration script) ให้อนุญาตสิทธิ์หรือทดสอบการ sync กับ Google ใหม่ และตรวจสอบค่าเริ่มต้นความเป็นส่วนตัวซึ่งตอนนี้อยู่ระดับปฏิทิน ก่อนเพิ่มสมาชิกที่แชร์"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Resource calendars: audit two-week calendars, flexible hours and duration_based configurations used by HR, payroll or planning customisations; they must migrate to the variable type.",
+        "th": "Resource calendars: ตรวจสอบปฏิทินสองสัปดาห์ flexible hours และการตั้งค่า duration_based ที่ใช้ใน HR, payroll หรือ planning ที่ปรับแต่งไว้ เพราะต้องย้ายไปเป็นประเภท variable"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Starred messages are now bookmarks; update domains, favourites, mail templates or SQL that reference starred. Also port OdooBot overrides and calls to _message_post_after_hook to the new signatures.",
+        "th": "starred messages กลายเป็น bookmarks ให้แก้ domain, favourites, mail templates หรือ SQL ที่อ้างอิง starred และปรับ override ของ OdooBot รวมถึงการเรียก _message_post_after_hook ให้ตรงกับ signature ใหม่"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Custom /my home templates, counters and portal chatter JS (portal_chatter*.js) need rework; use portal.entry records. Mail plugin clients must use only /mail_plugin/* routes since enrichment and the old /mail_client_extension aliases are gone.",
+        "th": "template หน้าแรก /my ตัวนับ และ JS ของ portal chatter (portal_chatter*.js) ที่ปรับแต่งไว้ต้องแก้ใหม่ โดยใช้ระเบียน portal.entry ส่วน client ของ mail plugin ต้องใช้เฉพาะ route /mail_plugin/* เพราะ enrichment และ alias /mail_client_extension เดิมถูกลบแล้ว"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Snailmail is no longer auto-installed and needs the Pingen webhook reachable from IAP (key in snailmail.webhook_signing_key); use attachment_raw instead of attachment_datas. Expect portal_discuss, mysubscription, hr_calendar_google and the mail_tracking bridges to auto-install, and remove base_vat/base_iban from custom depends.",
+        "th": "snailmail ไม่ติดตั้งอัตโนมัติอีกต่อไปและต้องให้ IAP เข้าถึง webhook ของ Pingen ได้ (คีย์อยู่ใน snailmail.webhook_signing_key) ให้ใช้ attachment_raw แทน attachment_datas คาดว่า portal_discuss, mysubscription, hr_calendar_google และโมดูลเชื่อมของ mail_tracking จะติดตั้งอัตโนมัติ และให้ลบ base_vat/base_iban ออกจาก depends ของโมดูลที่เขียนเอง"
+      },
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Call recording storage and transcription: CE ships the UI and data model but no backend (the upload hook raises NotFound).", "th": "ที่เก็บการบันทึกการโทรและการถอดเสียง: CE มี UI และโมเดลข้อมูล แต่ไม่มี backend (hook อัปโหลดจะ raise NotFound)"},
+    {"en": "Discuss AI / AI agents: CE only has hooks referencing an Enterprise ai module; no AI model or LLM call exists in CE.", "th": "Discuss AI / AI agents: CE มีเพียง hook ที่อ้างถึงโมดูล ai ของ Enterprise ไม่มีโมเดล AI หรือการเรียก LLM ใน CE"},
+    {"en": "Subscription management: mysubscription is only a dashboard shell; sale_subscription is Enterprise.", "th": "การจัดการ subscription: mysubscription เป็นเพียงหน้าแดชบอร์ด ส่วน sale_subscription เป็นของ Enterprise"},
+    {"en": "Livechat chatbots are rule-based scripts, not AI.", "th": "chatbot ของ Livechat เป็นสคริปต์ตามกฎ ไม่ใช่ AI"}
+  ],
+  "removed": [
+    {
+      "module": "base_vat",
+      "successor": "base",
+      "note": {
+        "en": "VAT checks merged into base (res.partner._check_vat, odoo/tools/partner_identifiers.py); the online VIES check moved to the new l10n_eu_account_vies.",
+        "th": "การตรวจ VAT ถูกรวมเข้า base (res.partner._check_vat, odoo/tools/partner_identifiers.py) ส่วนการตรวจ VIES ออนไลน์ย้ายไปที่โมดูลใหม่ l10n_eu_account_vies"
+      }
+    },
+    {
+      "module": "base_iban",
+      "successor": "account",
+      "note": {
+        "en": "IBAN tooling moved to odoo/tools/bank_account_number.py; the iban account type is added in account.",
+        "th": "เครื่องมือ IBAN ย้ายไปที่ odoo/tools/bank_account_number.py และประเภทบัญชี iban ถูกเพิ่มใน account"
+      }
+    }
+  ]
+}

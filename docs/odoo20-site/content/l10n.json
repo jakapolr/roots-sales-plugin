@@ -1,0 +1,321 @@
+{
+  "id": "l10n",
+  "title": {"en": "Localizations (l10n_*)", "th": "Localization (l10n_*)"},
+  "tagline": {
+    "en": "229 l10n modules in Odoo 20 CE (17 new, 19 removed), with Thailand `l10n_th` substantially rebuilt, plus ASEAN (VN, ID, MY, PH, SG, KH, MM) and Hong Kong `l10n_hk`.",
+    "th": "Odoo 20 CE มี l10n 229 โมดูล (ใหม่ 17 ถูกลบ 19) โดย Thailand `l10n_th` ถูกสร้างใหม่เกือบทั้งหมด พร้อมกลุ่ม ASEAN (VN, ID, MY, PH, SG, KH, MM) และ Hong Kong `l10n_hk`"
+  },
+  "apps": ["l10n_th", "l10n_account_withholding_tax", "account_qr_code_emv", "l10n_hk", "l10n_vn", "l10n_vn_edi_viettel", "l10n_id", "l10n_id_efaktur_coretax", "l10n_my", "l10n_my_edi", "l10n_ph", "l10n_ph_invoice", "l10n_sg", "l10n_sg_ubl_pint", "l10n_kh", "l10n_mm", "l10n_eu_account_vies"],
+  "functional": [
+    {
+      "title": {"en": "Thailand: tax invoice register with gap-free numbering", "th": "ประเทศไทย: ทะเบียนใบกำกับภาษีพร้อมเลขที่เอกสารไม่ขาดตอน"},
+      "body": {
+        "en": "New model `l10n_th.tax.invoice` creates a tax invoice (ใบกำกับภาษี) on posting when the company is flagged \"VAT Registered\", using gap-free sequences `TINV/YYYY/#####` and `RCT/YYYY/#####`. For cash-basis (on_payment) VAT, one Receipt/Tax Invoice is issued per (partial) payment and is cancelled automatically when the invoice or payment is reversed.",
+        "th": "โมเดลใหม่ `l10n_th.tax.invoice` สร้างใบกำกับภาษีเมื่อ post เอกสาร หากบริษัทติ๊ก \"VAT Registered\" โดยใช้ sequence แบบไม่ขาดตอน `TINV/YYYY/#####` และ `RCT/YYYY/#####` สำหรับ VAT แบบ cash-basis (on_payment) ระบบจะออกใบเสร็จรับเงิน/ใบกำกับภาษีหนึ่งใบต่อการชำระเงิน (รวมการชำระบางส่วน) และยกเลิกอัตโนมัติเมื่อมีการ reverse ใบแจ้งหนี้หรือการชำระเงิน"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Thailand: withholding tax now applied at payment time", "th": "ประเทศไทย: ภาษีหัก ณ ที่จ่ายถูกบันทึกตอนชำระเงิน"},
+      "body": {
+        "en": "38 of 48 taxes are flagged as withholding, covering 15 income types under sections 40(2)-40(8) and PND3/53/54. WHT is no longer deducted on the bill: on Pay, choose Withhold and Pay / Withhold Only / Payment Only, and the invoice shows \"Net Due\". This changes aging reports, \"net payable\" expectations and posting dates for 213302/213303/213304.",
+        "th": "ภาษี 38 จาก 48 รายการถูกตั้งเป็นภาษีหัก ณ ที่จ่าย ครอบคลุมเงินได้ 15 ประเภทตามมาตรา 40(2)-40(8) และ ภ.ง.ด.3/53/54 ภาษีไม่ถูกหักที่ใบแจ้งหนี้อีกต่อไป แต่เลือก Withhold and Pay / Withhold Only / Payment Only ตอนกดชำระเงิน และใบแจ้งหนี้แสดง \"Net Due\" ซึ่งกระทบรายงาน aging ความคาดหวังเรื่องยอดสุทธิที่ต้องจ่าย และวันที่บันทึกบัญชี 213302/213303/213304"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Thailand: 50 Tawi certificate with bulk ZIP download", "th": "ประเทศไทย: หนังสือรับรองการหักภาษี ณ ที่จ่าย (50 ทวิ) พร้อมดาวน์โหลดเป็น ZIP"},
+      "body": {
+        "en": "New \"50 Tawi\" PDF (หนังสือรับรองการหักภาษี ณ ที่จ่าย) via the \"Print 50 Tawi\" button on paid outbound payments, plus a bulk list action that zips one PDF per payment. The condition (at source / forever / one-time) is set in `l10n_th_wth_condition`; the form is generated only for purchase WHT payments.",
+        "th": "มีรายงาน \"50 Tawi\" ใหม่ (หนังสือรับรองการหักภาษี ณ ที่จ่าย) ผ่านปุ่ม \"Print 50 Tawi\" ที่การชำระเงินขาออกที่จ่ายแล้ว และมี bulk action ที่รวม PDF หนึ่งไฟล์ต่อหนึ่งการชำระเงินเป็น ZIP เงื่อนไขการหักภาษี (หัก ณ ที่จ่าย / ออกให้ตลอดไป / ออกให้ครั้งเดียว) ตั้งที่ `l10n_th_wth_condition` และพิมพ์ได้เฉพาะการชำระเงินที่มี WHT ฝั่งซื้อ"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Thailand: PND3/PND53 reports removed (regression for filing)", "th": "ประเทศไทย: รายงาน ภ.ง.ด.3/ภ.ง.ด.53 ถูกลบออก (ถดถอยด้านการยื่นแบบ)"},
+      "body": {
+        "en": "Both v19 PND3 and PND53 tax reports are gone and there is no PND report or RD e-filing export in CE 20; only the per-payment 50 Tawi remains. The data exists on WHT lines, so the client must produce ภ.ง.ด. returns externally. Interpretation as a regression is Medium confidence.",
+        "th": "รายงานภาษี ภ.ง.ด.3 และ ภ.ง.ด.53 ของ v19 ถูกลบทั้งสองรายงาน และใน CE 20 ไม่มีรายงาน ภ.ง.ด. หรือไฟล์ส่งออกสำหรับ e-filing ของกรมสรรพากร เหลือเพียง 50 ทวิ รายต่อการชำระเงิน ข้อมูลยังอยู่ที่รายการ WHT ลูกค้าจึงต้องจัดทำแบบ ภ.ง.ด. ภายนอก การตีความว่าเป็นการถดถอยมีความเชื่อมั่นระดับ Medium"
+      },
+      "impact": "high", "kind": "removed"
+    },
+    {
+      "title": {"en": "Thailand: VAT taxes, fiscal positions and P.P. 30 report", "th": "ประเทศไทย: ภาษีมูลค่าเพิ่ม, Fiscal Position และรายงาน ภ.พ.30"},
+      "body": {
+        "en": "VAT taxes grow from 6 to 10 (7% on-payment VAT for services, non-deductible input VAT, P.P.36 reverse charge inactive by default). 5 auto-apply fiscal positions (domestic company/individual, foreign entity/individual, government) swap PND3 and PND53 and map 7% to 0%. The tax report is renamed \"P.P. 30 - VAT Report\" (ภ.พ.30) with coded tags `PP30_*`.",
+        "th": "ภาษีมูลค่าเพิ่มเพิ่มจาก 6 เป็น 10 รายการ (VAT 7% แบบ on-payment สำหรับบริการ, ภาษีซื้อต้องห้าม, ภาษีย้อนกลับ ภ.พ.36 ที่ปิดไว้เป็นค่าเริ่มต้น) มี fiscal position แบบ auto-apply 5 รายการ (บริษัท/บุคคลในประเทศ, นิติบุคคล/บุคคลต่างประเทศ, หน่วยงานรัฐ) ที่สลับ ภ.ง.ด.3 กับ ภ.ง.ด.53 และเปลี่ยน VAT 7% เป็น 0% รายงานภาษีเปลี่ยนชื่อเป็น \"P.P. 30 - VAT Report\" (ภ.พ.30) พร้อม tag แบบรหัส `PP30_*`"
+      },
+      "impact": "high", "kind": "changed"
+    },
+    {
+      "title": {"en": "Thailand: credit/debit notes, PromptPay and partner fields", "th": "ประเทศไทย: ใบลดหนี้/ใบเพิ่มหนี้, PromptPay และฟิลด์ลูกค้า"},
+      "body": {
+        "en": "Credit and debit notes (ใบลดหนี้/ใบเพิ่มหนี้) print an \"Original Amount / Correct Amount\" block. PromptPay QR is relabelled \"PromptPay QR Code\" with its own settings block. Partners get title, Thai company type and a computed \"Branch NNNNN / Headquarter\" from `TH_BRANCH_CODE` (00000 = HQ), plus a Thai address layout.",
+        "th": "ใบลดหนี้/ใบเพิ่มหนี้พิมพ์ส่วน \"Original Amount / Correct Amount\" PromptPay QR เปลี่ยนชื่อเป็น \"PromptPay QR Code\" และมีส่วนตั้งค่าของตัวเอง ลูกค้า/คู่ค้ามีคำนำหน้า ประเภทบริษัทแบบไทย และแสดง \"Branch NNNNN / Headquarter\" ที่คำนวณจาก `TH_BRANCH_CODE` (00000 = สำนักงานใหญ่) พร้อมรูปแบบที่อยู่ไทย"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "ASEAN: authority connectors in CE (VN, ID, MY, SG) but not Thailand", "th": "ASEAN: มี connector กับหน่วยงานภาษีใน CE (VN, ID, MY, SG) แต่ไม่มีของไทย"},
+      "body": {
+        "en": "Vietnam (Viettel SInvoice, new stock-picking e-invoicing), Indonesia (e-Faktur Coretax, new QRIS on self-order kiosks), Malaysia (MyInvois, now auto-installs with `l10n_my`) and Singapore (InvoiceNow/Peppol built into `l10n_sg` with IRAS GST codes) all have authority connectors. Charts were expanded (VN 218->301, ID 114->199, MY 77->239, PH 104->166, KH 106->191).",
+        "th": "เวียดนาม (Viettel SInvoice และ e-invoice ใหม่สำหรับ stock picking), อินโดนีเซีย (e-Faktur Coretax และ QRIS ใหม่บน kiosk แบบ self-order), มาเลเซีย (MyInvois ที่ติดตั้งอัตโนมัติพร้อม `l10n_my`) และสิงคโปร์ (InvoiceNow/Peppol ฝังใน `l10n_sg` พร้อมรหัส GST ของ IRAS) ล้วนมี connector กับหน่วยงานภาษี ผังบัญชีขยายใหญ่ขึ้น (VN 218->301, ID 114->199, MY 77->239, PH 104->166, KH 106->191)"
+      },
+      "impact": "high", "kind": "new"
+    },
+    {
+      "title": {"en": "Philippines, Cambodia, Myanmar changes", "th": "การเปลี่ยนแปลงของฟิลิปปินส์ กัมพูชา และเมียนมา"},
+      "body": {
+        "en": "Philippines: new SC/PWD discount privileges (`l10n_ph_invoice`, `l10n_ph_sale`), BIR CAS invoice and 50 WHT taxes, but the BIR 2307 wizard was removed with no CE successor. Cambodia: forms T7001/WT003 and KHQR kept. Myanmar `l10n_mm` is new, with chart, taxes, WHT and MMQR.",
+        "th": "ฟิลิปปินส์: มีสิทธิ์ส่วนลด SC/PWD ใหม่ (`l10n_ph_invoice`, `l10n_ph_sale`), ใบแจ้งหนี้ BIR CAS และภาษี WHT 50 รายการ แต่ wizard BIR 2307 ถูกลบโดยไม่มีตัวแทนใน CE กัมพูชา: ยังมีแบบ T7001/WT003 และ KHQR เมียนมา `l10n_mm` เป็นโมดูลใหม่ มีผังบัญชี ภาษี WHT และ MMQR"
+      },
+      "impact": "medium", "kind": "new"
+    },
+    {
+      "title": {"en": "Hong Kong: chart rebuilt, FPS QR, no tax localization", "th": "ฮ่องกง: ผังบัญชีสร้างใหม่ พร้อม FPS QR และไม่มี tax localization"},
+      "body": {
+        "en": "`l10n_hk` chart is rebuilt from 76 to 218 accounts with 6-digit codes, parent hierarchy and 7 depreciation models. FPS QR (FPS ID, mobile, email; HKD only) is labelled \"FPS QR Code\". Hong Kong has no VAT/GST, so there are no taxes, tax report or EDI; MPF/payroll, profits-tax computation and IRD e-filing are not in CE.",
+        "th": "ผังบัญชี `l10n_hk` ถูกสร้างใหม่จาก 76 เป็น 218 บัญชี ใช้รหัส 6 หลัก มีลำดับชั้น parent และ depreciation model 7 รายการ FPS QR (FPS ID, เบอร์มือถือ, อีเมล; เฉพาะ HKD) ใช้ชื่อ \"FPS QR Code\" ฮ่องกงไม่มี VAT/GST จึงไม่มีภาษี รายงานภาษี หรือ EDI และ MPF/payroll การคำนวณ profits tax และ IRD e-filing ไม่อยู่ใน CE"
+      },
+      "impact": "medium", "kind": "changed"
+    }
+  ],
+  "technical": [
+    {
+      "title": {"en": "Generic withholding engine `l10n_account_withholding_tax` reworked", "th": "ปรับปรุง engine ภาษีหัก ณ ที่จ่ายทั่วไป `l10n_account_withholding_tax`"},
+      "body": {
+        "en": "`is_withholding_tax_on_payment` is renamed `is_withholding_tax` (sign forced negative) and the boolean `should_withhold_tax` is replaced by the `withhold` selection (`withhold_pay` / `withhold` / `payment`). New computed `withholding_amount` / `withholding_net_amount` and `account.move` fields `withholding_*_amount_currency`; `amount_residual` now includes withholding due. Dependents grow from 5 to 12 (AR, BD, EG, IN, KH, LK, MM, PH, PK, SA, TH). Any custom code using the old names breaks.",
+        "th": "`is_withholding_tax_on_payment` เปลี่ยนชื่อเป็น `is_withholding_tax` (บังคับเครื่องหมายลบ) และ boolean `should_withhold_tax` ถูกแทนด้วย selection `withhold` (`withhold_pay` / `withhold` / `payment`) มี computed field ใหม่ `withholding_amount` / `withholding_net_amount` และฟิลด์ `withholding_*_amount_currency` บน `account.move` และ `amount_residual` รวมยอดภาษีหัก ณ ที่จ่ายที่ค้างแล้ว จำนวนโมดูลที่พึ่งพาเพิ่มจาก 5 เป็น 12 (AR, BD, EG, IN, KH, LK, MM, PH, PK, SA, TH) โค้ดกำหนดเองที่ใช้ชื่อเดิมจะพัง"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/l10n_account_withholding_tax/models/account_tax.py", "addons/l10n_account_withholding_tax/models/account_payment.py", "addons/l10n_account_withholding_tax/models/account_move.py"]
+    },
+    {
+      "title": {"en": "`l10n_th.tax.invoice` model and cash-basis hook", "th": "โมเดล `l10n_th.tax.invoice` และ hook ของ cash-basis"},
+      "body": {
+        "en": "States draft/posted/cancel with date-ranged per-company gap-free sequences. For on_payment taxes, records are created from the CABA entry in `account.partial.reconcile._create_tax_cash_basis_moves`, with ratio-adjusted lines, `amount_residual` and `is_partially_paid`. Mixed on-invoice/on-payment and group taxes are covered by tests. Printed through `action_report_tax_invoice`, which suppresses the QR/payment-link blocks.",
+        "th": "มีสถานะ draft/posted/cancel และ sequence แบบไม่ขาดตอนต่อบริษัทตามช่วงวันที่ สำหรับภาษีแบบ on_payment ระบบสร้างระเบียนจากรายการ CABA ใน `account.partial.reconcile._create_tax_cash_basis_moves` พร้อมรายการที่ปรับตามสัดส่วน, `amount_residual` และ `is_partially_paid` กรณีภาษีแบบผสม on-invoice/on-payment และ group tax มี test ครอบคลุม พิมพ์ผ่าน `action_report_tax_invoice` ซึ่งซ่อนบล็อก QR/payment link"
+      },
+      "impact": "high", "kind": "new",
+      "refs": ["addons/l10n_th/models/l10n_th_tax_invoice.py", "addons/l10n_th/models/account_move.py", "addons/l10n_th/models/account_partial_reconcile.py", "addons/l10n_th/tests/test_l10n_th_tax_invoice.py"]
+    },
+    {
+      "title": {"en": "`account.group` removed; charts use `parent_id`", "th": "ลบ `account.group` แล้ว ผังบัญชีใช้ `parent_id`"},
+      "body": {
+        "en": "All 54 `account.group-*.csv` files from v19 l10n modules are gone (0 in v20); charts use the `parent_id` hierarchy on `account.account`. 35 charts now ship `account.depreciation.model-*.csv` (0 in v19). Custom charts or report domains using account groups must move to `parent_id`.",
+        "th": "ไฟล์ `account.group-*.csv` ทั้ง 54 ไฟล์ของโมดูล l10n ใน v19 ถูกลบ (v20 มี 0) ผังบัญชีใช้ลำดับชั้น `parent_id` บน `account.account` แทน และ 35 ผังบัญชีมี `account.depreciation.model-*.csv` (v19 มี 0) ผังบัญชีหรือ domain ของรายงานที่กำหนดเองซึ่งใช้ account group ต้องย้ายไปใช้ `parent_id`"
+      },
+      "impact": "high", "kind": "removed",
+      "refs": ["addons/account/models/account_account.py", "addons/l10n_hk/data/template/account.account-hk.csv"]
+    },
+    {
+      "title": {"en": "Partner identifiers: `additional_identifiers` replaces `base_vat` and LATAM types", "th": "ตัวระบุของ partner: `additional_identifiers` มาแทน `base_vat` และ LATAM identification types"},
+      "body": {
+        "en": "New JSON field `res.partner.additional_identifiers` with registry `odoo/tools/partner_identifiers.py` (127 types incl. TH_VAT, TH_BRANCH_CODE, SG_UEN, MY_EN, HK_BRN, ID_TIN, PH_TIN). `check_vat_*` (e.g. `check_vat_th`) now lives in core `res.partner`; `base_vat` and `base_iban` are removed, and l10n_latam_base is replaced. Custom manifests depending on `base_vat` must change.",
+        "th": "ฟิลด์ JSON ใหม่ `res.partner.additional_identifiers` พร้อม registry `odoo/tools/partner_identifiers.py` (127 ประเภท รวม TH_VAT, TH_BRANCH_CODE, SG_UEN, MY_EN, HK_BRN, ID_TIN, PH_TIN) ฟังก์ชัน `check_vat_*` (เช่น `check_vat_th`) อยู่ใน `res.partner` ของ core แล้ว `base_vat` และ `base_iban` ถูกลบ และ l10n_latam_base ถูกแทนที่ manifest ของโมดูลกำหนดเองที่ depends บน `base_vat` ต้องแก้ไข"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["odoo/tools/partner_identifiers.py", "odoo/tools/partner_identifier_validation.py", "odoo/addons/base/models/res_partner.py"]
+    },
+    {
+      "title": {"en": "Security files: `ir.access.csv`", "th": "ไฟล์ security: `ir.access.csv`"},
+      "body": {
+        "en": "`security/ir.model.access.csv` becomes `security/ir.access.csv` with new columns `operation` and `domain`, and record rules are folded in (52 l10n modules ship it in v20 vs 50 `ir.model.access.csv` in v19). For example `l10n_th` carries its multi-company rule inline.",
+        "th": "`security/ir.model.access.csv` เปลี่ยนเป็น `security/ir.access.csv` ที่มีคอลัมน์ใหม่ `operation` และ `domain` และรวม record rule เข้ามา (โมดูล l10n 52 ตัวใช้ใน v20 เทียบกับ `ir.model.access.csv` 50 ตัวใน v19) เช่น `l10n_th` ใส่ multi-company rule ไว้ในไฟล์เดียวกัน"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/l10n_th/security/ir.access.csv"]
+    },
+    {
+      "title": {"en": "EMV QR: `acc_number` -> `account_number` and `_get_emv_qr_code_names`", "th": "EMV QR: `acc_number` -> `account_number` และ `_get_emv_qr_code_names`"},
+      "body": {
+        "en": "`res.partner.bank.acc_number` is renamed `account_number`; EMV proxy fields are relabelled \"Account Identifier Type/Value\", and `_get_emv_qr_code_names()` gives each country its scheme name (PromptPay, FPS, MMQR, ...). Note: the THB-only error text in `l10n_th` still says \"PayNow\" (known cosmetic copy-paste bug). MMK is added to the EMV currency map for Myanmar.",
+        "th": "`res.partner.bank.acc_number` เปลี่ยนชื่อเป็น `account_number` ฟิลด์ proxy ของ EMV เปลี่ยนป้ายเป็น \"Account Identifier Type/Value\" และ `_get_emv_qr_code_names()` ให้ชื่อ scheme ของแต่ละประเทศ (PromptPay, FPS, MMQR, ...) หมายเหตุ: ข้อความ error ว่าใช้ได้เฉพาะ THB ใน `l10n_th` ยังเขียนว่า \"PayNow\" (bug ด้านการแสดงผลที่ทราบแล้ว จากการ copy-paste) และเพิ่ม MMK ใน EMV currency map สำหรับเมียนมา"
+      },
+      "impact": "high", "kind": "changed",
+      "refs": ["addons/account_qr_code_emv/models/res_bank.py", "addons/l10n_th/models/res_bank.py", "addons/l10n_hk/models/res_bank.py", "addons/account_qr_code_emv/const.py"]
+    },
+    {
+      "title": {"en": "`l10n_th` chart template defaults and tax data", "th": "ค่าเริ่มต้นของ chart template และข้อมูลภาษีของ `l10n_th`"},
+      "body": {
+        "en": "`template_th.py` sets 20+ defaults including `tax_exigibility: True`, `downpayment_account_id` and two no-gap sequences. Taxes gain `l10n_th_income_tax_type` (required on purchase WHT taxes) and `fiscal_position_ids`/`original_tax_ids`; 16 of 48 taxes are inactive by default. The chart (146 accounts, adds `213304 Tax Withheld - PND 54`) is still flat with no `parent_id` or depreciation models.",
+        "th": "`template_th.py` ตั้งค่าเริ่มต้นกว่า 20 รายการ รวมถึง `tax_exigibility: True`, `downpayment_account_id` และ sequence แบบไม่ขาดตอน 2 ชุด ภาษีมีฟิลด์ `l10n_th_income_tax_type` (จำเป็นสำหรับภาษีหัก ณ ที่จ่ายฝั่งซื้อ) และคอลัมน์ `fiscal_position_ids`/`original_tax_ids` โดย 16 จาก 48 รายการปิดไว้เป็นค่าเริ่มต้น ผังบัญชี (146 บัญชี เพิ่ม `213304 Tax Withheld - PND 54`) ยังเป็นแบบ flat ไม่มี `parent_id` หรือ depreciation model"
+      },
+      "impact": "medium", "kind": "changed",
+      "refs": ["addons/l10n_th/models/template_th.py", "addons/l10n_th/models/account_tax.py", "addons/l10n_th/data/template/account.tax-th.csv", "addons/l10n_th/data/template/account.fiscal.position-th.csv"]
+    },
+    {
+      "title": {"en": "Singapore Peppol wiring, Vietnam SInvoice service, new kiosk/stock bridges", "th": "การเชื่อม Peppol ของสิงคโปร์, SInvoice service ของเวียดนาม และ bridge ใหม่ของ kiosk/stock"},
+      "body": {
+        "en": "`l10n_sg` now depends on `account_edi_ubl_cii` + `account_peppol` and auto-registers SG receivers (scheme 0195 UEN); `account.tax.ubl_cii_tax_category_code` gains ~40 IRAS GST codes. `l10n_vn_edi_viettel` moves API calls into `SInvoiceService` and drops the cancellation-request wizard (Medium confidence on the replacement). `l10n_id_pos_self_order_qris` adds QRIS at kiosks (`_is_kiosk_qris`).",
+        "th": "`l10n_sg` depends บน `account_edi_ubl_cii` + `account_peppol` และลงทะเบียนผู้รับในสิงคโปร์อัตโนมัติ (scheme 0195 UEN) ส่วน `account.tax.ubl_cii_tax_category_code` เพิ่มรหัส GST ของ IRAS ราว 40 รหัส `l10n_vn_edi_viettel` ย้ายการเรียก API ไปที่ `SInvoiceService` และลบ wizard คำขอยกเลิก (ตัวแทนมีความเชื่อมั่น Medium) `l10n_id_pos_self_order_qris` เพิ่ม QRIS ที่ kiosk (`_is_kiosk_qris`)"
+      },
+      "impact": "medium", "kind": "new",
+      "refs": ["addons/l10n_sg/__manifest__.py", "addons/l10n_vn_edi_viettel/models/sinvoice_service.py", "addons/l10n_id_pos_self_order_qris/models/pos_payment_method.py", "addons/l10n_vn_edi_viettel_stock/models/stock_picking.py"]
+    }
+  ],
+  "gotchas": [
+    {
+      "text": {
+        "en": "`l10n_th` ships NO migration scripts and its version is unchanged. Existing v19 Thai databases keep old taxes (no WHT flags, no fiscal positions, no on-payment services VAT, no tax-invoice sequences); reloading the chart template does not overwrite taxes in use. Plan a remapping script and possibly a backfill of `l10n_th.tax.invoice` for RD audit.",
+        "th": "`l10n_th` ไม่มี migration script และหมายเลขเวอร์ชันไม่เปลี่ยน ฐานข้อมูลไทยเดิมจาก v19 จึงยังใช้ภาษีเก่า (ไม่มี flag WHT, ไม่มี fiscal position, ไม่มี VAT บริการแบบ on-payment, ไม่มี sequence ใบกำกับภาษี) และการโหลด chart template ใหม่จะไม่เขียนทับภาษีที่ใช้งานแล้ว ต้องวางแผน script ปรับ mapping และอาจต้อง backfill `l10n_th.tax.invoice` สำหรับการตรวจของกรมสรรพากร"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "WHT timing changed: v19 reduced the invoice at billing, v20 defers to payment. AP/AR aging, cash flow and the customer's \"net payable on the bill\" expectation change, and postings to 213302/213303/213304 occur at payment date. Train accountants and customers.",
+        "th": "เวลาที่บันทึกภาษีหัก ณ ที่จ่ายเปลี่ยนไป: v19 ลดยอดที่ใบแจ้งหนี้ตอนวางบิล แต่ v20 เลื่อนไปตอนชำระเงิน ทำให้ aging ของ AP/AR กระแสเงินสด และความคาดหวังของลูกค้าเรื่อง \"ยอดสุทธิบนบิล\" เปลี่ยนไป และการบันทึกบัญชี 213302/213303/213304 เกิดที่วันที่ชำระเงิน ต้องอบรมทั้งฝ่ายบัญชีและลูกค้า"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "PND3/PND53 reports are gone, so the client must produce ภ.ง.ด. returns externally. Custom code or reports using `is_withholding_tax_on_payment` or `should_withhold_tax` also break because those fields were renamed.",
+        "th": "รายงาน ภ.ง.ด.3/ภ.ง.ด.53 หายไป ลูกค้าจึงต้องทำแบบ ภ.ง.ด. ภายนอก และโค้ดหรือรายงานกำหนดเองที่อ้างถึง `is_withholding_tax_on_payment` หรือ `should_withhold_tax` จะพังเพราะฟิลด์ถูกเปลี่ยนชื่อ"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Tax invoice numbers `TINV/%(year)s/#####` and `RCT/...` are separate from the invoice number (INV/2026/...). Auditors expecting one number per tax invoice need the sequence prefix set by business rules; sequences are gap-free per company and year, so multi-branch (สาขา) clients should model branches as separate companies.",
+        "th": "เลขที่ใบกำกับภาษี `TINV/%(year)s/#####` และ `RCT/...` แยกจากเลขที่ใบแจ้งหนี้ (INV/2026/...) หากผู้ตรวจสอบต้องการเลขเดียวต่อใบกำกับภาษี ต้องตั้ง prefix ของ sequence ตามกฎธุรกิจ sequence ไม่ขาดตอนต่อบริษัทต่อปี ดังนั้นลูกค้าหลายสาขาควรกำหนดสาขาเป็นบริษัทแยก"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Cash-basis (on_payment) VAT needs the `tax_exigibility` company setting (the Thai template sets it True) and a transition account on the tax. Test partial payments and credit notes before go-live.",
+        "th": "VAT แบบ cash-basis (on_payment) ต้องเปิดการตั้งค่า `tax_exigibility` ของบริษัท (template ไทยตั้งเป็น True) และมี transition account ที่ภาษี ควรทดสอบการชำระบางส่วนและใบลดหนี้ก่อน go-live"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "The PromptPay QR is suppressed on the tax invoice PDF (`report_tax_invoice_document` replaces the `#qrcode` and `#payment_link_qrcode` divs). Customers wanting it must reintroduce it. The 50 Tawi form fills only purchase WHT payments with `l10n_th_income_tax_type != 'na'`, and needs the Thai language active or it falls back to English.",
+        "th": "QR PromptPay ถูกซ่อนในใบกำกับภาษี PDF (`report_tax_invoice_document` แทนที่ div `#qrcode` และ `#payment_link_qrcode`) หากลูกค้าต้องการต้องเพิ่มกลับเอง ส่วน 50 ทวิ จะพิมพ์เฉพาะการชำระเงินที่มี WHT ฝั่งซื้อและ `l10n_th_income_tax_type != 'na'` และต้องเปิดใช้ภาษาไทย มิฉะนั้นจะ fallback เป็นภาษาอังกฤษ"
+      },
+      "audience": "functional"
+    },
+    {
+      "text": {
+        "en": "Hong Kong: account codes and XML IDs were rewritten, so a standard upgrade does not remap an existing HK chart. Treat it as a re-code project (account merge) and update opening-balance and tax-return code lists in custom reports.",
+        "th": "ฮ่องกง: รหัสบัญชีและ XML ID ถูกเขียนใหม่ การ upgrade มาตรฐานจึงไม่ remap ผังบัญชี HK เดิม ให้ถือเป็นโปรเจกต์ re-code (รวมบัญชี) และแก้รายการรหัสของยอดยกมาและแบบยื่นภาษีในรายงานกำหนดเอง"
+      },
+      "audience": "technical"
+    },
+    {
+      "text": {
+        "en": "Removed capabilities with no CE successor: Turkey Nilvera e-invoicing, `l10n_uy_pos`, and the Philippines BIR 2307 wizard. Also `acc_number` -> `account_number`, `account.group` and `base_vat` removals, and LATAM `l10n_latam_identification_type_id` data needing migration into `additional_identifiers`. Check Enterprise coverage before promising an upgrade.",
+        "th": "ความสามารถที่ถูกลบโดยไม่มีตัวแทนใน CE: e-invoice Nilvera ของตุรกี, `l10n_uy_pos` และ wizard BIR 2307 ของฟิลิปปินส์ นอกจากนี้ยังมีการเปลี่ยน `acc_number` -> `account_number`, การลบ `account.group` และ `base_vat` และข้อมูล LATAM `l10n_latam_identification_type_id` ที่ต้อง migrate ไปยัง `additional_identifiers` ควรตรวจว่า Enterprise รองรับหรือไม่ก่อนรับปากเรื่องการ upgrade"
+      },
+      "audience": "technical"
+    }
+  ],
+  "not_in_ce": [
+    {"en": "Thai e-Tax Invoice & e-Receipt (Revenue Department / ETDA): nothing in CE, unlike VN, MY, ID, SG, TW and PK which have authority connectors.", "th": "e-Tax Invoice & e-Receipt ของไทย (กรมสรรพากร / ETDA): ไม่มีใน CE ต่างจาก VN, MY, ID, SG, TW และ PK ที่มี connector กับหน่วยงานภาษี"},
+    {"en": "PND 1/2/3/53/54 returns and RD e-filing exports: no report in CE 20 (the v19 PND3/PND53 reports were removed).", "th": "แบบ ภ.ง.ด.1/2/3/53/54 และไฟล์ e-filing สำหรับกรมสรรพากร: ไม่มีรายงานใน CE 20 (รายงาน ภ.ง.ด.3/53 ของ v19 ถูกลบ)"},
+    {"en": "Thai payroll, SSO, provident fund: payroll localizations (`l10n_*_hr_payroll`) are not in CE; Odoo payroll is Enterprise.", "th": "payroll ไทย, ประกันสังคม (SSO), กองทุนสำรองเลี้ยงชีพ: payroll localization (`l10n_*_hr_payroll`) ไม่อยู่ใน CE เพราะ Odoo payroll เป็น Enterprise"},
+    {"en": "Thailand POS (`l10n_th_pos`) with abbreviated tax invoice (ใบกำกับภาษีอย่างย่อ): does not exist; tax invoices are created only for out_invoice/out_receipt moves.", "th": "POS สำหรับไทย (`l10n_th_pos`) พร้อมใบกำกับภาษีอย่างย่อ: ไม่มี โดยระบบสร้างใบกำกับภาษีเฉพาะ out_invoice/out_receipt เท่านั้น"},
+    {"en": "Mexico CFDI, Brazil NF-e and LATAM e-invoicing (CL/PE/CO/UY/EC) are not in this CE repo (background knowledge, not code-verified): Enterprise or absent. Fixed-asset management for charts is Enterprise too.", "th": "CFDI ของเม็กซิโก, NF-e ของบราซิล และ e-invoice ของ LATAM (CL/PE/CO/UY/EC) ไม่อยู่ใน CE repo นี้ (ความรู้พื้นฐาน ไม่ได้ตรวจจากโค้ด) จึงเป็น Enterprise หรือไม่มี ส่วนการจัดการสินทรัพย์ถาวรก็เป็น Enterprise เช่นกัน"},
+    {"en": "Hong Kong MPF/payroll, profits-tax computation and IRD e-filing: not in CE (and none exist in any Odoo edition as far as this repo shows). Statutory statements would come from EE Accounting or the auditor's tools.", "th": "MPF/payroll ของฮ่องกง การคำนวณ profits tax และ IRD e-filing: ไม่อยู่ใน CE (และไม่มีใน Odoo edition ใดเท่าที่ repo นี้แสดง) งบการเงินตามกฎหมายต้องมาจาก EE Accounting หรือเครื่องมือของผู้สอบบัญชี"}
+  ],
+  "removed": [
+    {"module": "l10n_tr_nilvera (+ _base_vat, _einvoice, _einvoice_extended, _edispatch)", "successor": null, "note": {"en": "Turkey e-fatura/e-irsaliye via Nilvera: no successor in CE 20; likely moved to Enterprise or dropped (inference).", "th": "e-fatura/e-irsaliye ของตุรกีผ่าน Nilvera: ไม่มีตัวแทนใน CE 20 น่าจะย้ายไป Enterprise หรือถูกยกเลิก (inference)"}},
+    {"module": "l10n_dk_nemhandel / l10n_dk_nemhandel_response / l10n_dk_oioubl", "successor": "l10n_dk", "note": {"en": "Merged into `l10n_dk`, which now depends on `account_edi_proxy_client` and `account_edi_ubl_cii`.", "th": "รวมเข้า `l10n_dk` ซึ่งตอนนี้ depends บน `account_edi_proxy_client` และ `account_edi_ubl_cii`"}},
+    {"module": "l10n_latam_base", "successor": null, "note": {"en": "Replaced by core `additional_identifiers` plus per-country `tools/partner_identifiers.py`; data migration needed.", "th": "ถูกแทนที่ด้วย `additional_identifiers` ของ core และ `tools/partner_identifiers.py` รายประเทศ ต้องมีการ migrate ข้อมูล"}},
+    {"module": "l10n_cn_city", "successor": "l10n_cn", "note": {"en": "City data merged into `l10n_cn` (`data/res_city_data.xml`).", "th": "ข้อมูลเมืองรวมเข้า `l10n_cn` (`data/res_city_data.xml`)"}},
+    {"module": "l10n_ec_stock", "successor": "l10n_ec", "note": {"en": "Merged into `l10n_ec` via the `stock.location` chart template.", "th": "รวมเข้า `l10n_ec` ผ่าน chart template ของ `stock.location`"}},
+    {"module": "l10n_hu_edi_receive", "successor": "l10n_hu_edi", "note": {"en": "Receive-bills wizard and NAV sync merged into `l10n_hu_edi`.", "th": "wizard รับบิลและการ sync กับ NAV รวมเข้า `l10n_hu_edi`"}},
+    {"module": "l10n_lk_invoice", "successor": "l10n_lk", "note": {"en": "Sri Lanka tax invoice sequence and VAT-registered flags merged into `l10n_lk`.", "th": "sequence ใบกำกับภาษีและ flag จดทะเบียน VAT ของศรีลังกาถูกรวมเข้า `l10n_lk`"}},
+    {"module": "l10n_pl_bank_verification", "successor": "l10n_pl", "note": {"en": "Bank-account whitelist verification merged into `l10n_pl`.", "th": "การตรวจสอบบัญชีธนาคารตาม whitelist รวมเข้า `l10n_pl`"}},
+    {"module": "l10n_ro_cpv_code", "successor": "l10n_ro_edi", "note": {"en": "CPV code model and product view merged into `l10n_ro_edi`.", "th": "โมเดลรหัส CPV และ view ของสินค้ารวมเข้า `l10n_ro_edi`"}},
+    {"module": "l10n_ro_edi_stock_batch", "successor": "l10n_ro_edi_stock", "note": {"en": "Merged into `l10n_ro_edi_stock`; the `stock_picking_batch` dependency was dropped because that module was removed.", "th": "รวมเข้า `l10n_ro_edi_stock` และตัด dependency `stock_picking_batch` เพราะโมดูลนั้นถูกลบ"}},
+    {"module": "l10n_sa_withholding_tax", "successor": "l10n_account_withholding_tax", "note": {"en": "`l10n_sa` now depends on `l10n_account_withholding_tax` directly.", "th": "`l10n_sa` ตอนนี้ depends บน `l10n_account_withholding_tax` โดยตรง"}},
+    {"module": "l10n_uy_pos", "successor": null, "note": {"en": "No successor found; behavior lost (Uruguayan POS no longer forced to invoice).", "th": "ไม่พบตัวแทน ฟังก์ชันหายไป (POS ของอุรุกวัยไม่ถูกบังคับให้ออกใบแจ้งหนี้อีกต่อไป)"}},
+    {"module": "l10n_fr_hr_work_entry_holidays", "successor": "l10n_fr_hr_holidays", "note": {"en": "Merged into `l10n_fr_hr_holidays`; `hr_work_entry_holidays` itself was removed from addons.", "th": "รวมเข้า `l10n_fr_hr_holidays` และ `hr_work_entry_holidays` เองก็ถูกลบจาก addons"}},
+    {"module": "base_vat / base_iban", "successor": null, "note": {"en": "Validation moved to core `res.partner`; VIES split to `l10n_eu_account_vies`; IBAN in core/`account` (inference).", "th": "การตรวจสอบย้ายไปที่ `res.partner` ของ core, VIES แยกเป็น `l10n_eu_account_vies`, IBAN อยู่ใน core/`account` (inference)"}}
+  ],
+  "thai_gaps": [
+    {
+      "need": {"en": "e-Tax Invoice & e-Receipt (RD/ETDA, signed XML/PDF-A3, submission API)", "th": "e-Tax Invoice & e-Receipt (กรมสรรพากร/ETDA, XML/PDF-A3 ที่ลงลายมือชื่อ, API ส่งข้อมูล)"},
+      "status": {"en": "Gap. No module; `l10n_th.tax.invoice` is only a printable record.", "th": "Gap ไม่มีโมดูล `l10n_th.tax.invoice` เป็นเพียงระเบียนสำหรับพิมพ์"},
+      "action": {"en": "Build a connector (own or via a certified provider API), sign with a CA certificate, reuse `l10n_th.tax.invoice` as the number source.", "th": "พัฒนา connector (เองหรือผ่าน API ของผู้ให้บริการที่ได้รับรอง) ลงลายมือชื่อด้วยใบรับรองจาก CA และใช้ `l10n_th.tax.invoice` เป็นแหล่งเลขที่เอกสาร"}
+    },
+    {
+      "need": {"en": "PND 1/2/3/53/54 monthly returns + RD e-filing file", "th": "แบบ ภ.ง.ด.1/2/3/53/54 รายเดือน และไฟล์ e-filing ของกรมสรรพากร"},
+      "status": {"en": "Gap (regressed vs 19); data exists on WHT lines.", "th": "Gap (ถดถอยจาก v19) ข้อมูลมีอยู่ที่รายการ WHT"},
+      "action": {"en": "Build report/export from `account.withholding.line` for ภ.ง.ด.3/53/54 layouts and RD upload format; add ภ.ง.ด.1/2.", "th": "สร้างรายงาน/ไฟล์ส่งออกจาก `account.withholding.line` ตามรูปแบบ ภ.ง.ด.3/53/54 และไฟล์อัปโหลดของกรมสรรพากร พร้อมเพิ่ม ภ.ง.ด.1/2"}
+    },
+    {
+      "need": {"en": "ภ.พ.30 e-filing and ภ.พ.36 (reverse charge) workflow", "th": "การยื่น ภ.พ.30 ทางอิเล็กทรอนิกส์ และขั้นตอน ภ.พ.36 (ภาษีย้อนกลับ)"},
+      "status": {"en": "Partial. P.P. 30 report exists; `tax_input_vat_rc` inactive; no P.P. 36 form or payment.", "th": "บางส่วน มีรายงาน ภ.พ.30 แต่ `tax_input_vat_rc` ปิดอยู่ และไม่มีแบบ/การชำระ ภ.พ.36"},
+      "action": {"en": "Activate and test the RC tax, build the ภ.พ.36 form and payment, and a ภ.พ.30 export file.", "th": "เปิดใช้และทดสอบภาษี RC สร้างแบบและการชำระ ภ.พ.36 และไฟล์ส่งออก ภ.พ.30"}
+    },
+    {
+      "need": {"en": "Purchase/sales tax reports (รายงานภาษีซื้อ/ภาษีขาย) in RD layout", "th": "รายงานภาษีซื้อ/ภาษีขายตามรูปแบบของกรมสรรพากร"},
+      "status": {"en": "Gap. Tax report is balance-by-tag, not a register.", "th": "Gap รายงานภาษีเป็นยอดตาม tag ไม่ใช่รูปแบบทะเบียน"},
+      "action": {"en": "Add tax-register reports as `account.report` or SQL views, including branch code from `TH_BRANCH_CODE`.", "th": "เพิ่มรายงานทะเบียนภาษีเป็น `account.report` หรือ SQL view โดยรวมรหัสสาขาจาก `TH_BRANCH_CODE`"}
+    },
+    {
+      "need": {"en": "Branch (สาขา) handling: per-branch tax invoice numbering, branch on documents, per-branch ภ.พ.30", "th": "การจัดการสาขา: เลขที่ใบกำกับภาษีแยกตามสาขา, สาขาบนเอกสาร, ภ.พ.30 รายสาขา"},
+      "status": {"en": "Partial. Branch code identifier and \"Branch NNNNN/Headquarter\" exist; sequences are per company.", "th": "บางส่วน มีตัวระบุรหัสสาขาและ \"Branch NNNNN/Headquarter\" แต่ sequence แยกตามบริษัท"},
+      "action": {"en": "Model branches as companies or extend sequences/reports per branch; show address and branch of the issuing establishment.", "th": "กำหนดสาขาเป็นบริษัทแยก หรือขยาย sequence/รายงานรายสาขา และแสดงที่อยู่และสาขาของสถานประกอบการที่ออกเอกสาร"}
+    },
+    {
+      "need": {"en": "Thai payroll, SSO, provident fund, ภ.ง.ด.1, 50 ทวิ for salaries", "th": "payroll ไทย, ประกันสังคม, กองทุนสำรองเลี้ยงชีพ, ภ.ง.ด.1, 50 ทวิ สำหรับเงินเดือน"},
+      "status": {"en": "Gap. Payroll is Enterprise; no Thai rules in CE.", "th": "Gap Payroll เป็น Enterprise ไม่มีกฎของไทยใน CE"},
+      "action": {"en": "Use OCA/custom payroll (rules, SSO 5% cap, ภ.ง.ด.1, 50 ทวิ for employees) and Thai holiday calendar.", "th": "ใช้ payroll จาก OCA/พัฒนาเอง (กฎ, เพดาน SSO 5%, ภ.ง.ด.1, 50 ทวิ สำหรับพนักงาน) และปฏิทินวันหยุดไทย"}
+    },
+    {
+      "need": {"en": "Fixed assets and Thai depreciation rates, asset register", "th": "สินทรัพย์ถาวรและอัตราค่าเสื่อมราคาตามกรมสรรพากร, ทะเบียนทรัพย์สิน"},
+      "status": {"en": "Partial. Only `account.asset-th.csv` (13 lines); no TH depreciation-model CSV.", "th": "บางส่วน มีเพียง `account.asset-th.csv` (13 บรรทัด) และไม่มี CSV depreciation model ของไทย"},
+      "action": {"en": "Add `account.depreciation.model` data with RD maximum rates.", "th": "เพิ่มข้อมูล `account.depreciation.model` ตามอัตราสูงสุดของกรมสรรพากร"}
+    },
+    {
+      "need": {"en": "Thai financial statements (DBD / TFRS for NPAEs), DBD e-Filing XBRL, corporate income tax ภ.ง.ด.50/51", "th": "งบการเงินไทย (DBD / TFRS for NPAEs), DBD e-Filing XBRL, ภาษีเงินได้นิติบุคคล ภ.ง.ด.50/51"},
+      "status": {"en": "Gap.", "th": "Gap"},
+      "action": {"en": "Map account tags/financial-report definitions to the DBD chart; build CIT working papers.", "th": "จับคู่ account tag/นิยามรายงานการเงินกับผังบัญชี DBD และจัดทำกระดาษทำการภาษีเงินได้นิติบุคคล"}
+    },
+    {
+      "need": {"en": "Thai bank statement import, bulk payment files (SMART/BahtNet), bill-payment QR (Ref1/Ref2)", "th": "นำเข้า bank statement ของธนาคารไทย, ไฟล์จ่ายเงินจำนวนมาก (SMART/BahtNet), QR ชำระบิล (Ref1/Ref2)"},
+      "status": {"en": "Gap. Only PromptPay credit-transfer QR (tag 29); bill-payment QR (tag 30) not implemented in `res_bank.py`.", "th": "Gap มีเฉพาะ QR โอนเงิน PromptPay (tag 29) ส่วน QR ชำระบิล (tag 30) ไม่ได้ implement ใน `res_bank.py`"},
+      "action": {"en": "Custom bank import parsers (OCA bank-statement-import patterns) and bill-payment QR.", "th": "พัฒนา parser นำเข้า statement ธนาคาร (แนวทาง OCA bank-statement-import) และ QR ชำระบิล"}
+    },
+    {
+      "need": {"en": "Thai payment gateways (2C2P, Omise/Opn, KBank PGW, SCB, TrueMoney, LINE Pay)", "th": " payment gateway ของไทย (2C2P, Omise/Opn, KBank PGW, SCB, TrueMoney, LINE Pay)"},
+      "status": {"en": "Partial. PromptPay via `payment_stripe`, `payment_adyen`, `payment_xendit`; no 2C2P/Opn provider.", "th": "บางส่วน มี PromptPay ผ่าน `payment_stripe`, `payment_adyen`, `payment_xendit` แต่ไม่มี provider 2C2P/Opn"},
+      "action": {"en": "Custom or third-party providers.", "th": "พัฒนาเองหรือใช้ provider ของบุคคลที่สาม"}
+    },
+    {
+      "need": {"en": "POS for Thailand: abbreviated tax invoice (ใบกำกับภาษีอย่างย่อ), RD-approved POS rules, fiscal printers", "th": "POS สำหรับไทย: ใบกำกับภาษีอย่างย่อ, กฎเครื่อง POS ที่กรมสรรพากรอนุมัติ, เครื่องพิมพ์ใบเสร็จ"},
+      "status": {"en": "Gap. No `l10n_th_pos`; tax invoices only for out_invoice/out_receipt moves.", "th": "Gap ไม่มี `l10n_th_pos` ใบกำกับภาษีสร้างเฉพาะ out_invoice/out_receipt"},
+      "action": {"en": "Custom POS receipt layout/numbering; map POS orders to `l10n_th.tax.invoice` (or invoice from POS).", "th": "พัฒนา layout/เลขที่ใบเสร็จ POS เอง และ map POS order ไปยัง `l10n_th.tax.invoice` (หรือออกใบแจ้งหนี้จาก POS)"}
+    },
+    {
+      "need": {"en": "Customer side: Thai address autocomplete, DBD lookup by 13-digit TIN, RD VAT-registration check", "th": "ฝั่งลูกค้า: ที่อยู่ไทยแบบ autocomplete (ตำบล/อำเภอ/จังหวัด/รหัสไปรษณีย์), ค้นหา DBD ด้วยเลขประจำตัว 13 หลัก, ตรวจสอบการจดทะเบียน VAT กับกรมสรรพากร"},
+      "status": {"en": "Partial. Thai address view only; VAT format check via stdnum; no district/sub-district/postcode data in `l10n_th`.", "th": "บางส่วน มีเพียง view ที่อยู่ไทย และตรวจรูปแบบ VAT ด้วย stdnum ไม่มีข้อมูลอำเภอ/ตำบล/รหัสไปรษณีย์ใน `l10n_th`"},
+      "action": {"en": "Load Thai geodata (OCA `base_address_extended` style / `l10n_th_*`); optional RD/DBD API lookup.", "th": "โหลดข้อมูล geodata ของไทย (แนว OCA `base_address_extended` / `l10n_th_*`) และเพิ่มการค้นหาผ่าน API ของกรมสรรพากร/DBD ตามต้องการ"}
+    },
+    {
+      "need": {"en": "Buddhist-era (B.E.) date display and Thai number-to-text on invoices", "th": "แสดงวันที่เป็นปี พ.ศ. และจำนวนเงินเป็นตัวอักษรไทยบนใบแจ้งหนี้"},
+      "status": {"en": "Partial. 50 Tawi uses Thai `amount_to_text`; B.E. year printing not found in reports.", "th": "บางส่วน 50 ทวิ ใช้ `amount_to_text` ภาษาไทย แต่ไม่พบการพิมพ์ปี พ.ศ. ในรายงาน"},
+      "action": {"en": "Custom report tweaks.", "th": "ปรับแต่งรายงานเอง"}
+    },
+    {
+      "need": {"en": "Stock/customs: import entry (ใบขนสินค้า), export documents, bonded warehouse", "th": "สต็อก/ศุลกากร: ใบขนสินค้าขาเข้า, เอกสารส่งออก, คลังสินค้าทัณฑ์บน"},
+      "status": {"en": "Gap. India has BOE (`l10n_in_boe`); Thailand has none.", "th": "Gap อินเดียมี BOE (`l10n_in_boe`) แต่ไทยไม่มี"},
+      "action": {"en": "Custom landed-cost workflow similar to `l10n_in_boe`.", "th": "พัฒนา workflow landed cost เองในแนวเดียวกับ `l10n_in_boe`"}
+    },
+    {
+      "need": {"en": "Thai chart variants (DBD standard chart, TFRS for PAEs, group-account hierarchy)", "th": "ผังบัญชีไทยรูปแบบอื่น (ผังมาตรฐาน DBD, TFRS for PAEs, ลำดับชั้นบัญชีกลุ่ม)"},
+      "status": {"en": "Single flat chart (`code_digits=6`), no parent accounts.", "th": "มีผังบัญชีเดียวแบบ flat (`code_digits=6`) ไม่มีบัญชี parent"},
+      "action": {"en": "Extend the chart with hierarchy to match reporting.", "th": "ขยายผังบัญชีให้มีลำดับชั้นเพื่อให้ตรงกับการรายงาน"}
+    },
+    {
+      "need": {"en": "WHT edge cases: small-amount threshold exemption, rates per payee/ATC, dividends 10%, e-WHT (threshold and e-WHT are background, not checked)", "th": "กรณีพิเศษของภาษีหัก ณ ที่จ่าย: เกณฑ์ยกเว้นยอดเล็กน้อย, อัตราตามผู้รับเงิน/ATC, เงินปันผล 10%, e-WHT (เกณฑ์และ e-WHT เป็นความรู้พื้นฐาน ไม่ได้ตรวจ)"},
+      "status": {"en": "Partial. Rates present, many taxes inactive by default; e-WHT and threshold not coded.", "th": "บางส่วน มีอัตราภาษีแล้ว แต่หลายรายการปิดไว้เป็นค่าเริ่มต้น และไม่มีโค้ด e-WHT และเกณฑ์ยกเว้น"},
+      "action": {"en": "Configure active taxes per client; add threshold logic if required.", "th": "ตั้งค่าภาษีที่เปิดใช้ตามลูกค้าแต่ละราย และเพิ่ม logic เกณฑ์ยกเว้นหากจำเป็น"}
+    }
+  ]
+}

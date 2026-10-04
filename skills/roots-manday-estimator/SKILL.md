@@ -116,3 +116,4 @@ Estimated duration: X months (X sprints of 2 weeks)
 - Round to nearest THB 50,000 on final quote
 - For e-GP government bids: add 25% buffer — government projects always run over
 - BEECY path typically 20–30% less mandays than Enterprise (less complex localization work)
+- **Odoo 20 scope:** ก่อนประเมิน เช็ก [references/odoo20-ce/](../../references/odoo20-ce/) (หรือ skill `odoo20-ce-expert`) ว่าอะไร native ใน CE 20 (ไม่ต้อง build) vs อะไรต้อง custom/Enterprise — ตัวที่ต้อง build/port (เช่น e-Tax, Thai Payroll, Quality, Shop Floor, PLM) = เพิ่ม manday · งาน migrate/port 19→20 มี checklist เฉพาะใน KB (`ir.access.csv`, Owl 3, field renames) ให้ตั้งเป็น line งานแยก

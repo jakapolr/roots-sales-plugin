@@ -17,6 +17,7 @@ source: roots-custom
 |---|---|
 | ภาพรวม / 10 การเปลี่ยนแปลงหลัก / CE vs EE / แผนอัปเกรด / ความเสี่ยง | `STUDY-PAPER.md` (Part 0, 5, 6, 7) |
 | **แอปไหนเป็น Enterprise-only / CE vs EE ระดับแอป** | `data/editions-ce-vs-ee.md` **[web]** (official editions matrix — 24 EE-only apps) + `STUDY-PAPER.md` §1.2 `[code]` |
+| **ราคา subscription / ประเภท user (Standard, Custom, Light User)** | `data/pricing-th.md` **[web]** (th_TH, USD/user/mo; THB = FX toggle) |
 | สถานะโมดูล (NEW / REMOVED / CHANGED), dependencies | `01-module-catalog.md` หรือ `data/module_catalog_19_vs_20.csv` |
 | Framework, ORM, `ir.access`, Python 3.12, HTTP, CLI | `areas/01-framework-core.md` |
 | Web client, Owl 3, offline, report engines, spreadsheet, IoT | `areas/02-web-ui-technical.md` |

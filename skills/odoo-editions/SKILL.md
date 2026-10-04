@@ -14,6 +14,8 @@ source: roots-custom
 อ่าน [references/odoo-editions.md](../../references/odoo-editions.md) เสมอก่อนตอบ — เป็นข้อมูลเดียวที่ verify แล้ว (official Odoo docs + beecy.co)
 **ห้ามตอบจากความจำเอง** ถ้าขัดกับ reference ให้ยึด reference
 
+**ราคา subscription + ประเภท user (Standard/Custom + Light User ใหม่):** อ่าน [references/odoo20-ce/data/pricing-th.md](../../references/odoo20-ce/data/pricing-th.md) **[web]** (th_TH pricing, as-of 2026-10) — ราคา list เป็น **USD/user/เดือน** (THB = FX สดผ่าน currency toggle ไม่ใช่ราคาตายตัว); ย้ำว่าราคา Odoo ≠ ราคา Roots/BEECY ≠ ค่า implementation (manday)
+
 ## หลักการตอบ
 
 1. **แยก 3 แกนให้ลูกค้าเห็นก่อน** — Edition (CE/EE) · Hosting (Online/Odoo.sh/on-premise) · ผลิตภัณฑ์ Roots (BEECY SaaS / Community implementation) เป็นคนละเรื่อง

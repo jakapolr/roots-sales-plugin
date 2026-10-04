@@ -2,7 +2,7 @@
 
 Sales productivity plugin for **Roots.Tech** — Thai Odoo ERP implementation firm.
 
-**Version:** `v4.1.0` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
+**Version:** `v4.1.1` · **37 skills** · **7 sub-agents** · **2 commands** · **3 MCP connectors**
 
 Based on [Anthropic's official sales plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/sales), extended with:
 - Odoo-specific skills (GAP analysis, Manday estimation, TOR analysis, bid prep)
@@ -162,6 +162,7 @@ Ten data registers live in `registers/` and serve as the shared state layer for 
 
 | Version | What changed |
 |---|---|
+| `v4.1.1` | **CE-vs-EE edition matrix** — wired the official app-level Enterprise-vs-Community matrix (`references/odoo20-ce/data/editions-ce-vs-ee.md`, from odoo.com/page/editions, tagged `[web]`) into `odoo20-ce-expert` + `odoo-gap-analysis`, and added it to the Field Guide CE-vs-EE page. Kept separate from the `[code]`-verified CE facts. |
 | `v4.1.0` | **Odoo 20 CE knowledge base** — code-verified study of Odoo 20.0 Community Edition vs 19.0 (`references/odoo20-ce/`: study paper, 720-module catalogue, 10 area reports, `l10n_th` deep-dive), the `odoo20-ce-expert` skill, and an internal EN/TH Odoo 20 Field Guide site source (`docs/odoo20-site/`). CE scope only — EE noted as "absent from CE". |
 | `v4.0.0` | **Hunting Strategy layer** — `deal-strategy` (scorecard v2 tier + MEDDICC + killing-zone + CTA to Odoo chatter), `deal-lessons`, `strategy-orchestrator` agent, Lost/Won reason taxonomy + Odoo automation hooks; references: `strategy-doctrine`, `customer-scorecard`, `deal-service-matrix`, `won-lost-cheatsheet` |
 | `v3.5.3` | sales-help navigator: removed a phantom skill reference, added design-path routing |

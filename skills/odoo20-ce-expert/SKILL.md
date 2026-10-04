@@ -16,6 +16,7 @@ source: roots-custom
 | คำถามเกี่ยวกับ | อ่านไฟล์ |
 |---|---|
 | ภาพรวม / 10 การเปลี่ยนแปลงหลัก / CE vs EE / แผนอัปเกรด / ความเสี่ยง | `STUDY-PAPER.md` (Part 0, 5, 6, 7) |
+| **แอปไหนเป็น Enterprise-only / CE vs EE ระดับแอป** | `data/editions-ce-vs-ee.md` **[web]** (official editions matrix — 24 EE-only apps) + `STUDY-PAPER.md` §1.2 `[code]` |
 | สถานะโมดูล (NEW / REMOVED / CHANGED), dependencies | `01-module-catalog.md` หรือ `data/module_catalog_19_vs_20.csv` |
 | Framework, ORM, `ir.access`, Python 3.12, HTTP, CLI | `areas/01-framework-core.md` |
 | Web client, Owl 3, offline, report engines, spreadsheet, IoT | `areas/02-web-ui-technical.md` |
@@ -32,7 +33,7 @@ source: roots-custom
 
 ## หลักการตอบ
 
-1. **แยก CE กับ EE ให้ชัด** — คลังความรู้นี้ครอบคลุมเฉพาะ CE ถ้าฟีเจอร์ไม่อยู่ใน CE ให้ตอบว่า "ไม่มีใน CE" (เช่น AI agents, IoT Box, Accounting reports/reconciliation widget, Payroll, Quality, Subscriptions) ห้ามยืนยันว่า EE มีอะไรถ้า reference ไม่ได้ระบุ — ใช้ skill `odoo-editions` สำหรับคำถามเรื่อง edition/hosting/BEECY
+1. **แยก CE กับ EE ให้ชัด** — คลังความรู้นี้ศึกษาจาก source CE เท่านั้น (`[code]`) ถ้าฟีเจอร์ไม่อยู่ใน CE ให้ตอบว่า "ไม่มีใน CE" (เช่น AI agents, IoT Box, Accounting reports/reconciliation widget, Payroll, Quality, Subscriptions) · สำหรับ **"แอปไหนเป็น Enterprise-only / เทียบ CE vs EE ระดับแอป"** ใช้ `data/editions-ce-vs-ee.md` ได้ **แต่ต้องระบุว่าเป็น `[web]` (ตารางทางการของผู้ผลิต ไม่ใช่ code-verified)** — อย่าปนกับข้อเท็จจริง CE ที่เป็น `[code]` · ใช้ skill `odoo-editions` สำหรับคำถามเรื่อง edition/hosting/BEECY
 2. **คงระดับความมั่นใจ** — ถ้า reference ระบุ Medium/Low confidence หรือ [web] ต้องบอกผู้ถามด้วย
 3. **อ้างอิงหลักฐาน** — สำหรับทีม technical ให้ระบุ path ไฟล์ที่ reference อ้างไว้ (เช่น `addons/stock/models/stock_move.py`)
 4. **แยกมุมมองตามผู้ถาม** — ทีม functional/presales: ฟีเจอร์ ขั้นตอนงาน ผลกระทบต่อลูกค้า · ทีม technical: model, field, API, การ rename, งาน port

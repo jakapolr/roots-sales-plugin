@@ -19,6 +19,7 @@ phase: 2
 > Pick which paths are realistic for the client *before* building the matrix (e.g. heavy custom needs rule out BEECY SaaS).
 
 > **Odoo 20 CE feature boundary (code-verified):** for what Community actually has vs what is Enterprise-only in v20, follow [references/odoo20-ce/](../../references/odoo20-ce/) (STUDY-PAPER §1.2 CE-vs-EE + each area §5) or the `odoo20-ce-expert` skill — do **not** guess feature parity from memory. The Enterprise-only / Thai-localization lists below are a starting point; verify against the KB for the client's target version.
+> For the **app-level list of Enterprise-only apps** (Studio, Payroll, Quality, PLM, Documents, Sign, Field Service, Helpdesk, Subscriptions, IoT, …), see [references/odoo20-ce/data/editions-ce-vs-ee.md](../../references/odoo20-ce/data/editions-ce-vs-ee.md) — official vendor matrix, tagged `[web]` (not code-verified); keep it separate from the `[code]` CE facts.
 
 ## Trigger
 Use when:

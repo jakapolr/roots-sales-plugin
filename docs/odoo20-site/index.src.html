@@ -218,6 +218,7 @@ const SHORT = {framework:{en:'Framework & core',th:'เฟรมเวิร์�
 const UI = {
  en:{brandsub:'Community Edition · internal',nav_home:'Overview',nav_modules:'Modules',nav_cevsee:'CE vs EE',nav_playbook:'Upgrade 19→20',nav_downloads:'Downloads',lens_f:'Functional',lens_t:'Technical',lens_a:'All',areas:'Areas',
    cevsee_lead:'What a customer gets on Odoo 20 Community, and what needs Enterprise or custom/BEECY — for honest scoping and positioning. From the code-verified study; Enterprise items are only noted as absent from CE.',cevsee_strategic:'Strategic trade-offs',cevsee_cap:'Capability that is Enterprise-only or absent in CE',cevsee_count:'capabilities not in CE 20',cevsee_strat_count:'strategic trade-offs',
+   ee_matrix_title:'Official edition matrix — app level',ee_matrix_sub:'Vendor source, app-level. The CE detail above is code-verified; this adds the Enterprise side. Not code-verified — treat as [web].',ee_only_label:'Enterprise-only apps',ee_platform_label:'Enterprise-only — platform & service',ee_both_label:'In both Community & Enterprise',ee_src:'Source',
    stat_mods:'modules in 20.0',stat_new:'new since 19.0',stat_rem:'removed or merged',stat_apps:'installable apps',stat_chg:'changed heavily',
    top10:'The 10 changes that matter',top10_sub:'filtered by your lens',by_area:'Browse by area',bottom:'Bottom line',roots:'For Trinity Roots',esg:'ESG gap',
    lensnote_functional:'<b>Functional lens:</b> features, workflows, configuration and customer impact. For consultants and pre-sales.',lensnote_technical:'<b>Technical lens:</b> models, fields, APIs, renames and porting work. For developers and DevOps.',lensnote_all:'<b>All:</b> both functional and technical items.',
@@ -233,6 +234,7 @@ const UI = {
    foot:'Source: odoo/odoo branch 20.0 @ b100a87 compared with 19.0, studied 3 Oct 2026. Evidence is code-verified unless marked otherwise. Enterprise features are only described as absent from CE. Internal to Trinity Roots.'},
  th:{brandsub:'Community Edition · ใช้ภายใน',nav_home:'ภาพรวม',nav_modules:'โมดูล',nav_cevsee:'CE เทียบ EE',nav_playbook:'อัปเกรด 19→20',nav_downloads:'ดาวน์โหลด',lens_f:'ฟังก์ชัน',lens_t:'เทคนิค',lens_a:'ทั้งหมด',areas:'หมวด',
    cevsee_lead:'ลูกค้าได้อะไรบน Odoo 20 Community และอะไรต้องใช้ Enterprise หรือ custom/BEECY — สำหรับประเมินงานและวางตำแหน่งอย่างตรงไปตรงมา · มาจากการศึกษาที่ตรวจจากโค้ดจริง ฟีเจอร์ Enterprise ระบุได้เพียงว่าไม่มีใน CE',cevsee_strategic:'ประเด็นแลกเปลี่ยนเชิงกลยุทธ์',cevsee_cap:'ความสามารถที่เป็น Enterprise-only หรือไม่มีใน CE',cevsee_count:'ความสามารถที่ไม่มีใน CE 20',cevsee_strat_count:'ประเด็นเชิงกลยุทธ์',
+   ee_matrix_title:'ตารางเทียบ edition ทางการ — ระดับแอป',ee_matrix_sub:'ที่มาจากเว็บผู้ผลิต ระดับแอป · รายละเอียด CE ด้านบน verify จากโค้ด ส่วนนี้เติมฝั่ง Enterprise ซึ่งยังไม่ได้ verify จากโค้ด — ถือเป็น [web]',ee_only_label:'แอปเฉพาะ Enterprise',ee_platform_label:'เฉพาะ Enterprise — แพลตฟอร์ม/บริการ',ee_both_label:'มีทั้ง Community และ Enterprise',ee_src:'ที่มา',
    stat_mods:'โมดูลใน 20.0',stat_new:'โมดูลใหม่จาก 19.0',stat_rem:'ถูกลบหรือรวม',stat_apps:'แอปที่ติดตั้งได้',stat_chg:'เปลี่ยนแปลงมาก',
    top10:'10 การเปลี่ยนแปลงที่สำคัญ',top10_sub:'กรองตามมุมมองที่เลือก',by_area:'เลือกดูตามหมวด',bottom:'สรุปสาระสำคัญ',roots:'สำหรับ Trinity Roots',esg:'ช่องว่างด้าน ESG',
    lensnote_functional:'<b>มุมมองฟังก์ชัน:</b> ฟีเจอร์ ขั้นตอนงาน การตั้งค่า และผลกระทบต่อลูกค้า สำหรับที่ปรึกษาและทีมพรีเซลส์',lensnote_technical:'<b>มุมมองเทคนิค:</b> โมเดล ฟิลด์ API การเปลี่ยนชื่อ และงาน port โค้ด สำหรับนักพัฒนาและ DevOps',lensnote_all:'<b>ทั้งหมด:</b> แสดงทั้งรายการฟังก์ชันและเทคนิค',
@@ -438,6 +440,8 @@ function viewCEvsEE(){
   const strategic=(o.ce_vs_ee||[]).map(r=>`<tr><td>${rich(L(r.need))}</td><td>${rich(L(r.ce))}</td><td>${rich(L(r.route))}</td></tr>`).join('');
   const byArea=rows.map(r=>`<tr><td style="white-space:nowrap"><a href="#${r.a}">${esc(areaName(r.a))}</a></td><td>${rich(L(r.n))}</td></tr>`).join('');
   const g=C.l10n?.thai_gaps||[];
+  const em=o.ee_matrix; const chipC=(a,c)=>(a||[]).map(x=>`<span class="chip ${c}">${esc(x)}</span>`).join(' ');
+  const eeSec=em?`<section><h2>${t('ee_matrix_title')} <span class="sub">[web]</span></h2><p class="muted" style="margin:-4px 0 12px">${t('ee_matrix_sub')}</p><div class="tbl-wrap" style="padding:14px 16px"><p style="margin:0 0 7px"><b style="color:var(--rem)">${t('ee_only_label')}</b></p><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">${chipC(em.ee_apps,'removed')}</div><p style="margin:0 0 7px"><b style="color:var(--chg)">${t('ee_platform_label')}</b></p><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">${chipC(em.ee_platform,'changed')}</div><p style="margin:0 0 7px"><b style="color:var(--new)">${t('ee_both_label')}</b></p><div style="display:flex;flex-wrap:wrap;gap:6px">${chipC(em.both,'new')}</div><p class="muted" style="font-size:11.5px;margin-top:12px">${t('ee_src')}: ${esc(em.source)} · ${esc(em.as_of)}</p></div></section>`:'';
   const thai=g.length?`<section><h2>${t('thai_gaps')}</h2><div class="tbl-wrap"><table><thead><tr><th>#</th><th>${t('need')}</th><th>${t('ce_status')}</th><th>${t('action')}</th></tr></thead><tbody>${g.map((x,i)=>`<tr><td class="num">${i+1}</td><td>${rich(L(x.need))}</td><td>${rich(L(x.status))}</td><td>${rich(L(x.action))}</td></tr>`).join('')}</tbody></table></div></section>`:'';
   return `<div class="page-h"><span class="eyebrow">Odoo 20 · CE vs EE</span><h1>${t('cevsee')}</h1><p class="lead">${t('cevsee_lead')}</p></div>
   ${lensNote()}
@@ -447,6 +451,7 @@ function viewCEvsEE(){
     ${g.length?`<div class="stat"><b>${g.length}</b><span>${t('thai_gaps')}</span></div>`:''}
   </div>
   <section><h2>${t('cevsee_strategic')}</h2><div class="tbl-wrap"><table><thead><tr><th>${t('need')}</th><th>${t('ce')}</th><th>${t('route')}</th></tr></thead><tbody>${strategic}</tbody></table></div></section>
+  ${eeSec}
   <section><h2>${t('notce')} <span class="sub">${rows.length}</span></h2><div class="tbl-wrap"><table><thead><tr><th>${t('col_area')}</th><th>${t('cevsee_cap')}</th></tr></thead><tbody>${byArea}</tbody></table></div></section>
   ${thai}`;
 }

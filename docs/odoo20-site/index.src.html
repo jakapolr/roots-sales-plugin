@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roots Odoo 20 Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -214,7 +216,8 @@ const AREA_FILE = {framework:'01-framework-core.md',webui:'02-web-ui-technical.m
 const SHORT = {framework:{en:'Framework & core',th:'เฟรมเวิร์กและแกนระบบ'},webui:{en:'Web client & technical',th:'เว็บไคลเอนต์และโมดูลเทคนิค'},communication:{en:'Discuss, mail & calendar',th:'Discuss อีเมลและปฏิทิน'},accounting:{en:'Accounting & payments',th:'บัญชีและการชำระเงิน'},sales:{en:'Sales, CRM & product',th:'ขาย CRM และสินค้า'},supply:{en:'Inventory, purchase & MRP',th:'คลัง จัดซื้อ และการผลิต'},pos:{en:'Point of Sale',th:'Point of Sale'},website:{en:'Website & marketing',th:'เว็บไซต์และการตลาด'},hr:{en:'HR & project',th:'HR และโปรเจกต์'},l10n:{en:'Localization (TH/ASEAN)',th:'โลคัลไลเซชัน (ไทย/อาเซียน)'}};
 
 const UI = {
- en:{brandsub:'Community Edition · internal',nav_home:'Overview',nav_modules:'Modules',nav_playbook:'Upgrade 19→20',nav_downloads:'Downloads',lens_f:'Functional',lens_t:'Technical',lens_a:'All',areas:'Areas',
+ en:{brandsub:'Community Edition · internal',nav_home:'Overview',nav_modules:'Modules',nav_cevsee:'CE vs EE',nav_playbook:'Upgrade 19→20',nav_downloads:'Downloads',lens_f:'Functional',lens_t:'Technical',lens_a:'All',areas:'Areas',
+   cevsee_lead:'What a customer gets on Odoo 20 Community, and what needs Enterprise or custom/BEECY — for honest scoping and positioning. From the code-verified study; Enterprise items are only noted as absent from CE.',cevsee_strategic:'Strategic trade-offs',cevsee_cap:'Capability that is Enterprise-only or absent in CE',cevsee_count:'capabilities not in CE 20',cevsee_strat_count:'strategic trade-offs',
    stat_mods:'modules in 20.0',stat_new:'new since 19.0',stat_rem:'removed or merged',stat_apps:'installable apps',stat_chg:'changed heavily',
    top10:'The 10 changes that matter',top10_sub:'filtered by your lens',by_area:'Browse by area',bottom:'Bottom line',roots:'For Trinity Roots',esg:'ESG gap',
    lensnote_functional:'<b>Functional lens:</b> features, workflows, configuration and customer impact. For consultants and pre-sales.',lensnote_technical:'<b>Technical lens:</b> models, fields, APIs, renames and porting work. For developers and DevOps.',lensnote_all:'<b>All:</b> both functional and technical items.',
@@ -228,7 +231,8 @@ const UI = {
    dl_title:'Downloads',dl_lead:'Papers for reading, and Markdown files for your AI tools (Claude Projects, Claude Code skills, NotebookLM, RAG).',dl_btn:'Download',dl_busy:'Preparing…',dl_ok:'Saved',dl_decl:'Download cancelled',dl_off:'Downloads are not available in this view. Open the guide in claude.ai to download files.',dl_fail:'Download failed',
    grp_read:'Read',grp_ai:'For AI learning',grp_areas:'Area reports (Markdown)',grp_data:'Data',
    foot:'Source: odoo/odoo branch 20.0 @ b100a87 compared with 19.0, studied 3 Oct 2026. Evidence is code-verified unless marked otherwise. Enterprise features are only described as absent from CE. Internal to Trinity Roots.'},
- th:{brandsub:'Community Edition · ใช้ภายใน',nav_home:'ภาพรวม',nav_modules:'โมดูล',nav_playbook:'อัปเกรด 19→20',nav_downloads:'ดาวน์โหลด',lens_f:'ฟังก์ชัน',lens_t:'เทคนิค',lens_a:'ทั้งหมด',areas:'หมวด',
+ th:{brandsub:'Community Edition · ใช้ภายใน',nav_home:'ภาพรวม',nav_modules:'โมดูล',nav_cevsee:'CE เทียบ EE',nav_playbook:'อัปเกรด 19→20',nav_downloads:'ดาวน์โหลด',lens_f:'ฟังก์ชัน',lens_t:'เทคนิค',lens_a:'ทั้งหมด',areas:'หมวด',
+   cevsee_lead:'ลูกค้าได้อะไรบน Odoo 20 Community และอะไรต้องใช้ Enterprise หรือ custom/BEECY — สำหรับประเมินงานและวางตำแหน่งอย่างตรงไปตรงมา · มาจากการศึกษาที่ตรวจจากโค้ดจริง ฟีเจอร์ Enterprise ระบุได้เพียงว่าไม่มีใน CE',cevsee_strategic:'ประเด็นแลกเปลี่ยนเชิงกลยุทธ์',cevsee_cap:'ความสามารถที่เป็น Enterprise-only หรือไม่มีใน CE',cevsee_count:'ความสามารถที่ไม่มีใน CE 20',cevsee_strat_count:'ประเด็นเชิงกลยุทธ์',
    stat_mods:'โมดูลใน 20.0',stat_new:'โมดูลใหม่จาก 19.0',stat_rem:'ถูกลบหรือรวม',stat_apps:'แอปที่ติดตั้งได้',stat_chg:'เปลี่ยนแปลงมาก',
    top10:'10 การเปลี่ยนแปลงที่สำคัญ',top10_sub:'กรองตามมุมมองที่เลือก',by_area:'เลือกดูตามหมวด',bottom:'สรุปสาระสำคัญ',roots:'สำหรับ Trinity Roots',esg:'ช่องว่างด้าน ESG',
    lensnote_functional:'<b>มุมมองฟังก์ชัน:</b> ฟีเจอร์ ขั้นตอนงาน การตั้งค่า และผลกระทบต่อลูกค้า สำหรับที่ปรึกษาและทีมพรีเซลส์',lensnote_technical:'<b>มุมมองเทคนิค:</b> โมเดล ฟิลด์ API การเปลี่ยนชื่อ และงาน port โค้ด สำหรับนักพัฒนาและ DevOps',lensnote_all:'<b>ทั้งหมด:</b> แสดงทั้งรายการฟังก์ชันและเทคนิค',
@@ -281,7 +285,7 @@ function renderChrome(){
   document.documentElement.lang = lang==='th'?'th':'en';
   document.body.classList.toggle('th', lang==='th');
   const r=route();
-  const navItems=[['home','nav_home'],['modules','nav_modules'],['playbook','nav_playbook'],['downloads','nav_downloads']];
+  const navItems=[['home','nav_home'],['modules','nav_modules'],['cevsee','nav_cevsee'],['playbook','nav_playbook'],['downloads','nav_downloads']];
   document.getElementById('nav').innerHTML = navItems.map(([id,k])=>`<a href="#${id}" ${r===id?'aria-current="page"':''}>${t(k)}</a>`).join('');
   document.getElementById('rail').innerHTML = `<h4>${t('areas')}</h4>` + AREAS.map((a,i)=>`<a href="#${a}" ${r===a?'aria-current="page"':''}><span class="n">${String(i+1).padStart(2,'0')}</span><span>${esc(areaName(a))}</span><span class="c">${modCount[a].all}</span></a>`).join('');
   const lb={functional:'lens-f',technical:'lens-t',all:'lens-a'};
@@ -427,6 +431,26 @@ function viewPlaybook(){
   ${reportShell('paper')}`;
 }
 
+/* CE vs EE — consolidated, sales-facing: strategic trade-offs + every area's not-in-CE + Thai gaps */
+function viewCEvsEE(){
+  const o=C.overview;
+  const rows=[]; AREAS.forEach(a=>{ (C[a]?.not_in_ce||[]).forEach(n=>rows.push({a,n})); });
+  const strategic=(o.ce_vs_ee||[]).map(r=>`<tr><td>${rich(L(r.need))}</td><td>${rich(L(r.ce))}</td><td>${rich(L(r.route))}</td></tr>`).join('');
+  const byArea=rows.map(r=>`<tr><td style="white-space:nowrap"><a href="#${r.a}">${esc(areaName(r.a))}</a></td><td>${rich(L(r.n))}</td></tr>`).join('');
+  const g=C.l10n?.thai_gaps||[];
+  const thai=g.length?`<section><h2>${t('thai_gaps')}</h2><div class="tbl-wrap"><table><thead><tr><th>#</th><th>${t('need')}</th><th>${t('ce_status')}</th><th>${t('action')}</th></tr></thead><tbody>${g.map((x,i)=>`<tr><td class="num">${i+1}</td><td>${rich(L(x.need))}</td><td>${rich(L(x.status))}</td><td>${rich(L(x.action))}</td></tr>`).join('')}</tbody></table></div></section>`:'';
+  return `<div class="page-h"><span class="eyebrow">Odoo 20 · CE vs EE</span><h1>${t('cevsee')}</h1><p class="lead">${t('cevsee_lead')}</p></div>
+  ${lensNote()}
+  <div class="stats" style="margin-top:18px">
+    <div class="stat"><b>${rows.length}</b><span>${t('cevsee_count')}</span></div>
+    <div class="stat"><b>${(o.ce_vs_ee||[]).length}</b><span>${t('cevsee_strat_count')}</span></div>
+    ${g.length?`<div class="stat"><b>${g.length}</b><span>${t('thai_gaps')}</span></div>`:''}
+  </div>
+  <section><h2>${t('cevsee_strategic')}</h2><div class="tbl-wrap"><table><thead><tr><th>${t('need')}</th><th>${t('ce')}</th><th>${t('route')}</th></tr></thead><tbody>${strategic}</tbody></table></div></section>
+  <section><h2>${t('notce')} <span class="sub">${rows.length}</span></h2><div class="tbl-wrap"><table><thead><tr><th>${t('col_area')}</th><th>${t('cevsee_cap')}</th></tr></thead><tbody>${byArea}</tbody></table></div></section>
+  ${thai}`;
+}
+
 /* downloads */
 const FILES = [
  {g:'grp_read', f:'Odoo20-CE-Study-Paper.pdf', p:'Odoo20-CE-Study-Paper.pdf', en:['Study paper (PDF)','The full study paper, laid out for reading or printing. 18 pages.'], th:['เอกสารศึกษา (PDF)','เอกสารศึกษาฉบับเต็ม จัดหน้าสำหรับอ่านหรือพิมพ์ 18 หน้า']},
@@ -489,6 +513,7 @@ function render(scrollTop){
   const openKeys=[...main.querySelectorAll('details[open]')].map(d=>d.dataset.key);
   if(r==='modules') main.innerHTML=viewModules();
   else if(r==='playbook') main.innerHTML=viewPlaybook();
+  else if(r==='cevsee') main.innerHTML=viewCEvsEE();
   else if(r==='downloads') main.innerHTML=viewDownloads();
   else if(AREAS.includes(r)) main.innerHTML=viewArea(r);
   else main.innerHTML=viewHome();
